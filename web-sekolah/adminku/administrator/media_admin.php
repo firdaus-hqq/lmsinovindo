@@ -8,12 +8,12 @@ error_reporting(0);
 include "timeout.php";
 include "../configurasi/pagination.php";
 
-if($_SESSION[login]==1){
+if($_SESSION['login']==1){
 	if(!cek_login()){
-		$_SESSION[login] = 0;
+		$_SESSION['login'] = 0;
 	}
 }
-if($_SESSION[login]==0){
+if($_SESSION['login']==0){
   header('location:logout.php');
 }
 else{
@@ -103,7 +103,7 @@ else{
           <!-- mini logo for sidebar mini 50x50 pixels -->
           <span class="logo-mini"><b>R</b>PL</span>
           <!-- logo for regular state and mobile devices -->
-          <span class="logo-lg"><b><?php if($_SESSION['leveluser']=='admin'){echo "Admin";}else{ echo "Guru";}?></b><span style='color:#00c0ef'><b>RPL</b></span></span>
+          <span style="font-size: medium;" class="logo-lg"><b><?php if($_SESSION['leveluser']=='admin'){echo "INOVINDO";}else{ echo "Guru";}?></b><span style="letter-spacing: 1px;"><b>  ACADEMY</b></span></span>
         </a>
    <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -163,7 +163,7 @@ else{
           <div class="user-panel">
             <div class="pull-left image">
               <?php if ($_SESSION['leveluser']=='admin'){
-                     echo"  <img src='images/default.jpg' class='img-circle' alt='User Image'> ";
+                     echo"  <img src='images/default.png' class='img-circle' alt='User Image'> ";
                      }else{ 
                   echo "<img src='../foto_pengajar/$_SESSION[foto]' class='img-circle' alt='User Image'>";}
                   ?>
