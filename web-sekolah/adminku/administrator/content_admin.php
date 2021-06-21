@@ -81,7 +81,7 @@ if ($_GET['module'] == 'home') {
           <div class="small-box bg-red">
             <div class="inner">
               <?php
-              $tam = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id_statistik) AS JUMLAH FROM statistik");
+              $tam = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id_kelas) AS JUMLAH FROM kelas");
               $r = mysqli_fetch_array($tam);
               $tot = $r['JUMLAH']; { ?>
                 <h3><?php echo $tot; ?></h3>
