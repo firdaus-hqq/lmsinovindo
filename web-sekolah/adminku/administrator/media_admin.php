@@ -213,10 +213,10 @@ else{
       <footer class="main-footer">
         <!-- To the right -->
         <div class="pull-right hidden-xs">
-         Version 1.0
+         Versi 0.0.1
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2016 <a href="#">RPL SMK TI Ponorogo</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; <?php echo (int)date('Y'); ?> <a href="#">INOVINDO DIGITAL MEDIA</a></strong>
       </footer>
 
       <div class="control-sidebar-bg"></div>
