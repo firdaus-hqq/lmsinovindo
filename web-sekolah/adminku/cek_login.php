@@ -18,15 +18,15 @@ $r=mysqli_fetch_array($login);
 if ($ketemu > 0){
   session_start();
   include "timeout.php";
- setcookie($_SESSION[namauser]     = $r[username_login]);
-  $_SESSION[namalengkap]  = $r[nama_lengkap];
-  $_SESSION[passuser]     = $r[password_login];
-  $_SESSION[leveluser]    = $r[level];
-  $_SESSION[idsiswa]      = $r[id_siswa];
-   $_SESSION[kelas]      = $r[id_kelas];
-  $_SESSION[foto]      = $r[foto];
+ setcookie($_SESSION['namauser']     = $r['username_login']);
+  $_SESSION['namalengkap']  = $r['nama_lengkap'];
+  $_SESSION['passuser']     = $r['password_login'];
+  $_SESSION['leveluser']    = $r['level'];
+  $_SESSION['idsiswa']      = $r['id_siswa'];
+   $_SESSION['kelas']      = $r['id_kelas'];
+  $_SESSION['foto']      = $r['foto'];
   // session timeout
-  $_SESSION[login] = 1;
+  $_SESSION['login'] = 1;
   timer();
 	$sid_lama = session_id();
 	session_regenerate_id();

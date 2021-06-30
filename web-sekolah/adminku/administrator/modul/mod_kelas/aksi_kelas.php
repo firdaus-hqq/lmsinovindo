@@ -8,8 +8,8 @@ session_start();
 else{
 include "../../../configurasi/koneksi.php";
 
-$module=$_GET[module];
-$act=$_GET[act];
+$module=$_GET['module'];
+$act=$_GET['act'];
 
 // Input kelas
 if ($module=='kelas' AND $act=='input_kelas'){
@@ -68,7 +68,7 @@ elseif ($module=='kelas' AND $act=='update_walikelas'){
   $cari = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$_POST[kelas]'");
   $r = mysqli_fetch_array($cari);
 
-  if ($_POST['kelas']==$c[id_kelas]){
+  if ($_POST['kelas']==$c['id_kelas']){
 
     if(!empty($s)){
          mysqli_query($GLOBALS["___mysqli_ston"], "UPDATE siswa SET jabatan = 'siswa'

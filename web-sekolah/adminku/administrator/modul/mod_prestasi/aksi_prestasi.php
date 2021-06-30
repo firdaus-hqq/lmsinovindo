@@ -10,8 +10,8 @@ include "../../../configurasi/koneksi.php";
 include "../../../configurasi/library.php";
 include "../../../configurasi/fungsi_thumb.php";
 include "../../../configurasi/fungsi_seo.php";
-$module=$_GET[module];
-$act=$_GET[act];
+$module=$_GET['module'];
+$act=$_GET['act'];
 // Hapus produk
 if ($module=='prestasi' AND $act=='hapus'){
   $data=mysqli_fetch_array(mysqli_query($GLOBALS["___mysqli_ston"], "SELECT gambar FROM prestasi WHERE id_prestasi='$_GET[id]'"));

@@ -494,7 +494,7 @@ elseif ($_GET['module'] == 'daftarquizpilganda') {
 // Bagian Templates
 elseif ($_GET['module'] == 'registrasi') {
   if ($_SESSION['leveluser'] == 'admin') {
-    include "modul/mod_registrasi/registrasi.php";
+    include "modul/tambahsiswa.php";
   }
 }
 ?>

@@ -7,7 +7,7 @@ session_start();
 }
 else{
 $aksi="modul/mod_prestasi/aksi_prestasi.php";
-switch($_GET[act]){
+switch($_GET['act']){
   // Tampil Produk
   default:
     echo "<div class='box box-warning'>
@@ -140,11 +140,11 @@ switch($_GET[act]){
                            
 							<select name='id_kategoriprestasi' class='form-control'>";
 								  $tampil=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kategori_prestasi ORDER BY nama_katprestasi");
-								  if ($r[id_kat_sewa]==0){
+								  if ($r['id_kat_sewa']==0){
 									echo "<option value=0 selected>- Pilih Kategori -</option>";
 								  }   								  
                                   while($w=mysqli_fetch_array($tampil)){
-									if ($r[id_kategori]==$w[id_kategori]){
+									if ($r['id_kategori']==$w['id_kategori']){
 									  echo "<option value=$w[id_kategoriprestasi] selected>$w[nama_katprestasi]</option>";
 									}
 									else{

@@ -26,16 +26,16 @@ if($ketemu_guru > 0){
   $_SESSION['KCFINDER']['uploadURL'] = "../images";
   $_SESSION['KCFINDER']['uploadDir'] = "";
 
-  $_SESSION[nip]          = $g[nip];
-  $_SESSION[idpengajar]   = $g[id_pengajar];
-  $_SESSION[namauser]     = $g[username_login];
-  $_SESSION[namalengkap]  = $g[nama_lengkap];
-  $_SESSION[passuser]     = $g[password_login];
-  $_SESSION[leveluser]    = $g[level];
-  $_SESSION[foto]         =$g[foto];
+  $_SESSION['nip']          = $g['nip'];
+  $_SESSION['idpengajar']   = $g['id_pengajar'];
+  $_SESSION['namauser']     = $g['username_login'];
+  $_SESSION['namalengkap']  = $g['nama_lengkap'];
+  $_SESSION['passuser']     = $g['password_login'];
+  $_SESSION['leveluser']    = $g['level'];
+  $_SESSION['foto']         =$g['foto'];
 
   // session timeout
-  $_SESSION[login] = 1;
+  $_SESSION['login'] = 1;
   timer();
 
 	$sid_lama = session_id();

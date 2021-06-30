@@ -9,8 +9,8 @@ else{
 session_start();
 include "../../../configurasi/koneksi.php";
 
-$module=$_GET[module];
-$act=$_GET[act];
+$module=$_GET['module'];
+$act=$_GET['act'];
 
 // Hapus modul
 if ($module=='modul' AND $act=='hapus'){
@@ -23,7 +23,7 @@ elseif ($module=='modul' AND $act=='input'){
   // Cari angka urutan terakhir
   $u=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT urutan FROM modul ORDER by urutan DESC");
   $d=mysqli_fetch_array($u);
-  $urutan=$d[urutan]+1;
+  $urutan=$d['urutan']+1;
   
   // Input data modul
   mysqli_query($GLOBALS["___mysqli_ston"], "INSERT INTO modul(nama_modul,

@@ -33,10 +33,10 @@ else{
 
 $aksi="modul/mod_siswa/aksi_siswa.php";
 $aksi_siswa = "administrator/modul/mod_siswa/aksi_siswa.php";
-switch($_GET[act]){
+switch($_GET['act']){
   // Tampil Siswa
   default:
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
 
    
 
@@ -145,7 +145,7 @@ echo "<table id='example3' class='table table-bordered table-striped'>
 
     "; 
     }
-    elseif($_SESSION[leveluser]=='pengajar'){
+    elseif($_SESSION['leveluser']=='pengajar'){
 
    
 
@@ -203,7 +203,7 @@ echo "<table id='example3' class='table table-bordered table-striped'>
     break;
 
 case "lihatmurid":
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
    
     $tampil = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_kelas = '$_GET[id]' ORDER BY nama_lengkap ");
     $cek_siswa = mysqli_num_rows($tampil);
@@ -246,7 +246,7 @@ case "lihatmurid":
             window.location=(href='?module=kelas')</script>";
     }
     }
-    elseif ($_SESSION[leveluser]=='pengajar'){
+    elseif ($_SESSION['leveluser']=='pengajar'){
     
 
     $tampil = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_kelas = '$_GET[id]' ORDER BY nama_lengkap  ");
@@ -369,7 +369,7 @@ case "lihatmurid":
     break;
 
 case "tambahsiswa":
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
         $tampil = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa = '$_GET[id]'");
        
         echo "
@@ -496,7 +496,7 @@ case "tambahsiswa":
     break;
 
   case "nis_ada":
-     if ($_SESSION[leveluser]=='admin'){
+     if ($_SESSION['leveluser']=='admin'){
          echo "<span class='judulhead'><p class='garisbawah'>NIS SUDAH PERNAH DIGUNAKAN<br>
                <input type=button value=Kembali onclick=self.history.back()></p></span>";
      }
@@ -508,7 +508,7 @@ case "tambahsiswa":
     $get_kelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$r[id_kelas]'");
     $kelas = mysqli_fetch_array($get_kelas);
 
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
     echo "
     <div class='box box-warning'>
         <div class='box-header with-border'>
@@ -566,7 +566,7 @@ case "tambahsiswa":
           combothn(1950,$thn_sekarang,'thn',$get_thn);
 
     echo "</div></div>";
-          if ($r[jenis_kelamin]=='L'){
+          if ($r['jenis_kelamin']=='L'){
               echo "<div class='form-group'>
           <div class='col-sm-2'><label>Jenis Kelamin</label></div>
       <div class='col-sm-5'><label><input type=radio name='jk' value='L' checked>Laki - Laki</label>
@@ -623,7 +623,7 @@ case "tambahsiswa":
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Foto</label></div>   <div class='col-sm-5'> : ";
-            if ($r[foto]!=''){
+            if ($r['foto']!=''){
               echo "
                     <img src='../foto_siswa/medium_$r[foto]'>
                   ";
@@ -637,7 +637,7 @@ case "tambahsiswa":
                                     </span>
                                                 <small>Tipe foto harus JPG/JPEG dan ukuran lebar maks: 400 px</small>
                                                 <small>Apabila foto tidak diganti, dikosongkan saja</small></div></div>";
-    if ($r[blokir]=='N'){
+    if ($r['blokir']=='N'){
       echo "<div class='form-group'>
           <div class='col-sm-2'>
           <label>Blokir</label></div>     <div class='col-sm-5'>   <label><input type=radio name='blokir' value='Y'> Y</label>
@@ -657,7 +657,7 @@ case "tambahsiswa":
           </div></div>
          </form></div></div></div>";
     }
-    elseif ($_SESSION[leveluser]=='siswa') {
+    elseif ($_SESSION['leveluser']=='siswa') {
      echo" <section class='panel panel-primary'>
                         <header class='panel-heading'>
                           Edit Profil
@@ -701,7 +701,7 @@ case "tambahsiswa":
           combothn(1950,$thn_sekarang,'thn',$get_thn);
 
     echo "</div></div>";
-          if ($r[jenis_kelamin]=='L'){
+          if ($r['jenis_kelamin']=='L'){
               echo "<div class='form-group'>
           <div class='col-sm-2'><label>Jenis Kelamin</label></div>
   <div class='col-sm-5'><input type=radio name='jk' value='L'  checked>Laki - Laki
@@ -763,7 +763,7 @@ case "tambahsiswa":
           <div class='form-group'>
           <div class='col-sm-2'><labelFoto</label></div>
   <div class='col-sm-5'> ";
-            if ($r[foto]!=''){
+            if ($r['foto']!=''){
               echo "<div class='wdgt-row'><img src='foto_siswa/medium_$r[foto]'></div>";
           }echo "</div></div>
           <div class='form-group'>
@@ -793,10 +793,10 @@ case "tambahsiswa":
 
     
  case "detailsiswa":
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
        $detail=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa='$_GET[id]'");
        $siswa=mysqli_fetch_array($detail);
-       $tgl_lahir   = tgl_indo($siswa[tgl_lahir]);
+       $tgl_lahir   = tgl_indo($siswa['tgl_lahir']);
 
        $get_kelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$siswa[id_kelas]'");
        $kelas = mysqli_fetch_array($get_kelas);
@@ -908,10 +908,10 @@ case "tambahsiswa":
             </div></div>
             <?php 
     }
-    elseif ($_SESSION[leveluser]=='pengajar'){
+    elseif ($_SESSION['leveluser']=='pengajar'){
        $detail=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa='$_GET[id]'");
        $siswa=mysqli_fetch_array($detail);
-       $tgl_lahir   = tgl_indo($siswa[tgl_lahir]);
+       $tgl_lahir   = tgl_indo($siswa['tgl_lahir']);
 
        $get_kelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$siswa[id_kelas]'");
        $kelas = mysqli_fetch_array($get_kelas);
@@ -1021,10 +1021,10 @@ case "tambahsiswa":
             </div></div>
             <?php
     }
-    elseif ($_SESSION[leveluser]=='siswa'){
+    elseif ($_SESSION['leveluser']=='siswa'){
        $detail=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa='$_GET[id]'");
        $siswa=mysqli_fetch_array($detail);
-       $tgl_lahir   = tgl_indo($siswa[tgl_lahir]);
+       $tgl_lahir   = tgl_indo($siswa['tgl_lahir']);
 
        $get_kelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$siswa[id_kelas]'");
        $kelas = mysqli_fetch_array($get_kelas);
@@ -1139,10 +1139,10 @@ case "tambahsiswa":
     break;
 
 case "detailprofilsiswa":
-    if ($_SESSION[leveluser]=='siswa'){
+    if ($_SESSION['leveluser']=='siswa'){
        $detail=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa='$_GET[id]'");
        $siswa=mysqli_fetch_array($detail);
-       $tgl_lahir   = tgl_indo($siswa[tgl_lahir]);
+       $tgl_lahir   = tgl_indo($siswa['tgl_lahir']);
 
        $get_kelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$siswa[id_kelas]'");
        $kelas = mysqli_fetch_array($get_kelas);
@@ -1264,7 +1264,7 @@ echo "<div class='box-header with-border'>
     break;
 
 case "detailaccount":
-    if ($_SESSION[leveluser]=='siswa'){
+    if ($_SESSION['leveluser']=='siswa'){
         $detail=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa='$_GET[id]'");
         $siswa=mysqli_fetch_array($detail);
         echo"<section class='panel panel-primary'>

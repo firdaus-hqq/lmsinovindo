@@ -44,7 +44,7 @@
 								</li>	
               
               	<li>
-									<a href="<?PHP echo MY_PATH?>datasiswa.html">
+									<a href="<?PHP echo MY_PATH?>datasiswa.php">
 										<span>DATA SISWA</span>
 									</a>
 								</li>	
@@ -66,13 +66,13 @@
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">e-learning<span class="caret"></span></a>
               <ul class="dropdown-menu">
               <li>
-									<a href="<?PHP echo MY_PATH?>login_siswa.html">
+									<a href="<?PHP echo MY_PATH?>login_siswa.php">
 										<span>LOGIN SISWA</span>
 									</a>									
 								</li>	
               
               	<li>
-									<a href="<?PHP echo MY_PATH?>login_guru.html">
+									<a href="<?PHP echo MY_PATH?>login_guru.php">
 										<span>LOGIN GURU</span>
 									</a>
 								</li>	
@@ -80,7 +80,7 @@
             </li>
 					
 					<li>
-							<a href="<?PHP echo MY_PATH?>contact.html">
+							<a href="<?PHP echo MY_PATH?>contact.php">
 								<span>Contact</span>
 							</a>
 						</li>

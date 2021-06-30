@@ -74,7 +74,7 @@ function validasi(form){
 				</div>
 				<div class="form-group">
 					<div class="col-sm-3">						
-						<a href="registrasi.html" class="btn btn-primary btn-block btn-login">Daftar E-Learning</a>					
+						<a href="registrasi.php" class="btn btn-primary btn-block btn-login">Daftar E-Learning</a>					
 				</div>
 				</div>				
 			</form>				

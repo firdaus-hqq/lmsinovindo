@@ -26,14 +26,14 @@ if ($ketemu > 0){
   $_SESSION['KCFINDER']['uploadDir'] = "";
   include "timeout.php";
 
-  $_SESSION[namauser]     = $r[username];
-  $_SESSION[namalengkap]  = $r[nama_lengkap];
-  $_SESSION[passuser]     = $r[password];
-  $_SESSION[leveluser]    = $r[level];
-  $_SESSION[idadmin]      = $r[id_admin];
+  $_SESSION['namauser']     = $r['username'];
+  $_SESSION['namalengkap']  = $r['nama_lengkap'];
+  $_SESSION['passuser']     = $r['password'];
+  $_SESSION['leveluser']    = $r['level'];
+  $_SESSION['idadmin']      = $r['id_admin'];
 
   // session timeout
-  $_SESSION[login] = 1;
+  $_SESSION['login'] = 1;
   timer();
 
 	$sid_lama = session_id();

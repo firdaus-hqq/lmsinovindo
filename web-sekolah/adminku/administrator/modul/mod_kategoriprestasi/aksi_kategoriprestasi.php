@@ -9,8 +9,8 @@ else{
 include "../../../configurasi/koneksi.php";
 include "../../../configurasi/fungsi_seo.php";
 
-$module=$_GET[module];
-$act=$_GET[act];
+$module=$_GET['module'];
+$act=$_GET['act'];
 
 // Hapus Kategori
 if ($module=='kategoriprestasi' AND $act=='hapus'){

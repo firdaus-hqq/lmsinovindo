@@ -15,10 +15,10 @@ session_start();
 }
 else{
 $aksi="modul/mod_modul/aksi_modul.php";
-switch($_GET[act]){
+switch($_GET['act']){
   // Tampil Modul
   default:
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
     echo "<div class='box box-warning'>
         <div class='box-header with-border'>
           <div class='col-md-12 col-xs-12'>
@@ -39,7 +39,7 @@ switch($_GET[act]){
             <td><a href=$r[link]>$r[link]</a></td>
             <td align=center>$r[publish]</td>
             <td align=center>$r[aktif]</td>";
-            if ($r[status]=='admin'){
+            if ($r['status']=='admin'){
                 echo "<td>Administrator</td>";
             }else{
                 echo "<td>Teacher</td>";
@@ -142,7 +142,7 @@ switch($_GET[act]){
 
   
   case "editmodul":
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
     $edit = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM modul WHERE id_modul='$_GET[id]'");
     $r    = mysqli_fetch_array($edit);
 
@@ -162,7 +162,7 @@ switch($_GET[act]){
           <label>Link</label></div>
           <div class='col-sm-5'>
       <input type=text name='link'  class='form-control' id='field-1' required='required' placeholder='Placeholder' size=30 value='$r[link]'></div></div>";
-    if ($r[publish]=='Y'){
+    if ($r['publish']=='Y'){
       echo " <div class='form-group'>
           <div class='col-sm-2'><label>Publish</label></div> 
                 <div class='col-sm-5'> <label><input type=radio name='publish' value='Y' checked>Y</label>
@@ -175,7 +175,7 @@ switch($_GET[act]){
                                                         <label><input type=radio name='publish' value='N' checked> N</label>
                                                  </div></div>";
     }
-    if ($r[aktif]=='Y'){
+    if ($r['aktif']=='Y'){
       echo " <div class='form-group'>
           <div class='col-sm-2'><label>Aktif</label></div>
                    <div class='col-sm-5'><lebel><input type=radio name='aktif' value='Y' checked>Y</label>
@@ -189,7 +189,7 @@ switch($_GET[act]){
                                                         <label><input type=radio name='aktif' value='N' checked> N</label>
                                                  </div></div>";
     }
-    if ($r[status]=='pengajar'){
+    if ($r['status']=='pengajar'){
       echo " <div class='form-group'>
           <div class='col-sm-2'>
           <label>Status</label></div>       <div class='col-sm-5'>  <label><input type=radio name='status' value='pengajar' checked>Pengajar</label>

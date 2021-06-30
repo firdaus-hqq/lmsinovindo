@@ -387,11 +387,11 @@ document.getElementById("tombol").innerHTML= "<input type=button class='btn btn-
 include "configurasi/koneksi.php";
 $cek_siswa = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa_sudah_mengerjakan WHERE id_tq='$_POST[id]' AND id_siswa='$_SESSION[idsiswa]'");
 $info_siswa = mysqli_fetch_array($cek_siswa);
-if ($info_siswa[hits]<= 0){
+if ($info_siswa['hits']<= 0){
     mysqli_query($GLOBALS["___mysqli_ston"], "INSERT INTO siswa_sudah_mengerjakan (id_tq,id_siswa,hits)
                                         VALUES ('$_POST[id]','$_SESSION[idsiswa]',hits+1)");
 }
-elseif ($info_siswa[hits] > 0){
+elseif ($info_siswa['hits'] > 0){
 }
 $soal = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM quiz_pilganda where id_tq='$_POST[id]' ORDER BY rand()");
 $pilganda = mysqli_num_rows($soal);
@@ -404,7 +404,7 @@ echo "<br><b class='judul'>Daftar Soal Pilihan Ganda</b><br><p class='garisbawah
             <input type=hidden name=id_topik value='$_POST[id]'>";
 $no = 1;
 while($s = mysqli_fetch_array($soal)){
-    if ($s[gambar]!=''){
+    if ($s['gambar']!=''){
     echo "<tr><td style='v-align: top'>$no.</td><td colspan='2'>".$s['pertanyaan']."</td>";
     echo "<td></td><td></td><img src='foto_soal_pilganda/medium_$s[gambar]' class='img-rounded'></td>";    
     echo "<td><p><input type=radio name=soal_pilganda[".$s['id_quiz']."] value='A'>A. ".$s['pil_a']."</p>";
@@ -427,7 +427,7 @@ echo "<br><b class='judul'>Daftar Soal Essay</b><br><p class='garisbawah'></p>
     <table>";
 $no2=1;
 while($e=  mysqli_fetch_array($soal_esay)){
-    if (!empty($e[gambar])){
+    if (!empty($e['gambar'])){
     echo "<tr><td rowspan=4><h3>$no2.</h3></td><td><h3>".$e['pertanyaan']."</h3></td></tr>";
     echo "<tr><td><img src='foto_soal/medium_$e[gambar]'></td></tr>";
     echo "<tr><td>Jawaban : </td></tr>";
@@ -450,7 +450,7 @@ elseif (!empty($pilganda) AND empty($esay)){
         <input type=hidden name=id_topik value='$_POST[id]'>";
 $no = 1;
 while($s = mysqli_fetch_array($soal)){
-    if ($s[gambar]!=''){
+    if ($s['gambar']!=''){
      echo "<tr><td style='v-align: top'>$no.</td><td colspan='2'>".$s['pertanyaan']."</td></tr>";
     echo "<tr><td width='1%'></td> <td></td><td><img src='foto_soal_pilganda/medium_$s[gambar]' class='imh-rounded'></td></tr>";
     echo "<tr><td width='1%'>A</td><td width='1%'><input type=radio name=soal_pilganda[".$s['id_quiz']."] value='A'></td><td> ".$s['pil_a']."</td></tr>";
@@ -477,7 +477,7 @@ elseif (empty($pilganda) AND !empty($esay)){
     <table><input type=hidden name=id_topik value='$_POST[id]'>";
 $no2=1;
 while($e=  mysqli_fetch_array($soal_esay)){
-    if (!empty($e[gambar])){
+    if (!empty($e['gambar'])){
     echo "<tr><td rowspan=4><h3>$no2.</h3></td><td><h3>".$e['pertanyaan']."</h3></td></tr>";
     echo "<tr><td><img src='foto_soal/medium_$e[gambar]'></td></tr>";
     echo "<tr><td>Jawaban : </td></tr>";

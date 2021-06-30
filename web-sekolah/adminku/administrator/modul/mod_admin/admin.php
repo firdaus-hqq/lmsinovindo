@@ -29,10 +29,10 @@ session_start();
 }
 else{
 $aksi="modul/mod_admin/aksi_admin.php";
-switch($_GET[act]){
+switch($_GET['act']){
   // Tampil User
   default:
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
       $tampil_admin = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM admin ORDER BY username");      
       echo "<div class='box box-warning'>
         <div class='box-header with-border'>
@@ -61,7 +61,7 @@ switch($_GET[act]){
     }
     break;
   case "pengajar":
-  if ($_SESSION[leveluser]=='admin'){
+  if ($_SESSION['leveluser']=='admin'){
       $tampil_pengajar = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM pengajar ORDER BY username_login");
     echo "<div class='box box-warning'>
         <div class='box-header with-border'>
@@ -94,7 +94,7 @@ switch($_GET[act]){
   }
   break;
   case "tambahadmin":
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
     echo "<div class='box box-warning'>
         <div class='box-header with-border'>
           <div class='col-md-12 col-xs-12'> 
@@ -154,7 +154,7 @@ switch($_GET[act]){
     }
      break;
   case "tambahpengajar":
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
     echo "<div class='box box-warning'>
         <div class='box-header with-border'>
           <div class='col-md-12 col-xs-12'> 
@@ -269,7 +269,7 @@ switch($_GET[act]){
   case "editadmin":
     $edit=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM admin WHERE id_session='$_GET[id]'");
     $r=mysqli_fetch_array($edit);
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
     echo " <div class='box box-warning'>
         <div class='box-header with-border'>
           <div class='col-md-12 col-xs-12'> 
@@ -310,7 +310,7 @@ switch($_GET[act]){
 
          <?php echo
     "";
-    if ($r[blokir]=='N'){
+    if ($r['blokir']=='N'){
       echo " <div class='form-group'>
           <div class='col-sm-2'>
           <label>Blokir</label></div>     <div class='col-sm-5'> <input type=radio name='blokir' value='Y'> Y
@@ -336,7 +336,7 @@ switch($_GET[act]){
  case "editpengajar":
     $edit=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM pengajar WHERE id_pengajar='$_GET[id]'");
     $r=mysqli_fetch_array($edit);
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
     echo "<div class='box box-warning'>
         <div class='box-header with-border'>
           <div class='col-md-12 col-xs-12'> 
@@ -381,7 +381,7 @@ switch($_GET[act]){
           $get_thn=substr("$r[tgl_lahir]",0,4);
           combothn(1950,$thn_sekarang,'thn',$get_thn);
     echo "</div></div>";
-          if ($r[jenis_kelamin]=='L'){
+          if ($r['jenis_kelamin']=='L'){
               echo "
               <div class='form-group'>
           <div class='col-sm-2'>
@@ -424,7 +424,7 @@ switch($_GET[act]){
           <div class='col-sm-2'><label>Website</label></div>      <div class='col-sm-5'>  <input type=text name='website' class='form-control' id='field-1' required='required' placeholder='Placeholder' size=30 value='$r[website]'></div></div>
           <div class='form-group'>
           <div class='col-sm-2'><label>Foto</label></div>         <div class='col-sm-5'>  ";
-                                if ($r[foto]!=''){
+                                if ($r['foto']!=''){
               echo "<div class='wdgt-row'>
                     <img src='../foto_pengajar/medium_$r[foto]'></div>
                     ";
@@ -443,7 +443,7 @@ switch($_GET[act]){
                                     </span>
                                            <small>Tipe foto harus JPG/JPEG dan ukuran lebar maks: 400 px</small>
                                            <small>Apabila foto tidak diubah, dikosongkan saja</small></div></div>";
-          if ($r[blokir]=='N'){
+          if ($r['blokir']=='N'){
 
            echo "<div class='form-group'>
           <div class='col-sm-2'><label>Blokir</label></div>     <div class='col-sm-5'> 
@@ -465,7 +465,7 @@ switch($_GET[act]){
           </div></div>
           </form></div></div></div>";
     }
-    elseif ($_SESSION[leveluser]=='pengajar'){
+    elseif ($_SESSION['leveluser']=='pengajar'){
         $edit=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM pengajar WHERE id_pengajar='$_SESSION[idpengajar]'");
         $r=mysqli_fetch_array($edit);
      echo "<section class='panel panel-primary'>
@@ -515,7 +515,7 @@ switch($_GET[act]){
           $get_thn=substr("$r[tgl_lahir]",0,4);
           combothn(1950,$thn_sekarang,'thn',$get_thn);
     echo "</div></div>";
-          if ($r[jenis_kelamin]=='L'){
+          if ($r['jenis_kelamin']=='L'){
               echo " <div class='form-group'>
           <div class='col-sm-3'><label>Jenis Kelamin</label></div>  <div class='col-sm-5'>
           <label><input type=radio name='jk' value='L' checked>Laki - Laki</label>
@@ -554,7 +554,7 @@ switch($_GET[act]){
            <div class='form-group'>
           <div class='col-sm-3'>
           <label>Foto</label></div>         <div class='col-sm-5'> : ";
-                                if ($r[foto]!=''){
+                                if ($r['foto']!=''){
               echo "<div class='wdgt-row'>
                     <img src='../foto_pengajar/medium_$r[foto]'></div>                    
                    ";
@@ -574,7 +574,7 @@ switch($_GET[act]){
            <br/>
                                            <small>Tipe foto harus JPG/JPEG dan ukuran lebar maks: 400 px</small>
                                            <small>Apabila foto tidak diubah, dikosongkan saja</small></div></div>";
-          if ($r[blokir]=='N'){
+          if ($r['blokir']=='N'){
 
            echo " <div class='form-group'>
           <div class='col-sm-3'><label>Blokir</label></div>     
@@ -599,9 +599,9 @@ switch($_GET[act]){
 case "detailpengajar":
     $detail=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM pengajar WHERE id_pengajar='$_GET[id]'");
     $r=mysqli_fetch_array($detail);
-    $tgl_lahir   = tgl_indo($r[tgl_lahir]);
+    $tgl_lahir   = tgl_indo($r['tgl_lahir']);
 
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
     echo "
         <div class='box-header with-border'>
           <div class='col-md-12 col-xs-12'> 
@@ -676,7 +676,7 @@ case "detailpengajar":
  <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">Blokir</label>
                       <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php   if ($r[blokir]=='N'){
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php   if ($r['blokir']=='N'){
            echo "Tidak";
             }
             else{
@@ -701,7 +701,7 @@ case "detailpengajar":
        </div></div>";
           
     }
-    elseif ($_SESSION[leveluser]=='pengajar'){
+    elseif ($_SESSION['leveluser']=='pengajar'){
         echo "<div class='box-header with-border'>
           <div class='col-md-12 col-xs-12'> 
            <div class='col-md-3'>
@@ -775,7 +775,7 @@ case "detailpengajar":
  <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">Blokir</label>
                       <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php   if ($r[blokir]=='N'){
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php   if ($r['blokir']=='N'){
            echo "Tidak";
             }
             else{
@@ -872,7 +872,7 @@ case "detailpengajar":
  <div class="form-group">
                       <label for="inputEmail3" class="col-sm-2 control-label">Blokir</label>
                       <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php   if ($r[blokir]=='N'){
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php   if ($r['blokir']=='N'){
            echo "Tidak";
             }
             else{

@@ -6,12 +6,12 @@ include "configurasi/library.php";
 include "configurasi/fungsi_indotgl.php";
 include "configurasi/fungsi_combobox.php";
 include "timeout.php";
-if($_SESSION[login]==1){
+if($_SESSION['login']==1){
     if(!cek_login()){
-        $_SESSION[login] = 0;
+        $_SESSION['login'] = 0;
     }
 }
-if($_SESSION[login]==0){
+if($_SESSION['login']==0){
   echo "<link href='bs3/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
  <center><br><br><br><br><br><br>Maaf, untuk masuk <b>Halaman</b><br>
   <center>anda harus <b>Login</b> dahulu!<br><br>";

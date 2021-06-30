@@ -4,7 +4,7 @@
 $(document).ready(function(){
    $("#nis").change(function(){
     // tampilkan animasi loading saat pengecekan ke database
-    $('#pesan').html(' <img src="adminku/images/loading.gif" width="20" height="20"> checking ...');
+    $('#pesan').html(' <img src="adminku/administrator/images/loading.gif" width="20" height="20"> checking ...');
     var nis = $("#nis").val();
     $.ajax({
      type:"POST",
@@ -160,39 +160,6 @@ function validasi(form){
 </head>
 <body id="body" class="blue-one-page">
 
-
-<header id="navigation" class="navbar-inverse navbar-fixed-top animated-header">
-            <div class="container">
-                <div class="navbar-header">
-                    <!-- responsive nav button -->
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-                    </button>
-					<!-- /responsive nav button -->
-					
-				<!-- /main nav -->
-				
-            </div>
-        </header><section class="breadcrumb"> 
-  <div class="container">  
-    <div class="row"> 
-      <div class="col-sm-12">
-        <h1>Registrasi Siswa</h1>
-              <ol class="breadcrumb bc-3" >
-            <li>
-        <a href="http://localhost/web-sekolah/"><i class="fa fa-home"></i>Home</a>
-      </li>  
-        <li class="active">
-              <strong>Registrasi Siswa</strong>
-          </li>
-          </ol>      
-      </div>
-    </div> 
-  </div>
-</section>
 <section class="contact-container">  
   <div class="container">    
     <div class="row">     
@@ -259,63 +226,7 @@ function validasi(form){
 				<p></p>
 				</div>	
 			</div>
-			<div class="col-sm-3">
-				   <div style="visibility: visible; animation-delay: 1s; animation-name: fadeInUp;" class="single_service wow fadeInUp animated" data-wow-delay="1s">
-
-				<h5></i>Address</h5>
-							</div>
-			</div>
-			<div class="col-sm-3">
-				   <div style="visibility: visible; animation-delay: 1s; animation-name: fadeInUp;" class="single_service wow fadeInUp animated" data-wow-delay="1s">
-				<h5>Contact</h5>
-				<p>
-					<i class="entypo-mobile"></i><br />
-						<i class="entypo-inbox"></i>Fax: +1 (22) 5138-219<br />
-						<i class="entypo-mail"></i>				</p>
-			</div>
-			</div>
-		</div>
-	</div>
-</section>
-<footer class="site-footer">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-6">
-				<a href="">Copyright &copy; RPL SMK TI Ponorogo - All Rights Reserved.</a> 
-			</div>
-			<div class="col-sm-6">
-				<ul class="social-networks text-right">
-					<li>
-						<a href=" " target='a_blank'>
-							<div class="sosial-button sosial-twitter"></div>
-						</a>
-					</li>
-					<li>
-						<a href="" target="a_blank">
-							<div class="sosial-button sosial-facebook"></div>
-						</a>
-					</li>
-					<li>
-						<a href="" target="a_blank">
-							<div class="sosial-button sosial-linkedin"></div>
-						</a>
-					</li>
-					<li>
-						<a href="" target="a_blank">
-							<div class="sosial-button sosial-google"></div>							
-						</a>
-					</li>
-					<li>
-						<a href="" target="a_blank">
-							<div class="sosial-button sosial-whatsapp"></div>							
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-</footer>	
-</div>
+			
 
 	<script src="http://localhost/web-sekolah/assets/js/bootstrap.min.js"></script>
 	<script src="http://localhost/web-sekolah/assets/js/joinable.js"></script>

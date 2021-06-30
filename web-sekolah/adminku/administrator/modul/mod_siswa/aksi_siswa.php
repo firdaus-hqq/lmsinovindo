@@ -10,8 +10,8 @@ include "../../../configurasi/koneksi.php";
 include "../../../configurasi/fungsi_thumb.php";
 include "../../../configurasi/library.php";
 
-$module=$_GET[module];
-$act=$_GET[act];
+$module=$_GET['module'];
+$act=$_GET['act'];
 
 
 if ($module=='siswa' AND $act=='hapus'){
@@ -41,7 +41,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
   $cek_nis = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE nis='$_POST[nis]'");
   $ketemu=mysqli_num_rows($cek_nis);
 
-  $tgl_lahir=$_POST[thn].'-'.$_POST[bln].'-'.$_POST[tgl];
+  $tgl_lahir=$_POST['thn'].'-'.$_POST['bln'].'-'.$_POST['tgl'];
 
   //apabila nis tersedia dan ada foto
   if (empty($ketemu) AND !empty($lokasi_file)){
@@ -55,7 +55,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
                     window.location=(href='../../media_admin.php?module=siswa&act=tambahsiswa')</script>";
                 }else{
                 UploadImage_siswa($nama_file);
-                $pass=md5($_POST[password]);
+                $pass=md5($_POST['password']);
                 mysqli_query($GLOBALS["___mysqli_ston"], "INSERT INTO siswa(nis,
                                  nama_lengkap,
                                  username_login,
@@ -108,7 +108,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
       }
   //apablia nis tersedia dan foto tidak ada
   elseif(empty($ketemu) AND empty($lokasi_file)){
-    $pass=md5($_POST[password]);
+    $pass=md5($_POST['password']);
     mysqli_query($GLOBALS["___mysqli_ston"], "INSERT INTO siswa(nis,
                                  nama_lengkap,
                                  username_login,
@@ -160,7 +160,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
   $nama_file      = $_FILES['fupload']['name'];
   $direktori_file = "../../../foto_siswa/$nama_file";
 
-  $tgl_lahir=$_POST[thn].'-'.$_POST[bln].'-'.$_POST[tgl];
+  $tgl_lahir=$_POST['thn'].'-'.$_POST['bln'].'-'.$_POST['tgl'];
 
   $cek_nis = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa = '$_POST[id]'");
   $ketemu=mysqli_fetch_array($cek_nis);
@@ -168,7 +168,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
   if($_POST['nis']==$ketemu['nis']){
 
    //apabila foto tidak diubah dan password tidak di ubah
-  if (empty($lokasi_file) AND empty($_POST[password])){
+  if (empty($lokasi_file) AND empty($_POST['password'])){
       mysqli_query($GLOBALS["___mysqli_ston"], "UPDATE siswa SET
                                   nis  = '$_POST[nis]',
                                   nama_lengkap    = '$_POST[nama]',
@@ -192,7 +192,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
   
   }
   //apabila foto diubah dan password tidak diubah
-  elseif(!empty($lokasi_file) AND empty($_POST[password])){
+  elseif(!empty($lokasi_file) AND empty($_POST['password'])){
       if (file_exists($direktori_file)){
             echo "<script>window.alert('Nama file gambar sudah ada, mohon diganti dulu');
             window.location=(href='../../media_admin.php?module=siswa')</script>";
@@ -205,7 +205,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
             $cek = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa = '$_POST[id]'");
             $r = mysqli_fetch_array($cek);
 
-            if(!empty($r[foto])){
+            if(!empty($r['foto'])){
             $img = "../../../foto_siswa/$r[foto]";
             unlink($img);
             $img2 = "../../../foto_siswa/medium_$r[foto]";
@@ -263,8 +263,8 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
          }
   }
   //apabila foto tidak diubah dan password diubah
-  elseif(empty($lokasi_file) AND !empty($_POST[password])){
-      $pass=md5($_POST[password]);
+  elseif(empty($lokasi_file) AND !empty($_POST['password'])){
+      $pass=md5($_POST['password']);
       mysqli_query($GLOBALS["___mysqli_ston"], "UPDATE siswa SET
                                   nis              = '$_POST[nis]',
                                   nama_lengkap     = '$_POST[nama]',
@@ -298,7 +298,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
             }else{
             $cek = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa = '$_POST[id]'");
             $r = mysqli_fetch_array($cek);
-            if(!empty($r[foto])){
+            if(!empty($r['foto'])){
             $img = "../../../foto_siswa/$r[foto]";
             unlink($img);
             $img2 = "../../../foto_siswa/medium_$r[foto]";
@@ -307,7 +307,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
             unlink($img3);
 
             UploadImage_siswa($nama_file);
-            $pass=md5($_POST[password]);
+            $pass=md5($_POST['password']);
             mysqli_query($GLOBALS["___mysqli_ston"], "UPDATE siswa SET
                                   nis              = '$_POST[nis]',
                                   nama_lengkap     = '$_POST[nama]',
@@ -333,7 +333,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
             }
             else{
                UploadImage_siswa($nama_file);
-               $pass=md5($_POST[password]);
+               $pass=md5($_POST['password']);
                mysqli_query($GLOBALS["___mysqli_ston"], "UPDATE siswa SET
                                   nis              = '$_POST[nis]',
                                   nama_lengkap     = '$_POST[nama]',
@@ -368,7 +368,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
       //apabila nis tersedia
       if(empty($c)){
           //apabila foto tidak diubah dan password tidak di ubah
-  if (empty($lokasi_file) AND empty($_POST[password])){
+  if (empty($lokasi_file) AND empty($_POST['password'])){
       mysqli_query($GLOBALS["___mysqli_ston"], "UPDATE siswa SET
                                   nis  = '$_POST[nis]',
                                   nama_lengkap    = '$_POST[nama]',
@@ -392,7 +392,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
 
   }
   //apabila foto diubah dan password tidak diubah
-  elseif(!empty($lokasi_file) AND empty($_POST[password])){
+  elseif(!empty($lokasi_file) AND empty($_POST['password'])){
       if (file_exists($direktori_file)){
             echo "<script>window.alert('Nama file gambar sudah ada, mohon diganti dulu');
             window.location=(href='../../media_admin.php?module=siswa')</script>";
@@ -405,7 +405,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
             $cek = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa = '$_POST[id]'");
             $r = mysqli_fetch_array($cek);
 
-            if(!empty($r[foto])){
+            if(!empty($r['foto'])){
             $img = "../../../foto_siswa/$r[foto]";
             unlink($img);
             $img2 = "../../../foto_siswa/medium_$r[foto]";
@@ -463,8 +463,8 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
          }
   }
   //apabila foto tidak diubah dan password diubah
-  elseif(empty($lokasi_file) AND !empty($_POST[password])){
-      $pass=md5($_POST[password]);
+  elseif(empty($lokasi_file) AND !empty($_POST['password'])){
+      $pass=md5($_POST['password']);
       mysqli_query($GLOBALS["___mysqli_ston"], "UPDATE siswa SET
                                   nis              = '$_POST[nis]',
                                   nama_lengkap     = '$_POST[nama]',
@@ -498,7 +498,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
             }else{
             $cek = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa = '$_POST[id]'");
             $r = mysqli_fetch_array($cek);
-            if(!empty($r[foto])){
+            if(!empty($r['foto'])){
             $img = "../../../foto_siswa/$r[foto]";
             unlink($img);
             $img2 = "../../../foto_siswa/medium_$r[foto]";
@@ -507,7 +507,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
             unlink($img3);
 
             UploadImage_siswa($nama_file);
-            $pass=md5($_POST[password]);
+            $pass=md5($_POST['password']);
             mysqli_query($GLOBALS["___mysqli_ston"], "UPDATE siswa SET
                                   nis              = '$_POST[nis]',
                                   nama_lengkap     = '$_POST[nama]',
@@ -533,7 +533,7 @@ elseif ($module=='siswa' AND $act=='input_siswa'){
             }
             else{
                UploadImage_siswa($nama_file);
-               $pass=md5($_POST[password]);
+               $pass=md5($_POST['password']);
                mysqli_query($GLOBALS["___mysqli_ston"], "UPDATE siswa SET
                                   nis              = '$_POST[nis]',
                                   nama_lengkap     = '$_POST[nama]',
@@ -582,7 +582,7 @@ elseif ($module=='siswa' AND $act=='update_profil_siswa'){
   $nama_file      = $_FILES['fupload']['name'];
   $direktori_file = "../../../foto_siswa/$nama_file";
 
-  $tgl_lahir=$_POST[thn].'-'.$_POST[bln].'-'.$_POST[tgl];
+  $tgl_lahir=$_POST['thn'].'-'.$_POST['bln'].'-'.$_POST['tgl'];
 
   $cek_nis = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa = '$_POST[id]'");
   $ketemu=mysqli_fetch_array($cek_nis);
@@ -624,7 +624,7 @@ elseif ($module=='siswa' AND $act=='update_profil_siswa'){
             $cek = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa = '$_POST[id]'");
             $r = mysqli_fetch_array($cek);
 
-            if(!empty($r[foto])){
+            if(!empty($r['foto'])){
             $img = "../../../foto_siswa/$r[foto]";
             unlink($img);
             $img2 = "../../../foto_siswa/medium_$r[foto]";
@@ -675,7 +675,7 @@ elseif ($module=='siswa' AND $act=='update_profil_siswa'){
          }
          }
   }
-  header('location:../../../media.php?module=siswa&act=detailprofilsiswa&id='.$_SESSION[idsiswa]);
+  header('location:../../../media.php?module=siswa&act=detailprofilsiswa&id='.$_SESSION['idsiswa']);
   }
   elseif($_POST['nis']!= $ketemu['nis']){
       $cek_nis = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE nis = '$_POST[nis]'");
@@ -717,7 +717,7 @@ elseif ($module=='siswa' AND $act=='update_profil_siswa'){
             $cek = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa = '$_POST[id]'");
             $r = mysqli_fetch_array($cek);
 
-            if(!empty($r[foto])){
+            if(!empty($r['foto'])){
             $img = "../../../foto_siswa/$r[foto]";
             unlink($img);
             $img2 = "../../../foto_siswa/medium_$r[foto]";
@@ -768,7 +768,7 @@ elseif ($module=='siswa' AND $act=='update_profil_siswa'){
          }
          }
   }
-  header('location:../../../media.php?module=siswa&act=detailprofilsiswa&id='.$_SESSION[idsiswa]);
+  header('location:../../../media.php?module=siswa&act=detailprofilsiswa&id='.$_SESSION['idsiswa']);
     }
       else{
         echo "<script>window.alert('Nis sudah pernah digunakan.');
@@ -779,16 +779,16 @@ elseif ($module=='siswa' AND $act=='update_profil_siswa'){
 
 elseif ($module=='siswa' AND $act=='update_account_siswa'){
     //jika username dan password tidak diubah
-    if (empty($_POST[username]) AND empty($_POST[password])){
+    if (empty($_POST['username']) AND empty($_POST['password'])){
         header('location:../../../media.php?module=siswa&act=detailaccount');
     }
     //jika username diubah dan pasword tidak diubah
-    elseif (!empty($_POST[username]) AND empty($_POST[password])){
+    elseif (!empty($_POST['username']) AND empty($_POST['password'])){
         $username = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa = '$_SESSION[idsiswa]'");
         $data_username = mysqli_fetch_array($username);
            
         //jika username sama dengan username yang ada di datbase
-        if ($_POST[username] == $data_username[username_login]){
+        if ($_POST['username'] == $data_username['username_login']){
         mysqli_query($GLOBALS["___mysqli_ston"], "UPDATE siswa SET username_login = '$_POST[username]'
                                   WHERE id_siswa     = '$_SESSION[idsiswa]'");
 
@@ -796,7 +796,7 @@ elseif ($module=='siswa' AND $act=='update_account_siswa'){
                     window.location=(href='../../../media.php?module=home')</script>";
         }
         //jika username tidak sama username di database
-        elseif ($_POST[username] != $data_username[username_login]){
+        elseif ($_POST['username'] != $data_username['username_login']){
             $username2 = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE username_login = '$_POST[username]'");
             $data_username2 = mysqli_num_rows($username2);
             //jika username tersedia
@@ -815,8 +815,8 @@ elseif ($module=='siswa' AND $act=='update_account_siswa'){
         }
     }
     //jika username tidak di ubah dan pasword di ubah
-    elseif (empty($_POST[username]) AND !empty($_POST[password])){
-        $pass = md5($_POST[password]);
+    elseif (empty($_POST['username']) AND !empty($_POST['password'])){
+        $pass = md5($_POST['password']);
         mysqli_query($GLOBALS["___mysqli_ston"], "UPDATE siswa SET password_login = '$pass'
                                   WHERE id_siswa     = '$_SESSION[idsiswa]'");
 
@@ -824,12 +824,12 @@ elseif ($module=='siswa' AND $act=='update_account_siswa'){
                     window.location=(href='../../../media.php?module=home')</script>";
     }
     //jika username di ubah dan password di ubah
-    elseif (!empty($_POST[username]) AND !empty($_POST[password])){
+    elseif (!empty($_POST['username']) AND !empty($_POST['password'])){
         $username = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE username_login = '$_POST[username]'");
         $data_username = mysqli_fetch_array($username);
         //jika username sama dengan di database
-        if ($_POST[username] == $data_username[username_login]){
-        $pass = md5($_POST[password]);
+        if ($_POST['username'] == $data_username['username_login']){
+        $pass = md5($_POST['password']);
         mysqli_query($GLOBALS["___mysqli_ston"], "UPDATE siswa SET username_login = '$_POST[username]',
                                       password_login = '$pass'
                                   WHERE id_siswa     = '$_SESSION[idsiswa]'");
@@ -838,12 +838,12 @@ elseif ($module=='siswa' AND $act=='update_account_siswa'){
                     window.location=(href='../../../media.php?module=home')</script>";
         }
         //jika username tidak sama dengan username di database
-        elseif ($_POST[username] != $data_username[username_login]){
+        elseif ($_POST['username'] != $data_username['username_login']){
             $username2 = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE username_login = '$_POST[username]'");
             $data_username2 = mysqli_num_rows($username2);
             //jika username tersedia
             if (empty($data_username2)){
-                $pass = md5($_POST[password]);
+                $pass = md5($_POST['password']);
                 mysqli_query($GLOBALS["___mysqli_ston"], "UPDATE siswa SET username_login = '$_POST[username]',
                                       password_login = '$pass'
                                   WHERE id_siswa     = '$_SESSION[idsiswa]'");

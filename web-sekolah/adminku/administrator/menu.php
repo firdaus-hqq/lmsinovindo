@@ -1,4 +1,4 @@
-              <?php
+<?php
                 include "../configurasi/koneksi.php";
                 if ($_SESSION['leveluser'] == 'admin') {
                     echo "   <li class='header'>Menu Utama</li>
@@ -33,6 +33,8 @@
   <li><a href='?module=kategoriprestasi'><i class='fa fa-circle-o'></i>Kategori Prestasi</a></li>   
   <li><a href='?module=prestasi'><i class='fa fa-circle-o'></i>Prestasi</a></li>                  
                 </ul>
+            </li>
+            <li><a href='../../../absensiswa/petugas_piket/tableguru.php'><i class='fa fa-check'></i>Absensi</a></li>
             <li class='header'>Statistik Pengunjung</li>
   <li class='treeview'>
                 <a href='#'>
@@ -61,7 +63,3 @@
             </li>";
                 }
                 ?>
-
- 
-
-  
