@@ -14,22 +14,20 @@
         <div class="form">
             <div class="heading">
                 <h1>INOVINDO | A C A D E M Y</h1>
-                <br>
-                <br>
-                <h2>Login</h2>
+                <h2>Welcome Admin</h2>
             </div>
 
             <!--Form-->
         <form class="wrap2" action="cek_login.php" method="POST" >
             <div class="wrap2">
                 <label>Masukan id</label>
-                <input type="text" name="username" placeholder=". . .">
+                <input type="text" name="username" placeholder="  Enter ID">
                 <span class="focus-input2"></span>
             </div>
             
             <div class="wrap2">
                 <label>Password</label>
-                <input type="password" name="password" placeholder="password">
+                <input type="password" name="password" placeholder="  Password">
                 <span class="focus-input2"></span>
             </div>
                 <br>
@@ -39,7 +37,7 @@
 
         <!--Gambar-->
         <div class="image">
-            <img src="../../assets/images/reg.jpg" class="img" alt=""/>
+            <img src="../../assets/images/adm.png" class="img" alt=""/>
         </div>
     </div>
   </body>

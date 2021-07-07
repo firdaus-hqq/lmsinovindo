@@ -30,7 +30,6 @@
 			<div class="heading">
 				<h1>INOVINDO | A C A D E M Y</h1>
 				<br>
-				<br>
 				<h2>Login</h2>
 			</div>
 
@@ -43,13 +42,13 @@
 				?>
 				<div class="wrap2">
 					<label>Masukan id</label>
-					<input type="text" class="form-control" name="username" id="username" required="required" placeholder="Username" autocomplete="off" />
+					<input type="text" class="form-control" name="username" id="username" required="required" placeholder="   Username" autocomplete="off" />
 					<span class="focus-input2"></span>
 				</div>
 
 				<div class="wrap2">
 					<label>Password</label>
-					<input type="password" class="form-control" name="password" id="password" required="required" placeholder="Password" autocomplete="off" />
+					<input type="password" class="form-control" name="password" id="password" required="required" placeholder="  Password" autocomplete="off" />
 					<span class="focus-input2"></span>
 				</div>
 				<br>
@@ -59,7 +58,7 @@
 
 		<!--Gambar-->
 		<div class="image">
-			<img src="assets/images/reg.jpg" class="img" alt="" />
+			<img src="assets/images/siswa.jpg" class="img" alt="" />
 		</div>
 	</div>
 </body>

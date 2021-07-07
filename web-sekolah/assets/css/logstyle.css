@@ -2,7 +2,7 @@
     box-sizing: border-box;
 }
 body{
-    background-image: url(../images/bru.png) ;
+    background: linear-gradient(to right, #3d9eee, #deeb6b);
     height: 100vh;
     margin: 0;
     padding: 0;
