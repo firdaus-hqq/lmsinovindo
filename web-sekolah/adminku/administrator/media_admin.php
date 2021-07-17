@@ -101,9 +101,9 @@ else{
         <!-- Logo -->
         <a href="index2.html" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>R</b>PL</span>
+          <span class="logo-mini"><b>I</b>DM</span>
           <!-- logo for regular state and mobile devices -->
-          <span style="font-size: medium;" class="logo-lg"><b><?php if($_SESSION['leveluser']=='admin'){echo "INOVINDO";}else{ echo "Guru";}?></b><span style="letter-spacing: 1px;"><b>  ACADEMY</b></span></span>
+          <span style="font-size: medium;" class="logo-lg"><b><?php if($_SESSION['leveluser']=='admin'){echo "IDM | ";}else{ echo "Guru";}?></b><span style="letter-spacing: 1px;"><b>A C A D E M Y</b></span></span>
         </a>
    <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
@@ -192,7 +192,7 @@ else{
         <!-- Content Header (Page header) -->
         <section class="content-header">
           <h1>
-          Selamat Datang di
+          Selamat Datang, Admin
             <small><?php if($_SESSION['leveluser']=='admin'){ echo "Halaman Administrator";}else{ echo "Halaman E- Learning Guru";}  ?></small>
           </h1>
           <ol class="breadcrumb">
