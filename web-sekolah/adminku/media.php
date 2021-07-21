@@ -164,15 +164,12 @@ if ($_SESSION['login'] == 0) {
             <ul class="sidebar-menu">
               <li class="header">Menu Lerning</li>
 
-
-
               <!-- Optionally, you can add icons to the links -->
               <li class="active"><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
 
-
               <li class="treeview">
                 <a href="#">
-                  <i class="fa fa-book"></i>
+                  <i class="fa fa-bars"></i>
                   <span>Menu Utama</span><i class='fa fa-angle-left pull-right'></i>
                 </a>
                 <ul class="treeview-menu">
@@ -198,7 +195,7 @@ if ($_SESSION['login'] == 0) {
                   </li>
                   <li>
                     <a href="media.php?module=quiz">
-                      <i class='fa fa-circle-o'></i><span class="title">Tugas/Quiz</span>
+                      <i class='fa fa-circle-o'></i><span class="title">Ujian</span>
                     </a>
 
                   </li>
@@ -209,6 +206,7 @@ if ($_SESSION['login'] == 0) {
                   </li>
                 </ul>
               </li>
+              <li class="active"><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
               <li class="header">Account</li>
               <li class="treeview">
                 <a href="#">
@@ -264,7 +262,7 @@ if ($_SESSION['login'] == 0) {
             Version 1.0
           </div>
           <!-- Default to the left -->
-          <strong>Copyright &copy; 2016 <a href="#">RPL SMK TI Ponorogo</a>.</strong> All rights reserved.
+          <strong>Copyright &copy; 2021 <a href="#">Inovindo</a>.</strong> All rights reserved.
         </footer>
 
         <!-- Control Sidebar -->
