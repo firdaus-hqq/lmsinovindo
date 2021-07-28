@@ -35,37 +35,6 @@
 		<div class="row">
 			<div class="col-sm-6">
 				<a href="">Copyright &copy; RPL SMK TI Ponorogo - All Rights Reserved.</a> 
-			</div>
-			<div class="col-sm-6">
-				<ul class="social-networks text-right">
-					<li>
-						<a href="<?php echo $twitter ?> " target='a_blank'>
-							<div class="sosial-button sosial-twitter"></div>
-						</a>
-					</li>
-					<li>
-						<a href="<?php echo $fb ?>" target="a_blank">
-							<div class="sosial-button sosial-facebook"></div>
-						</a>
-					</li>
-					<li>
-						<a href="<?php echo $linkedin ?>" target="a_blank">
-							<div class="sosial-button sosial-linkedin"></div>
-						</a>
-					</li>
-					<li>
-						<a href="<?php echo $google ?>" target="a_blank">
-							<div class="sosial-button sosial-google"></div>							
-						</a>
-					</li>
-					<li>
-						<a href="<?php echo $wa ?>" target="a_blank">
-							<div class="sosial-button sosial-whatsapp"></div>							
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
 	</div>
 </footer>	
 </div>

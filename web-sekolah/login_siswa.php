@@ -29,7 +29,6 @@
 		<div class="form">
 			<div class="heading">
 				<h1>INOVINDO | A C A D E M Y</h1>
-				<br>
 				<h2>Login</h2>
 			</div>
 

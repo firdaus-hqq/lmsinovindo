@@ -43,15 +43,11 @@ if ($_SESSION['login'] == 0) {
     <!-- Theme style -->
     <link href="dist/css/AdminLTE.css" rel="stylesheet" type="text/css" />
 
-
-
     <!-- DATATABLES -->
     <link href="plugins/datatables/media/css/dataTables.bootstrap.css" rel="stylesheet" type="text/css" />
 
     <link href="plugins/datatables/extensions/Responsive/css/responsive.dataTables.css" rel="stylesheet" type="text/css" />
     <!-- DATATABLES -->
-
-
     <link href="dist/css/skins/skin-blue.min.css" rel="stylesheet" type="text/css" />
 
     <link href="dist/css/ando_admin.css" rel="stylesheet" type="text/css" />
@@ -77,9 +73,9 @@ if ($_SESSION['login'] == 0) {
           <!-- Logo -->
           <a href="index2.html" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>R</b>PL</span>
+            <span class="logo-mini"><b>I</b>DM</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Siswa</b>RPL</span>
+            <span class="logo-lg"><b>IDM | </b>A C A D M Y</span>
           </a>
 
           <!-- Header Navbar -->
@@ -162,14 +158,17 @@ if ($_SESSION['login'] == 0) {
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-              <li class="header">Menu Lerning</li>
+              <li class="header">Menu Learning</li>
+
+
 
               <!-- Optionally, you can add icons to the links -->
               <li class="active"><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
 
+
               <li class="treeview">
                 <a href="#">
-                  <i class="fa fa-bars"></i>
+                  <i class="fa fa-book"></i>
                   <span>Menu Utama</span><i class='fa fa-angle-left pull-right'></i>
                 </a>
                 <ul class="treeview-menu">
@@ -189,13 +188,13 @@ if ($_SESSION['login'] == 0) {
                     </a>
                   </li>
                   <li>
-                    <a href="absensi_pkl">
+                    <a href="../../absensi_pkl/">
                       <i class='fa fa-circle-o'></i> <span class="title">Absensi</span>
                     </a>
                   </li>
                   <li>
                     <a href="media.php?module=quiz">
-                      <i class='fa fa-circle-o'></i><span class="title">Ujian</span>
+                      <i class='fa fa-circle-o'></i><span class="title">Tugas/Quiz</span>
                     </a>
 
                   </li>
@@ -206,7 +205,6 @@ if ($_SESSION['login'] == 0) {
                   </li>
                 </ul>
               </li>
-              <li class="active"><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
               <li class="header">Account</li>
               <li class="treeview">
                 <a href="#">
@@ -262,7 +260,7 @@ if ($_SESSION['login'] == 0) {
             Version 1.0
           </div>
           <!-- Default to the left -->
-          <strong>Copyright &copy; 2021 <a href="#">Inovindo</a>.</strong> All rights reserved.
+          <strong>Copyright &copy; 2016 <a href="#">RPL SMK TI Ponorogo</a>.</strong> All rights reserved.
         </footer>
 
         <!-- Control Sidebar -->
