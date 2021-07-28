@@ -27,7 +27,9 @@
     <body>
 
         <div class="container">
-            <p><h2>Tugas</h2></p>
+            <p>
+            <h2>Tugas</h2>
+            </p>
             <table class="table table-striped">
                 <tbody>
                     <tr>
@@ -36,16 +38,16 @@
 
                     </tr>
                     <tr>
-                        <td><strong>Waktu Tenggat</strong</td>
+                        <td><strong>Waktu Tenggat</strong< /td>
                         <td>tanggal dan waktu</td>
                     </tr>
                     <tr>
-                        <td><strong>Waktu Pengumpulan</strong</td>
+                        <td><strong>Waktu Pengumpulan</strong< /td>
                         <td>tanggal dan waktu</td>
                     </tr>
                     <tr>
-                        <td><strong>Pengiriman berkas</strong</td>
-                        <td>Berbentuk file atau link  </td>
+                        <td><strong>Pengiriman berkas</strong< /td>
+                        <td>Berbentuk file atau link </td>
                     </tr>
                 </tbody>
             </table>
@@ -54,6 +56,35 @@
                     <button name=“submit” type="submit" id="buttonSubmit" class="btn btn-success">Tambah Tugas</button>
                 </a>
             </center>
+        </div>
+        <br>
+        <div class="container">
+            <p>
+            <h2>Edit Tugas</h2>
+            </p>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Tanggal</th>
+                        <th>Dokumen</th>
+                        <th>Link</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>01-01-1970</td>
+                        <td>Anggap Gambar</td>
+                        <td>Anggap link</td>
+                        <td>
+                            <button class="btn btn-info">Edit</button>
+                            <button class="btn btn-danger">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         </div>
 
