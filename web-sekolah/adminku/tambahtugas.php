@@ -306,10 +306,10 @@ if ($_SESSION['login'] == 0) {
 
                                     <div class="form-group">
                                         <div class="col-sm-2"></div>
-                                        <div class="col-sm-5">
+                                         <div class="col-sm-8">
                                             <input class="btn btn-success" type="submit" value="Simpan">
                                             <input class="btn btn-primary" type="button" value="Batal" onclick="self.history.back()">
-                                        </div>
+                                        </div> 
                                     </div>
                                 </form>
                             </div>

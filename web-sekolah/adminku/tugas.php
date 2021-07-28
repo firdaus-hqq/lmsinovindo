@@ -37,7 +37,7 @@ if ($_SESSION['login'] == 0) {
         <meta name="author" content="ThemeBucket">
         <title>Halaman Siswa</title>
         <!-- Bootstrap 3.3.4 -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Font Awesome Icons -->
         <link href="plugins/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link href="plugins/ionicons/css/ionicons.min.css" rel="stylesheet" type="text/css" />
