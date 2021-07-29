@@ -16,7 +16,7 @@ if ($_GET['module']=='home'){
 
 
               <!-- small box -->
-              <div class="small-box bg-aqua">
+              <div class="small-box bg-red">
                 <div class="inner">
                   <?php
  $tam=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id) AS JUMLAH FROM mata_pelajaran WHERE id_kelas='$_SESSION[kelas]'");

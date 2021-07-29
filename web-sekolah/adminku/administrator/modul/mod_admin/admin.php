@@ -630,7 +630,7 @@ case "detailpengajar":
                     </li>
                   </ul>
 
-                  
+                  <a href='#' class='btn btn-warning btn-block'><b>Follow</b></a>
                 </div>
               </div>
             </div>
@@ -729,7 +729,7 @@ case "detailpengajar":
                     </li>
                   </ul>
 
-                  
+                  <a href='#' class='btn btn-primary btn-block'><b>Follow</b></a>
                 </div>
               </div>
             </div>";?>
@@ -827,7 +827,7 @@ case "detailpengajar":
                     </li>
                   </ul>
 
-             
+                  <a href='#' class='btn btn-primary btn-block'><b>Follow</b></a>
                 </div>
               </div>
             </div>"; ?>

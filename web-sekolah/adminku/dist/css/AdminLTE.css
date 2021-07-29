@@ -2089,10 +2089,6 @@ a:focus {
  * Component: Button
  * -----------------
  */
-.div.col-sm-6 {
-  float: right;
-}
-
 .btn {
   border-radius: 3px;
   -webkit-box-shadow: none;
@@ -2149,7 +2145,6 @@ a:focus {
 .btn-primary {
   background-color: #3c8dbc;
   border-color: #367fa9;
-  float: right;
 }
 .btn-primary:hover,
 .btn-primary:active,
@@ -2159,7 +2154,6 @@ a:focus {
 .btn-success {
   background-color: #60c210;
   border-color: #60c210;
-  float: right;
 }
 .btn-success:hover,
 .btn-success:active,

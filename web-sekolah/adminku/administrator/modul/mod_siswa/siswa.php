@@ -828,7 +828,7 @@ case "tambahsiswa":
                     </li>
                   </ul>
 
-                  
+                  <a href='#' class='btn btn-warning btn-block'><b>Follow</b></a>
                 </div>
               </div>
             </div>";?>
@@ -942,7 +942,7 @@ case "tambahsiswa":
                       <b>Kelas</b> <a href='?module=kelas&act=detailkelas&id=$siswa[id_kelas]' class='pull-right'>$kelas[nama]</a>
                     </li>
                   </ul>
-               
+                  <a href='#' class='btn btn-primary btn-block'><b>Follow</b></a>
                 </div>
               </div>
             </div>";?>
@@ -1055,7 +1055,7 @@ case "tambahsiswa":
                       <b>Kelas</b> <a href='?module=kelas&act=detailkelas&id=$siswa[id_kelas]' class='pull-right'>$kelas[nama]</a>
                     </li>
                   </ul>
-                  
+                  <a href='#' class='btn btn-primary btn-block'><b>Follow</b></a>
                 </div>
               </div>
             </div>";?>
@@ -1173,7 +1173,7 @@ echo "<div class='box-header with-border'>
                       <b>Kelas</b> <a href='?module=kelas&act=detailkelas&id=$siswa[id_kelas]' class='pull-right'>$kelas[nama]</a>
                     </li>
                   </ul>
-                  
+                  <a href='#' class='btn btn-primary btn-block'><b>Follow</b></a>
                 </div>
               </div>
             </div>";?>
