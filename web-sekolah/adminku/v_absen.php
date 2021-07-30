@@ -6,6 +6,8 @@ include "configurasi/fungsi_combobox.php";
 include "timeout.php";
 
 date_default_timezone_set("Asia/Jakarta");
+$DATE_FORMAT = "Y-m-d H:i:s";
+$waktu = date($DATE_FORMAT);
 
 $id_siswa      = $_SESSION['idsiswa'];
 $sql         = "SELECT kehadiran 
@@ -15,6 +17,22 @@ $sql         = "SELECT kehadiran
                 ";
 $result = $mysqli->query($sql) or die($mysqli->error);
 $total_absen_hari_ini = $result->num_rows;
+
+function canSubmit($waktu) {
+  $batas_waktu_menit = 10 * 60; # menunjukkan jam 10:00
+  
+  $waktu_time = strtotime($waktu);
+  $waktu_menit = date('H', $waktu_time) * 60 + date('i', $waktu_time);
+  
+  return $waktu_menit > $batas_waktu_menit;
+  
+}
+
+if (canSubmit($waktu)) {
+  $button = "<button type='submit' name='simpan' class='btn btn-success' disabled>Simpan</button>";
+} else {
+  $button = "<button type='submit' name='simpan' class='btn btn-success'>Simpan</button>";
+}
 
 if ($_SESSION['login'] == 1) {
   if (!cek_login()) {
@@ -309,7 +327,7 @@ if ($_SESSION['login'] == 0) {
                 <h3>Kegiatan hari ini:</h3>
                 <textarea class="form-control" placeholder="Isi kegiatan anda disini" rows="10" name="kegiatan" value="<?= @$data_absen['kegiatan'] ?>"></textarea>
                 <br>
-                <button type="submit" name="simpan" class="btn btn-success">Simpan</button>
+                <?= $button; ?>
               </form>
 
             <?php } else { ?>
