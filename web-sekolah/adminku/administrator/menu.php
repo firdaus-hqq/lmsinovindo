@@ -34,16 +34,7 @@
   <li><a href='?module=prestasi'><i class='fa fa-circle-o'></i>Prestasi</a></li>                  
                 </ul>
             </li>
-            <li class='treeview'>
-                <a href='#'>
-                    <i class='fa fa-check'></i>
-                    <span>Absensi</span><i class='fa fa-angle-left pull-right'></i>
-                </a>
-                <ul class='treeview-menu'>          
-                    <li><a href='v_absen_admin.php'><i class='fa fa-circle-o'></i>Buat Absensi</a></li>   
-                    <li><a href='#'><i class='fa fa-circle-o'></i>Data Absensi</a></li>                  
-                </ul>
-            </li>
+            <li><a href='../../../absensiswa/petugas_piket/tableguru.php'><i class='fa fa-check'></i>Absensi</a></li>
             <li class='header'>Statistik Pengunjung</li>
   <li class='treeview'>
                 <a href='#'>
@@ -72,3 +63,5 @@
             </li>";
                 }
                 ?>
+
+

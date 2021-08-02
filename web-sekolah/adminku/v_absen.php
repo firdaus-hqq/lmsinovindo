@@ -1,4 +1,5 @@
 <?php
+include "../config/config.php";
 include "configurasi/koneksi.php";
 include "configurasi/library.php";
 include "configurasi/fungsi_indotgl.php";
@@ -207,17 +208,14 @@ if ($_SESSION['login'] == 0) {
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-              <li class="header">Menu Learning</li>
-
-
+              <li class="header">Menu Lerning</li>
 
               <!-- Optionally, you can add icons to the links -->
               <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
 
-
               <li class="treeview">
                 <a href="#">
-                  <i class="fa fa-book"></i>
+                  <i class="fa fa-bars"></i>
                   <span>Menu Utama</span><i class='fa fa-angle-left pull-right'></i>
                 </a>
                 <ul class="treeview-menu">
@@ -238,7 +236,7 @@ if ($_SESSION['login'] == 0) {
                   </li>
                   <li>
                     <a href="media.php?module=quiz">
-                      <i class='fa fa-circle-o'></i><span class="title">Tugas/Quiz</span>
+                      <i class='fa fa-circle-o'></i><span class="title">Ujian</span>
                     </a>
 
                   </li>
@@ -249,7 +247,6 @@ if ($_SESSION['login'] == 0) {
                   </li>
                 </ul>
               </li>
-
               <li class="treeview active">
                 <a href="#">
                   <i class="fa fa-check"></i>
@@ -258,17 +255,17 @@ if ($_SESSION['login'] == 0) {
                 <ul class="treeview-menu">
                   <li class="active">
                     <a href="v_absen.php">
-                      <i class='fa fa-circle-o'></i><span class="title">Absen</span>
+                      <i class='fa fa-circle-o'></i><span class="title">Mengisi Absensi</span>
                     </a>
                   </li>
                   <li>
                     <a href="v_data_absen.php">
-                      <i class='fa fa-circle-o'></i><span class="title">Data Absen</span>
+                      <i class='fa fa-circle-o'></i><span class="title">Data Absensi</span>
                     </a>
                   </li>
                 </ul>
               </li>
-
+              <li><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
               <li class="header">Account</li>
               <li class="treeview">
                 <a href="#">

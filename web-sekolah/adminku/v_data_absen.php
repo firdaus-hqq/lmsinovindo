@@ -1,6 +1,5 @@
 <?php
-session_start();
-error_reporting(0);
+include "../config/config.php";
 include "configurasi/koneksi.php";
 include "configurasi/library.php";
 include "configurasi/fungsi_indotgl.php";
@@ -8,7 +7,7 @@ include "configurasi/fungsi_combobox.php";
 include "timeout.php";
 
 $sql = 'SELECT * FROM data_absen INNER JOIN siswa ON (data_absen.id_siswa = siswa.id_siswa)';
-$listDataAbsen = $mysqli ->query($sql);
+$listDataAbsen = $mysqli->query($sql);
 
 if ($_SESSION['login'] == 1) {
     if (!cek_login()) {
@@ -136,12 +135,13 @@ if ($_SESSION['login'] == 0) {
                                         <li class="user-footer">
                                             <div class="pull-left">
                                                 <?php echo "
-                      <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]' class='btn btn-default btn-flat'>Profile</a>
-                    </div>
-                    <div class='pull-right'>
-                      <a href='logout.php' class='btn btn-default btn-flat'>Sign out</a>
-                    </div>";
+                                                <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]' class='btn btn-default btn-flat'>Profile</a>
+                                                </div>
+                                                <div class='pull-right'>
+                                                <a href='logout.php' class='btn btn-default btn-flat'>Sign out</a>
+                                                </div>";
                                                 ?>
+                                            </div>
                                         </li>
                                     </ul>
                                 </li>
@@ -183,17 +183,14 @@ if ($_SESSION['login'] == 0) {
 
                         <!-- Sidebar Menu -->
                         <ul class="sidebar-menu">
-                            <li class="header">Menu Learning</li>
-
-
+                            <li class="header">Menu Lerning</li>
 
                             <!-- Optionally, you can add icons to the links -->
                             <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
 
-
                             <li class="treeview">
                                 <a href="#">
-                                    <i class="fa fa-book"></i>
+                                    <i class="fa fa-bars"></i>
                                     <span>Menu Utama</span><i class='fa fa-angle-left pull-right'></i>
                                 </a>
                                 <ul class="treeview-menu">
@@ -214,7 +211,7 @@ if ($_SESSION['login'] == 0) {
                                     </li>
                                     <li>
                                         <a href="media.php?module=quiz">
-                                            <i class='fa fa-circle-o'></i><span class="title">Tugas/Quiz</span>
+                                            <i class='fa fa-circle-o'></i><span class="title">Ujian</span>
                                         </a>
 
                                     </li>
@@ -225,7 +222,6 @@ if ($_SESSION['login'] == 0) {
                                     </li>
                                 </ul>
                             </li>
-
                             <li class="treeview active">
                                 <a href="#">
                                     <i class="fa fa-check"></i>
@@ -234,17 +230,17 @@ if ($_SESSION['login'] == 0) {
                                 <ul class="treeview-menu">
                                     <li>
                                         <a href="v_absen.php">
-                                            <i class='fa fa-circle-o'></i><span class="title">Absen</span>
+                                            <i class='fa fa-circle-o'></i><span class="title">Mengisi Absensi</span>
                                         </a>
                                     </li>
                                     <li class="active">
                                         <a href="v_data_absen.php">
-                                            <i class='fa fa-circle-o'></i><span class="title">Data Absen</span>
+                                            <i class='fa fa-circle-o'></i><span class="title">Data Absensi</span>
                                         </a>
                                     </li>
                                 </ul>
                             </li>
-
+                            <li><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
                             <li class="header">Account</li>
                             <li class="treeview">
                                 <a href="#">
@@ -253,16 +249,16 @@ if ($_SESSION['login'] == 0) {
                                 </a>
                                 <ul class="treeview-menu">
                                     <?php echo "
-                        <li>
-                            <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]'>
-                                 <i class='fa fa-circle-o'></i><span class='title'>Detail Profil</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href='media.php?module=siswa&act=detailaccount'>
-                                 <i class='fa fa-circle-o'></i><span class='title'>Edit Password</span>
-                            </a>
-                        </li>";
+                                    <li>
+                                        <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]'>
+                                            <i class='fa fa-circle-o'></i><span class='title'>Detail Profil</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='media.php?module=siswa&act=detailaccount'>
+                                            <i class='fa fa-circle-o'></i><span class='title'>Edit Password</span>
+                                        </a>
+                                    </li>";
                                     ?>
                                 </ul>
                             </li>
@@ -303,12 +299,12 @@ if ($_SESSION['login'] == 0) {
                                         $i = 1;
                                         while ($data_absen = $listDataAbsen->fetch_array()) {
                                         ?>
-                                        <tr>
-                                            <td scope="row"><?= $i++; ?></td>
-                                            <td><?= $data_absen['waktu']; ?></td>
-                                            <td><?= $data_absen['kehadiran']; ?></td>
-                                            <td><?= $data_absen['kegiatan']; ?></td>
-                                        </tr>
+                                            <tr>
+                                                <td scope="row"><?= $i++; ?></td>
+                                                <td><?= $data_absen['waktu']; ?></td>
+                                                <td><?= $data_absen['kehadiran']; ?></td>
+                                                <td><?= $data_absen['kegiatan']; ?></td>
+                                            </tr>
                                         <?php } ?>
                                     </tbody>
                                 </table>

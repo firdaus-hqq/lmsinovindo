@@ -1,12 +1,10 @@
 <?php
-session_start();
-error_reporting(0);
-include "../configurasi/koneksi.php";
-include "../configurasi/library.php";
-include "../configurasi/fungsi_indotgl.php";
-include "../configurasi/fungsi_combobox.php";
+// error_reporting(0);
+include "configurasi/koneksi.php";
+include "configurasi/library.php";
+include "configurasi/fungsi_indotgl.php";
+include "configurasi/fungsi_combobox.php";
 include "timeout.php";
-include "../uploads.php";
 if ($_SESSION['login'] == 1) {
     if (!cek_login()) {
         $_SESSION['login'] = 0;
@@ -243,18 +241,6 @@ if ($_SESSION['login'] == 0) {
                     <section class="content-header">
 
                     <?php
-                    $fileTugas = $_FILES['fileTugas'];
-
-                    $namaFile = $fileTugas['name'];
-                    $fileDirectory = 'adminku/tambahtugas.php' . $namaFile;
-
-
-                    if (file_exists($fileDirectory)) {
-                        echo "Maaf File Sudah Ada";
-                    } else {
-                        move_uploaded_file($fileTugas['tmp_name'], $fileDirectory);
-                        $storeNamaTugas = mysqli_query($GLOBALS["___mysqli_ston"], "INSERT INTO tugas(file) VALUES ('$namaFile')");
-                    }
                 }
                     ?>
 
@@ -270,53 +256,27 @@ if ($_SESSION['login'] == 0) {
 
                     <!-- Main content -->
                     <section class="content">
-
-                        <!doctype html>
-                        <html lang="en">
-
-                        <head>
-                            <!-- Required meta tags -->
-                            <meta charset="utf-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1">
-
-                            <!-- Bootstrap CSS -->
-                        </head>
-
-                        <body>
-                            <div class="container-fluid">
-                                <form method="post" enctype="multipart/form-data">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">Upload File / Gambar </label>
-                                        <input type="file" class="form-control" id="exampleInputEmail1" name="fileTugas" aria-describedby="emailHelp" placeholder="Upload disini" required>
-                                    </div>
-                                    <button name=“submit” type="submit" id="buttonSubmit" class="btn btn-success">Submit</button>
-                                </form>
-                                <form method="POST" action="modul/mod_quiz/aksi_quiz.php?module=quiz&amp;act=input_quizesay" enctype="multipart/form-data" class="form-horizontal form-groups-bordered">
-                                    <input type="hidden" name="id" value="33">
-
-                                    <div class="form-group">
-                                        <div class="col-sm-2"><label></label></div>
-                                        <div class="col-sm-10"><textarea name="pertanyaan" class="form-control ckeditor" cols="75" rows="3" style="visibility: hidden; display: none;"></textarea>
-                                            <div id="cke_pertanyaan" class="cke_1 cke cke_reset cke_chrome cke_editor_pertanyaan cke_ltr cke_browser_webkit" dir="ltr" lang="id" role="application" aria-labelledby="cke_pertanyaan_arialbl"><span id="cke_pertanyaan_arialbl" class="cke_voice_label">Rich Text Editor, pertanyaan</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                    </div>
-
-                                    <div class="form-group">
-                                        <div class="col-sm-2"></div>
-                                         <div class="col-sm-8">
-                                            <input class="btn btn-success" type="submit" value="Simpan">
-                                            <input class="btn btn-primary" type="button" value="Batal" onclick="self.history.back()">
-                                        </div> 
-                                    </div>
-                                </form>
-                            </div>
+                        <?php var_dump($_SESSION['idsiswa']); ?>
+                        <div class="container-fluid">
+                            <form method="POST" action="tambahlink.php" enctype="multipart/form-data" class="form-horizontal form-groups-bordered">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Upload File / Gambar </label>
+                                    <input type="file" name="fileTugas" class="form-control" autocomplete="off" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Upload disini" onchange="loadfile(event)">
+                                </div>
+                                <br>
+                                <div class="col-sm-13">
+                                    <textarea name="link" value="<?= @$tugas['link'] ?>" class="form-control ckeditor" cols="75" rows="3" style="visibility: hidden; display: none;"></textarea>
+                                </div>
+                                <br>
+                                <div class="col-sm-13">
+                                    <input class="btn btn-success" type="submit" name="simpan" value="Submit">
+                                </div>
+                            </form>
+                        </div>
+                    </section>
                 </div>
+            </div>
         </body>
-
-        </html>
 
         <!-- Optional JavaScript; choose one of the two! -->
 

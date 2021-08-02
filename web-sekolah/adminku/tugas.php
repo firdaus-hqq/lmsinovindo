@@ -165,10 +165,8 @@ if ($_SESSION['login'] == 0) {
                         <ul class="sidebar-menu">
                             <li class="header">Menu Lerning</li>
 
-
-
                             <!-- Optionally, you can add icons to the links -->
-                            <li class="active"><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
+                            <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
 
                             <li class="treeview">
                                 <a href="#">
@@ -192,11 +190,6 @@ if ($_SESSION['login'] == 0) {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="absensi_pkl">
-                                            <i class='fa fa-circle-o'></i> <span class="title">Absensi</span>
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a href="media.php?module=quiz">
                                             <i class='fa fa-circle-o'></i><span class="title">Ujian</span>
                                         </a>
@@ -205,6 +198,24 @@ if ($_SESSION['login'] == 0) {
                                     <li>
                                         <a href="media.php?module=nilai">
                                             <i class='fa fa-circle-o'></i><span class="title">Nilai</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-check"></i>
+                                    <span>Absensi</span><i class='fa fa-angle-left pull-right'></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="v_absen.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Mengisi Absensi</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="v_data_absen.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Data Absensi</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -218,16 +229,16 @@ if ($_SESSION['login'] == 0) {
                                 </a>
                                 <ul class="treeview-menu">
                                     <?php echo "
-                        <li>
-                            <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]'>
-                                 <i class='fa fa-circle-o'></i><span class='title'>Detail Profil</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href='media.php?module=siswa&act=detailaccount'>
-                                 <i class='fa fa-circle-o'></i><span class='title'>Edit Password</span>
-                            </a>
-                        </li>";
+                                    <li>
+                                        <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]'>
+                                            <i class='fa fa-circle-o'></i><span class='title'>Detail Profil</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='media.php?module=siswa&act=detailaccount'>
+                                            <i class='fa fa-circle-o'></i><span class='title'>Edit Password</span>
+                                        </a>
+                                    </li>";
                                     ?>
                                 </ul>
                             </li>

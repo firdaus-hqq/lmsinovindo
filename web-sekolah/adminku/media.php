@@ -77,9 +77,9 @@ if ($_SESSION['login'] == 0) {
           <!-- Logo -->
           <a href="index2.html" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>I</b>DM</span>
+            <span class="logo-mini"><b>R</b>PL</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>IDM | </b> A C A D E M Y</span>
+            <span class="logo-lg"><b>Siswa</b>RPL</span>
           </a>
 
           <!-- Header Navbar -->
@@ -162,17 +162,14 @@ if ($_SESSION['login'] == 0) {
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-              <li class="header">Menu Learning</li>
-
-
+              <li class="header">Menu Lerning</li>
 
               <!-- Optionally, you can add icons to the links -->
               <li class="active"><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
 
-
               <li class="treeview">
                 <a href="#">
-                  <i class="fa fa-book"></i>
+                  <i class="fa fa-bars"></i>
                   <span>Menu Utama</span><i class='fa fa-angle-left pull-right'></i>
                 </a>
                 <ul class="treeview-menu">
@@ -192,13 +189,8 @@ if ($_SESSION['login'] == 0) {
                     </a>
                   </li>
                   <li>
-                    <a href="absen.php">
-                      <i class='fa fa-circle-o'></i> <span class="title">Absensi</span>
-                    </a>
-                  </li>
-                  <li>
                     <a href="media.php?module=quiz">
-                      <i class='fa fa-circle-o'></i><span class="title">Tugas/Quiz</span>
+                      <i class='fa fa-circle-o'></i><span class="title">Ujian</span>
                     </a>
 
                   </li>
@@ -209,7 +201,6 @@ if ($_SESSION['login'] == 0) {
                   </li>
                 </ul>
               </li>
-
               <li class="treeview">
                 <a href="#">
                   <i class="fa fa-check"></i>
@@ -218,17 +209,17 @@ if ($_SESSION['login'] == 0) {
                 <ul class="treeview-menu">
                   <li>
                     <a href="v_absen.php">
-                      <i class='fa fa-circle-o'></i><span class="title">Absen</span>
+                      <i class='fa fa-circle-o'></i><span class="title">Mengisi Absensi</span>
                     </a>
                   </li>
                   <li>
                     <a href="v_data_absen.php">
-                      <i class='fa fa-circle-o'></i><span class="title">Data Absen</span>
+                      <i class='fa fa-circle-o'></i><span class="title">Data Absensi</span>
                     </a>
                   </li>
                 </ul>
               </li>
-
+              <li><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
               <li class="header">Account</li>
               <li class="treeview">
                 <a href="#">
@@ -261,7 +252,7 @@ if ($_SESSION['login'] == 0) {
           <section class="content-header">
             <h1>
               Selamat Datang di
-              <small>Halaman E-Learning</small>
+              <small>Halaman E-Learning Siswa</small>
             </h1>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-calendar"></i><?php include "jam/jam.php" ?></a></li>
@@ -284,7 +275,7 @@ if ($_SESSION['login'] == 0) {
             Version 1.0
           </div>
           <!-- Default to the left -->
-          <strong>Copyright &copy; <?php echo (int)date('Y'); ?> <a href="https://inovindo.co.id/" target="_blank">INOVINDO DIGITAL MEDIA</a></strong>
+          <strong>Copyright &copy; 2021 <a href="#">Inovindo</a>.</strong> All rights reserved.
         </footer>
 
         <!-- Control Sidebar -->
