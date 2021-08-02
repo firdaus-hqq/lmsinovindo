@@ -6,7 +6,18 @@ include "configurasi/fungsi_indotgl.php";
 include "configurasi/fungsi_combobox.php";
 include "timeout.php";
 
-$sql = 'SELECT * FROM data_absen INNER JOIN siswa ON (data_absen.id_siswa = siswa.id_siswa)';
+if (isset($_SESSION['idsiswa'])) {
+    $id_siswa = $_SESSION['idsiswa'];
+    $sql = "SELECT * FROM data_absen WHERE id_siswa = " . $id_siswa;
+    $result = $mysqli->query($sql);
+    if ($result->num_rows > 0) {
+        $data_absen = $result->fetch_array();
+    } else {
+        exit("ID Tidak ditemukan.");
+    }
+} else {
+    exit("ID Tidak ditemukan");
+}
 $listDataAbsen = $mysqli->query($sql);
 
 if ($_SESSION['login'] == 1) {
