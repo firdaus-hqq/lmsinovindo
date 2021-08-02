@@ -20,6 +20,19 @@ if (isset($_SESSION['idsiswa'])) {
 }
 $listDataAbsen = $mysqli->query($sql);
 
+$hadir = mysqli_query($mysqli, "SELECT * FROM data_absen WHERE kehadiran = 'H' AND id_siswa = " . $id_siswa);
+$jumlah_hadir = mysqli_num_rows($hadir);
+
+$izin = mysqli_query($mysqli, "SELECT * FROM data_absen WHERE kehadiran = 'I' AND id_siswa = " . $id_siswa);
+$jumlah_izin = mysqli_num_rows($izin);
+
+$sakit = mysqli_query($mysqli, "SELECT * FROM data_absen WHERE kehadiran = 'S' AND id_siswa = " . $id_siswa);
+$jumlah_sakit = mysqli_num_rows($sakit);
+
+$jumlah_presensi = $jumlah_hadir + $jumlah_izin + $jumlah_sakit;
+
+$persentase = $jumlah_hadir / $jumlah_presensi * 100;
+
 if ($_SESSION['login'] == 1) {
     if (!cek_login()) {
         $_SESSION['login'] = 0;
@@ -334,10 +347,10 @@ if ($_SESSION['login'] == 0) {
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td><?= $jumlah_hadir ?></td>
+                                            <td><?= $jumlah_izin ?></td>
+                                            <td><?= $jumlah_sakit ?></td>
+                                            <td><?= $persentase ?>%</td>
                                         </tr>
                                     </tbody>
                                 </table>
