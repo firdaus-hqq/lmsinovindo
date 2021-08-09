@@ -252,21 +252,120 @@ if ($_SESSION['login'] == 0) {
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
 
-                        <?php include "../adminku/tabel.php" ?>
-
-                        <!-- Main Footer -->
-                        <footer class="main-footer">
-                            <!-- To the right -->
-                            <div class="pull-right hidden-xs">
-                                Version 1.0
-                            </div>
-                            <!-- Default to the left -->
-                            <strong>Copyright &copy; 2021 <a href="#">inovindo</a>.</strong> All rights reserved.
-                        </footer>
-
-                        <div class="control-sidebar-bg"></div>
+                        <h1>
+                            Selamat Datang di
+                            <small>Halaman E-Learning Siswa</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-calendar"></i><?php include "jam/jam.php" ?></a></li>
+                            <li class="active"><?php include "jam/tanggal.php" ?></li>
+                        </ol>
                     </section>
-                </div><!-- ./wrapper -->
+
+                    <!-- Main content -->
+                    <section class="content">
+
+                        <!doctype html>
+                        <html lang="en">
+
+                        <head>
+                            <meta charset="utf-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1">
+                            <link rel="stylesheet" href="../assets/css/bootsrap.min.css">
+                            </link .>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                        </head>
+
+                        <body>
+
+                            <div class="container">
+                                <p>
+                                <h2>Tugas</h2>
+                                </p>
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Batas Pengumpulan</strong></td>
+                                            <td>tanggal</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Waktu Tenggat</strong< /td>
+                                            <td>tanggal dan waktu</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Waktu Pengumpulan</strong< /td>
+                                            <td>tanggal dan waktu</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Pengiriman berkas</strong< /td>
+                                            <td>Berbentuk file atau link </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <center>
+                                    <a href="../adminku/tambahtugas.php">
+                                        <button name=“submit” type="submit" id="buttonSubmit" class="btn btn-success">Tambah Tugas</button>
+                                    </a>
+                                </center>
+                            </div>
+                            <br>
+                            <div class="container">
+                                <p>
+                                <h2>Edit Tugas</h2>
+                                </p>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Tanggal</th>
+                                            <th>Dokumen</th>
+                                            <th>Link</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            </td>
+                                            <td class="mailbox-name">
+                                                <?= $tugas['tanggal'] ?>
+                                            </td>
+                                            <td class="mailbox-date"><?= $tugas['file'] ?></td>
+                                            <td class="mailbox-date"><?= $tugas['link'] ?></td>
+                                            <td>
+                                                <a href="../adminku/edit.php?id=<?= $tugas['id_file']; ?>"><button class="btn btn-info">Edit</button></a>
+
+                                                <a href="accept.php?id=<?= $tugas['id_file'] ?>"><button class="btn btn-danger">Hapus</button></a>
+                                            </td>
+
+                                            <?php ?>
+                                    </tbody>
+                                </table>
+                                <!-- /.table -->
+                                </td>
+                                </tbody>
+                                </table>
+                            </div>
+                </div>
+
+        </body>
+
+        </html>
+
+        <!-- Main Footer -->
+        <footer class="main-footer">
+            <!-- To the right -->
+            <div class="pull-right hidden-xs">
+                Version 1.0
+            </div>
+            <!-- Default to the left -->
+            <strong>Copyright &copy; 2021 <a href="#">inovindo</a>.</strong> All rights reserved.
+        </footer>
+
+        <div class="control-sidebar-bg"></div>
+        </section>
+        </div><!-- ./wrapper -->
 
 
 
@@ -275,61 +374,61 @@ if ($_SESSION['login'] == 0) {
 
 
 
-                <script src="plugins/jQuery/jquery-1.12.0.min.js"></script>
+        <script src="plugins/jQuery/jquery-1.12.0.min.js"></script>
 
 
-                <script src="plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-                <script src="plugins/jquery.ui.touch-punch.min.js"></script>
+        <script src="plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+        <script src="plugins/jquery.ui.touch-punch.min.js"></script>
 
-                <!-- Bootstrap 3.3.2 JS -->
-                <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-                <!-- AdminLTE App -->
-                <script src="dist/js/app.min.js" type="text/javascript"></script>
+        <!-- Bootstrap 3.3.2 JS -->
+        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <!-- AdminLTE App -->
+        <script src="dist/js/app.min.js" type="text/javascript"></script>
 
-                <!-- DATATABLES -->
-                <script src="plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
-                <script src="plugins/datatables/media/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
-                <script src="plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
-                <script src="plugins/datatables/extensions/Responsive/js/responsive.bootstrap.js" type="text/javascript"></script>
-                <!-- DATATABLES -->
+        <!-- DATATABLES -->
+        <script src="plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+        <script src="plugins/datatables/media/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+        <script src="plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
+        <script src="plugins/datatables/extensions/Responsive/js/responsive.bootstrap.js" type="text/javascript"></script>
+        <!-- DATATABLES -->
 
-                <!--isotope-->
-                <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
-                <script src="plugins/imagesloaded.pkgd.min.js" type="text/javascript"></script>
-                <!--isotope-->
-                <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
-                <script src="plugins/chartJs/Chart.min.js" type="text/javascript"></script>
-                <script src="plugins/chartJs/Chart.Bar.js" type="text/javascript"></script>
-                <script src="dist/js/ando_admin.js" type="text/javascript"></script>
-                <script src="dist/js/mosaicflow.min.js" type="text/javascript"></script>
-                <script src="plugins/file-uploader/js/vendor/jquery.ui.widget.js"></script>
-                <script src="plugins/file-uploader/js/jquery.fileupload.js"></script>
-                <script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
-                <script src="plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
-                <script src="plugins/ckeditor/adapters/jquery.js" type="text/javascript"></script>
-                <script>
-                    $(function() {
-                        $("#example1").DataTable();
-                        $('#example2').DataTable({
-                            "paging": true,
-                            "lengthChange": false,
-                            "searching": false,
-                            "ordering": true,
-                            "info": true,
-                            "autoWidth": false
-                        });
-                    });
-                </script>
-                <script>
-                    $(document).ready(function() {
-                        $('#example3').DataTable({
-                            dom: 'Bfrtip',
-                            buttons: [
-                                'copy', 'csv', 'excel', 'pdf', 'print'
-                            ]
-                        });
-                    });
-                </script>
+        <!--isotope-->
+        <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
+        <script src="plugins/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+        <!--isotope-->
+        <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
+        <script src="plugins/chartJs/Chart.min.js" type="text/javascript"></script>
+        <script src="plugins/chartJs/Chart.Bar.js" type="text/javascript"></script>
+        <script src="dist/js/ando_admin.js" type="text/javascript"></script>
+        <script src="dist/js/mosaicflow.min.js" type="text/javascript"></script>
+        <script src="plugins/file-uploader/js/vendor/jquery.ui.widget.js"></script>
+        <script src="plugins/file-uploader/js/jquery.fileupload.js"></script>
+        <script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
+        <script src="plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+        <script src="plugins/ckeditor/adapters/jquery.js" type="text/javascript"></script>
+        <script>
+            $(function() {
+                $("#example1").DataTable();
+                $('#example2').DataTable({
+                    "paging": true,
+                    "lengthChange": false,
+                    "searching": false,
+                    "ordering": true,
+                    "info": true,
+                    "autoWidth": false
+                });
+            });
+        </script>
+        <script>
+            $(document).ready(function() {
+                $('#example3').DataTable({
+                    dom: 'Bfrtip',
+                    buttons: [
+                        'copy', 'csv', 'excel', 'pdf', 'print'
+                    ]
+                });
+            });
+        </script>
         </body>
 
         </html>

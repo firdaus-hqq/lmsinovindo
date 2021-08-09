@@ -1,11 +1,40 @@
 <?php
-session_start();
-error_reporting(0);
+include "../config/config.php";
 include "configurasi/koneksi.php";
 include "configurasi/library.php";
 include "configurasi/fungsi_indotgl.php";
 include "configurasi/fungsi_combobox.php";
 include "timeout.php";
+
+date_default_timezone_set("Asia/Jakarta");
+$DATE_FORMAT = "Y-m-d H:i:s";
+$waktu = date($DATE_FORMAT);
+
+$id_siswa      = $_SESSION['idsiswa'];
+$sql         = "SELECT kehadiran 
+                FROM data_absen 
+                WHERE id_siswa = '" . $id_siswa . "'
+                    AND DATE_FORMAT(waktu, '%Y-%m-%d') = '" . date('Y-m-d') . "'
+                ";
+$result = $mysqli->query($sql) or die($mysqli->error);
+$total_absen_hari_ini = $result->num_rows;
+
+function canSubmit($waktu) {
+  $batas_waktu_menit = 10 * 60; # menunjukkan jam 10:00
+  
+  $waktu_time = strtotime($waktu);
+  $waktu_menit = date('H', $waktu_time) * 60 + date('i', $waktu_time);
+  
+  return $waktu_menit > $batas_waktu_menit;
+  
+}
+
+if (canSubmit($waktu)) {
+  $button = "<button type='submit' name='simpan' class='btn btn-success' disabled>Simpan</button>";
+} else {
+  $button = "<button type='submit' name='simpan' class='btn btn-success'>Simpan</button>";
+}
+
 if ($_SESSION['login'] == 1) {
   if (!cek_login()) {
     $_SESSION['login'] = 0;
@@ -66,6 +95,23 @@ if ($_SESSION['login'] == 0) {
       <link rel="stylesheet" href="plugins/file-uploader/css/jquery.fileupload-ui-noscript.css">
     </noscript>
     <link href="plugins/datepicker/datepicker.css" rel="stylesheet">
+
+    <script type="text/javascript">
+      window.setTimeout("waktu()", 1000);
+
+      function waktu() {
+        var tanggal = new Date();
+        setTimeout("waktu()", 1000);
+        document.getElementById("output").innerHTML = tanggal.getHours() + ":" + tanggal.getMinutes() + " WIB";
+      }
+      window.setTimeout("waktu_m()", 1000);
+
+      function waktu_m() {
+        var tanggal = new Date();
+        setTimeout("waktu_m()", 1000);
+        document.getElementById("output_m").innerHTML = tanggal.getHours() + ":" + tanggal.getMinutes() + " WIB";
+      }
+    </script>
     </head>
 
     <body class="skin-blue sidebar-mini">
@@ -77,9 +123,9 @@ if ($_SESSION['login'] == 0) {
           <!-- Logo -->
           <a href="index2.html" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>R</b>PL</span>
+            <span class="logo-mini"><b>I</b>DM</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Siswa</b>RPL</span>
+            <span class="logo-lg"><b>IDM | </b> A C A D E M Y</span>
           </a>
 
           <!-- Header Navbar -->
@@ -165,7 +211,7 @@ if ($_SESSION['login'] == 0) {
               <li class="header">Menu Lerning</li>
 
               <!-- Optionally, you can add icons to the links -->
-              <li class="active"><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
+              <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
 
               <li class="treeview">
                 <a href="#">
@@ -201,13 +247,13 @@ if ($_SESSION['login'] == 0) {
                   </li>
                 </ul>
               </li>
-              <li class="treeview">
+              <li class="treeview active">
                 <a href="#">
                   <i class="fa fa-check"></i>
                   <span>Absensi</span><i class='fa fa-angle-left pull-right'></i>
                 </a>
                 <ul class="treeview-menu">
-                  <li>
+                  <li class="active">
                     <a href="v_absen.php">
                       <i class='fa fa-circle-o'></i><span class="title">Mengisi Absensi</span>
                     </a>
@@ -251,8 +297,8 @@ if ($_SESSION['login'] == 0) {
           <!-- Content Header (Page header) -->
           <section class="content-header">
             <h1>
-              Selamat Datang di
-              <small>Halaman E-Learning Siswa</small>
+              Absensi
+              <small>Silakan isi absensi harian</small>
             </h1>
             <ol class="breadcrumb">
               <li><a href="#"><i class="fa fa-calendar"></i><?php include "jam/jam.php" ?></a></li>
@@ -262,10 +308,31 @@ if ($_SESSION['login'] == 0) {
 
           <!-- Main content -->
           <section class="content">
+            <?php
+            // JIKA BELUM ABSEN, MAKA TAMPILKAN FORM
+            if (!$total_absen_hari_ini) {
+            ?>
 
-            <?php include "content.php" ?>
+              <form method="POST" action="absen.php">
+                <input type="radio" name="kehadiran" id="hadir" value="H" <?= @$data_absen['kehadiran'] == 'H' ? 'checked' : '' ?>>
+                <label for="hadir">Hadir</label>
+                <input type="radio" name="kehadiran" id="izin" value="I" <?= @$data_absen['kehadiran'] == 'I' ? 'checked' : '' ?>>
+                <label for="izin">Izin</label>
+                <input type="radio" name="kehadiran" id="sakit" value="S" <?= @$data_absen['kehadiran'] == 'S' ? 'checked' : '' ?>>
+                <label for="sakit">Sakit</label>
+                <br>
+                <h3>Kegiatan hari ini:</h3>
+                <textarea class="form-control" placeholder="Isi kegiatan anda disini" rows="10" name="kegiatan" value="<?= @$data_absen['kegiatan'] ?>"></textarea>
+                <br>
+                <?= $button; ?>
+              </form>
 
-          </section><!-- /.content -->
+            <?php } else { ?>
+
+              <h3 align="center">ANDA SUDAH MENGISI ABSEN HARI INI</h3>
+
+            <?php } ?>
+          </section>
         </div><!-- /.content-wrapper -->
 
         <!-- Main Footer -->
@@ -275,7 +342,7 @@ if ($_SESSION['login'] == 0) {
             Version 1.0
           </div>
           <!-- Default to the left -->
-          <strong>Copyright &copy; 2021 <a href="#">Inovindo</a>.</strong> All rights reserved.
+          <strong>Copyright &copy; <?php echo (int)date('Y'); ?> <a href="https://inovindo.co.id/" target="_blank">INOVINDO DIGITAL MEDIA</a></strong>
         </footer>
 
         <!-- Control Sidebar -->
