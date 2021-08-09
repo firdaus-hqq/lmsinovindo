@@ -1,12 +1,19 @@
 <?php
-session_start();
 $_SESSION['KCFINDER'] = array();
 $_SESSION['KCFINDER']['disabled'] = false;
 $_SESSION['KCFINDER']['uploadURL'] = "images";
 $_SESSION['KCFINDER']['uploadDir'] = "";
-error_reporting(0);
+include "../../config/config.php";
 include "timeout.php";
 include "../configurasi/pagination.php";
+
+$sql = "SELECT * FROM siswa";
+$result = $mysqli->query($sql);
+if ($result->num_rows > 0) {
+    $daftar_absen = $result->fetch_array();
+} else {
+    exit("ID Tidak ditemukan.");
+}
 
 if ($_SESSION['login'] == 1) {
     if (!cek_login()) {
@@ -180,7 +187,7 @@ if ($_SESSION['login'] == 0) {
 
                         <!-- Sidebar Menu -->
                         <ul class="sidebar-menu">
-                            <?php include "menu.php" ?>
+                            <?php include "menu_baru.php" ?>
                         </ul><!-- /.sidebar-menu -->
                     </section>
                     <!-- /.sidebar -->
@@ -191,7 +198,7 @@ if ($_SESSION['login'] == 0) {
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
-                            Buat Absensi
+                            Data Absensi
                         </h1>
                         <ol class="breadcrumb">
                             <li><a href="#"><i class="fa fa-calendar"></i><?php include "../jam/jam.php" ?></a></li>
@@ -201,28 +208,27 @@ if ($_SESSION['login'] == 0) {
 
                     <!-- Main content -->
                     <section class="content">
-                        
-                        <form action="absen_admin.php" method="post">
-                        <table>
+                        <table class="table table-bordered table-striped with-check">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Nama Peserta</th>
+                                    <th>Persentase Kehadiran</th>
+                                </tr>
+                            </thead>
                             <tbody>
+                                <?php 
+                                $i = 1;
+                                while($daftarSiswa = mysqli_fetch_array($result)) {
+                                ?>
                                 <tr>
-                                    <td><label for="deskripsi">Deskripsi (boleh tidak diisi):</label></td>
-                                    <td><input type="text" id="deskripsi"></td>
+                                    <td><?= $i++ ?></td>
+                                    <td><a href="v_absen_siswa.php?id_siswa=<?= $daftarSiswa["id_siswa"]; ?>"><?= $daftarSiswa['nama_lengkap']; ?></a></td>
+                                    <td><?= $daftarSiswa['persentase']; ?>%</td>
                                 </tr>
-                                <tr>
-                                    <td><label for="absen_buka">Absensi dibuka pada:</label></td>
-                                    <td><input type="datetime-local" id="absen_buka"></td>
-                                </tr>
-                                <tr>
-                                    <td><label for="absen_tutup">Absensi ditutup pada:</label></td>
-                                    <td><input type="datetime-local" id="absen_tutup"></td>
-                                </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
-
-                        <button type="submit">Buat!</button>
-                        </form>
-
                     </section><!-- /.content -->
                 </div><!-- /.content-wrapper -->
 

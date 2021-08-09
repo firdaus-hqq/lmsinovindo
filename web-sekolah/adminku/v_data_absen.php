@@ -31,7 +31,7 @@ $jumlah_sakit = mysqli_num_rows($sakit);
 
 $jumlah_presensi = $jumlah_hadir + $jumlah_izin + $jumlah_sakit;
 
-$persentase = $jumlah_hadir / $jumlah_presensi * 100;
+$persentase = number_format($jumlah_hadir / $jumlah_presensi * 100);
 
 if ($_SESSION['login'] == 1) {
     if (!cek_login()) {
@@ -308,53 +308,51 @@ if ($_SESSION['login'] == 0) {
                     <!-- Main content -->
                     <section class="content">
                         <div class="table-responsive">
-                            <form method="post" action="./proses.php?kategori=absen_siswa">
-                                <table class="table table-bordered table-striped with-check">
-                                    <thead>
+                            <table class="table table-bordered table-striped with-check">
+                                <thead>
+                                    <tr>
+                                        <th>Hari ke-</th>
+                                        <th>Tanggal</th>
+                                        <th>Kehadiran</th>
+                                        <th>Kegiatan</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $i = 1;
+                                    while ($data_absen = $listDataAbsen->fetch_array()) {
+                                    ?>
                                         <tr>
-                                            <th>Hari ke-</th>
-                                            <th>Tanggal</th>
-                                            <th>Kehadiran</th>
-                                            <th>Kegiatan</th>
+                                            <td scope="row"><?= $i++; ?></td>
+                                            <td><?= $data_absen['waktu']; ?></td>
+                                            <td><?= $data_absen['kehadiran']; ?></td>
+                                            <td><?= $data_absen['kegiatan']; ?></td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $i = 1;
-                                        while ($data_absen = $listDataAbsen->fetch_array()) {
-                                        ?>
-                                            <tr>
-                                                <td scope="row"><?= $i++; ?></td>
-                                                <td><?= $data_absen['waktu']; ?></td>
-                                                <td><?= $data_absen['kehadiran']; ?></td>
-                                                <td><?= $data_absen['kegiatan']; ?></td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
-                                <br>
-                                <table class="table table-bordered table-striped with-check">
-                                    <thead>
-                                        <tr>
-                                            <th colspan="3">Jumlah</th>
-                                            <th rowspan="2">Persentase</th>
-                                        </tr>
-                                        <tr>
-                                            <th>H</th>
-                                            <th>I</th>
-                                            <th>S</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td><?= $jumlah_hadir ?></td>
-                                            <td><?= $jumlah_izin ?></td>
-                                            <td><?= $jumlah_sakit ?></td>
-                                            <td><?= $persentase ?>%</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </form>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                            <br>
+                            <table class="table table-bordered table-striped with-check">
+                                <thead>
+                                    <tr>
+                                        <th colspan="3">Jumlah</th>
+                                        <th rowspan="2">Persentase</th>
+                                    </tr>
+                                    <tr>
+                                        <th>H</th>
+                                        <th>I</th>
+                                        <th>S</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><?= $jumlah_hadir ?></td>
+                                        <td><?= $jumlah_izin ?></td>
+                                        <td><?= $jumlah_sakit ?></td>
+                                        <td><?= $persentase ?>%</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
                     </section><!-- /.content -->
                 </div><!-- /.content-wrapper -->
