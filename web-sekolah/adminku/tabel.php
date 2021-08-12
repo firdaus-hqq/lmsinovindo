@@ -1,3 +1,67 @@
+<?php
+
+$host = "localhost";
+$username = "root";
+$password = "";
+$db = "db_rpl";
+
+$conn = mysqli_connect($host, $username, $password, $db);
+
+if (!$conn){
+   
+}
+
+if(isset($_POST['submit'])){
+    $batas_pengumpulan = $_POST['batas_pengumpulan'];
+    $waktu_tenggat = $_POST['waktu_tenggat'];
+    $waktu_pengumpulan = $_POST['waktu_pengumpulan'];
+
+    $query = mysqli_query($conn, "UPDATE admin_tanggal_tugas SET batas_pengumpulan = '$batas_pengumpulan', waktu_tenggat = '$waktu_tenggat', waktu_pengumpulan = '$waktu_pengumpulan'");
+}
+
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" method="POST">
+        <label for="batas_pengumpulan">Batas pengumpulan</label>
+        <input type="date" id="batas_pengumpulan" name="batas_pengumpulan"><hr>
+        <label for="waktu_tenggat">Waktu Tenggat</label>
+        <input type="datetime-local" id="waktu_tenggat" name="waktu_tenggat"><hr>
+        <label for="waktu_pengumpulan">Waktu Pengumpulan</label>
+        <input type="datetime-local" id="waktu_pengumpulan" name="waktu_pengumpulan"><hr>
+
+        <input type="submit" name="submit" value="submit">
+    </form>
+</body>
+</html>
+
+
+<?php
+    $host = "localhost";
+    $username = "root";
+    $password = "";
+    $db = "db_rpl";
+    
+    $conn = mysqli_connect($host, $username, $password, $db);
+    
+    if (!$conn){
+    
+    }
+
+    $query = mysqli_query($conn, "SELECT * FROM admin_tanggal_tugas");
+
+    $data = mysqli_fetch_assoc($query);
+
+    ?>
+
 <h1>
     Selamat Datang di
     <small>Halaman E-Learning Siswa</small>
@@ -34,16 +98,16 @@
                 <tbody>
                     <tr>
                         <td><strong>Batas Pengumpulan</strong></td>
-                        <td>tanggal</td>
+                        <td><?php echo $data['batas_pengumpulan']?></td>
 
                     </tr>
                     <tr>
                         <td><strong>Waktu Tenggat</strong< /td>
-                        <td>tanggal dan waktu</td>
+                        <td><?php echo $data['waktu_tenggat']?></td>
                     </tr>
                     <tr>
                         <td><strong>Waktu Pengumpulan</strong< /td>
-                        <td>tanggal dan waktu</td>
+                        <td><?php echo $data['waktu_pengumpulan']?></td>
                     </tr>
                     <tr>
                         <td><strong>Pengiriman berkas</strong< /td>
@@ -65,25 +129,32 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>No.</th>
                         <th>Tanggal</th>
                         <th>Dokumen</th>
                         <th>Link</th>
-                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
+
                     <tr>
-                        <td>1</td>
-                        <td>01-01-1970</td>
-                        <td>Anggap Gambar</td>
-                        <td>Anggap link</td>
-                        <td>
-                            <button class="btn btn-info">Edit</button>
-                            <button class="btn btn-danger">Delete</button>
                         </td>
-                    </tr>
+                        <td class="mailbox-name">
+                            <?= $tugas['tanggal'] ?>
+                        </td>
+                        <td class="mailbox-date"><?= $tugas['file'] ?></td>
+                        <td class="mailbox-date"><?= $tugas['link'] ?></td>
+                        <td>
+                            <a href="../adminku/edit.php?id=<?= $tugas['id_file']; ?>"><button class="btn btn-info">Edit</button></a>
+                            
+                            <a href="accept.php?id=<?= $tugas['id_file'] ?>"><button class="btn btn-danger">Hapus</button></a>
+                        </td>
+
+                        <?php ?>
                 </tbody>
+            </table>
+            <!-- /.table -->   
+            </td>
+            </tbody>
             </table>
         </div>
         </div>

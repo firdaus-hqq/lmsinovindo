@@ -9,7 +9,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $link = @$_POST['link'];
     $fileTugas = @$_FILES['fileTugas'];
     $file   = $fileTugas['name'];
-
+} else {
+   
+}
     if (empty($link)) {
         echo "<script>console.log('Mohon isi link/keterangan terlebih dahulu');</script>";
     } else {
@@ -29,9 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $mysqli->query($sql) or die($mysqli->error);
 
-        header("location:tambahtugas.php");
+        header("location:tabel2.php");
     }
-}
+
 
 $sql = "SELECT * FROM tugas";
 $tugas = $mysqli->query($sql) or die($mysqli->error);

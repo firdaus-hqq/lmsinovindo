@@ -1,9 +1,10 @@
 <?php
-// error_reporting(0);
-include "configurasi/koneksi.php";
-include "configurasi/library.php";
-include "configurasi/fungsi_indotgl.php";
-include "configurasi/fungsi_combobox.php";
+session_start();
+error_reporting(0);
+include "../configurasi/koneksi.php";
+include "../configurasi/library.php";
+include "../configurasi/fungsi_indotgl.php";
+include "../configurasi/fungsi_combobox.php";
 include "timeout.php";
 if ($_SESSION['login'] == 1) {
     if (!cek_login()) {
@@ -36,7 +37,7 @@ if ($_SESSION['login'] == 0) {
         <meta name="author" content="ThemeBucket">
         <title>Halaman Siswa</title>
         <!-- Bootstrap 3.3.4 -->
-        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Font Awesome Icons -->
         <link href="plugins/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link href="plugins/ionicons/css/ionicons.min.css" rel="stylesheet" type="text/css" />
@@ -164,10 +165,8 @@ if ($_SESSION['login'] == 0) {
                         <ul class="sidebar-menu">
                             <li class="header">Menu Lerning</li>
 
-
-
                             <!-- Optionally, you can add icons to the links -->
-                            <li class="active"><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
+                            <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
 
                             <li class="treeview">
                                 <a href="#">
@@ -191,11 +190,6 @@ if ($_SESSION['login'] == 0) {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="absensi_pkl">
-                                            <i class='fa fa-circle-o'></i> <span class="title">Absensi</span>
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a href="media.php?module=quiz">
                                             <i class='fa fa-circle-o'></i><span class="title">Ujian</span>
                                         </a>
@@ -204,6 +198,24 @@ if ($_SESSION['login'] == 0) {
                                     <li>
                                         <a href="media.php?module=nilai">
                                             <i class='fa fa-circle-o'></i><span class="title">Nilai</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-check"></i>
+                                    <span>Absensi</span><i class='fa fa-angle-left pull-right'></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="v_absen.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Mengisi Absensi</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="v_data_absen.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Data Absensi</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -217,16 +229,16 @@ if ($_SESSION['login'] == 0) {
                                 </a>
                                 <ul class="treeview-menu">
                                     <?php echo "
-                        <li>
-                            <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]'>
-                                 <i class='fa fa-circle-o'></i><span class='title'>Detail Profil</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href='media.php?module=siswa&act=detailaccount'>
-                                 <i class='fa fa-circle-o'></i><span class='title'>Edit Password</span>
-                            </a>
-                        </li>";
+                                    <li>
+                                        <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]'>
+                                            <i class='fa fa-circle-o'></i><span class='title'>Detail Profil</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='media.php?module=siswa&act=detailaccount'>
+                                            <i class='fa fa-circle-o'></i><span class='title'>Edit Password</span>
+                                        </a>
+                                    </li>";
                                     ?>
                                 </ul>
                             </li>
@@ -240,49 +252,106 @@ if ($_SESSION['login'] == 0) {
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
 
-                    <?php
-                }
-                    ?>
-
-                    <h1>
-                        Selamat Datang di
-                        <small>Halaman E-Learning Siswa</small>
-                    </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-calendar"></i><?php include "../adminku/jam/jam.php" ?></a></li>
-                        <li class="active"><?php include "../adminku/jam/tanggal.php" ?></li>
-                    </ol>
+                        <h1>
+                            Selamat Datang di
+                            <small>Halaman E-Learning Siswa</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-calendar"></i><?php include "jam/jam.php" ?></a></li>
+                            <li class="active"><?php include "jam/tanggal.php" ?></li>
+                        </ol>
                     </section>
 
                     <!-- Main content -->
                     <section class="content">
-                        <div class="container-fluid">
-                            <form method="POST" action="tambahlink.php" enctype="multipart/form-data" class="form-horizontal form-groups-bordered">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Upload File / Gambar </label>
-                                    <input type="file" name="fileTugas" class="form-control" autocomplete="off" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Upload disini" onchange="loadfile(event)">
-                                </div>
-                                <br>
-                                <div class="col-sm-13">
-                                    <textarea name="link" value="<?= @$tugas['link'] ?>" class="form-control ckeditor" cols="75" rows="3" style="visibility: hidden; display: none;"></textarea>
-                                </div>
-                                <br>
-                                <div class="col-sm-13">
-                                    <input class="btn btn-success" type="submit" name="simpan" value="Submit">
-                                </div>
-                            </form>
-                        </div>
-                    </section>
+
+                        <!doctype html>
+                        <html lang="en">
+
+                        <head>
+                            <meta charset="utf-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1">
+                            <link rel="stylesheet" href="../assets/css/bootsrap.min.css">
+                            </link .>
+                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                        </head>
+
+                        <body>
+
+                            <div class="container">
+                                <p>
+                                <h2>Tugas</h2>
+                                </p>
+                                <table class="table table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td><strong>Batas Pengumpulan</strong></td>
+                                            <td>tanggal</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Waktu Tenggat</strong< /td>
+                                            <td>tanggal dan waktu</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Waktu Pengumpulan</strong< /td>
+                                            <td>tanggal dan waktu</td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>Pengiriman berkas</strong< /td>
+                                            <td>Berbentuk file atau link </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <center>
+                                    <a href="../adminku/tambahtugas.php">
+                                        <button name=“submit” type="submit" id="buttonSubmit" class="btn btn-success">Tambah Tugas</button>
+                                    </a>
+                                </center>
+                            </div>
+                            <br>
+                            <div class="container">
+                                <p>
+                                <h2>Edit Tugas</h2>
+                                </p>
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Tanggal</th>
+                                            <th>Dokumen</th>
+                                            <th>Link</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            </td>
+                                            <td class="mailbox-name">
+                                                <?= $tugas['tanggal'] ?>
+                                            </td>
+                                            <td class="mailbox-date"><?= $tugas['file'] ?></td>
+                                            <td class="mailbox-date"><?= $tugas['link'] ?></td>
+                                            <td>
+                                                <a href="../adminku/edit.php?id=<?= $tugas['id_file']; ?>"><button class="btn btn-info">Edit</button></a>
+
+                                                <a href="accept.php?id=<?= $tugas['id_file'] ?>"><button class="btn btn-danger">Hapus</button></a>
+                                            </td>
+
+                                            <?php ?>
+                                    </tbody>
+                                </table>
+                                <!-- /.table -->
+                                </td>
+                                </tbody>
+                                </table>
+                            </div>
                 </div>
-            </div>
+
         </body>
 
-        <!-- Optional JavaScript; choose one of the two! -->
-
-        <!-- Option 1: Bootstrap Bundle with Popper -->
-
-
-        <!-- Option 2: Separate Popper and Bootstrap JS -->
+        </html>
 
         <!-- Main Footer -->
         <footer class="main-footer">
@@ -294,11 +363,8 @@ if ($_SESSION['login'] == 0) {
             <strong>Copyright &copy; 2021 <a href="#">inovindo</a>.</strong> All rights reserved.
         </footer>
 
-        <!-- Control Sidebar -->
-
-        <!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
         <div class="control-sidebar-bg"></div>
+        </section>
         </div><!-- ./wrapper -->
 
 
@@ -368,7 +434,7 @@ if ($_SESSION['login'] == 0) {
         </html>
 
 
-    <?php
+<?php
+    }
 }
-
-    ?>
+?>
