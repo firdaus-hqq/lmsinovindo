@@ -35,16 +35,9 @@
                 </ul>
             </li>
             <li><a href='../../../absensiswa/petugas_piket/tableguru.php'><i class='fa fa-check'></i>Absensi</a></li>
-            <li class='header'>Statistik Pengunjung</li>
+            
   <li class='treeview'>
-                <a href='#'>
-                    <i class='fa fa-plane'></i>
-                    <span>Statistik</span><i class='fa fa-angle-left pull-right'></i>
-                </a>
-                <ul class='treeview-menu'>             
-  <li><a href='?module=statistik'><i class='fa fa-circle-o'></i>Statistik</a></li>
-                </ul>
-            </li>
+                
            ";
                 } elseif ($_SESSION['leveluser'] == 'pengajar') {
                     echo " <li class='header'>Menu Utama</li>
