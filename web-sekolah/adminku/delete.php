@@ -1,9 +1,17 @@
 <?php
-include '../adminku/configurasi/library.php';
-$listTugas = $_GET['id_file'];
+  include '../config/config.php';
+  $id_siswa = $_SESSION['idsiswa'];
 
-$listTugas = "DELETE FROM event WHERE id_file = $";
+  if (!empty($id_siswa)) {
+    $sql = "DELETE FROM tugas WHERE id_siswa = $id_siswa";
+  
+    if ($mysqli -> query($sql)) {
+      echo "<script>alert('Dokumentasi telah dihapus')</script>";
+    }
+    else {
+      echo "<script>alert('Dokumentasi tidak terhapus')</script>";
+    }
+  }
 
-$mysqli->query($listTugas) or die($mysqli->error);
-
-header('location: mailbox.php');
+  header('location: ../adminku/tabel.php');
+?>
