@@ -34,18 +34,7 @@
   <li><a href='media_admin.php?module=prestasi'><i class='fa fa-circle-o'></i>Prestasi</a></li>                  
                 </ul>
             </li>
-            <li><a href='v_daftar_absen.php'><i class='fa fa-check'></i>Absensi</a></li>
-            <li class='header'>Statistik Pengunjung</li>
-  <li class='treeview'>
-                <a href='#'>
-                    <i class='fa fa-plane'></i>
-                    <span>Statistik</span><i class='fa fa-angle-left pull-right'></i>
-                </a>
-                <ul class='treeview-menu'>             
-  <li><a href='media_admin.php?module=statistik'><i class='fa fa-circle-o'></i>Statistik</a></li>
-                </ul>
-            </li>
-           ";
+            <li><a href='v_daftar_absen.php'><i class='fa fa-check'></i>Absensi</a></li>";
                 } elseif ($_SESSION['leveluser'] == 'pengajar') {
                     echo " <li class='header'>Menu Utama</li>
   <li class='active'><a href='media_admin.php?module=home'><i class='fa fa-dashboard'></i> <span>Dashboard</span></a> </li>

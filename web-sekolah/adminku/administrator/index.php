@@ -20,13 +20,13 @@
             <!--Form-->
         <form class="wrap2" action="cek_login.php" method="POST" >
             <div class="wrap2">
-                <label>Masukan id</label>
+            <b>   <label>Masukan id</label> </b>
                 <input type="text" name="username" placeholder="  Enter ID">
                 <span class="focus-input2"></span>
             </div>
             
             <div class="wrap2">
-                <label>Password</label>
+            <b>    <label>Password</label> </b>
                 <input type="password" name="password" placeholder="  Password">
                 <span class="focus-input2"></span>
             </div>
