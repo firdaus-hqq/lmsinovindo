@@ -14,10 +14,10 @@ if (isset($_SESSION['idsiswa'])) {
     if ($result->num_rows > 0) {
         $tugas = $result->fetch_array();
     } else {
-        exit("ID Tidak ditemukan.");
+        // echo ("ID Tidak ditemukan.");
     }
 } else {
-    exit("ID Tidak ditemukan");
+    // echo ("ID Tidak ditemukan");
 }
 $listTugas = $mysqli->query($sql);
 ?>
@@ -70,10 +70,6 @@ $listTugas = $mysqli->query($sql);
                     </tr>
                     </tr>
                     <tr>
-                        <td><strong>Waktu Pengumpulan</strong></td>
-                        <td><?php echo $tugas['tanggal'] ?></td>
-                    </tr>
-                    <tr>
                         <td><strong>Pengiriman berkas</strong></td>
                         <td>Berbentuk file atau link </td>
                     </tr>
@@ -114,7 +110,7 @@ $listTugas = $mysqli->query($sql);
                             <td>
                                 <a href="../adminku/edit.php?id=<?= $tugas['id_file']; ?>"><button class="btn btn-info">Edit</button></a>
 
-                                <a href="../adminku/delete.php?id=<?= $tugas['id_file'] ?>"><button class="btn btn-danger">Hapus</button></a>
+                                <button class="btn btn-danger" onclick="confirm('Yakin ingin menghapus tugas ini?') ? window.location.href='delete.php?id_file=<?= $tugas['id_file'] ?>':''">Hapus</button></a>
                             </td>
                         </tr>
                     <?php } ?>
