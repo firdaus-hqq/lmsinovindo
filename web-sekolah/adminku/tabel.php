@@ -46,7 +46,6 @@ $listTugas = $mysqli->query($sql);
         <li><a href="#"><i class="fa fa-calendar"></i><?php include "jam/jam.php" ?></a></li>
         <li class="active"><?php include "jam/tanggal.php" ?></li>
     </ol>
-    </section>
 
     <!-- Main content -->
     <section class="content">
@@ -117,9 +116,6 @@ $listTugas = $mysqli->query($sql);
                 </tbody>
             </table>
             <!-- /.table -->
-            </td>
-            </tbody>
-            </table>
         </div>
         </div>
 

@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $mysqli->query($sql) or die($mysqli->error);
 
-        header("location:tabel2.php");
+        header("location:tugas.php");
     }
 
 
