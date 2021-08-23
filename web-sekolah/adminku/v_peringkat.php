@@ -1,10 +1,8 @@
 <?php
-session_start();
-error_reporting(0);
-include "../configurasi/koneksi.php";
-include "../configurasi/library.php";
-include "../configurasi/fungsi_indotgl.php";
-include "../configurasi/fungsi_combobox.php";
+include "configurasi/koneksi.php";
+include "configurasi/library.php";
+include "configurasi/fungsi_indotgl.php";
+include "configurasi/fungsi_combobox.php";
 include "timeout.php";
 if ($_SESSION['login'] == 1) {
     if (!cek_login()) {
@@ -28,7 +26,6 @@ if ($_SESSION['login'] == 0) {
         echo "<input type=button class='btn btn-primary' value='LOGI DI SINI' onclick=location.href='../login_siswa.php'></a></center>";
     } else {
 ?>
-
         <!DOCTYPE html>
         <html>
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -37,7 +34,7 @@ if ($_SESSION['login'] == 0) {
         <meta name="author" content="ThemeBucket">
         <title>Halaman Siswa</title>
         <!-- Bootstrap 3.3.4 -->
-        <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
         <!-- Font Awesome Icons -->
         <link href="plugins/font-awesome-4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
         <link href="plugins/ionicons/css/ionicons.min.css" rel="stylesheet" type="text/css" />
@@ -220,7 +217,8 @@ if ($_SESSION['login'] == 0) {
                                     </li>
                                 </ul>
                             </li>
-                            <li class="active"><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
+                            <li><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
+                            <li class="active"><a href="v_peringkat.php"><i class="fa fa-trophy"></i> <span>Peringkat</span></a></li>
                             <li class="header">Account</li>
                             <li class="treeview">
                                 <a href="#">
@@ -229,16 +227,16 @@ if ($_SESSION['login'] == 0) {
                                 </a>
                                 <ul class="treeview-menu">
                                     <?php echo "
-                                    <li>
-                                        <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]'>
-                                            <i class='fa fa-circle-o'></i><span class='title'>Detail Profil</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href='media.php?module=siswa&act=detailaccount'>
-                                            <i class='fa fa-circle-o'></i><span class='title'>Edit Password</span>
-                                        </a>
-                                    </li>";
+                        <li>
+                            <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]'>
+                                 <i class='fa fa-circle-o'></i><span class='title'>Detail Profil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href='media.php?module=siswa&act=detailaccount'>
+                                 <i class='fa fa-circle-o'></i><span class='title'>Edit Password</span>
+                            </a>
+                        </li>";
                                     ?>
                                 </ul>
                             </li>
@@ -251,22 +249,61 @@ if ($_SESSION['login'] == 0) {
                 <div class="content-wrapper">
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
-
-                        <?php include "../adminku/tabel.php" ?>
-
-                        <!-- Main Footer -->
-                        <footer class="main-footer">
-                            <!-- To the right -->
-                            <div class="pull-right hidden-xs">
-                                Version 1.0
-                            </div>
-                            <!-- Default to the left -->
-                            <strong>Copyright &copy; 2021 <a href="#">inovindo</a>.</strong> All rights reserved.
-                        </footer>
-
-                        <div class="control-sidebar-bg"></div>
+                        <h1>
+                            Selamat Datang di
+                            <small>Halaman E-Learning Siswa</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-calendar"></i><?php include "jam/jam.php" ?></a></li>
+                            <li class="active"><?php include "jam/tanggal.php" ?></li>
+                        </ol>
                     </section>
-                </div><!-- ./wrapper -->
+
+                    <!-- Main content -->
+                    <section class="content">
+
+                        <div class="box box-warning">
+                            <div class='box-header with-border'>
+                                <table id='example1' class='table table-bordered table-striped'>
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Asal Sekolah</th>
+                                            <th>Nilai</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Anak Jago</td>
+                                            <td>SMKN 100 Mars</td>
+                                            <td>101</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                    </section><!-- /.content -->
+                </div><!-- /.content-wrapper -->
+
+                <!-- Main Footer -->
+                <footer class="main-footer">
+                    <!-- To the right -->
+                    <div class="pull-right hidden-xs">
+                        Version 1.0
+                    </div>
+                    <!-- Default to the left -->
+                    <strong>Copyright &copy; 2021 <a href="#">Inovindo</a>.</strong> All rights reserved.
+                </footer>
+
+                <!-- Control Sidebar -->
+
+                <!-- Add the sidebar's background. This div must be placed
+           immediately after the control sidebar -->
+                <div class="control-sidebar-bg"></div>
+            </div><!-- ./wrapper -->
 
 
 
@@ -275,94 +312,61 @@ if ($_SESSION['login'] == 0) {
 
 
 
-                <script src="plugins/jQuery/jquery-1.12.0.min.js"></script>
+            <script src="plugins/jQuery/jquery-1.12.0.min.js"></script>
 
 
-                <script src="plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-                <script src="plugins/jquery.ui.touch-punch.min.js"></script>
+            <script src="plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+            <script src="plugins/jquery.ui.touch-punch.min.js"></script>
 
-                <!-- Bootstrap 3.3.2 JS -->
-                <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-                <!-- AdminLTE App -->
-                <script src="dist/js/app.min.js" type="text/javascript"></script>
+            <!-- Bootstrap 3.3.2 JS -->
+            <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <!-- AdminLTE App -->
+            <script src="dist/js/app.min.js" type="text/javascript"></script>
 
-                <!-- DATATABLES -->
-                <script src="plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
-                <script src="plugins/datatables/media/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
-                <script src="plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
-                <script src="plugins/datatables/extensions/Responsive/js/responsive.bootstrap.js" type="text/javascript"></script>
-                <!-- DATATABLES -->
+            <!-- DATATABLES -->
+            <script src="plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+            <script src="plugins/datatables/media/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+            <script src="plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
+            <script src="plugins/datatables/extensions/Responsive/js/responsive.bootstrap.js" type="text/javascript"></script>
+            <!-- DATATABLES -->
 
-                <!--isotope-->
-                <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
-                <script src="plugins/imagesloaded.pkgd.min.js" type="text/javascript"></script>
-                <!--isotope-->
-                <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
-                <script src="plugins/chartJs/Chart.min.js" type="text/javascript"></script>
-                <script src="plugins/chartJs/Chart.Bar.js" type="text/javascript"></script>
-                <script src="dist/js/ando_admin.js" type="text/javascript"></script>
-                <script src="dist/js/mosaicflow.min.js" type="text/javascript"></script>
-                <script src="plugins/file-uploader/js/vendor/jquery.ui.widget.js"></script>
-                <script src="plugins/file-uploader/js/jquery.fileupload.js"></script>
-                <script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
-                <script src="plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
-                <script src="plugins/ckeditor/adapters/jquery.js" type="text/javascript"></script>
-                <script src="https://momentjs.com/downloads/moment.min.js"></script>
-                <script src="https://momentjs.com/downloads/moment-timezone-with-data-10-year-range.min.js"></script>
-                <script>
-                    $(function() {
-                        $("#example1").DataTable();
-                        $('#example2').DataTable({
-                            "paging": true,
-                            "lengthChange": false,
-                            "searching": false,
-                            "ordering": true,
-                            "info": true,
-                            "autoWidth": false
-                        });
+            <!--isotope-->
+            <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
+            <script src="plugins/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+            <!--isotope-->
+            <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
+            <script src="plugins/chartJs/Chart.min.js" type="text/javascript"></script>
+            <script src="plugins/chartJs/Chart.Bar.js" type="text/javascript"></script>
+            <script src="dist/js/ando_admin.js" type="text/javascript"></script>
+            <script src="dist/js/mosaicflow.min.js" type="text/javascript"></script>
+            <script src="plugins/file-uploader/js/vendor/jquery.ui.widget.js"></script>
+            <script src="plugins/file-uploader/js/jquery.fileupload.js"></script>
+            <script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
+            <script src="plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+            <script src="plugins/ckeditor/adapters/jquery.js" type="text/javascript"></script>
+            <script>
+                $(function() {
+                    $("#example1").DataTable();
+                    $('#example2').DataTable({
+                        "paging": true,
+                        "lengthChange": false,
+                        "searching": false,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false
                     });
-                </script>
-                <script>
-                    $(document).ready(function() {
-                        $('#example3').DataTable({
-                            dom: 'Bfrtip',
-                            buttons: [
-                                'copy', 'csv', 'excel', 'pdf', 'print'
-                            ]
-                        });
+                });
+            </script>
+            <script>
+                $(document).ready(function() {
+                    $('#example3').DataTable({
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'copy', 'csv', 'excel', 'pdf', 'print'
+                        ]
                     });
-                </script>
-                <!-- Optional JavaScript -->
-                <script>
-        $(document).ready(function(){
-            $("#telepon").on("input", function(){
-
-            if($(this).val()[0] == "0"){
-
-                    $(this).val("");
-            }
-
-            });
-
-        });
-
-        $(document).ready(function(){
-            var d = new Date().toISOString();
-            d = moment.tz(d, "Asia/Jakarta").format();
-            var minDate = d.substring(0, 11) + "00:00";
-            console.log(minDate);
-
-            $(".datetimepicker").attr({
-                "value" : minDate,
-                "min" : minDate,
-            });
-        });
-    </script>
-    
-                
-
-
-
+                });
+            </script>
         </body>
 
         </html>

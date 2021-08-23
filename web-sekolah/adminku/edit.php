@@ -1,51 +1,37 @@
 <?php
-
-include '../adminku/configurasi/koneksi.php';
-include '../adminku/configurasi/library.php';
-
-function flash($tipe, $pesan = '') {
-    if (empty($pesan)) {
-        $pesan = @$_SESSION[$tipe];
-        unset($_SESSION[$tipe]);
-        return $pesan;
-    } else {
-        $_SESSION[$tipe] = $pesan;
-    }
-}
+include '../config/config.php';
+session_start();
 
 $id_file = @$_GET['id_file'];
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id_file            = $_POST['id_file'];
-    $file               = $_POST['name'];
-    $link               = $_POST['link'];
+    $link       = $_POST['link'];
+    $file       = $_POST['name'];
+    $fileTugas  = $_FILES['fileTugas'];
 
-    if (empty($file)) {
-        flash('error', 'Silahkan upload terlebih dahulu');
-    } elseif (empty($link)) {
-        flash('error1', 'Silahkan masukan teks terlebih dahulu');
+    if (empty($link)) {
+        echo "<script>console.log('Mohon isi link/keterangan terlebih dahulu');</script>";
     } else {
-        if (!empty($link) and $link['error'] == 0) {
+        if (!empty($fileTugas) and $fileTugas['error'] == 0) {
             $path = 'tugas/';
-            $upload = move_uploaded_file($file['tmp_name'], $path . $file['name']);
+            $upload = move_uploaded_file($fileTugas['tmp_name'], $path . $fileTugas['name']);
         }
         if (!$upload) {
-            flash('error', "Upload file gagal!");
+            echo "<script>alert('Upload GAGAL!')</script>";
             header('location:tambahtugas.php');
         }
+        $file = $fileTugas['name'];
     }
 
     $sql = "UPDATE tugas SET
-                id_file = '$id_file',
-                 file  = '$file',
-                 link = '$link'
-                 tanggal = '$tanggal'
+                link = '$link',
+                file = '$file'
             WHERE id_file = $id_file;
             ";
 
     $mysqli->query($sql) or die($mysqli->error);
 
-    header('location:tambahtugas.php');
+    header('location:tugas.php');
 }
 
 $sql = "SELECT * FROM tugas";

@@ -162,7 +162,7 @@ if ($_SESSION['login'] == 0) {
 
                         <!-- Sidebar Menu -->
                         <ul class="sidebar-menu">
-                            <li class="header">Menu Lerning</li>
+                            <li class="header">Menu Learning</li>
 
 
 

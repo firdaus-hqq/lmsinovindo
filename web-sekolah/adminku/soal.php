@@ -297,7 +297,7 @@ document.getElementById("tombol").innerHTML= "<input type=button class='btn btn-
 
           <!-- Sidebar Menu -->
           <ul class="sidebar-menu">
-            <li class="header">Menu Lerning</li>
+            <li class="header">Menu Learning</li>
 
 
 

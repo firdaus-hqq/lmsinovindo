@@ -30,8 +30,8 @@
                     <span>Prestasi</span><i class='fa fa-angle-left pull-right'></i>
                 </a>
                 <ul class='treeview-menu'>          
-  <li><a href='?module=kategoriprestasi'><i class='fa fa-circle-o'></i>Kategori Prestasi</a></li>   
-  <li><a href='?module=prestasi'><i class='fa fa-circle-o'></i>Prestasi</a></li>                  
+  <li><a href='v_typing_test.php'><i class='fa fa-circle-o'></i>Typing Test</a></li>   
+  <li><a href='v_test.php'><i class='fa fa-circle-o'></i>Pre Test & Post Test</a></li>                  
                 </ul>
             </li>
             <li><a href='v_daftar_absen.php'><i class='fa fa-check'></i>Absensi</a></li>";
