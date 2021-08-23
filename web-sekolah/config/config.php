@@ -1,5 +1,5 @@
 <?php
-define('MY_PATH', 'http://localhost/web-sekolah/');
+// define('MY_PATH', 'http://localhost/web-sekolah/');
 $domain = "http://localhost/web-sekolah/";
 $url_share = $domain.$_SERVER['REQUEST_URI'];
 $server= "localhost";

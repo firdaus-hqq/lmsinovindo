@@ -162,7 +162,7 @@ if ($_SESSION['login'] == 0) {
 
                         <!-- Sidebar Menu -->
                         <ul class="sidebar-menu">
-                            <li class="header">Menu Lerning</li>
+                            <li class="header">Menu Learning</li>
 
 
 
@@ -256,7 +256,6 @@ if ($_SESSION['login'] == 0) {
 
                     <!-- Main content -->
                     <section class="content">
-                        <?php var_dump($_SESSION['idsiswa']); ?>
                         <div class="container-fluid">
                             <form method="POST" action="tambahlink.php" enctype="multipart/form-data" class="form-horizontal form-groups-bordered">
                                 <div class="form-group">

@@ -208,7 +208,7 @@ if ($_SESSION['login'] == 0) {
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-              <li class="header">Menu Lerning</li>
+              <li class="header">Menu Learning</li>
 
               <!-- Optionally, you can add icons to the links -->
               <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>

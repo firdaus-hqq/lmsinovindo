@@ -163,7 +163,7 @@ if ($_SESSION['login'] == 0) {
 
                         <!-- Sidebar Menu -->
                         <ul class="sidebar-menu">
-                            <li class="header">Menu Lerning</li>
+                            <li class="header">Menu Learning</li>
 
                             <!-- Optionally, you can add icons to the links -->
                             <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
@@ -307,6 +307,8 @@ if ($_SESSION['login'] == 0) {
                 <script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
                 <script src="plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
                 <script src="plugins/ckeditor/adapters/jquery.js" type="text/javascript"></script>
+                <script src="https://momentjs.com/downloads/moment.min.js"></script>
+                <script src="https://momentjs.com/downloads/moment-timezone-with-data-10-year-range.min.js"></script>
                 <script>
                     $(function() {
                         $("#example1").DataTable();
@@ -330,6 +332,37 @@ if ($_SESSION['login'] == 0) {
                         });
                     });
                 </script>
+                <!-- Optional JavaScript -->
+                <script>
+        $(document).ready(function(){
+            $("#telepon").on("input", function(){
+
+            if($(this).val()[0] == "0"){
+
+                    $(this).val("");
+            }
+
+            });
+
+        });
+
+        $(document).ready(function(){
+            var d = new Date().toISOString();
+            d = moment.tz(d, "Asia/Jakarta").format();
+            var minDate = d.substring(0, 11) + "00:00";
+            console.log(minDate);
+
+            $(".datetimepicker").attr({
+                "value" : minDate,
+                "min" : minDate,
+            });
+        });
+    </script>
+    
+                
+
+
+
         </body>
 
         </html>

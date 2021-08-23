@@ -3994,25 +3994,25 @@ fieldset[disabled] .btn-vk.active {
 .alert-error,
 .label-danger,
 .modal-danger .modal-body {
-  background: linear-gradient(to bottom right, #e63a3a, #d7eb6b) !important
+  background: linear-gradient(50deg, #e63a3a, #d7eb6b) !important
 }
 .bg-yellow,
 .callout.callout-warning,
 .alert-warning,
 .label-waring,
 .modal-warning .modal-body {
-  background: linear-gradient(to bottom right, #e6c93a, #d76beb) !important
+  background: linear-gradient(50deg, #e6c93a, #d76beb) !important
 }
 .bg-aqua,
 .callout.callout-info,
 .alert-info,
 .label-info,
 .modal-info .modal-body {
-  background: linear-gradient(to bottom right, #3ae6ce, #4d43e4) !important;
+  background: linear-gradient(50deg, #3ae6ce, #4d43e4) !important;
     
 }
 .bg-blue {
-  background: linear-gradient(to bottom right, #3a47e6, #eb6b6b) !important
+  background: linear-gradient(50deg, #3a47e6, #eb6b6b) !important
 }
 .bg-light-blue,
 .label-primary,
@@ -4024,7 +4024,7 @@ fieldset[disabled] .btn-vk.active {
 .alert-success,
 .label-success,
 .modal-success .modal-body {
-  background: linear-gradient(to bottom right, #3ae66f, #c5b814) !important
+  background: linear-gradient(50deg, #3ae66f, #c5b814) !important
 }
 .bg-navy {
   background-color: #001f3f !important;

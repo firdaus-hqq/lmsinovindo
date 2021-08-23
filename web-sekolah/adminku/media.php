@@ -162,7 +162,7 @@ if ($_SESSION['login'] == 0) {
 
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
-              <li class="header">Menu Lerning</li>
+              <li class="header">Menu Learning</li>
 
               <!-- Optionally, you can add icons to the links -->
               <li class="active"><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
@@ -220,6 +220,7 @@ if ($_SESSION['login'] == 0) {
                 </ul>
               </li>
               <li><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
+              <li><a href="v_peringkat.php"><i class="fa fa-trophy"></i> <span>Peringkat</span></a></li>
               <li class="header">Account</li>
               <li class="treeview">
                 <a href="#">
