@@ -1,9 +1,15 @@
 <?php
+include "../config/config.php";
 include "configurasi/koneksi.php";
 include "configurasi/library.php";
 include "configurasi/fungsi_indotgl.php";
 include "configurasi/fungsi_combobox.php";
 include "timeout.php";
+
+$sql = 'SELECT * FROM peringkat INNER JOIN kelas ON (peringkat.id_kelas = kelas.id_kelas) ORDER BY wpm DESC, accuracy DESC LIMIT 10';
+
+$listPeringkat = $mysqli->query($sql);
+
 if ($_SESSION['login'] == 1) {
     if (!cek_login()) {
         $_SESSION['login'] = 0;
@@ -270,16 +276,23 @@ if ($_SESSION['login'] == 0) {
                                             <th>No</th>
                                             <th>Nama</th>
                                             <th>Asal Sekolah</th>
-                                            <th>Nilai</th>
+                                            <th>WPM</th>
+                                            <th>Accuracy</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>Anak Jago</td>
-                                            <td>SMKN 100 Mars</td>
-                                            <td>101</td>
-                                        </tr>
+                                        <?php
+                                        $i = 1;
+                                        while ($peringkat = $listPeringkat->fetch_array()) {
+                                        ?>
+                                            <tr>
+                                                <td><?= $i++ ?></td>
+                                                <td><?= $peringkat['nama_lengkap'] ?></td>
+                                                <td><?= $peringkat['nama'] ?></td>
+                                                <td><?= $peringkat['wpm'] ?></td>
+                                                <td><?= $peringkat['accuracy'] ?></td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>

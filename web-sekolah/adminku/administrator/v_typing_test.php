@@ -7,7 +7,7 @@ include "../../config/config.php";
 include "timeout.php";
 include "../configurasi/pagination.php";
 
-$sql = 'SELECT * FROM peringkat INNER JOIN kelas ON (peringkat.id_kelas = kelas.id_kelas) ORDER BY wpm DESC, accuracy DESC';
+$sql = 'SELECT * FROM peringkat INNER JOIN kelas ON (peringkat.id_kelas = kelas.id_kelas) ORDER BY wpm DESC, accuracy DESC ';
 
 $listPeringkat = $mysqli ->query($sql);
 
