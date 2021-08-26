@@ -220,7 +220,24 @@ if ($_SESSION['login'] == 0) {
                 </ul>
               </li>
               <li><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
-              <li><a href="v_peringkat.php"><i class="fa fa-trophy"></i> <span>Peringkat</span></a></li>
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-trophy"></i>
+                  <span>Peringkat</span><i class='fa fa-angle-left pull-right'></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li>
+                    <a href="v_peringkat_typing.php">
+                      <i class='fa fa-circle-o'></i><span class="title">Typing Test</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="v_peringkat_prepost.php">
+                      <i class='fa fa-circle-o'></i><span class="title">Pre Test & Post Test</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
               <li class="header">Account</li>
               <li class="treeview">
                 <a href="#">

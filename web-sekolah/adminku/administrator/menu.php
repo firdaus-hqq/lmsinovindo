@@ -23,7 +23,17 @@
    </ul>
   </li>";
                     echo "<li class='header'>Content Web</li>
-   <li><a href='?module=setting'><i class='fa fa-toggle-on'></i>Setting Web</a></li>
+   <li><a href='?module=setting'><i class='fa fa-toggle-on'></i><span>Setting Web</span></a></li>
+   <li class='treeview'>
+                <a href='#'>
+                    <i class='fa fa-book'></i>
+                    <span>Ujian</span><i class='fa fa-angle-left pull-right'></i>
+                </a>
+                <ul class='treeview-menu'>          
+  <li><a href='v_bank_soal.php'><i class='fa fa-circle-o'></i>Bank Soal</a></li>   
+  <li><a href='v_test.php'><i class='fa fa-circle-o'></i>Hasil Ujian</a></li>                  
+                </ul>
+            </li>
             <li class='treeview'>
                 <a href='#'>
                     <i class='fa fa-trophy'></i>
@@ -34,7 +44,7 @@
   <li><a href='v_test.php'><i class='fa fa-circle-o'></i>Pre Test & Post Test</a></li>                  
                 </ul>
             </li>
-            <li><a href='v_daftar_absen.php'><i class='fa fa-check'></i>Absensi</a></li>";
+            <li><a href='v_daftar_absen.php'><i class='fa fa-check'></i><span>Absensi</span></a></li>";
                 } elseif ($_SESSION['leveluser'] == 'pengajar') {
                     echo " <li class='header'>Menu Utama</li>
   <li class='active'><a href='?module=home'><i class='fa fa-dashboard'></i> <span>Dashboard</span></a> </li>
