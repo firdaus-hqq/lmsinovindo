@@ -76,13 +76,13 @@ input::placeholder {
 }
 
 .f1 {
-    border-bottom: 2px solid #b2b2b2;
+    border-bottom: 2px solid #212121;
     width: 40%;
     position: relative;
 }
 
 .f2 {
-    border-bottom: 2px solid #b2b2b2;
+    border-bottom: 2px solid #212121;
     margin-left: auto;
     width: 50%;
     position: relative;
@@ -115,7 +115,10 @@ input {
     padding: 10px 0px;
     border-radius: 25px;
     outline: 0px;
+    padding: 10px 20px 10px 20px;
+    /*Atas kanan bawah kiri*/
 }
+
 
 /************BUTTON*****************/
 .btn {
@@ -129,7 +132,7 @@ input {
     border: none;
     background: #425da5;
     color: #fff;
-    box-shadow: 8px 10px 30px rgba(0, 0, 0, 0.329);
+    box-shadow: 8px 10px 30px rgb(0 0 0 / 50%);
     transition: 0.4s;
 }
 
@@ -159,15 +162,15 @@ input {
     width: 0;
     height: 2px;
     transition: all 0.6s;
-    background: #412277;
+    background: #212121;
 }
 
 input:focus+.focus-input::before {
-    width: 100%;
+    width: 97%;
 }
 
 .has-val.input+.focus-input::before {
-    width: 100%;
+    width: 97%;
 }
 
 .focus-input2 {
@@ -189,15 +192,15 @@ input:focus+.focus-input::before {
     width: 0;
     height: 2px;
     transition: all 0.6s;
-    background: #412277;
+    background: #212121;
 }
 
 input:focus+.focus-input2::before {
-    width: 100%;
+    width: 97%;
 }
 
 .has-val.input+.focus-input2::before {
-    width: 100%;
+    width: 97%;
 }
 
 input[type="number"] {

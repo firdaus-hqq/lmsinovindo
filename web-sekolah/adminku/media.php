@@ -15,7 +15,7 @@ if ($_SESSION['login'] == 0) {
   echo "<link href='bs3/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
  <center><br><br><br><br><br><br>Maaf, untuk masuk <b>Halaman</b><br>
   <center>anda harus <b>Login</b> dahulu!<br><br>";
-  echo "<div> <a href='#'><img src='images/kunci.png'  height=176 width=143></a>
+  echo "<div> <a href='#'><img src='https://c.tenor.com/v2Klip5v8hoAAAAC/among-us-fp.gif'  height=176 width=176></a>
              </div>";
   echo "<input type=button class='btn btn-primary' value='LOGIN DI SINI' onclick=location.href='../login_siswa.php'></a></center>";
 } else {
@@ -23,7 +23,7 @@ if ($_SESSION['login'] == 0) {
     echo "<link href='bs3/css/bootstrap.min.css' rel='stylesheet' type='text/css'><link href='css/reset.css' rel='stylesheet' type='text/css'>
  <center><br><br><br><br><br><br>Maaf, untuk masuk <b>Halaman</b><br>
   <center>anda harus <b>Login</b> dahulu!<br><br>";
-    echo "<div> <a href='index.php'><img src='images/kunci.png'  height=176 width=143></a>
+    echo "<div> <a href='index.php'><img src='https://c.tenor.com/v2Klip5v8hoAAAAC/among-us-fp.gif'  height=176 width=143></a>
              </div>";
     echo "<input type=button class='btn btn-primary' value='LOGI DI SINI' onclick=location.href='../login_siswa.php'></a></center>";
   } else {
@@ -189,11 +189,6 @@ if ($_SESSION['login'] == 0) {
                     </a>
                   </li>
                   <li>
-                    <a href="absensi_pkl">
-                      <i class='fa fa-circle-o'></i> <span class="title">Absensi</span>
-                    </a>
-                  </li>
-                  <li>
                     <a href="media.php?module=quiz">
                       <i class='fa fa-circle-o'></i><span class="title">Ujian</span>
                     </a>
@@ -206,7 +201,25 @@ if ($_SESSION['login'] == 0) {
                   </li>
                 </ul>
               </li>
-              <li class="active"><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-check"></i>
+                  <span>Absensi</span><i class='fa fa-angle-left pull-right'></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li>
+                    <a href="v_absen.php">
+                      <i class='fa fa-circle-o'></i><span class="title">Mengisi Absensi</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="v_data_absen.php">
+                      <i class='fa fa-circle-o'></i><span class="title">Data Absensi</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
+              <li><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
               <li class="header">Account</li>
               <li class="treeview">
                 <a href="#">

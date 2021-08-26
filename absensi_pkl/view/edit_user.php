@@ -59,5 +59,10 @@ else {
     </form>
 </table>
 </p>
+
+<script>
+window.print();
+</script>
+
 </body>
 </html>

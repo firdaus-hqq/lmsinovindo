@@ -34,11 +34,7 @@
   <li><a href='?module=prestasi'><i class='fa fa-circle-o'></i>Prestasi</a></li>                  
                 </ul>
             </li>
-            <li><a href='../../../absensiswa/petugas_piket/tableguru.php'><i class='fa fa-check'></i>Absensi</a></li>
-            
-  <li class='treeview'>
-                
-           ";
+            <li><a href='v_daftar_absen.php'><i class='fa fa-check'></i>Absensi</a></li>";
                 } elseif ($_SESSION['leveluser'] == 'pengajar') {
                     echo " <li class='header'>Menu Utama</li>
   <li class='active'><a href='?module=home'><i class='fa fa-dashboard'></i> <span>Dashboard</span></a> </li>

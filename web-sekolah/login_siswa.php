@@ -42,14 +42,14 @@
 				<div class="wrap2">
 					<b> <label>Masukan id</label> </b>
 					<input type="text" class="form-control" name="username" id="username" required="required"
-						placeholder="   Username" autocomplete="off" />
+						placeholder="Username" autocomplete="off" />
 					<span class="focus-input2"></span>
 				</div>
 
 				<div class="wrap2">
 					<b> <label>Password</label> </b>
 					<input type="password" class="form-control" name="password" id="password" required="required"
-						placeholder="  Password" autocomplete="off" />
+						placeholder="Password" autocomplete="off" />
 					<span class="focus-input2"></span>
 				</div>
 				<br>

@@ -18,8 +18,10 @@ switch($_GET['act']){
                             <thead>
 							 <tr>                 
 									  <th>No</th>
-                                    <th>Nama Prestasi</th>
-                                    <th>Tanggal Masuk</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>Word per-Minute</th>
+                                    <th>Accuracy</th>
+                                    <th>Asal Sekolah</th>
                                     <th>Aksi</th>                                   
                                 </tr>
                             </thead>
@@ -55,7 +57,7 @@ switch($_GET['act']){
         <div class='col-md-12 col-xs-12'> 
                       <div class='form-group'>
           <label>
-          Nama Prestasi</label>
+          Nama Lengkap</label>
           <input type='text' name='nama_prestasi' class='form-control' id='field-1' required='required' placeholder='Placeholder'/>
                       
                         </div>					 
@@ -73,7 +75,7 @@ switch($_GET['act']){
                					
 					 <div class='form-group'>
           <label>
-                            Tanggal Masuk</label>
+                            Tanggal Masuk (ini nanti ganti jadi Accuracy)</label>
                           <input type='text' class='form-control date-picker' name='tgl_masuk' id='id-date-picker-1'  data-date-format='yyyy-mm-dd'/>
                             
                     </div>					
@@ -131,7 +133,7 @@ switch($_GET['act']){
 					<input type=hidden name=id value=$r[id_prestasi]>                     
                     <div class='form-group'>
           <label>
-              Nama Prestasi</label>
+              Nama Lengkap</label>
                            
         <input type='text' name='nama_prestasi' value='$r[nama_prestasi]' class='form-control' id='field-1' required='required' placeholder='Placeholder'  /></div>
                       						 

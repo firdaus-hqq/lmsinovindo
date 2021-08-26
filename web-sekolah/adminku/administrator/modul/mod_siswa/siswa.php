@@ -382,21 +382,21 @@ case "tambahsiswa":
           <div class='col-sm-2'>
           <label>Nis</label></div>
           <div class='col-sm-5'>
-          <input type=text name='nis' class='form-control' id='field-1' required='required' placeholder='Placeholder'></div></div>
+          <input type=text name='nis' class='form-control' id='field-1' required='required' placeholder='NIS'></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Nama Lengkap</label></div> 
           <div class='col-sm-5'>
-          <input type=text name='nama_lengkap' class='form-control' id='nama' required='required' placeholder='Placeholder' size=30></div></div>
+          <input type=text name='nama_lengkap' class='form-control' id='nama' required='required' placeholder='Nama Lengkap' size=30></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Username Login</label></div>   
             <div class='col-sm-5'>
-            <input type=text name='username' class='form-control' id='nama' required='required' placeholder='Placeholder'></div></div>
+            <input type=text name='username' class='form-control' id='nama' required='required' placeholder='Username'></div></div>
         <div class='form-group'>
           <div class='col-sm-2'>
           <label>Password Login</label></div>     <div class='col-sm-5'>
-          <input type=text name='password' class='form-control' id='field-1' required='required' placeholder='Placeholder'></div></div>
+          <input type=text name='password' class='form-control' id='field-1' required='required' placeholder='Password'></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Kelas</label></div>        <div class='col-sm-2'><select name='id_kelas' class='form-control'>
@@ -412,11 +412,11 @@ case "tambahsiswa":
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Alamat</label></div>       <div class='col-sm-8'>
-          <input type=text name='alamat'class='form-control' id='field-1' required='required' placeholder='Placeholder' size=70></div></div>
+          <input type=text name='alamat'class='form-control' id='field-1' required='required' placeholder='Alamat' size=70></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Tempat Lahir</label></div> <div class='col-sm-5'>
-          <input type=text name='tempat_lahir' class='form-control' id='field-1' required='required' placeholder='Placeholder' size=50></div></div>
+          <input type=text name='tempat_lahir' class='form-control' id='field-1' required='required' placeholder='Tempat Lahir' size=50></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Tanggal Lahir</label></div><div class='col-sm-9'> : ";
@@ -444,18 +444,18 @@ case "tambahsiswa":
           <div class='col-sm-2'>
           <label>Nama Ayah/Wali</label></div> 
           <div class='col-sm-5'>
-          <input type=text name='nama_ayah' class='form-control' id='field-1' required='required' placeholder='Placeholder' size=30></div></div>
+          <input type=text name='nama_ayah' class='form-control' id='field-1' required='required' placeholder='Nama Ayah' size=30></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Nama Ibu</label></div>   
             <div class='col-sm-5'>
-            <input type=text name='nama_ibu' class='form-control' id='field-1' required='required' placeholder='Placeholder' size=30></div></div>
+            <input type=text name='nama_ibu' class='form-control' id='field-1' required='required' placeholder='Nama Ibu' size=30></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Tahun Masuk</label></div>  <div class='col-sm-7'>"; combothn(2000,$thn_sekarang,'th_masuk',$thn_sekarang); echo "</div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
-          <label>Email</label></div>        <div class='col-sm-5'><input type=text name='email' class='form-control' id='email' required='required' placeholder='Placeholder' size=30></div></div>
+          <label>Email</label></div>        <div class='col-sm-5'><input type=text name='email' class='form-control' id='email' required='required' placeholder='Email' size=30></div></div>
          ";?>
       <div class="form-group">
                   <div class='col-sm-2'> <label>No HP</label></div>

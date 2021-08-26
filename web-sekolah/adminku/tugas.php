@@ -165,10 +165,8 @@ if ($_SESSION['login'] == 0) {
                         <ul class="sidebar-menu">
                             <li class="header">Menu Lerning</li>
 
-
-
                             <!-- Optionally, you can add icons to the links -->
-                            <li class="active"><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
+                            <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
 
                             <li class="treeview">
                                 <a href="#">
@@ -192,11 +190,6 @@ if ($_SESSION['login'] == 0) {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="absensi_pkl">
-                                            <i class='fa fa-circle-o'></i> <span class="title">Absensi</span>
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a href="media.php?module=quiz">
                                             <i class='fa fa-circle-o'></i><span class="title">Ujian</span>
                                         </a>
@@ -205,6 +198,24 @@ if ($_SESSION['login'] == 0) {
                                     <li>
                                         <a href="media.php?module=nilai">
                                             <i class='fa fa-circle-o'></i><span class="title">Nilai</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-check"></i>
+                                    <span>Absensi</span><i class='fa fa-angle-left pull-right'></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="v_absen.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Mengisi Absensi</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="v_data_absen.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Data Absensi</span>
                                         </a>
                                     </li>
                                 </ul>
@@ -218,16 +229,16 @@ if ($_SESSION['login'] == 0) {
                                 </a>
                                 <ul class="treeview-menu">
                                     <?php echo "
-                        <li>
-                            <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]'>
-                                 <i class='fa fa-circle-o'></i><span class='title'>Detail Profil</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href='media.php?module=siswa&act=detailaccount'>
-                                 <i class='fa fa-circle-o'></i><span class='title'>Edit Password</span>
-                            </a>
-                        </li>";
+                                    <li>
+                                        <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]'>
+                                            <i class='fa fa-circle-o'></i><span class='title'>Detail Profil</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='media.php?module=siswa&act=detailaccount'>
+                                            <i class='fa fa-circle-o'></i><span class='title'>Edit Password</span>
+                                        </a>
+                                    </li>";
                                     ?>
                                 </ul>
                             </li>
@@ -241,31 +252,21 @@ if ($_SESSION['login'] == 0) {
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
 
-                    <?php include "../adminku/tabel.php" ?>
+                        <?php include "../adminku/tabel.php" ?>
 
-                <!-- Optional JavaScript; choose one of the two! -->
+                        <!-- Main Footer -->
+                        <footer class="main-footer">
+                            <!-- To the right -->
+                            <div class="pull-right hidden-xs">
+                                Version 1.0
+                            </div>
+                            <!-- Default to the left -->
+                            <strong>Copyright &copy; 2021 <a href="#">inovindo</a>.</strong> All rights reserved.
+                        </footer>
 
-                <!-- Option 1: Bootstrap Bundle with Popper -->
-
-
-                <!-- Option 2: Separate Popper and Bootstrap JS -->
-                          
-            <!-- Main Footer -->
-                <footer class="main-footer">
-                    <!-- To the right -->
-                    <div class="pull-right hidden-xs">
-                        Version 1.0
-                    </div>
-                    <!-- Default to the left -->
-                    <strong>Copyright &copy; 2021 <a href="#">inovindo</a>.</strong> All rights reserved.
-                </footer>
-
-                <!-- Control Sidebar -->
-
-                <!-- Add the sidebar's background. This div must be placed
-           immediately after the control sidebar -->
-                <div class="control-sidebar-bg"></div>
-            </div><!-- ./wrapper -->
+                        <div class="control-sidebar-bg"></div>
+                    </section>
+                </div><!-- ./wrapper -->
 
 
 
@@ -274,61 +275,61 @@ if ($_SESSION['login'] == 0) {
 
 
 
-            <script src="plugins/jQuery/jquery-1.12.0.min.js"></script>
+                <script src="plugins/jQuery/jquery-1.12.0.min.js"></script>
 
 
-            <script src="plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-            <script src="plugins/jquery.ui.touch-punch.min.js"></script>
+                <script src="plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+                <script src="plugins/jquery.ui.touch-punch.min.js"></script>
 
-            <!-- Bootstrap 3.3.2 JS -->
-            <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-            <!-- AdminLTE App -->
-            <script src="dist/js/app.min.js" type="text/javascript"></script>
+                <!-- Bootstrap 3.3.2 JS -->
+                <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+                <!-- AdminLTE App -->
+                <script src="dist/js/app.min.js" type="text/javascript"></script>
 
-            <!-- DATATABLES -->
-            <script src="plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
-            <script src="plugins/datatables/media/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
-            <script src="plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
-            <script src="plugins/datatables/extensions/Responsive/js/responsive.bootstrap.js" type="text/javascript"></script>
-            <!-- DATATABLES -->
+                <!-- DATATABLES -->
+                <script src="plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+                <script src="plugins/datatables/media/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+                <script src="plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
+                <script src="plugins/datatables/extensions/Responsive/js/responsive.bootstrap.js" type="text/javascript"></script>
+                <!-- DATATABLES -->
 
-            <!--isotope-->
-            <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
-            <script src="plugins/imagesloaded.pkgd.min.js" type="text/javascript"></script>
-            <!--isotope-->
-            <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
-            <script src="plugins/chartJs/Chart.min.js" type="text/javascript"></script>
-            <script src="plugins/chartJs/Chart.Bar.js" type="text/javascript"></script>
-            <script src="dist/js/ando_admin.js" type="text/javascript"></script>
-            <script src="dist/js/mosaicflow.min.js" type="text/javascript"></script>
-            <script src="plugins/file-uploader/js/vendor/jquery.ui.widget.js"></script>
-            <script src="plugins/file-uploader/js/jquery.fileupload.js"></script>
-            <script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
-            <script src="plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
-            <script src="plugins/ckeditor/adapters/jquery.js" type="text/javascript"></script>
-            <script>
-                $(function() {
-                    $("#example1").DataTable();
-                    $('#example2').DataTable({
-                        "paging": true,
-                        "lengthChange": false,
-                        "searching": false,
-                        "ordering": true,
-                        "info": true,
-                        "autoWidth": false
+                <!--isotope-->
+                <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
+                <script src="plugins/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+                <!--isotope-->
+                <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
+                <script src="plugins/chartJs/Chart.min.js" type="text/javascript"></script>
+                <script src="plugins/chartJs/Chart.Bar.js" type="text/javascript"></script>
+                <script src="dist/js/ando_admin.js" type="text/javascript"></script>
+                <script src="dist/js/mosaicflow.min.js" type="text/javascript"></script>
+                <script src="plugins/file-uploader/js/vendor/jquery.ui.widget.js"></script>
+                <script src="plugins/file-uploader/js/jquery.fileupload.js"></script>
+                <script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
+                <script src="plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+                <script src="plugins/ckeditor/adapters/jquery.js" type="text/javascript"></script>
+                <script>
+                    $(function() {
+                        $("#example1").DataTable();
+                        $('#example2').DataTable({
+                            "paging": true,
+                            "lengthChange": false,
+                            "searching": false,
+                            "ordering": true,
+                            "info": true,
+                            "autoWidth": false
+                        });
                     });
-                });
-            </script>
-            <script>
-                $(document).ready(function() {
-                    $('#example3').DataTable({
-                        dom: 'Bfrtip',
-                        buttons: [
-                            'copy', 'csv', 'excel', 'pdf', 'print'
-                        ]
+                </script>
+                <script>
+                    $(document).ready(function() {
+                        $('#example3').DataTable({
+                            dom: 'Bfrtip',
+                            buttons: [
+                                'copy', 'csv', 'excel', 'pdf', 'print'
+                            ]
+                        });
                     });
-                });
-            </script>
+                </script>
         </body>
 
         </html>
