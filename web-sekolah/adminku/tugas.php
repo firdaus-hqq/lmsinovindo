@@ -247,16 +247,16 @@ if ($_SESSION['login'] == 0) {
                                 </a>
                                 <ul class="treeview-menu">
                                     <?php echo "
-                        <li>
-                            <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]'>
-                                 <i class='fa fa-circle-o'></i><span class='title'>Detail Profil</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href='media.php?module=siswa&act=detailaccount'>
-                                 <i class='fa fa-circle-o'></i><span class='title'>Edit Password</span>
-                            </a>
-                        </li>";
+                                    <li>
+                                        <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]'>
+                                            <i class='fa fa-circle-o'></i><span class='title'>Detail Profil</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href='media.php?module=siswa&act=detailaccount'>
+                                            <i class='fa fa-circle-o'></i><span class='title'>Edit Password</span>
+                                        </a>
+                                    </li>";
                                     ?>
                                 </ul>
                             </li>
@@ -289,10 +289,6 @@ if ($_SESSION['login'] == 0) {
 
 
 
-
-
-
-
                 <script src="plugins/jQuery/jquery-1.12.0.min.js"></script>
 
 
@@ -304,12 +300,7 @@ if ($_SESSION['login'] == 0) {
                 <!-- AdminLTE App -->
                 <script src="dist/js/app.min.js" type="text/javascript"></script>
 
-                <!-- DATATABLES -->
-                <script src="plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
-                <script src="plugins/datatables/media/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
-                <script src="plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
-                <script src="plugins/datatables/extensions/Responsive/js/responsive.bootstrap.js" type="text/javascript"></script>
-                <!-- DATATABLES -->
+                <script src="plugins/jQuery/jquery-1.12.0.min.js"></script>
 
                 <!--isotope-->
                 <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
@@ -378,7 +369,7 @@ if ($_SESSION['login'] == 0) {
                 </script>
 
 
-
+            </div>
 
 
         </body>

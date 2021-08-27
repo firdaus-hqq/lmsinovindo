@@ -11,24 +11,22 @@ switch($_GET['act']){
   // Tampil Produk
   default:
     echo "<div class='box box-warning'>
-            <div class='box-header with-border'>
-              <p align='left'><a href='?module=prestasi&act=tambahprestasi' role='button' class='btn btn-warning'>Tambah Prestasi</a></p>
-              <table  id='example1' class='table table-bordered table-striped'>
-                <thead>
-							    <tr>                 
-									  <th rowspan='2'>No</th>
-                    <th rowspan='2'>Nama Peserta</th>
-                    <th rowspan='2'>Asal Sekolah</th>
-                    <th colspan='2'>Nilai</th>
-                    <th rowspan='2'>Aksi</th>                                   
-                  </tr>
-                  <tr>
-                    <th>Pre Test</th>
-                    <th>Post Test</th>
-                  </tr>
-                </thead>
-                <tbody> ";
-    $tampil = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM peringkat ORDER BY id_prestasi DESC");
+        <div class='box-header with-border'>
+    
+          <p align='left'><a href='?module=prestasi&act=tambahprestasi' role='button' class='btn btn-warning'>Tambah Prestasi</a></p>
+                       <table  id='example1' class='table table-bordered table-striped'>
+                            <thead>
+							 <tr>                 
+									  <th>No</th>
+                                    <th>Nama Lengkap</th>
+                                    <th>Word per-Minute</th>
+                                    <th>Accuracy</th>
+                                    <th>Asal Sekolah</th>
+                                    <th>Aksi</th>                                   
+                                </tr>
+                            </thead>
+                            <tbody> ";
+    $tampil = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM prestasi ORDER BY id_prestasi DESC");
     $no = $posisi+1;
     while($r=mysqli_fetch_array($tampil)){
       echo " <tr>
@@ -59,7 +57,7 @@ switch($_GET['act']){
         <div class='col-md-12 col-xs-12'> 
                       <div class='form-group'>
           <label>
-          Nama Prestasi</label>
+          Nama Lengkap</label>
           <input type='text' name='nama_prestasi' class='form-control' id='field-1' required='required' placeholder='Placeholder'/>
                       
                         </div>					 
@@ -77,7 +75,7 @@ switch($_GET['act']){
                					
 					 <div class='form-group'>
           <label>
-                            Tanggal Masuk</label>
+                            Tanggal Masuk (ini nanti ganti jadi Accuracy)</label>
                           <input type='text' class='form-control date-picker' name='tgl_masuk' id='id-date-picker-1'  data-date-format='yyyy-mm-dd'/>
                             
                     </div>					
@@ -135,7 +133,7 @@ switch($_GET['act']){
 					<input type=hidden name=id value=$r[id_prestasi]>                     
                     <div class='form-group'>
           <label>
-              Nama Prestasi</label>
+              Nama Lengkap</label>
                            
         <input type='text' name='nama_prestasi' value='$r[nama_prestasi]' class='form-control' id='field-1' required='required' placeholder='Placeholder'  /></div>
                       						 

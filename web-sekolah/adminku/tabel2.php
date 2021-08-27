@@ -40,19 +40,19 @@ if ($_SESSION['login'] == 0) {
             exit("ID Tidak ditemukan");
         }
         $listTugas = $mysqli->query($sql);
-        
+
         if (isset($_POST['submit'])) {
             $batas_pengumpulan = $_POST['batas_pengumpulan'];
             $waktu_tenggat = $_POST['waktu_tenggat'];
             $waktu_pengumpulan = $_POST['waktu_pengumpulan'];
-        
+
             $query = mysqli_query($conn, "UPDATE admin_tanggal_tugas SET batas_pengumpulan = '$batas_pengumpulan', waktu_tenggat = '$waktu_tenggat', waktu_pengumpulan = '$waktu_pengumpulan'");
         }
-        
-        ?>
-?>
 
-       
+?>
+        ?>
+
+
         <!DOCTYPE html>
         <html>
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -91,6 +91,9 @@ if ($_SESSION['login'] == 0) {
             <link rel="stylesheet" href="plugins/file-uploader/css/jquery.fileupload-ui-noscript.css">
         </noscript>
         <link href="plugins/datepicker/datepicker.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         </head>
 
         <body class="skin-blue sidebar-mini">
@@ -276,30 +279,14 @@ if ($_SESSION['login'] == 0) {
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
 
-                        <!DOCTYPE html>
-                        <html lang="en">
-
-                        <head>
-                            <meta charset="UTF-8">
-                            <meta http-equiv="X-UA-Compatible" content="IE=edge">
-                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                            <link rel="stylesheet" href="../assets/css/bootsrap.min.css">
-                            </link>
-                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-                            <title>Document</title>
-                        </head>
-
-                        <body>
-                            <h1>
-                                Selamat Datang di
-                                <small>Halaman E-Learning Siswa</small>
-                            </h1>
-                            <ol class="breadcrumb">
-                                <li><a href="#"><i class="fa fa-calendar"></i><?php include "jam/jam.php" ?></a></li>
-                                <li class="active"><?php include "jam/tanggal.php" ?></li>
-                            </ol>
+                        <h1>
+                            Selamat Datang di
+                            <small>Halaman E-Learning Siswa</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-calendar"></i><?php include "jam/jam.php" ?></a></li>
+                            <li class="active"><?php include "jam/tanggal.php" ?></li>
+                        </ol>
                     </section>
 
                     <!-- Main content -->

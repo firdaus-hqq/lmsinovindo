@@ -15,7 +15,7 @@ if ($_SESSION['login'] == 0) {
   echo "<link href='bs3/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
  <center><br><br><br><br><br><br>Maaf, untuk masuk <b>Halaman</b><br>
   <center>anda harus <b>Login</b> dahulu!<br><br>";
-  echo "<div> <a href='#'><img src='images/kunci.png'  height=176 width=143></a>
+  echo "<div> <a href='#'><img src='https://c.tenor.com/v2Klip5v8hoAAAAC/among-us-fp.gif'  height=176 width=176></a>
              </div>";
   echo "<input type=button class='btn btn-primary' value='LOGIN DI SINI' onclick=location.href='../login_siswa.php'></a></center>";
 } else {
@@ -23,7 +23,7 @@ if ($_SESSION['login'] == 0) {
     echo "<link href='bs3/css/bootstrap.min.css' rel='stylesheet' type='text/css'><link href='css/reset.css' rel='stylesheet' type='text/css'>
  <center><br><br><br><br><br><br>Maaf, untuk masuk <b>Halaman</b><br>
   <center>anda harus <b>Login</b> dahulu!<br><br>";
-    echo "<div> <a href='index.php'><img src='images/kunci.png'  height=176 width=143></a>
+    echo "<div> <a href='index.php'><img src='https://c.tenor.com/v2Klip5v8hoAAAAC/among-us-fp.gif'  height=176 width=143></a>
              </div>";
     echo "<input type=button class='btn btn-primary' value='LOGI DI SINI' onclick=location.href='../login_siswa.php'></a></center>";
   } else {
