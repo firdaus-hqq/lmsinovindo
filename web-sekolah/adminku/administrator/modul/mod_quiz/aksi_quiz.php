@@ -66,12 +66,12 @@ elseif($module=='quiz' AND $act=='inputnilai'){
                                                 WHERE id_tq ='$_POST[id_tq]' AND id_siswa = '$_POST[id_siswa]'");
     mysqli_query($GLOBALS["___mysqli_ston"], "INSERT INTO nilai_soal_esay (id_tq,id_siswa,nilai)
                                    VALUES ('$_POST[id_tq]','$_POST[id_siswa]','$_POST[nilai]')");
-    header('location:../../media_admin.php?module=quiz&act=daftarsiswayangtelahmengerjakan&id='.$_POST[id_tq]);
+    header('location:../../media_admin.php?module=quiz&act=daftarsiswayangtelahmengerjakan&id='.$_POST['id_tq']);
 }
 
 elseif($module=='quiz' AND $act=='inputeditnilai'){
     mysqli_query($GLOBALS["___mysqli_ston"], "UPDATE nilai_soal_esay SET nilai = '$_POST[nilai]' WHERE id_tq ='$_POST[id_tq]' AND id_siswa = '$_POST[id_siswa]' ");
-    header('location:../../media_admin.php?module=quiz&act=daftarsiswayangtelahmengerjakan&id='.$_POST[id_tq]);
+    header('location:../../media_admin.php?module=quiz&act=daftarsiswayangtelahmengerjakan&id='.$_POST['id_tq']);
 }
 
 
@@ -121,7 +121,7 @@ elseif($module=='quiz' AND $act=='hapustopikquiz'){
   //hapus kuiz esay
   $cek = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM quiz_esay WHERE id_tq = '$_GET[id]'");
      $r = mysqli_fetch_array($cek);
-     if(empty($r[gambar])){
+     if(empty($r['gambar'])){
         mysqli_query($GLOBALS["___mysqli_ston"], "DELETE FROM quiz_esay WHERE id_tq = '$_GET[id]'");
      }else{
          $img = "../../../foto_soal/$r[gambar]";
@@ -133,7 +133,7 @@ elseif($module=='quiz' AND $act=='hapustopikquiz'){
   //hapus kuiz pilihan ganda
   $cek2 = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM quiz_pilganda WHERE id_tq = '$_GET[id]'");
      $r2 = mysqli_fetch_array($cek2);
-     if(empty($r2[gambar])){
+     if(empty($r2['gambar'])){
         mysqli_query($GLOBALS["___mysqli_ston"], "DELETE FROM quiz_pilganda WHERE id_tq = '$_GET[id]'");
      }else{
          $img = "../../../foto_soal_pilganda/$r2[gambar]";
@@ -172,7 +172,7 @@ elseif($module=='quiz' AND $act=='input_quizesay'){
         mysqli_query($GLOBALS["___mysqli_ston"], "INSERT INTO quiz_esay(id_tq,pertanyaan,tgl_buat)
                    VALUES('$_POST[id]','$_POST[pertanyaan]','$tgl_sekarang')");
     }
-header('location:../../media_admin.php?module=daftarquizesay&act=daftarquizesay&id='.$_POST[id]);
+header('location:../../media_admin.php?module=daftarquizesay&act=daftarquizesay&id='.$_POST['id']);
 }
 
 elseif($module=='quiz' AND $act=='input_quizpilganda'){
@@ -202,7 +202,7 @@ elseif($module=='quiz' AND $act=='input_quizpilganda'){
         mysqli_query($GLOBALS["___mysqli_ston"], "INSERT INTO quiz_pilganda(id_tq,pertanyaan,pil_a,pil_b,pil_c,pil_d,pil_e,kunci,tgl_buat)
                    VALUES('$_POST[id]','$_POST[pertanyaan]','$_POST[pila]','$_POST[pilb]','$_POST[pilc]','$_POST[pild]','$_POST[pile]','$_POST[kunci]','$tgl_sekarang')");
     }          
-    header('location:../../media_admin.php?module=daftarquizpilganda&act=daftarquizpilganda&id='.$_POST[id]);
+    header('location:../../media_admin.php?module=daftarquizpilganda&act=daftarquizpilganda&id='.$_POST['id']);
 }
 
 elseif($module=='quiz' AND $act=='edit_quizesay'){
@@ -225,7 +225,7 @@ elseif($module=='quiz' AND $act=='edit_quizesay'){
             }else{
                 $cek = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM quiz_esay WHERE id_quiz = '$_POST[id]'");
                 $r = mysqli_fetch_array($cek);
-                if(!empty($r[gambar])){
+                if(!empty($r['gambar'])){
                 $img = "../../../foto_soal/$r[gambar]";
                 unlink($img);
                 $img2 = "../../../foto_soal/medium_$r[gambar]";
@@ -249,13 +249,13 @@ elseif($module=='quiz' AND $act=='edit_quizesay'){
                                           tgl_buat   = '$tgl_sekarang'
                                        WHERE id_quiz = '$_POST[id]'");
     }
-    header('location:../../media_admin.php?module=daftarquizesay&act=daftarquizesay&id='.$_POST[topik]);
+    header('location:../../media_admin.php?module=daftarquizesay&act=daftarquizesay&id='.$_POST['topik']);
 }
 
 elseif($module=='quiz' AND $act=='hapusquizesay'){
      $cek = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM quiz_esay WHERE id_quiz = '$_GET[id]'");
      $r = mysqli_fetch_array($cek);
-     if(empty($r[gambar])){
+     if(empty($r['gambar'])){
         mysqli_query($GLOBALS["___mysqli_ston"], "DELETE FROM quiz_esay WHERE id_quiz = '$_GET[id]'");
      }else{
          $img = "../../../foto_soal/$r[gambar]";
@@ -264,7 +264,7 @@ elseif($module=='quiz' AND $act=='hapusquizesay'){
          unlink($img2);
          mysqli_query($GLOBALS["___mysqli_ston"], "DELETE FROM quiz_esay WHERE id_quiz = '$_GET[id]'");
      }
-     header('location:../../media_admin.php?module=daftarquizesay&act=daftarquizesay&id='.$_GET[id_topik]);
+     header('location:../../media_admin.php?module=daftarquizesay&act=daftarquizesay&id='.$_GET['id_topik']);
 }
 
 elseif($module=='quiz' AND $act=='edit_quizpilganda'){
@@ -287,7 +287,7 @@ elseif($module=='quiz' AND $act=='edit_quizpilganda'){
             }else{
                 $cek = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM quiz_pilganda WHERE id_quiz = '$_POST[id]'");
                 $r = mysqli_fetch_array($cek);
-                if(!empty($r[gambar])){
+                if(!empty($r['gambar'])){
                 $img = "../../../foto_soal_pilganda/$r[gambar]";
                 unlink($img);
                 $img2 = "../../../foto_soal_pilganda/medium_$r[gambar]";
@@ -329,13 +329,13 @@ elseif($module=='quiz' AND $act=='edit_quizpilganda'){
                                            tgl_buat   = '$tgl_sekarang'
                                         WHERE id_quiz = '$_POST[id]'");
     }
-     header('location:../../media_admin.php?module=daftarquizpilganda&act=daftarquizpilganda&id='.$_POST[topik]);
+     header('location:../../media_admin.php?module=daftarquizpilganda&act=daftarquizpilganda&id='.$_POST['topik']);
 }
 
 elseif($module=='quiz' AND $act=='hapusquizpilganda'){
     $cek = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM quiz_pilganda WHERE id_quiz = '$_GET[id]'");
      $r = mysqli_fetch_array($cek);
-     if(empty($r[gambar])){
+     if(empty($r['gambar'])){
         mysqli_query($GLOBALS["___mysqli_ston"], "DELETE FROM quiz_pilganda WHERE id_quiz = '$_GET[id]'");
      }else{
          $img = "../../../foto_soal_pilganda/$r[gambar]";
@@ -344,7 +344,7 @@ elseif($module=='quiz' AND $act=='hapusquizpilganda'){
          unlink($img2);
          mysqli_query($GLOBALS["___mysqli_ston"], "DELETE FROM quiz_pilganda WHERE id_quiz = '$_GET[id]'");
      }
-     header('location:../../media_admin.php?module=daftarquizpilganda&act=daftarquizpilganda&id='.$_GET[id_topik]);
+     header('location:../../media_admin.php?module=daftarquizpilganda&act=daftarquizpilganda&id='.$_GET['id_topik']);
 }
 
 }

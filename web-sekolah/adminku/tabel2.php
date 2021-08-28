@@ -27,7 +27,31 @@ if ($_SESSION['login'] == 0) {
              </div>";
         echo "<input type=button class='btn btn-primary' value='LOGI DI SINI' onclick=location.href='../login_siswa.php'></a></center>";
     } else {
+        if (isset($_SESSION['idsiswa'])) {
+            $id_siswa = $_SESSION['idsiswa'];
+            $sql = "SELECT * FROM tugas WHERE id_siswa = " . $id_siswa;
+            $result = $mysqli->query($sql);
+            if ($result->num_rows > 0) {
+                $tugas = $result->fetch_array();
+            } else {
+                exit("ID Tidak ditemukan.");
+            }
+        } else {
+            exit("ID Tidak ditemukan");
+        }
+        $listTugas = $mysqli->query($sql);
+
+        if (isset($_POST['submit'])) {
+            $batas_pengumpulan = $_POST['batas_pengumpulan'];
+            $waktu_tenggat = $_POST['waktu_tenggat'];
+            $waktu_pengumpulan = $_POST['waktu_pengumpulan'];
+
+            $query = mysqli_query($conn, "UPDATE admin_tanggal_tugas SET batas_pengumpulan = '$batas_pengumpulan', waktu_tenggat = '$waktu_tenggat', waktu_pengumpulan = '$waktu_pengumpulan'");
+        }
+
 ?>
+        ?>
+
 
         <!DOCTYPE html>
         <html>
@@ -67,6 +91,9 @@ if ($_SESSION['login'] == 0) {
             <link rel="stylesheet" href="plugins/file-uploader/css/jquery.fileupload-ui-noscript.css">
         </noscript>
         <link href="plugins/datepicker/datepicker.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         </head>
 
         <body class="skin-blue sidebar-mini">
@@ -163,7 +190,7 @@ if ($_SESSION['login'] == 0) {
 
                         <!-- Sidebar Menu -->
                         <ul class="sidebar-menu">
-                            <li class="header">Menu Lerning</li>
+                            <li class="header">Menu Learning</li>
 
                             <!-- Optionally, you can add icons to the links -->
                             <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
@@ -264,68 +291,71 @@ if ($_SESSION['login'] == 0) {
 
                     <!-- Main content -->
                     <section class="content">
+                        <div class="container">
+                            <form action="" method="POST">
+                                <label for="batas_pengumpulan">Batas pengumpulan</label>
+                                <input type="date" id="batas_pengumpulan" name="batas_pengumpulan">
+                                <hr>
+                                <label for="waktu_tenggat">Waktu Tenggat</label>
+                                <input type="datetime-local" id="waktu_tenggat" name="waktu_tenggat">
+                                <hr>
+                                <label for="waktu_pengumpulan">Waktu Pengumpulan</label>
+                                <input type="datetime-local" id="waktu_pengumpulan" name="waktu_pengumpulan">
+                                <hr>
 
-                        <!doctype html>
-                        <html lang="en">
+                                <input type="submit" name="submit" value="submit">
+                            </form>
+                        </div>
+                        <div class="container">
+                            <p>
+                            <h2>Tugas</h2>
+                            </p>
+                            <table class="table table-striped">
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Batas Pengumpulan</strong></td>
+                                        <td><?php echo $data['batas_pengumpulan'] ?></td>
 
-                        <head>
-                            <meta charset="utf-8">
-                            <meta name="viewport" content="width=device-width, initial-scale=1">
-                            <link rel="stylesheet" href="../assets/css/bootsrap.min.css">
-                            </link .>
-                            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-                            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-                        </head>
-
-                        <body>
-
-                            <div class="container">
-                                <p>
-                                <h2>Tugas</h2>
-                                </p>
-                                <table class="table table-striped">
-                                    <tbody>
-                                        <tr>
-                                            <td><strong>Batas Pengumpulan</strong></td>
-                                            <td>tanggal</td>
-
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Waktu Tenggat</strong< /td>
-                                            <td>tanggal dan waktu</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Waktu Pengumpulan</strong< /td>
-                                            <td>tanggal dan waktu</td>
-                                        </tr>
-                                        <tr>
-                                            <td><strong>Pengiriman berkas</strong< /td>
-                                            <td>Berbentuk file atau link </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <center>
-                                    <a href="../adminku/tambahtugas.php">
-                                        <button name=“submit” type="submit" id="buttonSubmit" class="btn btn-success">Tambah Tugas</button>
-                                    </a>
-                                </center>
-                            </div>
-                            <br>
-                            <div class="container">
-                                <p>
-                                <h2>Edit Tugas</h2>
-                                </p>
-                                <table class="table table-striped">
-                                    <thead>
-                                        <tr>
-                                            <th>Tanggal</th>
-                                            <th>Dokumen</th>
-                                            <th>Link</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Waktu Tenggat</strong< /td>
+                                        <td><?php echo $data['waktu_tenggat'] ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Waktu Pengumpulan</strong< /td>
+                                        <td><?php echo $data['waktu_pengumpulan'] ?></td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Pengiriman berkas</strong< /td>
+                                        <td>Berbentuk file atau link </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <center>
+                                <a href="../adminku/tambahtugas.php">
+                                    <button name=“submit” type="submit" id="buttonSubmit" class="btn btn-success">Tambah Tugas</button>
+                                </a>
+                            </center>
+                        </div>
+                        <br>
+                        <div class="container">
+                            <p>
+                            <h2>Edit Tugas</h2>
+                            </p>
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Dokumen</th>
+                                        <th>Link</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $i = 1;
+                                    while ($tugas = $listTugas->fetch_array()) {
+                                    ?>
                                         <tr>
                                             </td>
                                             <td class="mailbox-name">
@@ -338,15 +368,15 @@ if ($_SESSION['login'] == 0) {
 
                                                 <a href="accept.php?id=<?= $tugas['id_file'] ?>"><button class="btn btn-danger">Hapus</button></a>
                                             </td>
-
-                                            <?php ?>
-                                    </tbody>
-                                </table>
-                                <!-- /.table -->
-                                </td>
+                                        </tr>
+                                    <?php } ?>
                                 </tbody>
-                                </table>
-                            </div>
+                            </table>
+                            <!-- /.table -->
+                            </td>
+                            </tbody>
+                            </table>
+                        </div>
                 </div>
 
         </body>

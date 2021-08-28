@@ -163,7 +163,7 @@ if ($_SESSION['login'] == 0) {
 
                         <!-- Sidebar Menu -->
                         <ul class="sidebar-menu">
-                            <li class="header">Menu Lerning</li>
+                            <li class="header">Menu Learning</li>
 
                             <!-- Optionally, you can add icons to the links -->
                             <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
@@ -221,6 +221,24 @@ if ($_SESSION['login'] == 0) {
                                 </ul>
                             </li>
                             <li class="active"><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-trophy"></i>
+                                    <span>Peringkat</span><i class='fa fa-angle-left pull-right'></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="v_peringkat_typing.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Typing Test</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="v_peringkat_prepost.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Pre Test & Post Test</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="header">Account</li>
                             <li class="treeview">
                                 <a href="#">
@@ -271,10 +289,6 @@ if ($_SESSION['login'] == 0) {
 
 
 
-
-
-
-
                 <script src="plugins/jQuery/jquery-1.12.0.min.js"></script>
 
 
@@ -286,12 +300,7 @@ if ($_SESSION['login'] == 0) {
                 <!-- AdminLTE App -->
                 <script src="dist/js/app.min.js" type="text/javascript"></script>
 
-                <!-- DATATABLES -->
-                <script src="plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
-                <script src="plugins/datatables/media/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
-                <script src="plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
-                <script src="plugins/datatables/extensions/Responsive/js/responsive.bootstrap.js" type="text/javascript"></script>
-                <!-- DATATABLES -->
+                <script src="plugins/jQuery/jquery-1.12.0.min.js"></script>
 
                 <!--isotope-->
                 <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
@@ -307,6 +316,8 @@ if ($_SESSION['login'] == 0) {
                 <script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
                 <script src="plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
                 <script src="plugins/ckeditor/adapters/jquery.js" type="text/javascript"></script>
+                <script src="https://momentjs.com/downloads/moment.min.js"></script>
+                <script src="https://momentjs.com/downloads/moment-timezone-with-data-10-year-range.min.js"></script>
                 <script>
                     $(function() {
                         $("#example1").DataTable();
@@ -330,6 +341,37 @@ if ($_SESSION['login'] == 0) {
                         });
                     });
                 </script>
+                <!-- Optional JavaScript -->
+                <script>
+                    $(document).ready(function() {
+                        $("#telepon").on("input", function() {
+
+                            if ($(this).val()[0] == "0") {
+
+                                $(this).val("");
+                            }
+
+                        });
+
+                    });
+
+                    $(document).ready(function() {
+                        var d = new Date().toISOString();
+                        d = moment.tz(d, "Asia/Jakarta").format();
+                        var minDate = d.substring(0, 11) + "00:00";
+                        console.log(minDate);
+
+                        $(".datetimepicker").attr({
+                            "value": minDate,
+                            "min": minDate,
+                        });
+                    });
+                </script>
+
+
+            </div>
+
+
         </body>
 
         </html>

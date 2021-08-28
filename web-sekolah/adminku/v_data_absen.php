@@ -207,7 +207,7 @@ if ($_SESSION['login'] == 0) {
 
                         <!-- Sidebar Menu -->
                         <ul class="sidebar-menu">
-                            <li class="header">Menu Lerning</li>
+                            <li class="header">Menu Learning</li>
 
                             <!-- Optionally, you can add icons to the links -->
                             <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
@@ -265,6 +265,24 @@ if ($_SESSION['login'] == 0) {
                                 </ul>
                             </li>
                             <li><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-trophy"></i>
+                                    <span>Peringkat</span><i class='fa fa-angle-left pull-right'></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="v_peringkat_typing.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Typing Test</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="v_peringkat_prepost.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Pre Test & Post Test</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="header">Account</li>
                             <li class="treeview">
                                 <a href="#">
@@ -273,16 +291,16 @@ if ($_SESSION['login'] == 0) {
                                 </a>
                                 <ul class="treeview-menu">
                                     <?php echo "
-                                    <li>
-                                        <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]'>
-                                            <i class='fa fa-circle-o'></i><span class='title'>Detail Profil</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href='media.php?module=siswa&act=detailaccount'>
-                                            <i class='fa fa-circle-o'></i><span class='title'>Edit Password</span>
-                                        </a>
-                                    </li>";
+                        <li>
+                            <a href='media.php?module=siswa&act=detailprofilsiswa&id=$_SESSION[idsiswa]'>
+                                 <i class='fa fa-circle-o'></i><span class='title'>Detail Profil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href='media.php?module=siswa&act=detailaccount'>
+                                 <i class='fa fa-circle-o'></i><span class='title'>Edit Password</span>
+                            </a>
+                        </li>";
                                     ?>
                                 </ul>
                             </li>
