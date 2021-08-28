@@ -208,6 +208,7 @@ if ($_SESSION['login'] == 0) {
   </li>";
                     echo "<li class='header'>Content Web</li>
    <li><a href='media_admin.php?module=setting'><i class='fa fa-toggle-on'></i><span>Setting Web</span></a></li>
+   <li><a href='v_daftar_absen.php'><i class='fa fa-check'></i><span>Absensi</span></a></li>
    <li class='treeview active'>
                 <a href='#'>
                     <i class='fa fa-book'></i>
@@ -226,8 +227,7 @@ if ($_SESSION['login'] == 0) {
   <li><a href='v_typing_test.php'><i class='fa fa-circle-o'></i>Typing Test</a></li>   
   <li><a href='v_test.php'><i class='fa fa-circle-o'></i>Pre Test & Post Test</a></li>                  
                 </ul>
-            </li>
-            <li><a href='v_daftar_absen.php'><i class='fa fa-check'></i><span>Absensi</span></a></li>";
+            </li>";
                 } elseif ($_SESSION['leveluser'] == 'pengajar') {
                     echo " <li class='header'>Menu Utama</li>
   <li class='active'><a href='media_admin.php?module=home'><i class='fa fa-dashboard'></i> <span>Dashboard</span></a> </li>

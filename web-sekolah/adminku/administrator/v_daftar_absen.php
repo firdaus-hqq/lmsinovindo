@@ -208,27 +208,31 @@ if ($_SESSION['login'] == 0) {
 
                     <!-- Main content -->
                     <section class="content">
-                        <table class="table table-bordered table-striped with-check">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Nama Peserta</th>
-                                    <th>Persentase Kehadiran</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php 
-                                $i = 1;
-                                while($daftarSiswa = mysqli_fetch_array($result)) {
-                                ?>
-                                <tr>
-                                    <td><?= $i++ ?></td>
-                                    <td><a href="v_absen_siswa.php?id_siswa=<?= $daftarSiswa["id_siswa"]; ?>"><?= $daftarSiswa['nama_lengkap']; ?></a></td>
-                                    <td><?= $daftarSiswa['persentase']; ?>%</td>
-                                </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                        <div class="box box-warning">
+                            <div class='box-header with-border'>
+                                <table id='example1' class='table table-bordered table-striped'>
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Nama Peserta</th>
+                                            <th>Persentase Kehadiran</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $i = 1;
+                                        while ($daftarSiswa = mysqli_fetch_array($result)) {
+                                        ?>
+                                            <tr>
+                                                <td><?= $i++ ?></td>
+                                                <td><a href="v_absen_siswa.php?id_siswa=<?= $daftarSiswa["id_siswa"]; ?>"><?= $daftarSiswa['nama_lengkap']; ?></a></td>
+                                                <td><?= $daftarSiswa['persentase']; ?>%</td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </section><!-- /.content -->
                 </div><!-- /.content-wrapper -->
 

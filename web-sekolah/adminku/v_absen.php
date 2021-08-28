@@ -19,14 +19,14 @@ $sql         = "SELECT kehadiran
 $result = $mysqli->query($sql) or die($mysqli->error);
 $total_absen_hari_ini = $result->num_rows;
 
-function canSubmit($waktu) {
-  $batas_waktu_menit = 10 * 60; # menunjukkan jam 10:00
-  
+function canSubmit($waktu)
+{
+  $batas_waktu_menit = 16 * 60; # menunjukkan jam 10:00
+
   $waktu_time = strtotime($waktu);
   $waktu_menit = date('H', $waktu_time) * 60 + date('i', $waktu_time);
-  
+
   return $waktu_menit > $batas_waktu_menit;
-  
 }
 
 if (canSubmit($waktu)) {
@@ -326,30 +326,34 @@ if ($_SESSION['login'] == 0) {
 
           <!-- Main content -->
           <section class="content">
-            <?php
-            // JIKA BELUM ABSEN, MAKA TAMPILKAN FORM
-            if (!$total_absen_hari_ini) {
-            ?>
+            <div class="box box-warning">
+              <div class='box-header with-border'>
+                <?php
+                // JIKA BELUM ABSEN, MAKA TAMPILKAN FORM
+                if (!$total_absen_hari_ini) {
+                ?>
 
-              <form method="POST" action="absen.php">
-                <input type="radio" name="kehadiran" id="hadir" value="H" <?= @$data_absen['kehadiran'] == 'H' ? 'checked' : '' ?>>
-                <label for="hadir">Hadir</label>
-                <input type="radio" name="kehadiran" id="izin" value="I" <?= @$data_absen['kehadiran'] == 'I' ? 'checked' : '' ?>>
-                <label for="izin">Izin</label>
-                <input type="radio" name="kehadiran" id="sakit" value="S" <?= @$data_absen['kehadiran'] == 'S' ? 'checked' : '' ?>>
-                <label for="sakit">Sakit</label>
-                <br>
-                <h3>Kegiatan hari ini:</h3>
-                <textarea class="form-control" placeholder="Isi kegiatan anda disini" rows="10" name="kegiatan" value="<?= @$data_absen['kegiatan'] ?>"></textarea>
-                <br>
-                <?= $button; ?>
-              </form>
+                  <form method="POST" action="absen.php">
+                    <input type="radio" name="kehadiran" id="hadir" value="H" <?= @$data_absen['kehadiran'] == 'H' ? 'checked' : '' ?>>
+                    <label for="hadir">Hadir</label>
+                    <input type="radio" name="kehadiran" id="izin" value="I" <?= @$data_absen['kehadiran'] == 'I' ? 'checked' : '' ?>>
+                    <label for="izin">Izin</label>
+                    <input type="radio" name="kehadiran" id="sakit" value="S" <?= @$data_absen['kehadiran'] == 'S' ? 'checked' : '' ?>>
+                    <label for="sakit">Sakit</label>
+                    <br>
+                    <h3>Kegiatan hari ini:</h3>
+                    <textarea class="form-control" placeholder="Isi kegiatan anda disini" rows="10" name="kegiatan" value="<?= @$data_absen['kegiatan'] ?>"></textarea>
+                    <br>
+                    <?= $button; ?>
+                  </form>
 
-            <?php } else { ?>
+                <?php } else { ?>
 
-              <h3 align="center">ANDA SUDAH MENGISI ABSEN HARI INI</h3>
+                  <h3 align="center">ANDA SUDAH MENGISI ABSEN HARI INI</h3>
 
-            <?php } ?>
+                <?php } ?>
+              </div>
+            </div>
           </section>
         </div><!-- /.content-wrapper -->
 

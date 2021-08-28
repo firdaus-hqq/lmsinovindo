@@ -9,7 +9,7 @@ include "../adminku/configurasi/v_tabel.php";
 
 if (isset($_SESSION['idsiswa'])) {
     $id_siswa = $_SESSION['idsiswa'];
-    $sql = "SELECT * FROM tugas WHERE id_siswa = " . $id_siswa;
+    $sql = "SELECT * FROM tugas WHERE id_siswa = '$id_siswa' order by id_file desc";
     $result = $mysqli->query($sql);
     if ($result->num_rows > 0) {
         $tugas = $result->fetch_array();
@@ -104,10 +104,10 @@ $listTugas = $mysqli->query($sql);
                             <td class="mailbox-name">
                                 <?= $tugas['tanggal'] ?>
                             </td>
-                            <td class="mailbox-date"><?= $tugas['file'] ?></td>
-                            <td class="mailbox-date"><?= $tugas['link'] ?></td>
+                            <td class="mailbox-date"><a target="_blank" href="tugas/<?= $tugas['file'] ?>"><?= $tugas['file'] ?></a></td>
+                            <td class="mailbox-date"><a target="_blank" href="<?= $tugas['file'] ?>"><?= $tugas['link'] ?></a></td>
                             <td>
-                                <a href="../adminku/edit.php?id=<?= $tugas['id_file']; ?>"><button class="btn btn-info">Edit</button></a>
+                                <a href="../adminku/edit.php?id_file=<?= $tugas['id_file']; ?>"><button class="btn btn-info">Edit</button></a>
 
                                 <button class="btn btn-danger" onclick="confirm('Yakin ingin menghapus tugas ini?') ? window.location.href='delete.php?id_file=<?= $tugas['id_file'] ?>':''">Hapus</button></a>
                             </td>

@@ -24,6 +24,7 @@
   </li>";
                     echo "<li class='header'>Content Web</li>
    <li><a href='?module=setting'><i class='fa fa-toggle-on'></i><span>Setting Web</span></a></li>
+   <li><a href='v_daftar_absen.php'><i class='fa fa-check'></i><span>Absensi</span></a></li>
    <li class='treeview'>
                 <a href='#'>
                     <i class='fa fa-book'></i>
@@ -43,8 +44,7 @@
   <li><a href='v_typing_test.php'><i class='fa fa-circle-o'></i>Typing Test</a></li>   
   <li><a href='v_test.php'><i class='fa fa-circle-o'></i>Pre Test & Post Test</a></li>                  
                 </ul>
-            </li>
-            <li><a href='v_daftar_absen.php'><i class='fa fa-check'></i><span>Absensi</span></a></li>";
+            </li>";
                 } elseif ($_SESSION['leveluser'] == 'pengajar') {
                     echo " <li class='header'>Menu Utama</li>
   <li class='active'><a href='?module=home'><i class='fa fa-dashboard'></i> <span>Dashboard</span></a> </li>

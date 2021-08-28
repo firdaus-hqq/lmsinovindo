@@ -1,6 +1,5 @@
 <?php
 include '../config/config.php';
-session_start();
 
 $id_file = @$_GET['id_file'];
 
@@ -8,6 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $link       = $_POST['link'];
     $file       = $_POST['name'];
     $fileTugas  = $_FILES['fileTugas'];
+    $fileLama  = $_POST['fileLama'];
 
     if (empty($link)) {
         echo "<script>console.log('Mohon isi link/keterangan terlebih dahulu');</script>";
@@ -15,12 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!empty($fileTugas) and $fileTugas['error'] == 0) {
             $path = 'tugas/';
             $upload = move_uploaded_file($fileTugas['tmp_name'], $path . $fileTugas['name']);
+            $fileLama = $fileTugas['name'];
         }
         if (!$upload) {
             echo "<script>alert('Upload GAGAL!')</script>";
             header('location:tambahtugas.php');
         }
-        $file = $fileTugas['name'];
+        $file = $fileLama;
     }
 
     $sql = "UPDATE tugas SET

@@ -12,29 +12,31 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } else {
    
 }
-    if (empty($link)) {
-        echo "<script>console.log('Mohon isi link/keterangan terlebih dahulu');</script>";
-    } else {
-        if (!empty($fileTugas) and $fileTugas['error'] == 0) {
-            $path = 'tugas/';
-            $upload = move_uploaded_file($fileTugas['tmp_name'], $path . $fileTugas['name']);
+    // if (empty($link)) {
+    //     echo "<script>console.log('Mohon isi link/keterangan terlebih dahulu');</script>";
+    // } else {
+        
+    // }
 
-            if (!$upload) {
-                echo "<script>alert('Upload GAGAL!')</script>";
-                header('location:tambahtugas.php');
-            }
-            $file = $fileTugas['name'];
+    if (!empty($fileTugas) and $fileTugas['error'] == 0) {
+        $path = 'tugas/';
+        $upload = move_uploaded_file($fileTugas['tmp_name'], $path . $fileTugas['name']);
+
+        if (!$upload) {
+            echo "<script>alert('Upload GAGAL!')</script>";
+            header('location:tambahtugas.php');
         }
-
-        $sql = "INSERT INTO tugas (id_siswa, file, link, tanggal) 
-                VALUES ('$id_siswa', '$file', '$link', '$tanggal')";
-
-        $mysqli->query($sql) or die($mysqli->error);
-
-        header("location:tugas.php");
+        $file = $fileTugas['name'];
     }
 
+    $sql = "INSERT INTO tugas (id_siswa, file, link, tanggal) 
+            VALUES ('$id_siswa', '$file', '$link', '$tanggal')";
 
-$sql = "SELECT * FROM tugas";
+    $mysqli->query($sql) or die($mysqli->error);
+
+    header("location:tugas.php");
+
+
+$sql = "SELECT * FROM tugas order by id desc";
 $tugas = $mysqli->query($sql) or die($mysqli->error);
 ?>
