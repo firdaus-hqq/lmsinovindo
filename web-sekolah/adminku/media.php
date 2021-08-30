@@ -1,6 +1,6 @@
 <?php
-session_start();
-error_reporting(0);
+// error_reporting(0);
+include '../config/config.php';
 include "configurasi/koneksi.php";
 include "configurasi/library.php";
 include "configurasi/fungsi_indotgl.php";
@@ -220,6 +220,24 @@ if ($_SESSION['login'] == 0) {
                 </ul>
               </li>
               <li><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
+              <li class="treeview">
+                <a href="#">
+                  <i class="fa fa-laptop"></i>
+                  <span>Ujian</span><i class='fa fa-angle-left pull-right'></i>
+                </a>
+                <ul class="treeview-menu">
+                  <li>
+                    <a href="ujian.php">
+                      <i class='fa fa-circle-o'></i><span class="title">Index Ujian</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="v_peringkat_prepost.php">
+                      <i class='fa fa-circle-o'></i><span class="title">Daftar Nilai</span>
+                    </a>
+                  </li>
+                </ul>
+              </li>
               <li class="treeview">
                 <a href="#">
                   <i class="fa fa-trophy"></i>

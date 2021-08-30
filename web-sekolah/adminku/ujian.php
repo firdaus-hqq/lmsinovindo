@@ -1,14 +1,11 @@
 <?php
 // error_reporting(0);
+include '../config/config.php';
 include "configurasi/koneksi.php";
 include "configurasi/library.php";
 include "configurasi/fungsi_indotgl.php";
 include "configurasi/fungsi_combobox.php";
 include "timeout.php";
-
-$action = 'tambahlink.php';
-if (!empty($tugas)) $action = 'edit.php?id_file='.$tugas['id_file'];
-
 if ($_SESSION['login'] == 1) {
     if (!cek_login()) {
         $_SESSION['login'] = 0;
@@ -18,7 +15,7 @@ if ($_SESSION['login'] == 0) {
     echo "<link href='bs3/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
  <center><br><br><br><br><br><br>Maaf, untuk masuk <b>Halaman</b><br>
   <center>anda harus <b>Login</b> dahulu!<br><br>";
-    echo "<div> <a href='#'><img src='images/kunci.png'  height=176 width=143></a>
+    echo "<div> <a href='#'><img src='https://c.tenor.com/v2Klip5v8hoAAAAC/among-us-fp.gif'  height=176 width=176></a>
              </div>";
     echo "<input type=button class='btn btn-primary' value='LOGIN DI SINI' onclick=location.href='../login_siswa.php'></a></center>";
 } else {
@@ -26,12 +23,11 @@ if ($_SESSION['login'] == 0) {
         echo "<link href='bs3/css/bootstrap.min.css' rel='stylesheet' type='text/css'><link href='css/reset.css' rel='stylesheet' type='text/css'>
  <center><br><br><br><br><br><br>Maaf, untuk masuk <b>Halaman</b><br>
   <center>anda harus <b>Login</b> dahulu!<br><br>";
-        echo "<div> <a href='index.php'><img src='images/kunci.png'  height=176 width=143></a>
+        echo "<div> <a href='index.php'><img src='https://c.tenor.com/v2Klip5v8hoAAAAC/among-us-fp.gif'  height=176 width=143></a>
              </div>";
         echo "<input type=button class='btn btn-primary' value='LOGI DI SINI' onclick=location.href='../login_siswa.php'></a></center>";
     } else {
 ?>
-
         <!DOCTYPE html>
         <html>
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -168,10 +164,8 @@ if ($_SESSION['login'] == 0) {
                         <ul class="sidebar-menu">
                             <li class="header">Menu Learning</li>
 
-
-
                             <!-- Optionally, you can add icons to the links -->
-                            <li class="active"><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
+                            <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
 
                             <li class="treeview">
                                 <a href="#">
@@ -195,11 +189,6 @@ if ($_SESSION['login'] == 0) {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="absensi_pkl">
-                                            <i class='fa fa-circle-o'></i> <span class="title">Absensi</span>
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a href="media.php?module=quiz">
                                             <i class='fa fa-circle-o'></i><span class="title">Ujian</span>
                                         </a>
@@ -212,7 +201,61 @@ if ($_SESSION['login'] == 0) {
                                     </li>
                                 </ul>
                             </li>
-                            <li class="active"><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-check"></i>
+                                    <span>Absensi</span><i class='fa fa-angle-left pull-right'></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="v_absen.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Mengisi Absensi</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="v_data_absen.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Data Absensi</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
+                            <li class="treeview active">
+                                <a href="#">
+                                    <i class="fa fa-laptop"></i>
+                                    <span>Ujian</span><i class='fa fa-angle-left pull-right'></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li class="active">
+                                        <a href="ujian.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Index Ujian</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="v_peringkat_prepost.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Daftar Nilai</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-trophy"></i>
+                                    <span>Peringkat</span><i class='fa fa-angle-left pull-right'></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="v_peringkat_typing.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Typing Test</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="v_peringkat_prepost.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Pre Test & Post Test</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="header">Account</li>
                             <li class="treeview">
                                 <a href="#">
@@ -243,75 +286,57 @@ if ($_SESSION['login'] == 0) {
                 <div class="content-wrapper">
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
-
-                    <?php
-                }
-                    ?>
-
-                    <h1>
-                        Selamat Datang di
-                        <small>Halaman E-Learning Siswa</small>
-                    </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-calendar"></i><?php include "../adminku/jam/jam.php" ?></a></li>
-                        <li class="active"><?php include "../adminku/jam/tanggal.php" ?></li>
-                    </ol>
+                        <h1>
+                            Selamat Datang di
+                            <small>Halaman E-Learning Siswa</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-calendar"></i><?php include "jam/jam.php" ?></a></li>
+                            <li class="active"><?php include "jam/tanggal.php" ?></li>
+                        </ol>
                     </section>
 
                     <!-- Main content -->
                     <section class="content">
-                        <div class="container-fluid">
-                            <form method="POST" action='<?= $action ?>' enctype="multipart/form-data" class="form-horizontal form-groups-bordered">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Upload File / Gambar </label>
-                                    <input type="file" name="fileTugas" class="form-control" autocomplete="off" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Upload disini" onchange="loadfile(event)">
-                                    
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <div class="box-header">
+                                        <div>
+                                            <div id="responsecontainer"></div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Dokumen : </label><br>
-                                <?= $tugas['file'] ?? 'Tidak ada dokumen'; ?>
-                                </div>
+                            </div>
+                        </div><!-- ./wrapper -->
 
-                                <input type="hidden" name="fileLama" value="<?= $tugas['file'] ?? ''; ?>">
-                                
-                                <br>
-                                <div class="form-group">
-                                    <textarea name="link" class="form-control ckeditor" cols="75" rows="3" style="visibility: hidden; display: none;"><?= @$tugas['link'] ?></textarea>
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="box">
+                                    <div></div>
+
                                 </div>
-                                <br>
-                                <div class="col-sm-13">
-                                    <input class="btn btn-success" type="submit" name="simpan" value="Submit">
-                                </div>
-                            </form>
+                            </div>
                         </div>
-                    </section>
-                </div>
-            </div>
-        </body>
+                    </section><!-- /.content -->
+                </div><!-- /.content-wrapper -->
 
-        <!-- Optional JavaScript; choose one of the two! -->
+                <!-- Main Footer -->
+                <footer class="main-footer">
+                    <!-- To the right -->
+                    <div class="pull-right hidden-xs">
+                        Version 1.0
+                    </div>
+                    <!-- Default to the left -->
+                    <strong>Copyright &copy; 2021 <a href="#">Inovindo</a>.</strong> All rights reserved.
+                </footer>
 
-        <!-- Option 1: Bootstrap Bundle with Popper -->
+                <!-- Control Sidebar -->
 
-
-        <!-- Option 2: Separate Popper and Bootstrap JS -->
-
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <div class="pull-right hidden-xs">
-                Version 1.0
-            </div>
-            <!-- Default to the left -->
-            <strong>Copyright &copy; 2021 <a href="#">inovindo</a>.</strong> All rights reserved.
-        </footer>
-
-        <!-- Control Sidebar -->
-
-        <!-- Add the sidebar's background. This div must be placed
+                <!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
-        </div><!-- ./wrapper -->
+                <div class="control-sidebar-bg"></div>
+            </div><!-- ./wrapper -->
 
 
 
@@ -320,67 +345,79 @@ if ($_SESSION['login'] == 0) {
 
 
 
-        <script src="plugins/jQuery/jquery-1.12.0.min.js"></script>
+            <script src="plugins/jQuery/jquery-1.12.0.min.js"></script>
 
 
-        <script src="plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-        <script src="plugins/jquery.ui.touch-punch.min.js"></script>
+            <script src="plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+            <script src="plugins/jquery.ui.touch-punch.min.js"></script>
 
-        <!-- Bootstrap 3.3.2 JS -->
-        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <!-- AdminLTE App -->
-        <script src="dist/js/app.min.js" type="text/javascript"></script>
+            <!-- Bootstrap 3.3.2 JS -->
+            <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <!-- AdminLTE App -->
+            <script src="dist/js/app.min.js" type="text/javascript"></script>
 
-        <!-- DATATABLES -->
-        <script src="plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
-        <script src="plugins/datatables/media/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
-        <script src="plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
-        <script src="plugins/datatables/extensions/Responsive/js/responsive.bootstrap.js" type="text/javascript"></script>
-        <!-- DATATABLES -->
+            <!-- DATATABLES -->
+            <script src="plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+            <script src="plugins/datatables/media/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+            <script src="plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
+            <script src="plugins/datatables/extensions/Responsive/js/responsive.bootstrap.js" type="text/javascript"></script>
+            <!-- DATATABLES -->
 
-        <!--isotope-->
-        <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
-        <script src="plugins/imagesloaded.pkgd.min.js" type="text/javascript"></script>
-        <!--isotope-->
-        <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
-        <script src="plugins/chartJs/Chart.min.js" type="text/javascript"></script>
-        <script src="plugins/chartJs/Chart.Bar.js" type="text/javascript"></script>
-        <script src="dist/js/ando_admin.js" type="text/javascript"></script>
-        <script src="dist/js/mosaicflow.min.js" type="text/javascript"></script>
-        <script src="plugins/file-uploader/js/vendor/jquery.ui.widget.js"></script>
-        <script src="plugins/file-uploader/js/jquery.fileupload.js"></script>
-        <script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
-        <script src="plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
-        <script src="plugins/ckeditor/adapters/jquery.js" type="text/javascript"></script>
-        <script>
-            $(function() {
-                $("#example1").DataTable();
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false
+            <!--isotope-->
+            <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
+            <script src="plugins/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+            <!--isotope-->
+            <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
+            <script src="plugins/chartJs/Chart.min.js" type="text/javascript"></script>
+            <script src="plugins/chartJs/Chart.Bar.js" type="text/javascript"></script>
+            <script src="dist/js/ando_admin.js" type="text/javascript"></script>
+            <script src="dist/js/mosaicflow.min.js" type="text/javascript"></script>
+            <script src="plugins/file-uploader/js/vendor/jquery.ui.widget.js"></script>
+            <script src="plugins/file-uploader/js/jquery.fileupload.js"></script>
+            <script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
+            <script src="plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+            <script src="plugins/ckeditor/adapters/jquery.js" type="text/javascript"></script>
+            <script>
+                $(function() {
+                    $("#example1").DataTable();
+                    $('#example2').DataTable({
+                        "paging": true,
+                        "lengthChange": false,
+                        "searching": false,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false
+                    });
                 });
-            });
-        </script>
-        <script>
-            $(document).ready(function() {
-                $('#example3').DataTable({
-                    dom: 'Bfrtip',
-                    buttons: [
-                        'copy', 'csv', 'excel', 'pdf', 'print'
-                    ]
+            </script>
+            <script>
+                $(document).ready(function() {
+                    $('#example3').DataTable({
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'copy', 'csv', 'excel', 'pdf', 'print'
+                        ]
+                    });
                 });
-            });
-        </script>
+            </script>
+            <script type="text/javascript">
+                function toggle_visibility(id) {
+                    var e = document.getElementById(id);
+                    if (e.style.display == 'none')
+                        e.style.display = 'block';
+                    else
+                        e.style.display = 'none';
+                }
+            </script>
+            <?php
+            include "monitor_script.php";
+            ?>
         </body>
 
         </html>
 
 
-    <?php
+<?php
+    }
 }
-
-    ?>
+?>

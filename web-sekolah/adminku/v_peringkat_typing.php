@@ -1,13 +1,14 @@
 <?php
-// error_reporting(0);
+include "../config/config.php";
 include "configurasi/koneksi.php";
 include "configurasi/library.php";
 include "configurasi/fungsi_indotgl.php";
 include "configurasi/fungsi_combobox.php";
 include "timeout.php";
 
-$action = 'tambahlink.php';
-if (!empty($tugas)) $action = 'edit.php?id_file='.$tugas['id_file'];
+$sql = 'SELECT * FROM peringkat INNER JOIN kelas ON (peringkat.id_kelas = kelas.id_kelas) ORDER BY wpm DESC, accuracy DESC LIMIT 10';
+
+$listPeringkat = $mysqli->query($sql);
 
 if ($_SESSION['login'] == 1) {
     if (!cek_login()) {
@@ -31,7 +32,6 @@ if ($_SESSION['login'] == 0) {
         echo "<input type=button class='btn btn-primary' value='LOGI DI SINI' onclick=location.href='../login_siswa.php'></a></center>";
     } else {
 ?>
-
         <!DOCTYPE html>
         <html>
         <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
@@ -168,10 +168,8 @@ if ($_SESSION['login'] == 0) {
                         <ul class="sidebar-menu">
                             <li class="header">Menu Learning</li>
 
-
-
                             <!-- Optionally, you can add icons to the links -->
-                            <li class="active"><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
+                            <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
 
                             <li class="treeview">
                                 <a href="#">
@@ -195,11 +193,6 @@ if ($_SESSION['login'] == 0) {
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="absensi_pkl">
-                                            <i class='fa fa-circle-o'></i> <span class="title">Absensi</span>
-                                        </a>
-                                    </li>
-                                    <li>
                                         <a href="media.php?module=quiz">
                                             <i class='fa fa-circle-o'></i><span class="title">Ujian</span>
                                         </a>
@@ -212,7 +205,26 @@ if ($_SESSION['login'] == 0) {
                                     </li>
                                 </ul>
                             </li>
-                            <li class="active"><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
+                            <li class="treeview">
+                                <a href="#">
+                                    <i class="fa fa-check"></i>
+                                    <span>Absensi</span><i class='fa fa-angle-left pull-right'></i>
+                                </a>
+                                <ul class="treeview-menu">
+                                    <li>
+                                        <a href="v_absen.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Mengisi Absensi</span>
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="v_data_absen.php">
+                                            <i class='fa fa-circle-o'></i><span class="title">Data Absensi</span>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
+                            <li class="active"><a href="v_peringkat.php"><i class="fa fa-trophy"></i> <span>Peringkat</span></a></li>
                             <li class="header">Account</li>
                             <li class="treeview">
                                 <a href="#">
@@ -243,75 +255,68 @@ if ($_SESSION['login'] == 0) {
                 <div class="content-wrapper">
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
-
-                    <?php
-                }
-                    ?>
-
-                    <h1>
-                        Selamat Datang di
-                        <small>Halaman E-Learning Siswa</small>
-                    </h1>
-                    <ol class="breadcrumb">
-                        <li><a href="#"><i class="fa fa-calendar"></i><?php include "../adminku/jam/jam.php" ?></a></li>
-                        <li class="active"><?php include "../adminku/jam/tanggal.php" ?></li>
-                    </ol>
+                        <h1>
+                            Selamat Datang di
+                            <small>Halaman E-Learning Siswa</small>
+                        </h1>
+                        <ol class="breadcrumb">
+                            <li><a href="#"><i class="fa fa-calendar"></i><?php include "jam/jam.php" ?></a></li>
+                            <li class="active"><?php include "jam/tanggal.php" ?></li>
+                        </ol>
                     </section>
 
                     <!-- Main content -->
                     <section class="content">
-                        <div class="container-fluid">
-                            <form method="POST" action='<?= $action ?>' enctype="multipart/form-data" class="form-horizontal form-groups-bordered">
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">Upload File / Gambar </label>
-                                    <input type="file" name="fileTugas" class="form-control" autocomplete="off" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Upload disini" onchange="loadfile(event)">
-                                    
-                                </div>
-                                <div class="form-group">
-                                    <label>Dokumen : </label><br>
-                                <?= $tugas['file'] ?? 'Tidak ada dokumen'; ?>
-                                </div>
 
-                                <input type="hidden" name="fileLama" value="<?= $tugas['file'] ?? ''; ?>">
-                                
-                                <br>
-                                <div class="form-group">
-                                    <textarea name="link" class="form-control ckeditor" cols="75" rows="3" style="visibility: hidden; display: none;"><?= @$tugas['link'] ?></textarea>
-                                </div>
-                                <br>
-                                <div class="col-sm-13">
-                                    <input class="btn btn-success" type="submit" name="simpan" value="Submit">
-                                </div>
-                            </form>
+                        <div class="box box-warning">
+                            <div class='box-header with-border'>
+                                <table id='example1' class='table table-bordered table-striped'>
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Asal Sekolah</th>
+                                            <th>WPM</th>
+                                            <th>Accuracy</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $i = 1;
+                                        while ($peringkat = $listPeringkat->fetch_array()) {
+                                        ?>
+                                            <tr>
+                                                <td><?= $i++ ?></td>
+                                                <td><?= $peringkat['nama_lengkap'] ?></td>
+                                                <td><?= $peringkat['nama'] ?></td>
+                                                <td><?= $peringkat['wpm'] ?></td>
+                                                <td><?= $peringkat['accuracy'] ?></td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </section>
-                </div>
-            </div>
-        </body>
 
-        <!-- Optional JavaScript; choose one of the two! -->
+                    </section><!-- /.content -->
+                </div><!-- /.content-wrapper -->
 
-        <!-- Option 1: Bootstrap Bundle with Popper -->
+                <!-- Main Footer -->
+                <footer class="main-footer">
+                    <!-- To the right -->
+                    <div class="pull-right hidden-xs">
+                        Version 1.0
+                    </div>
+                    <!-- Default to the left -->
+                    <strong>Copyright &copy; 2021 <a href="#">Inovindo</a>.</strong> All rights reserved.
+                </footer>
 
+                <!-- Control Sidebar -->
 
-        <!-- Option 2: Separate Popper and Bootstrap JS -->
-
-        <!-- Main Footer -->
-        <footer class="main-footer">
-            <!-- To the right -->
-            <div class="pull-right hidden-xs">
-                Version 1.0
-            </div>
-            <!-- Default to the left -->
-            <strong>Copyright &copy; 2021 <a href="#">inovindo</a>.</strong> All rights reserved.
-        </footer>
-
-        <!-- Control Sidebar -->
-
-        <!-- Add the sidebar's background. This div must be placed
+                <!-- Add the sidebar's background. This div must be placed
            immediately after the control sidebar -->
-        <div class="control-sidebar-bg"></div>
-        </div><!-- ./wrapper -->
+                <div class="control-sidebar-bg"></div>
+            </div><!-- ./wrapper -->
 
 
 
@@ -320,67 +325,67 @@ if ($_SESSION['login'] == 0) {
 
 
 
-        <script src="plugins/jQuery/jquery-1.12.0.min.js"></script>
+            <script src="plugins/jQuery/jquery-1.12.0.min.js"></script>
 
 
-        <script src="plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
-        <script src="plugins/jquery.ui.touch-punch.min.js"></script>
+            <script src="plugins/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+            <script src="plugins/jquery.ui.touch-punch.min.js"></script>
 
-        <!-- Bootstrap 3.3.2 JS -->
-        <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-        <!-- AdminLTE App -->
-        <script src="dist/js/app.min.js" type="text/javascript"></script>
+            <!-- Bootstrap 3.3.2 JS -->
+            <script src="bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+            <!-- AdminLTE App -->
+            <script src="dist/js/app.min.js" type="text/javascript"></script>
 
-        <!-- DATATABLES -->
-        <script src="plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
-        <script src="plugins/datatables/media/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
-        <script src="plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
-        <script src="plugins/datatables/extensions/Responsive/js/responsive.bootstrap.js" type="text/javascript"></script>
-        <!-- DATATABLES -->
+            <!-- DATATABLES -->
+            <script src="plugins/datatables/media/js/jquery.dataTables.min.js" type="text/javascript"></script>
+            <script src="plugins/datatables/media/js/dataTables.bootstrap.min.js" type="text/javascript"></script>
+            <script src="plugins/datatables/extensions/Responsive/js/dataTables.responsive.min.js" type="text/javascript"></script>
+            <script src="plugins/datatables/extensions/Responsive/js/responsive.bootstrap.js" type="text/javascript"></script>
+            <!-- DATATABLES -->
 
-        <!--isotope-->
-        <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
-        <script src="plugins/imagesloaded.pkgd.min.js" type="text/javascript"></script>
-        <!--isotope-->
-        <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
-        <script src="plugins/chartJs/Chart.min.js" type="text/javascript"></script>
-        <script src="plugins/chartJs/Chart.Bar.js" type="text/javascript"></script>
-        <script src="dist/js/ando_admin.js" type="text/javascript"></script>
-        <script src="dist/js/mosaicflow.min.js" type="text/javascript"></script>
-        <script src="plugins/file-uploader/js/vendor/jquery.ui.widget.js"></script>
-        <script src="plugins/file-uploader/js/jquery.fileupload.js"></script>
-        <script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
-        <script src="plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
-        <script src="plugins/ckeditor/adapters/jquery.js" type="text/javascript"></script>
-        <script>
-            $(function() {
-                $("#example1").DataTable();
-                $('#example2').DataTable({
-                    "paging": true,
-                    "lengthChange": false,
-                    "searching": false,
-                    "ordering": true,
-                    "info": true,
-                    "autoWidth": false
+            <!--isotope-->
+            <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
+            <script src="plugins/imagesloaded.pkgd.min.js" type="text/javascript"></script>
+            <!--isotope-->
+            <script src="plugins/isotope.pkgd.min.js" type="text/javascript"></script>
+            <script src="plugins/chartJs/Chart.min.js" type="text/javascript"></script>
+            <script src="plugins/chartJs/Chart.Bar.js" type="text/javascript"></script>
+            <script src="dist/js/ando_admin.js" type="text/javascript"></script>
+            <script src="dist/js/mosaicflow.min.js" type="text/javascript"></script>
+            <script src="plugins/file-uploader/js/vendor/jquery.ui.widget.js"></script>
+            <script src="plugins/file-uploader/js/jquery.fileupload.js"></script>
+            <script src="plugins/datepicker/bootstrap-datepicker.min.js"></script>
+            <script src="plugins/ckeditor/ckeditor.js" type="text/javascript"></script>
+            <script src="plugins/ckeditor/adapters/jquery.js" type="text/javascript"></script>
+            <script>
+                $(function() {
+                    $("#example1").DataTable();
+                    $('#example2').DataTable({
+                        "paging": true,
+                        "lengthChange": false,
+                        "searching": false,
+                        "ordering": true,
+                        "info": true,
+                        "autoWidth": false
+                    });
                 });
-            });
-        </script>
-        <script>
-            $(document).ready(function() {
-                $('#example3').DataTable({
-                    dom: 'Bfrtip',
-                    buttons: [
-                        'copy', 'csv', 'excel', 'pdf', 'print'
-                    ]
+            </script>
+            <script>
+                $(document).ready(function() {
+                    $('#example3').DataTable({
+                        dom: 'Bfrtip',
+                        buttons: [
+                            'copy', 'csv', 'excel', 'pdf', 'print'
+                        ]
+                    });
                 });
-            });
-        </script>
+            </script>
         </body>
 
         </html>
 
 
-    <?php
+<?php
+    }
 }
-
-    ?>
+?>

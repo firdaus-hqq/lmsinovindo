@@ -48,7 +48,7 @@ function combobln($awal, $akhir, $var, $terpilih){
 }
 
 function combothn($awal, $akhir, $var, $terpilih){
-  echo "<div class='col-sm-2'><select name=$var class='form-control'>";
+  echo "<div class=''><select name=$var class='form-control'>";
   for ($i=$awal; $i<=$akhir; $i++){
     if ($i==$terpilih)
       echo "<option value=$i selected>$i</option>";
