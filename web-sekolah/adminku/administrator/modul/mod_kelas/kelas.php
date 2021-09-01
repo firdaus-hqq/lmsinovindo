@@ -66,22 +66,13 @@ switch($_GET[act]){
                         Tambah Kelas
                     </button>";
       echo "<br><br><table class='table table-bordered table-striped table-condensed cf'><thead>
-          <tr><th>No</th><th>Id kelas</th><th>Kelas</th><th>Wali Kelas</th><th>Ketua Kelas</th><th>Aksi</th></tr></thead>";
+          <tr><th>No</th><th>Id Kelompok</th><th>Asal Sekolah</th><th>Ketua Kelompok</th><th>Aksi</th></tr></thead>";
     $no=1;
     while ($r=mysqli_fetch_array($tampil)){       
        echo "<tr><td>$no</td>
              <td>$r[id_kelas]</td>
              <td>$r[nama]</td>";
-             $pengajar = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM pengajar WHERE id_pengajar = '$r[id_pengajar]'");
-                    $ada_pengajar = mysqli_num_rows($pengajar);
-                    if(!empty($ada_pengajar)){
-                    while($p=mysqli_fetch_array($pengajar)){
-                            echo "<td><a href=?module=admin&act=detailpengajar&id=$r[id_pengajar] title='Detail Wali Kelas' class='btn btn-info'>$p[nama_lengkap]</a></td>";
-                    }
-                    }else{
-                            echo "<td></td>";
-                    }
-
+             
                     $siswa = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa = '$r[id_siswa]]'");
                     $ada_siswa = mysqli_num_rows($siswa);
                     if(!empty($ada_siswa)){
@@ -124,44 +115,27 @@ switch($_GET[act]){
                           </div>
 
 
-                          <input type=text name='id_kelas' class='form-control' id='field-1' required='required' placeholder='Placeholder'>
+                          <input type=text name='id_kelas' class='form-control' id='field-1' required='required' placeholder='ID Kelas'>
                         </div>
                         </div>
                       </div>
 
                       <div class='form-group'>
-                        <label class='control-label col-sm-2' for='IP'>Nama Kelas</label>
+                        <label class='control-label col-sm-2' for='IP'>Asal Sekolah</label>
                         <div class='col-sm-10'>
                         <div class='input-group'>
                           <div class='input-group-addon'>
                             <i class='fa fa-laptop'></i>
                           </div>
 
- <input type=text name='nama' class='form-control' id='field-1' required='required' placeholder='Placeholder'>
+ <input type=text name='nama' class='form-control' id='field-1' required='required' placeholder='Nama Sekolah'>
                          
                         </div>
                         </div>
                       </div>
-                       <div class='form-group'>
-                        <label class='control-label col-sm-2' for='IP'>Wali Kelas</label>
-                        <div class='col-sm-10'>
-                        <div class='input-group'>
-                          <div class='input-group-addon'>
-                            <i class='fa fa-laptop'></i>
-                          </div>
-
- <select name='id_pengajar' class='form-control'>
-                                      <option value=0 selected>-- Pilih Pengajar --</option>";
-                                      $tampil=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM pengajar ORDER BY nama_lengkap");
-                                      while($r=mysqli_fetch_array($tampil)){
-                                      echo "<option value=$r[id_pengajar]>$r[nama_lengkap]</option>";
-                                      }echo "</select>
-                         
-                        </div>
-                        </div>
-                      </div>
+                       
                       <div class='form-group'>
-                        <label class='control-label col-sm-2' for='IP'>Ketua Kelas</label>
+                        <label class='control-label col-sm-2' for='IP'>Ketua Kelompok</label>
                         <div class='col-sm-10'>
                         <div class='input-group'>
                           <div class='input-group-addon'>
@@ -215,7 +189,7 @@ switch($_GET[act]){
          if (!empty($ketemu)){
                 echo "<br/>
                 <br/><table class='table table-bordered table-striped table-condensed cf'><thead>
-                <tr><th>No</th><th>Kelas</th><th>Wali Kelas</th><th>Ketua Kelas</th><th>Aksi</th></tr></thead>";
+                <tr><th>No</th><th>Kelas</th><th>Wali Kelas</th><th>Ketua Kelompok</th><th>Aksi</th></tr></thead>";
 
                 $no=1;
                 while ($r=mysqli_fetch_array($tampil_kelas)){
@@ -278,7 +252,7 @@ switch($_GET[act]){
         $kelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$data_siswa[id_kelas]'");
 
         echo "<table class='table table-bordered table-striped table-condensed cf'>
-          <thead class='cf'><tr><th>No</th><th>Kelas</th><th>Wali Kelas</th><th>Ketua Kelas</th><th>Aksi</th></tr></thead><tbody>";
+          <thead class='cf'><tr><th>No</th><th>Kelas</th><th>Wali Kelas</th><th>Ketua Kelompok</th><th>Aksi</th></tr></thead><tbody>";
         $no=1;
         while ($r=mysqli_fetch_array($kelas)){
        echo "<tr>
@@ -333,21 +307,14 @@ switch($_GET[act]){
          
           <div class ='form-group'>
          <div class='col-sm-2'>
-         <label>Id Kelas</label></div>       <div class='col-sm-5'><input type=text name='id_kelas' value='$r[id_kelas]' class='form-control' id='field-1' required='required' placeholder='Placeholder'> </div></div>
+         <label>Id Sekolah</label></div>       <div class='col-sm-5'><input type=text name='id_kelas' value='$r[id_kelas]' class='form-control' id='field-1' required='required' placeholder='Placeholder'> </div></div>
         <div class ='form-group'>
-         <div class='col-sm-2'><label>Nama Kelas</label></div> <div class='col-sm-5'> <input type=text name='nama' value='$r[nama]' class='form-control' id='field-1' required='required' placeholder='Placeholder'></div></div>
+         <div class='col-sm-2'><label>Asal Sekolah</label></div> <div class='col-sm-5'> <input type=text name='nama' value='$r[nama]' class='form-control' id='field-1' required='required' placeholder='Placeholder'></div></div>
             <div class ='form-group'>
-         <div class='col-sm-2'><label>Wali Kelas</label></div>     <div class='col-sm-2'>
-          <select name='id_pengajar' class='form-control'>";
-                                 
-                                      echo "<option value='$nipp[id_pengajar]' selected>$nipp[nama_lengkap]</option>";
-                                      $tampil=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM pengajar ORDER BY nama_lengkap");
-                                      while($p=mysqli_fetch_array($tampil)){
-                                      echo "<option value=$p[id_pengajar]>$p[nama_lengkap]</option>";
-                                      }echo "</select></div></div>
+         
             <div class ='form-group'>
          <div class='col-sm-2'>
-         <label>Ketua Kelas</label></div>    <div class='col-sm-2'><select name='id_siswa' class='form-control'>
+         <label>Ketua Kelompok</label></div>    <div class='col-sm-2'><select name='id_siswa' class='form-control'>
                                       <option value='$niss[id_siswa]' selected>$niss[nama_lengkap]</option>";
                                       $tampil_siswa=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa ORDER BY nama_lengkap");
                                       while($s=mysqli_fetch_array($tampil_siswa)){
@@ -388,7 +355,7 @@ switch($_GET[act]){
                                             echo "<option value=$t[id_kelas]>$t[nama]</option>";
                                       }echo"</select></div>
                                       </div>
-        <div class ='form-group'> <div class='col-sm-3'> <label>Ketua Kelas </label> </div> 
+        <div class ='form-group'> <div class='col-sm-3'> <label>Ketua Kelompok </label> </div> 
         <div class='col-sm-2'> 
         <select name='ketua' class='form-control'>";
                                       $siswa = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa = '$r[id_siswa]'");
@@ -436,7 +403,7 @@ case "detailkelas":
           <div class='col-md-12 col-xs-12'> 
       ";
     echo "<br><table class='table table-bordered table-striped table-condensed cf'><thead>
-          <tr><th>Id Kelas</th><th>Kelas</th><th>Wali Kelas</th><th>Ketua Kelas</th><th>Aksi</th></tr></thead>";
+          <tr><th>Id Sekolah</th><th>Kelas</th><th>Wali Kelas</th><th>Ketua Kelompok</th><th>Aksi</th></tr></thead>";
 
     while ($r=mysqli_fetch_array($detail)){
        echo "<tr>
@@ -481,7 +448,7 @@ case "detailkelas":
       
           <div class='panel-body'>";
     echo "<table class='table table-bordered table-striped table-condensed cf'><thead>
-          <tr><th>No</th><th>Kelas</th><th>Wali Kelas</th><th>Ketua Kelas</th><th>Aksi</th></tr></thead>";
+          <tr><th>No</th><th>Kelas</th><th>Wali Kelas</th><th>Ketua Kelompok</th><th>Aksi</th></tr></thead>";
     $no = 1;
     while ($r=mysqli_fetch_array($detail)){
        echo "<tr>

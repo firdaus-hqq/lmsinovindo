@@ -67,7 +67,7 @@ switch($_GET['act']){
                           <div class='input-group-addon'>
                             <i class='fa fa-laptop'></i>
                           </div>
-                       <input type=text  class='form-control' id='field-1' required='required' placeholder='Placeholder' name='nama_modul'>
+                       <input type=text  class='form-control' id='field-1' required='required' placeholder='Judul Modul' name='nama_modul'>
                         </div>
                         </div>
                       </div>
@@ -80,7 +80,7 @@ switch($_GET['act']){
                             <i class='fa fa-laptop'></i>
                           </div>
 
-<input type=text  class='form-control' id='field-1' required='required' placeholder='Placeholder' name='link' size=30>                         
+<input type=text  class='form-control' id='field-1' required='required' placeholder='Link Modul' name='link' size=30>                         
                         </div>
                         </div>
                       </div>
