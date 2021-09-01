@@ -1509,10 +1509,10 @@ a:focus {
   border-top-color: #00c0ef;
 }
 .box.box-danger {
-  border-top-color: #dd4b39;
+  border-top-color: #77f312;
 }
 .box.box-warning {
-  border-top-color: #f39c12;
+  border-top-color: #60c210;
 }
 .box.box-success {
   border-top-color: #00a65a;
@@ -2089,6 +2089,10 @@ a:focus {
  * Component: Button
  * -----------------
  */
+.div.col-sm-6 {
+  float: right;
+}
+
 .btn {
   border-radius: 3px;
   -webkit-box-shadow: none;
@@ -2145,6 +2149,7 @@ a:focus {
 .btn-primary {
   background-color: #3c8dbc;
   border-color: #367fa9;
+  float: right;
 }
 .btn-primary:hover,
 .btn-primary:active,
@@ -2152,8 +2157,9 @@ a:focus {
   background-color: #367fa9;
 }
 .btn-success {
-  background-color: #00a65a;
-  border-color: #008d4c;
+  background-color: #60c210;
+  border-color: #60c210;
+  float: right;
 }
 .btn-success:hover,
 .btn-success:active,
@@ -2161,13 +2167,13 @@ a:focus {
   background-color: #008d4c;
 }
 .btn-info {
-  background-color: #00c0ef;
-  border-color: #00acd6;
+  background-color: #3156be;
+  border-color: #3156be;
 }
 .btn-info:hover,
 .btn-info:active,
 .btn-info.hover {
-  background-color: #00acd6;
+  background-color: #1b316e;
 }
 .btn-danger {
   background-color: #dd4b39;
@@ -2179,13 +2185,13 @@ a:focus {
   background-color: #d73925;
 }
 .btn-warning {
-  background-color: #f39c12;
-  border-color: #e08e0b;
+  background-color: #60c210;
+  border-color: #60c210;
 }
 .btn-warning:hover,
 .btn-warning:active,
 .btn-warning.hover {
-  background-color: #e08e0b;
+  background-color: #4a940d;
 }
 .btn-outline {
   border: 1px solid #fff;
@@ -3988,24 +3994,25 @@ fieldset[disabled] .btn-vk.active {
 .alert-error,
 .label-danger,
 .modal-danger .modal-body {
-  background-color: #dd4b39 !important;
+  background: linear-gradient(50deg, #e63a3a, #d7eb6b) !important
 }
 .bg-yellow,
 .callout.callout-warning,
 .alert-warning,
 .label-waring,
 .modal-warning .modal-body {
-  background-color: #f39c12 !important;
+  background: linear-gradient(50deg, #e6c93a, #d76beb) !important
 }
 .bg-aqua,
 .callout.callout-info,
 .alert-info,
 .label-info,
 .modal-info .modal-body {
-  background-color: #00c0ef !important;
+  background: linear-gradient(50deg, #3ae6ce, #4d43e4) !important;
+    
 }
 .bg-blue {
-  background-color: #0073b7 !important;
+  background: linear-gradient(50deg, #3a47e6, #eb6b6b) !important
 }
 .bg-light-blue,
 .label-primary,
@@ -4017,7 +4024,7 @@ fieldset[disabled] .btn-vk.active {
 .alert-success,
 .label-success,
 .modal-success .modal-body {
-  background-color: #00a65a !important;
+  background: linear-gradient(50deg, #3ae66f, #c5b814) !important
 }
 .bg-navy {
   background-color: #001f3f !important;
@@ -4032,7 +4039,7 @@ fieldset[disabled] .btn-vk.active {
   background-color: #01ff70 !important;
 }
 .bg-orange {
-  background-color: #ff851b !important;
+  background: linear-gradient(to bottom right, #e63ac1, #6bd3eb) !important
 }
 .bg-fuchsia {
   background-color: #f012be !important;

@@ -77,10 +77,10 @@ switch($_GET['act']){
               Edit</a> |
                  <a href=?module=detailsiswa&act=detailsiswa&id=$r[id_siswa]  class='btn btn-info btn-sm btn-icon icon-left'>
               <i class='entypo-info'></i>
-              Profile</a>|
-                  <a href=javascript:confirmdelete('$aksi?module=siswa&act=hapus&id=$r[id_siswa]') class='btn btn-danger btn-sm btn-icon icon-left'
-              title='Hapus'> <i class='entypo-cancel'></i>
-              Delete</a></td></tr>";
+              Profile</a>| ";?>
+              <button class="btn btn-danger" onclick="confirm('Yakin ingin menghapus tugas ini?') ? window.location.href='<?= $aksi ?>?module=siswa&act=hapus&id=<?=$r[id_siswa] ?>':''">Hapus</button>
+              <td></tr>
+      <?php
       $no++;
     }
 
@@ -376,30 +376,30 @@ case "tambahsiswa":
     <div class='box box-warning'>
         <div class='box-header with-border'>
           <div class='col-md-12 col-xs-12'> 
-          <form method=POST action='$aksi?module=siswa&act=input_siswa' enctype='multipart/form-data' class='form-horizontal form-groups-bordered' onSubmit='return validasi(this)'>
+          <form method=POST action='$aksi?module=siswa&act=input_siswa' enctype='multipart/form-data' class='form-horizontal form-groups-bordered'>
           
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Nis</label></div>
           <div class='col-sm-5'>
-          <input type=text name='nis' class='form-control' id='field-1' required='required' placeholder='Placeholder'></div></div>
+          <input type=text name='nis' class='form-control' id='field-1' required='required' placeholder='NIS'></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Nama Lengkap</label></div> 
           <div class='col-sm-5'>
-          <input type=text name='nama_lengkap' class='form-control' id='nama' required='required' placeholder='Placeholder' size=30></div></div>
+          <input type=text name='nama' class='form-control' id='nama' required='required' placeholder='Nama Lengkap' size=30></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Username Login</label></div>   
             <div class='col-sm-5'>
-            <input type=text name='username' class='form-control' id='nama' required='required' placeholder='Placeholder'></div></div>
+            <input type=text name='username' class='form-control' id='nama' required='required' placeholder='Username'></div></div>
         <div class='form-group'>
           <div class='col-sm-2'>
           <label>Password Login</label></div>     <div class='col-sm-5'>
-          <input type=text name='password' class='form-control' id='field-1' required='required' placeholder='Placeholder'></div></div>
+          <input type=text name='password' class='form-control' id='field-1' required='required' placeholder='Password'></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
-          <label>Kelas</label></div>        <div class='col-sm-2'><select name='id_kelas' class='form-control'>
+          <label>Kelas</label></div>        <div class='col-sm-5'><select name='id_kelas' class='form-control'>
                                            <option value=0 selected>--pilih--</option>";
                                            $tampil=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas ORDER BY id_kelas");
                                            while($r=mysqli_fetch_array($tampil)){
@@ -411,20 +411,21 @@ case "tambahsiswa":
            <input type=text name='jabatan' class='form-control' id='field-1' value='siswa' readonly='' required='required' placeholder='Placeholder' size=50></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
-          <label>Alamat</label></div>       <div class='col-sm-8'>
-          <input type=text name='alamat'class='form-control' id='field-1' required='required' placeholder='Placeholder' size=70></div></div>
+          <label>Alamat</label></div>       <div class='col-sm-5'>
+          <input type=text name='alamat'class='form-control' id='field-1' required='required' placeholder='Alamat' size=70></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Tempat Lahir</label></div> <div class='col-sm-5'>
-          <input type=text name='tempat_lahir' class='form-control' id='field-1' required='required' placeholder='Placeholder' size=50></div></div>
+          <input type=text name='tempat_lahir' class='form-control' id='field-1' required='required' placeholder='Tempat Lahir' size=50></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
-          <label>Tanggal Lahir</label></div><div class='col-sm-9'> : ";
-          combotgl(1,31,'tgl',$tgl_skrg);
-          combonamabln(1,12,'bln',$bln_sekarang);
-          combothn(1950,$thn_sekarang,'thn',$thn_sekarang);
+          <label>Tanggal Lahir</label></div><div class='col-sm-5'>
+          <input type='date' name='tgl_lahir' class='form-control' id='field-1' required='required' placeholder='Tanggal Lahir'></div>";
+          // combotgl(1,31,'tgl',$tgl_skrg);
+          // combonamabln(1,12,'bln',$bln_sekarang);
+          // combothn(1950,$thn_sekarang,'thn',$thn_sekarang);
 
-    echo "</div></div>
+    echo "</div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Jenis Kelamin</label></div><div class='col-sm-5'>
@@ -432,7 +433,7 @@ case "tambahsiswa":
                                            <label><input type=radio name='jk' value='P'>Perempuan</input></label></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
-          <label>Agama</label></div>        <div class='col-sm-2'><select name=agama class='form-control'>
+          <label>Agama</label></div>        <div class='col-sm-5'><select name=agama class='form-control'>
                                            <option value='0' selected>--pilih--</option>
                                            <option value='Islam'>Islam</option>
                                            <option value='Kristen'>Kristen</option>
@@ -444,18 +445,18 @@ case "tambahsiswa":
           <div class='col-sm-2'>
           <label>Nama Ayah/Wali</label></div> 
           <div class='col-sm-5'>
-          <input type=text name='nama_ayah' class='form-control' id='field-1' required='required' placeholder='Placeholder' size=30></div></div>
+          <input type=text name='nama_ayah' class='form-control' id='field-1' required='required' placeholder='Nama Ayah' size=30></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Nama Ibu</label></div>   
             <div class='col-sm-5'>
-            <input type=text name='nama_ibu' class='form-control' id='field-1' required='required' placeholder='Placeholder' size=30></div></div>
+            <input type=text name='nama_ibu' class='form-control' id='field-1' required='required' placeholder='Nama Ibu' size=30></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
-          <label>Tahun Masuk</label></div>  <div class='col-sm-7'>"; combothn(2000,$thn_sekarang,'th_masuk',$thn_sekarang); echo "</div></div>
+          <label>Tahun Masuk</label></div>  <div class='col-sm-5'>"; combothn(2000,$thn_sekarang,'th_masuk',$thn_sekarang); echo "</div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
-          <label>Email</label></div>        <div class='col-sm-5'><input type=text name='email' class='form-control' id='email' required='required' placeholder='Placeholder' size=30></div></div>
+          <label>Email</label></div>        <div class='col-sm-5'><input type=text name='email' class='form-control' id='email' required='required' placeholder='Email' size=30></div></div>
          ";?>
       <div class="form-group">
                   <div class='col-sm-2'> <label>No HP</label></div>
@@ -828,7 +829,7 @@ case "tambahsiswa":
                     </li>
                   </ul>
 
-                  <a href='#' class='btn btn-warning btn-block'><b>Follow</b></a>
+                  
                 </div>
               </div>
             </div>";?>
@@ -942,7 +943,7 @@ case "tambahsiswa":
                       <b>Kelas</b> <a href='?module=kelas&act=detailkelas&id=$siswa[id_kelas]' class='pull-right'>$kelas[nama]</a>
                     </li>
                   </ul>
-                  <a href='#' class='btn btn-primary btn-block'><b>Follow</b></a>
+               
                 </div>
               </div>
             </div>";?>
@@ -1055,7 +1056,7 @@ case "tambahsiswa":
                       <b>Kelas</b> <a href='?module=kelas&act=detailkelas&id=$siswa[id_kelas]' class='pull-right'>$kelas[nama]</a>
                     </li>
                   </ul>
-                  <a href='#' class='btn btn-primary btn-block'><b>Follow</b></a>
+                  
                 </div>
               </div>
             </div>";?>
@@ -1173,7 +1174,7 @@ echo "<div class='box-header with-border'>
                       <b>Kelas</b> <a href='?module=kelas&act=detailkelas&id=$siswa[id_kelas]' class='pull-right'>$kelas[nama]</a>
                     </li>
                   </ul>
-                  <a href='#' class='btn btn-primary btn-block'><b>Follow</b></a>
+                  
                 </div>
               </div>
             </div>";?>
