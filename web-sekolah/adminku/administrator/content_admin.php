@@ -23,7 +23,7 @@ if ($_GET['module'] == 'home') {
               $r = mysqli_fetch_array($tam);
               $tot = $r['JUMLAH']; { ?>
                 <h3><?php echo $tot; ?></h3>
-                <p>Tentang Perusahaan</p>
+                <p>Tentang Perusahaan (Under Maintenance)</p>
 
               <?php
               } ?>

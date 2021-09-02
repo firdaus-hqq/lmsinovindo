@@ -15,16 +15,13 @@
                 <li><a href='$m[link]'><i class='fa fa-circle-o'></i><span class='title'>$m[nama_modul]</span></a></li> 
                ";
                     }
-                    echo "<li><a href='?module=admin&act=pengajar'><i class='fa fa-circle-o'></i><span class='title'>Manajemen Pengajar</span></a></li> 
-  <li><a href='?module=admin'><i class='fa fa-circle-o'></i><span class='title'>Manajeman Administrator</span></a></li> 
+                    echo " <li><a href='?module=admin'><i class='fa fa-circle-o'></i><span class='title'>Manajeman Administrator</span></a></li> 
    <li><a href='?module=modul'><i class='fa fa-circle-o'></i><span class='title'>Manajemen Modul</span></a></li> 
 
 
    </ul>
   </li>";
-                    echo "<li class='header'>Content Web</li>
-   <li><a href='?module=setting'><i class='fa fa-toggle-on'></i><span>Setting Web</span></a></li>
-   <li><a href='v_daftar_absen.php'><i class='fa fa-check'></i><span>Absensi</span></a></li>
+                    echo "<li><a href='v_daftar_absen.php'><i class='fa fa-check'></i><span>Absensi</span></a></li>
    <li class='treeview'>
                 <a href='#'>
                     <i class='fa fa-book'></i>
