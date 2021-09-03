@@ -161,7 +161,8 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser'])  and empty($_S
         $nama_file      = $_FILES['fupload']['name'];
         $direktori_file = "../../../foto_siswa/$nama_file";
 
-        $tgl_lahir = $_POST['thn'] . '-' . $_POST['bln'] . '-' . $_POST['tgl'];
+        // $tgl_lahir = $_POST['thn'] . '-' . $_POST['bln'] . '-' . $_POST['tgl'];
+        $tgl_lahir = $_POST['tgl_lahir'];
 
         $cek_nis = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa = '$_POST[id]'");
         $ketemu = mysqli_fetch_array($cek_nis);
@@ -581,7 +582,8 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser'])  and empty($_S
         $nama_file      = $_FILES['fupload']['name'];
         $direktori_file = "../../../foto_siswa/$nama_file";
 
-        $tgl_lahir = $_POST['thn'] . '-' . $_POST['bln'] . '-' . $_POST['tgl'];
+        // $tgl_lahir = $_POST['thn'] . '-' . $_POST['bln'] . '-' . $_POST['tgl'];
+        $tgl_lahir = $_POST['tgl_lahir'];
 
         $cek_nis = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa = '$_POST[id]'");
         $ketemu = mysqli_fetch_array($cek_nis);

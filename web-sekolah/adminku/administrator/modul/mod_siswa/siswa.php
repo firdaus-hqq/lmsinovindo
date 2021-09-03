@@ -22,7 +22,6 @@ function validasi(form){
 }
 </script>
 <?php
-session_start();
  if (empty($_SESSION['username']) AND empty($_SESSION['passuser']) AND empty($_SESSION['leveluser'])){
   echo "<link href=../css/style.css rel=stylesheet type=text/css>";
   echo "<div class='error msg'>Untuk mengakses Modul anda harus login.</div>";
@@ -78,7 +77,7 @@ switch($_GET['act']){
                  <a href=?module=detailsiswa&act=detailsiswa&id=$r[id_siswa]  class='btn btn-info btn-sm btn-icon icon-left'>
               <i class='entypo-info'></i>
               Profile</a>| ";?>
-              <button class="btn btn-danger" onclick="confirm('Yakin ingin menghapus tugas ini?') ? window.location.href='<?= $aksi ?>?module=siswa&act=hapus&id=<?=$r[id_siswa] ?>':''">Hapus</button>
+              <button class="btn btn-danger" onclick="confirm('Yakin ingin menghapus tugas ini?') ? window.location.href='<?= $aksi ?>?module=siswa&act=hapus&id=<?=$r['id_siswa'] ?>':''">Hapus</button>
               <td></tr>
       <?php
       $no++;
@@ -399,7 +398,7 @@ case "tambahsiswa":
           <input type=text name='password' class='form-control' id='field-1' required='required' placeholder='Password'></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
-          <label>Kelas</label></div>        <div class='col-sm-5'><select name='id_kelas' class='form-control'>
+          <label>Asal Sekolah</label></div>        <div class='col-sm-5'><select name='id_kelas' class='form-control'>
                                            <option value=0 selected>--pilih--</option>";
                                            $tampil=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas ORDER BY id_kelas");
                                            while($r=mysqli_fetch_array($tampil)){
@@ -540,8 +539,8 @@ case "tambahsiswa":
   </div></div>
          
           <div class='form-group'>
-          <div class='col-sm-2'><label>Kelas</label></div>        
-          <div class='col-sm-2'> <select name='id_kelas' class='form-control'>
+          <div class='col-sm-2'><label>Asal Sekolah</label></div>        
+          <div class='col-sm-5'> <select name='id_kelas' class='form-control'>
                                            <option value=$kelas[id_kelas] selected>$kelas[nama]</option>";
                                            $tampil=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas ORDER BY nama");
                                            while($k=mysqli_fetch_array($tampil)){
@@ -552,21 +551,22 @@ case "tambahsiswa":
           <label>Jabatan</label></div>      <div class='col-sm-5'>  <input type=text name='jabatan' class='form-control' required='required' id='field-1' placeholder='Placeholder' readonly='' size=50 value='$r[jabatan]'></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
-          <label>Alamat</label></div>       <div class='col-sm-10'>  <input type=text name='alamat' class='form-control' required='required' id='field-1' placeholder='Placeholder' size=70 value='$r[alamat]'></div></div>
+          <label>Alamat</label></div>       <div class='col-sm-5'>  <input type=text name='alamat' class='form-control' required='required' id='field-1' placeholder='Placeholder' size=70 value='$r[alamat]'></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Tempat Lahir</label></div> <div class='col-sm-5'><input type=text name='tempat_lahir' class='form-control' required='required' id='field-1' placeholder='Placeholder' size=50 value='$r[tempat_lahir]'></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
-          <label>Tanggal Lahir</label></div><div class='col-sm-10'>  ";
-          $get_tgl=substr("$r[tgl_lahir]",8,2);
-          combotgl(1,31,'tgl',$get_tgl);
-          $get_bln=substr("$r[tgl_lahir]",5,2);
-          combonamabln(1,12,'bln',$get_bln);
-          $get_thn=substr("$r[tgl_lahir]",0,4);
-          combothn(1950,$thn_sekarang,'thn',$get_thn);
+          <label>Tanggal Lahir</label></div><div class='col-sm-5'>
+          <input type='date' name='tgl_lahir' value='$r[tgl_lahir]' class='form-control' id='field-1' required='required' placeholder='Tanggal Lahir'></div>";
+          // $get_tgl=substr("$r[tgl_lahir]",8,2);
+          // combotgl(1,31,'tgl',$get_tgl);
+          // $get_bln=substr("$r[tgl_lahir]",5,2);
+          // combonamabln(1,12,'bln',$get_bln);
+          // $get_thn=substr("$r[tgl_lahir]",0,4);
+          // combothn(1950,$thn_sekarang,'thn',$get_thn);
 
-    echo "</div></div>";
+    echo "</div>";
           if ($r['jenis_kelamin']=='L'){
               echo "<div class='form-group'>
           <div class='col-sm-2'><label>Jenis Kelamin</label></div>
@@ -583,7 +583,7 @@ case "tambahsiswa":
           echo "<div class='form-group'>
           <div class='col-sm-2'>
           <label>Agama</label></div>        
-          <div class='col-sm-2'><select name=agama class='form-control'>
+          <div class='col-sm-5'><select name=agama class='form-control'>
                                            <option value='$r[agama]' selected>$r[agama]</option>
                                            <option value='Islam'>Islam</option>
                                            <option value='Kristen'>Kristen</option>
@@ -600,7 +600,7 @@ case "tambahsiswa":
           <div class='col-sm-2'>
           <label>Nama Ibu</label></div>     <div class='col-sm-5'><input type=text name='nama_ibu' class='form-control' required='required' id='field-1' placeholder='Placeholder' size=30 value='$r[nama_ibu]'></div></div>
           <div class='form-group'>
-          <div class='col-sm-2'><label>Tahun Masuk</label></div>  <div class='col-sm-7'>";  
+          <div class='col-sm-2'><label>Tahun Masuk</label></div>  <div class='col-sm-5'>";  
           $get_thn=substr("$r[th_masuk]",0,4);
           combothn(2000,$thn_sekarang,'th_masuk',$get_thn);
           echo "</div></div>

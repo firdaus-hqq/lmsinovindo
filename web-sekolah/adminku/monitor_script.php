@@ -9,7 +9,7 @@
 <script src="aset/plugins/fastclick/fastclick.min.js"></script>
 <!-- AdminLTE App -->
 <script src="aset/dist/js/adminlte.min.js"></script>
-<script src="js/sweetalert.min.js" type="text/javascript"></script>
+<script src="sweetalert.min.js" type="text/javascript"></script>
 <!-- Daterange Picker -->
 <script src="aset/plugins/daterangepicker/moment.min.js"></script>
 <script src="aset/plugins/daterangepicker/daterangepicker.js"></script>

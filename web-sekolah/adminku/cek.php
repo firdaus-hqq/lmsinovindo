@@ -1,9 +1,9 @@
 <?php 
 // error_reporting(0); 
 session_start(); 
-if (!isset($_SESSION['siswa']) || empty($_SESSION['siswa'])) { 
-header('location:../index.php');
+if (!isset($_SESSION['idsiswa']) || empty($_SESSION['idsiswa'])) { 
+echo '';
 } else {
-$username=$_SESSION['siswa'];
+$username=$_SESSION['idsiswa'];
 }
 ?>

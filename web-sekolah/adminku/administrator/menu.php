@@ -25,16 +25,7 @@
                     echo "<li class='header'>Content Web</li>
    <li><a href='?module=setting'><i class='fa fa-toggle-on'></i><span>Setting Web</span></a></li>
    <li><a href='v_daftar_absen.php'><i class='fa fa-check'></i><span>Absensi</span></a></li>
-   <li class='treeview'>
-                <a href='#'>
-                    <i class='fa fa-book'></i>
-                    <span>Ujian</span><i class='fa fa-angle-left pull-right'></i>
-                </a>
-                <ul class='treeview-menu'>          
-  <li><a href='v_bank_soal.php'><i class='fa fa-circle-o'></i>Bank Soal</a></li>   
-  <li><a href='v_test.php'><i class='fa fa-circle-o'></i>Hasil Ujian</a></li>                  
-                </ul>
-            </li>
+   <li><a href='../../../CBT_E-school/on-admin/siswa.php'><i class='fa fa-laptop'></i><span>Ujian</span></a></li>
             <li class='treeview'>
                 <a href='#'>
                     <i class='fa fa-trophy'></i>

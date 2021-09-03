@@ -7,7 +7,6 @@ include ('fungsi.php');
 $nis			= $_POST['nis'];
 $nama			= $_POST['nama'];
 $kelas 			= $_POST['kelas'];
-$kodemapel		= $_POST['kodemapel'];
 $kodesoal		= $_POST['kodesoal'];
 $aktif			= $_POST['aktif'];
 $waktu			= $_POST['waktu'];
@@ -25,8 +24,8 @@ $ok         = $_POST['ok'];
         } elseif ($ok =='1') {
         header('location:confirm.php?sudah=1');
         } else {
-        ($add = mysqli_query($mysqli, "INSERT INTO jawaban (nis, nama, kelas, kodemapel, kodesoal, aktif, waktu, jumlahsoal, lamaujian, mulaiujian, waktuselesai, sisawaktu) VALUES 
-        	('$nis', '$nama', '$kelas', '$kodemapel', '$kodesoal', '$aktif', '$waktu', '$jumlahsoal', '$lamaujian', '$mulaiujian', '$waktuselesai', '$sisawaktu') ON DUPLICATE KEY UPDATE nis='$username', nama='$nama', kelas='$kelas' "));
+        ($add = mysqli_query($mysqli, "INSERT INTO jawaban (nis, nama, kelas, kodesoal, aktif, waktu, jumlahsoal, lamaujian, mulaiujian, waktuselesai, sisawaktu) VALUES 
+        	('$nis', '$nama', '$kelas', '$kodesoal', '$aktif', '$waktu', '$jumlahsoal', '$lamaujian', '$mulaiujian', '$waktuselesai', '$sisawaktu') ON DUPLICATE KEY UPDATE nis='$username', nama='$nama', kelas='$kelas' "));
         		header("Location:konfirm.php");
         		fclose($file);
         		exit();

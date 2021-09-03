@@ -14,10 +14,9 @@ else
 header('location:v_bank_soal.php?gagal=1');
 exit;
 }
-$mapel=$_GET['matpel'];
 $jenis=$_GET['jenis'];
 $kode=$_GET['kode'];
-mysqli_query ($mysqli, "DELETE FROM soal where kodemapel='$mapel' and jenissoal='$jenis' and kodesoal='$kode'");
+mysqli_query ($mysqli, "DELETE FROM soal where jenissoal='$jenis' and kodesoal='$kode'");
 mysqli_query ($mysqli, "DELETE FROM ujian where kodesoal='$kode'");
 header('location:v_bank_soal.php');
 ?>

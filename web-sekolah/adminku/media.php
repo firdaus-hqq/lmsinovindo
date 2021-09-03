@@ -227,7 +227,7 @@ if ($_SESSION['login'] == 0) {
                 </a>
                 <ul class="treeview-menu">
                   <li>
-                    <a href="ujian.php">
+                    <a href="../../CBT_E-school/on-siswa/ujian.php">
                       <i class='fa fa-circle-o'></i><span class="title">Index Ujian</span>
                     </a>
                   </li>
