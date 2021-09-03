@@ -19,7 +19,7 @@ if ($_GET['module'] == 'home') {
           <div class="small-box bg-aqua">
             <div class="inner">
               <?php
-              $tam = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id_berita) AS JUMLAH FROM berita");
+              $tam = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id_file) AS JUMLAH FROM file_materi");
               $r = mysqli_fetch_array($tam);
               $tot = $r['JUMLAH']; { ?>
                 <h3><?php echo $tot; ?></h3>
@@ -31,7 +31,7 @@ if ($_GET['module'] == 'home') {
             <div class="icon">
               <i class="ion ion-ios-book"></i>
             </div>
-            <a href="?module=berita" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="?module=materi" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">

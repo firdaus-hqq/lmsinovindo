@@ -1,7 +1,7 @@
 <?php
 session_start();
 function timer(){
-	$time=1000;
+	$time=3600;
 	$_SESSION['timeout']=time()+$time;
 }
 function cek_login(){

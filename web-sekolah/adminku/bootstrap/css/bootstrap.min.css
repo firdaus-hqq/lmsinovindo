@@ -4092,8 +4092,8 @@ fieldset[disabled] .btn-info:hover {
 
 .btn-warning {
     color: #fff;
-    background-color: #f0ad4e;
-    border-color: #eea236
+    background-color: #60c210;
+    border-color: #60c210
 }
 
 .btn-warning.active,
@@ -4103,8 +4103,8 @@ fieldset[disabled] .btn-info:hover {
 .btn-warning:hover,
 .open>.dropdown-toggle.btn-warning {
     color: #fff;
-    background-color: #ec971f;
-    border-color: #d58512
+    background-color: #60c210;
+    border-color: #60c210
 }
 
 .btn-warning.active,
@@ -4131,12 +4131,12 @@ fieldset[disabled] .btn-warning.focus,
 fieldset[disabled] .btn-warning:active,
 fieldset[disabled] .btn-warning:focus,
 fieldset[disabled] .btn-warning:hover {
-    background-color: #f0ad4e;
-    border-color: #eea236
+    background-color: #60c210;
+    border-color: #60c210
 }
 
 .btn-warning .badge {
-    color: #f0ad4e;
+    color: #60c210;
     background-color: #fff
 }
 

@@ -2,7 +2,7 @@
 session_start();
 include "configurasi/koneksi.php";
 function timer(){
-	$time=2000;
+	$time=3600;
 	$_SESSION['timeout']=time()+$time;
 }
 function cek_login(){
