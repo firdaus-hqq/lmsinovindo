@@ -14,7 +14,7 @@ $result = $mysqli->query($sql);
 if ($result->num_rows > 0) {
     $data_tugas = $result->fetch_array();
 } else {
-    echo("ID Tidak ditemukan.");
+    echo ("ID Tidak ditemukan.");
 }
 
 $listDataTugas = $mysqli->query($sql);
@@ -191,7 +191,7 @@ if ($_SESSION['login'] == 0) {
 
                         <!-- Sidebar Menu -->
                         <ul class="sidebar-menu">
-                            <?php include "menu.php" ?>
+                            <?php include "menu_baru.php" ?>
                         </ul><!-- /.sidebar-menu -->
                     </section>
                     <!-- /.sidebar -->
@@ -202,7 +202,7 @@ if ($_SESSION['login'] == 0) {
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
-                            Data Absensi
+                            Data Tugas
                         </h1>
                         <ol class="breadcrumb">
                             <li><a href="#"><i class="fa fa-calendar"></i><?php include "../jam/jam.php" ?></a></li>
@@ -216,25 +216,48 @@ if ($_SESSION['login'] == 0) {
                             <div class='box-header with-border'>
                                 <div class="table-responsive">
                                     <table id='example1' class='table table-bordered table-striped'>
-                                        <thead>
-                                            <tr>
-                                                <th>Tanggal</th>
-                                                <th>Nama</th>
-                                                <th>Tugas</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            <?php
-                                            $i = 1;
-                                            while ($data_tugas = $listDataTugas->fetch_array()) {
-                                            ?>
+                                        <?php
+                                        $i = 1;
+                                        while ($data_tugas = $listDataTugas->fetch_array()) {
+                                        ?>
+                                            <thead>
                                                 <tr>
-                                                    <td></td>
-                                                    <td><?= $data_tugas['nama_lengkap']; ?></td>
-                                                    <td></td>
+                                                    <th colspan="3"><?= $data_tugas['nama_lengkap']; ?></th>
                                                 </tr>
-                                            <?php } ?>
-                                        </tbody>
+                                                <tr>
+                                                    <th>Tanggal</th>
+                                                    <th>Tugas</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $sql3 = "SELECT * FROM tugas WHERE id_siswa = '$data_tugas[id_siswa]' AND status=''";
+                                                $result3 = $mysqli->query($sql3);
+                                                if ($result3->num_rows > 0) {
+                                                    $tugas_siswa = $result3->fetch_array();
+                                                }
+                                                $listTugasSiswa = $mysqli->query($sql3);
+                                                while ($tugas_siswa = $listTugasSiswa->fetch_array()) {
+                                                ?>
+                                                    <tr>
+                                                        <td>
+                                                            <?= $tugas_siswa['tanggal']; ?>
+                                                        </td>
+
+                                                        <td>
+                                                            <a href="../tugas/<?= $tugas_siswa['file'] ?>" target="_blank"><?= $tugas_siswa['file'] ?></a>
+                                                            <a href="<?= $tugas_siswa['link'] ?>" target="_blank"><?= $tugas_siswa['link'] ?></a>
+                                                        </td>
+
+                                                        <td>
+                                                            <button class="fa fa-check-circle" style="color:blue;" onclick="confirm('Yakin ingin konfirmasi tugas ini?') ? window.location.href='konfirmasi.php?id_file=<?= $tugas_siswa['id_file'] . '&id_kelas=' . $_GET['id_kelas']  ?>':''"></button>
+                                                            <button class="fa fa-times-circle" style="color:red;" onclick="confirm('Yakin ingin mengembalikan tugas ini?') ? window.location.href='revisi.php?id_file=<?= $tugas_siswa['id_file'] . '&id_kelas=' . $_GET['id_kelas']  ?>':''"></button>
+                                                        </td>
+                                                    </tr>
+                                                <?php } ?>
+                                            </tbody>
+                                        <?php } ?>
                                     </table>
                                 </div>
                             </div>
