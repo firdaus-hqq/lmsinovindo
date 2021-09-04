@@ -17,6 +17,7 @@ if ($result->num_rows > 0) {
     echo ("ID Tidak ditemukan.");
 }
 
+
 $listDataTugas = $mysqli->query($sql);
 
 if ($_SESSION['login'] == 1) {
@@ -251,14 +252,20 @@ if ($_SESSION['login'] == 0) {
                                                         </td>
 
                                                         <td>
-                                                            <button class="fa fa-check-circle" style="color:blue;" onclick="confirm('Yakin ingin konfirmasi tugas ini?') ? window.location.href='konfirmasi.php?id_file=<?= $tugas_siswa['id_file'] . '&id_kelas=' . $_GET['id_kelas']  ?>':''"></button>
-                                                            <button class="fa fa-times-circle" style="color:red;" onclick="confirm('Yakin ingin mengembalikan tugas ini?') ? window.location.href='revisi.php?id_file=<?= $tugas_siswa['id_file'] . '&id_kelas=' . $_GET['id_kelas']  ?>':''"></button>
+                                                            <i class="fa fa-check-circle" style="color:blue;" onclick="confirm('Yakin ingin konfirmasi tugas ini?') ? window.location.href='konfirmasi.php?id_file=<?= $tugas_siswa['id_file'] . '&id_kelas=' . $_GET['id_kelas']  ?>':''"></i>
+                                                            <i class="fa fa-times-circle" style="color:red;" onclick="confirm('Yakin ingin mengembalikan tugas ini?') ? window.location.href='revisi.php?id_file=<?= $tugas_siswa['id_file'] . '&id_kelas=' . $_GET['id_kelas']  ?>':''"></i>
                                                         </td>
                                                     </tr>
                                                 <?php } ?>
                                             </tbody>
                                         <?php } ?>
                                     </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    
+                                    <!-- /.table -->
                                 </div>
                             </div>
                         </div>
