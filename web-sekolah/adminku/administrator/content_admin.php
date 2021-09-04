@@ -19,19 +19,19 @@ if ($_GET['module'] == 'home') {
           <div class="small-box bg-aqua">
             <div class="inner">
               <?php
-              $tam = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id_berita) AS JUMLAH FROM berita");
+              $tam = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id_file) AS JUMLAH FROM file_materi");
               $r = mysqli_fetch_array($tam);
               $tot = $r['JUMLAH']; { ?>
                 <h3><?php echo $tot; ?></h3>
-                <p>Peserta</p>
+                <p>Tentang Perusahaan (Under Maintenance)</p>
 
               <?php
               } ?>
             </div>
             <div class="icon">
-              <i class="ion ion-edit"></i>
+              <i class="ion ion-ios-book"></i>
             </div>
-            <a href="?module=berita" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="?module=materi" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div><!-- ./col -->
         <div class="col-lg-3 col-xs-6">
@@ -44,14 +44,14 @@ if ($_GET['module'] == 'home') {
               $r = mysqli_fetch_array($tam);
               $tot = $r['JUMLAH']; { ?>
                 <h3><?php echo $tot; ?></h3>
-                <p>Jurusan</p>
+                <p>Manajemen Modul</p>
 
               <?php
               } ?>
 
             </div>
             <div class="icon">
-              <i class="ion ion-ios-browsers"></i>
+              <i class="ion ion-ios-list"></i>
             </div>
             <a href="?module=modul" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
@@ -61,7 +61,7 @@ if ($_GET['module'] == 'home') {
           <div class="small-box bg-yellow">
             <div class="inner">
               <?php
-              $tam = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id_galerifoto) AS JUMLAH FROM galeri_foto");
+              $tam = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id_kelas) AS JUMLAH FROM kelas");
               $r = mysqli_fetch_array($tam);
               $tot = $r['JUMLAH']; { ?>
                 <h3><?php echo $tot; ?></h3>
@@ -71,9 +71,9 @@ if ($_GET['module'] == 'home') {
               } ?>
             </div>
             <div class="icon">
-              <i class="ion ion-images"></i>
+              <i class="ion ion-home"></i>
             </div>
-            <a href="?module=galeri" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="?module=kelas" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <div class="col-lg-3 col-xs-6">
@@ -81,11 +81,11 @@ if ($_GET['module'] == 'home') {
           <div class="small-box bg-red">
             <div class="inner">
               <?php
-              $tam = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id_kelas) AS JUMLAH FROM kelas");
+              $tam = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id_siswa) AS JUMLAH FROM siswa");
               $r = mysqli_fetch_array($tam);
               $tot = $r['JUMLAH']; { ?>
                 <h3><?php echo $tot; ?></h3>
-                <p>Kelas</p>
+                <p>Manajemen Siswa</p>
 
               <?php
               } ?>
@@ -93,7 +93,7 @@ if ($_GET['module'] == 'home') {
             <div class="icon">
               <i class="ion ion-android-contact"></i>
             </div>
-            <a href="?module=statistik" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="?module=siswa" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
       </div>

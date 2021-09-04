@@ -693,7 +693,7 @@ case "tambahsiswa":
          </div>
           <div class='form-group'>
           <div class='col-sm-2'><label>Tanggal Lahir</label></div>
-  <div class='col-sm-10'>";
+  <div class='col-sm-5'>";
           $get_tgl=substr("$r[tgl_lahir]",8,2);
           combotgl(1,31,'tgl',$get_tgl);
           $get_bln=substr("$r[tgl_lahir]",5,2);

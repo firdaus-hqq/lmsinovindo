@@ -33,7 +33,9 @@
                 </a>
                 <ul class='treeview-menu'>          
   <li><a href='v_typing_test.php'><i class='fa fa-circle-o'></i>Typing Test</a></li>   
-  <li><a href='v_test.php'><i class='fa fa-circle-o'></i>Pre Test & Post Test</a></li>";
+  <li><a href='v_test.php'><i class='fa fa-circle-o'></i>Pre Test & Post Test</a></li>                  
+                </ul>
+            </li>";
                 } elseif ($_SESSION['leveluser'] == 'pengajar') {
                     echo " <li class='header'>Menu Utama</li>
   <li class='active'><a href='media_admin.php?module=home'><i class='fa fa-dashboard'></i> <span>Dashboard</span></a> </li>

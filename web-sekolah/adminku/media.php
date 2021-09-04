@@ -75,11 +75,11 @@ if ($_SESSION['login'] == 0) {
         <header class="main-header">
 
           <!-- Logo -->
-          <a href="index2.html" class="logo">
+          <a href="https://inovindoacademy.com" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>R</b>PL</span>
+            <span class="logo-mini"><b>I</b>DMA</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Siswa</b>RPL</span>
+            <span class="logo-lg"><b>IDM |</b> A C A D E M Y</span>
           </a>
 
           <!-- Header Navbar -->
@@ -149,17 +149,6 @@ if ($_SESSION['login'] == 0) {
               </div>
             </div>
 
-            <!-- search form (Optional) -->
-            <form action="#" method="get" class="sidebar-form">
-              <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                </span>
-              </div>
-            </form>
-            <!-- /.search form -->
-
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
               <li class="header">Menu Learning</li>
@@ -186,17 +175,6 @@ if ($_SESSION['login'] == 0) {
                   <li>
                     <a href="media.php?module=materi">
                       <i class='fa fa-circle-o'></i> <span class="title">Materi</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="media.php?module=quiz">
-                      <i class='fa fa-circle-o'></i><span class="title">Ujian</span>
-                    </a>
-
-                  </li>
-                  <li>
-                    <a href="media.php?module=nilai">
-                      <i class='fa fa-circle-o'></i><span class="title">Nilai</span>
                     </a>
                   </li>
                 </ul>

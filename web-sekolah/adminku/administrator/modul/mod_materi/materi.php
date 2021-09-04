@@ -116,7 +116,7 @@ switch($_GET[act]){
 
 ";
         echo "<br><br><table class='table table-bordered table-striped table-condensed cf'><thead>
-          <tr><th>No</th><th>Judul</th><th>Kelas</th><th>Pelajaran</th><th>Nama File</th><th>Tgl Posting</th><th>Pembuat</th><th>Hits</th><th>Aksi</th></tr></thead>";
+          <tr><th>No</th><th>Judul</th><th>Kelas</th><th>Nama File</th><th>Tgl Posting</th><th>Pembuat</th><th>Hits</th><th>Aksi</th></tr></thead>";
        $no=1;
     while ($r=mysqli_fetch_array($tampil_materi)){
       $tgl_posting   = tgl_indo($r[tgl_posting]);
@@ -127,16 +127,6 @@ switch($_GET[act]){
              if(!empty($cek_kelas)){
              while($k=mysqli_fetch_array($kelas)){
                  echo "<td><a href=?module=kelas&act=detailkelas&id=$r[id_kelas] title='Detail Kelas' class='btn btn-success'>$k[nama]</td>";
-             }
-             }else{
-                 echo"<td></td>";
-             }
-             $pelajaran = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM mata_pelajaran WHERE id_matapelajaran = '$r[id_matapelajaran]'");
-             
-             $cek_pelajaran = mysqli_num_rows($pelajaran);
-             if(!empty($cek_pelajaran)){
-             while($p=mysqli_fetch_array($pelajaran)){
-                echo "<td><a href=?module=matapelajaran&act=detailpelajaran&id=$r[id_matapelajaran] title='Detail pelajaran' class='btn btn-primary'>$p[nama]</a></td>";
              }
              }else{
                  echo"<td></td>";
@@ -206,17 +196,6 @@ switch($_GET[act]){
                         </div>
                         </div>
                       </div>
-                       <div class='form-group'>
-                        <label class='control-label col-sm-2' for='IP'>Pelajaran</label>
-                        <div class='col-sm-10'>
-                        <div class='input-group'>
-                          <div class='input-group-addon'>
-                            <i class='fa fa-laptop'></i>
-                          </div>
-                          <div id='pelajaran'></div>
-                        </div>
-                        </div>
-                      </div>
                       <div class='form-group'>
                         <label class='control-label col-sm-2' for='IP'>File</label>
                         <div class='col-sm-10'>
@@ -275,7 +254,7 @@ switch($_GET[act]){
 
          ";
      echo "<br><br/><table class='table table-bordered table-striped table-condensed cf'><thead>
-          <tr><th>No</th><th>Judul</th><th>Kelas</th><th>Pelajaran</th><th>Nama File</th><th>Tgl Upload</th><th>Hits</th><th>Aksi</th></tr></thead>";
+          <tr><th>No</th><th>Judul</th><th>Kelas</th><th>Nama File</th><th>Tgl Upload</th><th>Hits</th><th>Aksi</th></tr></thead>";
 
     $no=1;
     while ($r=mysqli_fetch_array($cek_materi)){
@@ -291,16 +270,7 @@ switch($_GET[act]){
              }else{
                  echo"<td></td>";
              }
-             $pelajaran = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM mata_pelajaran WHERE id_matapelajaran = '$r[id_matapelajaran]'");
-             $cek_pelajaran = mysqli_num_rows($pelajaran);
-             if(!empty($cek_pelajaran)){
-             while($p=mysqli_fetch_array($pelajaran)){
-                echo "<td><a href=?module=matapelajaran&act=detailpelajaran&id=$r[id_matapelajaran] title='Detail pelajaran' class='btn btn-warning'>$p[nama]</a></td>";
-             }
-             }else{
-                 echo"<td></td>";
-             }
-
+          
              echo "<td>$r[nama_file]</td>
              <td>$tgl_posting</td>             
              <td>$r[hits]</td>
@@ -517,12 +487,7 @@ case "editmateri":
                                           echo"<option value='".$row[id_kelas]."'>".$row[nama]."</option>";
                                           }
                                           echo"</select></div></div>
-     <div class='form-group'>
-          <div class='col-sm-2'>
-          <label>Pelajaran</label></div>           <div class='col-sm-2'>
-          <select id='pelajaran' name='id_matapelajaran'  class='form-control'>
-                                          <option value='".$p[id_matapelajaran]."' selected>".$p[nama]."</option>
-                                          </select></div></div>
+     
      <div class='form-group'>
           <div class='col-sm-2'>
           <label>File</label></div>                <div class='col-sm-5'> $m[nama_file]</div></div>

@@ -3,10 +3,10 @@
 if ($_GET['module']=='home'){
   if ($_SESSION['leveluser']=='siswa'){
     ?>
-    <div class="alert alert-danger alert-dismissable">
+    <div  class="alert alert-danger alert-dismissable">
                     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                    <h4><i class="icon fa fa-ban"></i>Pemberitahuan</h4>
-                   <p>Cek apakah anda sudah mengerjakan tugas atau belum dan kerjakan dengan teliti <a href='media.php?module=quiz'> Cek disini</a></p>
+                    <h4><i class="icon fa fa-bookmark"></i>Selamat Datang Peserta Prakerin Inovindo | A C A D E M Y</h4>
+                   <p>Klik disini untuk menuju <a href="media.php?module=siswa&act=detailprofilsiswa&id=<?= $_SESSION['idsiswa']?>"><b>My Profile</b></a> untuk mengatur profilmu</p>
                    
                
       
@@ -19,39 +19,17 @@ if ($_GET['module']=='home'){
               <div class="small-box bg-aqua">
                 <div class="inner">
                   <?php
- $tam=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id) AS JUMLAH FROM mata_pelajaran WHERE id_kelas='$_SESSION[kelas]'");
+ $tam=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id_file) AS JUMLAH FROM file_materi");
  $r=mysqli_fetch_array($tam);
  $tot=$r['JUMLAH']; { ?>
                    <h3><?php echo $tot; ?></h3>
-                  <p>Mata Pelajaran</p>
+                  <p>Tentang Perusahaan</p>
                
                 <?php 
               } ?>  
                 </div>
                 <div class="icon">
-                  <i class="ion ion-bookmark"></i>
-                </div>
-                <a href="media.php?module=matapelajaran" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-              </div>
-            </div><!-- ./col -->
-            <div class="col-lg-3 col-xs-6">
-
-
-              <!-- small box -->
-              <div class="small-box bg-orange">
-                <div class="inner">
-                  <?php
- $tam=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id_file) AS JUMLAH FROM file_materi WHERE id_kelas='$_SESSION[kelas]'");
- $r=mysqli_fetch_array($tam);
- $tot=$r['JUMLAH']; { ?>
-                   <h3><?php echo $tot; ?></h3>
-                  <p>File Materi</p>
-               
-                <?php 
-              } ?>  
-                </div>
-                <div class="icon">
-                  <i class="ion ion-camera"></i>
+                  <i class="ion ion-ios-book"></i>
                 </div>
                 <a href="media.php?module=materi" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
@@ -60,22 +38,34 @@ if ($_GET['module']=='home'){
 
 
               <!-- small box -->
-              <div class="small-box bg-blue">
+              <div class="small-box bg-orange">
                 <div class="inner">
-                  <?php
- $tam=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id_siswa) AS JUMLAH FROM siswa WHERE id_kelas='$_SESSION[kelas]'");
- $r=mysqli_fetch_array($tam);
- $tot=$r['JUMLAH']; { ?>
-                   <h3><?php echo $tot; ?></h3>
-                  <p>Teman</p>
+
+                   <h3> Absensi </h3>
+                  <p>Absen harian siswa</p>
                
-                <?php 
-              } ?>  
+              
                 </div>
                 <div class="icon">
-                  <i class="ion ion-compass"></i>
+                  <i class="ion ion-ios-checkmark"></i>
                 </div>
-                <a href="media.php?module=kelas" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="v_absen.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+              </div>
+            </div><!-- ./col -->
+            <div class="col-lg-3 col-xs-6">
+
+
+              <!-- small box -->
+              <div class="small-box bg-blue">
+                <div class="inner">
+                  
+                   <h3>Tugas</h3>
+                  <p>Page pengumpulan tugas</p>
+                </div>
+                <div class="icon">
+                  <i class="ion ion-ios-list"></i>
+                </div>
+                <a href="tugas.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div><!-- ./col -->
             <div class="col-lg-3 col-xs-6">
@@ -85,19 +75,19 @@ if ($_GET['module']=='home'){
               <div class="small-box bg-green">
                 <div class="inner">
                   <?php
- $tam=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id) AS JUMLAH FROM mata_pelajaran WHERE id_kelas='$_SESSION[kelas]'");
+ $tam=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id_peringkat) AS JUMLAH FROM peringkat");
  $r=mysqli_fetch_array($tam);
  $tot=$r['JUMLAH']; { ?>
                    <h3><?php echo $tot; ?></h3>
-                  <p>Guru Pengajar</p>
+                  <p>Peringkat</p>
                
                 <?php 
               } ?>  
                 </div>
                 <div class="icon">
-                  <i class="ion ion-bookmark"></i>
+                  <i class="ion ion-trophy"></i>
                 </div>
-                <a href="media.php?module=matapelajaran" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="v_peringkat_typing.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
               </div>
             </div>
             <!-- ./col -->
