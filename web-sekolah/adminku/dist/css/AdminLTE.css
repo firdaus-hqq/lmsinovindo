@@ -2159,7 +2159,7 @@ a:focus {
 .btn-success {
   background-color: #60c210;
   border-color: #60c210;
-  float: right;
+  float: left;
 }
 .btn-success:hover,
 .btn-success:active,
@@ -2320,7 +2320,7 @@ a:focus {
 }
 .alert-danger,
 .alert-error {
-  border-color: #d73925;
+  border-color: #3d9eee;
 }
 .alert-warning {
   border-color: #e08e0b;
@@ -3994,7 +3994,7 @@ fieldset[disabled] .btn-vk.active {
 .alert-error,
 .label-danger,
 .modal-danger .modal-body {
-  background: linear-gradient(50deg, #e63a3a, #d7eb6b) !important
+  background: linear-gradient(50deg, #3ac0e6, #b56beb) !important
 }
 .bg-yellow,
 .callout.callout-warning,
@@ -4008,7 +4008,7 @@ fieldset[disabled] .btn-vk.active {
 .alert-info,
 .label-info,
 .modal-info .modal-body {
-  background: linear-gradient(50deg, #3ae6ce, #4d43e4) !important;
+  background: linear-gradient(50deg, #e6b73a, #e44343) !important;
     
 }
 .bg-blue {

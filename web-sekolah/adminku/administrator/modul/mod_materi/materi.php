@@ -487,12 +487,7 @@ case "editmateri":
                                           echo"<option value='".$row[id_kelas]."'>".$row[nama]."</option>";
                                           }
                                           echo"</select></div></div>
-     <div class='form-group'>
-          <div class='col-sm-2'>
-          <label>Pelajaran</label></div>           <div class='col-sm-2'>
-          <select id='pelajaran' name='id_matapelajaran'  class='form-control'>
-                                          <option value='".$p[id_matapelajaran]."' selected>".$p[nama]."</option>
-                                          </select></div></div>
+     
      <div class='form-group'>
           <div class='col-sm-2'>
           <label>File</label></div>                <div class='col-sm-5'> $m[nama_file]</div></div>

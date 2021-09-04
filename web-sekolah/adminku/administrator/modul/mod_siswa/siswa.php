@@ -22,7 +22,7 @@ function validasi(form){
 }
 </script>
 <?php
-session_start();
+
  if (empty($_SESSION['username']) AND empty($_SESSION['passuser']) AND empty($_SESSION['leveluser'])){
   echo "<link href=../css/style.css rel=stylesheet type=text/css>";
   echo "<div class='error msg'>Untuk mengakses Modul anda harus login.</div>";
