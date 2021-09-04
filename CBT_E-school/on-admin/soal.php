@@ -229,14 +229,8 @@ include "tema/tema.php";
 							 <form action="" method="post">   
                                  <select class="form-control" name="jenissoal" required >  
                                      <option value="">Pilih Jenis Ujian</option>
-                                         <option value="PAS">PAS</option>
-                                         <option value="UASBN">UASBN</option>
-                                         <option value="UKK">UKK</option>
-                                         <option value="USEK">USEK</option>
-                                         <option value="PTS">PTS</option>
-                                         <option value="UH">UH</option> 
-                                         <option value="TRYOUT">TRYOUT</option>  
-                                         <option value="SIMULASI">SIMULASI</option>  
+                                         <option value="Pretest">Pre Test</option>
+                                         <option value="Posttest">Post Test</option> 
                                      </select> 
                              </div>		
 							
