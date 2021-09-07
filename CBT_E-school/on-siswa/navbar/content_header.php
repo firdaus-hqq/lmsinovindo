@@ -8,9 +8,8 @@
 <header class="main-header">
   <!-- Logo -->
 <div class="logo">
-<span><img src="../aset/foto/elogo.png" width=35px alt="Foto"></span>
-<span class="logo-sm">-
-<b style="color:orange;"> SCHOOL</b> <b style="color:white;"><?php echo date ('Y') ?></b></span>
+<span class="logo-sm">
+<b style="color:white;">IDM </b>| ACADEMY</span>
 </div>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top" role="navigation">

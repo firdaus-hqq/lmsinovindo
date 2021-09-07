@@ -12,7 +12,7 @@ include ('koneksi/koneksi.php');
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="aset/fa/css/font-awesome.css">
-  <title>E-School</title>
+  <title>IDM | ACADEMY</title>
   <link rel="shortcut icon" href="aset/foto/<?php echo $ar['logo'];?>">
     <link rel="stylesheet" href="admin/css/reset.min.css">
     <link rel="stylesheet" href="admin/css/style2.css">
@@ -126,7 +126,7 @@ a:active  {
 </style>  
 </head>
 <body class="bg">
-<div class="pen-title">
+<div class="pen-title" style="padding: 20px 0;">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <!-- Form Module-->
 	<img  href="<?php echo $ar['web'];?>" src="aset/foto/<?php echo $ar['logo_ujian'];?>" width=310 >
@@ -159,7 +159,7 @@ a:active  {
 <?php if (!empty($_GET['token'])) { echo "<h5 id='blink' style='color: red;font-size:10px'>
 					Token salah</h5>"; }?>
 		<br>
-		<font id='blink' style='color: grey;font-size:10px'>made by codelite <?php echo date("Y");?></font>
+		<font id='blink' style='color: grey;font-size:10px'>PT. INOVINDO DIGITAL MEDIA X SMKN 4 BANDUNG <?php echo date("Y");?></font>
   </div>
 <?php }?>
 		

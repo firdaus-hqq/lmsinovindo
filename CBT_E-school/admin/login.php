@@ -12,7 +12,7 @@ include ('../koneksi/koneksi.php');
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="../aset/fa/css/font-awesome.css">
-  <title>E-School</title>
+  <title>Admin Login</title>
   <link rel="shortcut icon" href="../aset/foto/<?php echo $ar['logo'];?>">
     <link rel="stylesheet" href="css/reset.min.css">
 	<link rel='stylesheet prefetch' href='css/font.css'>

@@ -12,5 +12,5 @@
     }
 </style>
 <footer class="main-footer">
-    <h6><b>Version.</b> <?php include ('./versi/aktif/versi.txt'); ?> &copy; <?php echo date("Y") ?> gludug </h6>
+    <h6><b>Version.</b> <?php include ('./versi/aktif/versi.txt'); ?> &copy; <?php echo date("Y") ?> PT. INOVINDO DIGITAL MEDIA X SMKN 4 BANDUNG</h6>
 </footer>

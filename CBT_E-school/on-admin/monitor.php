@@ -8,7 +8,7 @@ include ('conn/fungsi.php');
 <html>
  <head>
     <meta charset="utf-8">
-    <title>E - School</title>
+    <title>IDM | ACADEMY</title>
 	<!-- Library CSS -->
 	<link href="../js/sweetalert.css" rel="stylesheet" type="text/css"/>
 	<?php
@@ -168,7 +168,7 @@ include "tema/tema.php";
                         				<div class="modal-content" style="margin-top:100px;">
                         					<div class="modal-header">
                         						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        						<h4 class="modal-title" style="text-align:center;">yakin mereset siswa ini ? <?php echo $ar[jumlahsoal]; ?></h4>
+                        						<h4 class="modal-title" style="text-align:center;">yakin mereset siswa ini ? <?php echo $ar['jumlahsoal']; ?></h4>
                         					</div>    
                         					<div class="modal-footer" style="margin:0px; border-top:0px; text-align:center;">
                         						<a href="siswa_reset_login.php" class="btn btn-danger" id="delete_link">Reset</a>

@@ -10,7 +10,7 @@ include ('../koneksi/db.php');
 <html>
  <head>
     <meta charset="utf-8">
-    <title>E - School</title>
+    <title>IDM | ACADEMY</title>
 	<!-- Library CSS -->
 	
 	<?php

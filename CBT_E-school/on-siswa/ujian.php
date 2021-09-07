@@ -9,7 +9,7 @@ include ('conn/fungsi.php');
  <head>
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>E-School 38</title>
+    <title>IDM | ACADEMY</title>
 	<!-- Icon -->
 	<link rel="shortcut icon" type="image/icon" href="../favio.ico">
 	<!-- Library CSS -->
