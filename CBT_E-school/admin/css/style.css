@@ -86,7 +86,7 @@ body {
 }
 .form-module h2 {
   margin: 0 0 20px;
-  color: #ff8700;
+  color: #3d9eee;
   font-size: 18px;
   font-weight: 400;
   line-height: 1;
@@ -113,16 +113,17 @@ body {
 }
 .form-module button {
   cursor: pointer;
-  background: #ff8700;
+  background: #3d9eee;
   width: 100%;
   border: 0;
   padding: 10px 15px;
   color: #ffffff;
   -webkit-transition: 0.3s ease;
   transition: 0.3s ease;
+  border-radius: 20px;
 }
 .form-module button:hover {
-  background: #ff0000;
+  background: #60c210;
 }
 .form-module .cta {
   background: #c4c4c4;

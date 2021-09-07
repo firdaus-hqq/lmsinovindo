@@ -25,7 +25,7 @@ img {
 <style type="text/css">
 .bg::before {
             content: '';
-            background-image: url('./background.jpg');
+            background-image: url('./background2.png');
             background-repeat: no-repeat;
             background-size: cover;
             background-attachment: fixed;
@@ -35,7 +35,6 @@ img {
             bottom: 0;
             left: 0;
             right: 0;
-            filter: blur(7px) grayscale(20%);
             height:100%;
             width:100%;
         }
@@ -103,32 +102,19 @@ a:active  {
   </div>
   <div class="form">
   <img src="../aset/foto/<?php echo $ar['logo'];?>" height="100" width="auto" onError="this.onerror=null;" ><br><br>
-    <h2><i class="fa fa-user"></i> Login Admin</h2>
+    <h2><i class="fa fa-user"></i> Welcome Admin</h2>
     <form action="vl_admin.php" class="inner-login" method="post">
       <input type="text" class="form-control" name="username" autocomplete="off" placeholder="Username" required>
       <input id="password-field" type="password" class="form-control" name="password" placeholder="Password" required>
       <span style="float:left" toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
       <button>Login</button>
     </form><br>
-    <h6><a href="../index.php" style='font-decoration:none;color:#999999;'>cbt siswa</a></h6>
+    
     <br>
 	    <?php if (!empty($_GET['salah'])) { echo "<h5 id='blink' style='color: red';>Username atau Password salah</h3>"; }
         ?>
   </div>
-  <div id="dev" class="form">
-      <img src="../aset/foto/dev.jpg" height="100" width="auto" onError="this.onerror=null;" ><br><br>
-    <h2><i class="fa fa-user-secret"></i> Developed by :</h2>
-    <form action="vl_admin.php" class="inner-login" method="post">
-      <h5>Betara Gludug Banyu Murti</h5>
-      <br>
-      <a href="tel:+6281230674728" style='font-decoration:none;color:#222;'><i class="fa fa-phone"></i> Call me +6281230674728</a> 
-      <br><br>
-      <a href="https://www.youtube.com/channel/UClyH2xK1K7bojvzNOPO4l5g" style='font-decoration:none;color:#222;'><i class="fa fa-youtube"></i> my Vlog</a>
-      <br><br>
-      <a href="mailto:betaragludugbanyumurti@gmail.com?Subject=Hello%20admin" target="_top" style='font-decoration:none;color:#222;'><i class="fa fa-inbox"></i> E- Mail</a>
-      <br>      
-    </form>
-  </div>
+  
   <div class="cta"><a href="<?php echo $ar['web'];?>"><h5><b>&copy;  <?php echo date ('Y') ?></b></h5> <?php echo $ar['n_sekolah'];?></a></div>
 <?php }?>
 </div>

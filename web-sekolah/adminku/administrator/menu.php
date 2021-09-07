@@ -21,9 +21,7 @@
 
    </ul>
   </li>";
-                    echo "<li class='header'>Content Web</li>
-   <li><a href='?module=setting'><i class='fa fa-toggle-on'></i><span>Setting Web</span></a></li>
-   <li><a href='v_daftar_absen.php'><i class='fa fa-check'></i><span>Absensi</span></a></li>
+                    echo "<li><a href='v_daftar_absen.php'><i class='fa fa-check'></i><span>Absensi</span></a></li>
    <li><a href='../../../CBT_E-school/on-admin/siswa.php'><i class='fa fa-laptop'></i><span>Ujian</span></a></li>
             <li class='treeview'>
                 <a href='#'>
