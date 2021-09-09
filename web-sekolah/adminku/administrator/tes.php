@@ -35,13 +35,6 @@ if ($_SESSION['login'] == 0) {
         if ($_SESSION['leveluser'] == 'siswa') {
             echo "<div class='error msg'>Anda tidak diperkenankan mengakses halaman ini.</div>";
         } else {
-
-            $search = @$_GET['search'];
-            if (!empty($search)) $sql .= " WHERE id_file LIKE '%$search%' 
-                                OR id_siswa LIKE '%$search%' 
-                                OR file LIKE '%$search%' 
-                                OR link LIKE '%$search%' 
-                                OR tanggal LIKE '%$search%'";
 ?>
             <!DOCTYPE html>
             <html>
@@ -245,17 +238,14 @@ if ($_SESSION['login'] == 0) {
                                                 while ($tugas_siswa = $listTugasSiswa->fetch_array()) {
                                                 ?>
                                                     <tr>
-                                                        <?php 
-                                                        $jumlah_tugas = mysqli_num_rows($result3);
-                                                        ?>
-                                                        <td rowspan=""><?= $data_tugas['nama_lengkap']; ?></td>
+                                                        <td><?= $data_tugas['nama_lengkap']; ?></td>
                                                         <td>
                                                             <?= $tugas_siswa['tanggal']; ?>
                                                         </td>
 
                                                         <td>
                                                             <a href="../tugas/<?= $tugas_siswa['file'] ?>" target="_blank"><?= $tugas_siswa['file'] ?></a>
-                                                            <a href="<?= $tugas_siswa['link'] ?>" target="_blank"><?= $tugas_siswa['link'] ?></a>
+                                                            <a href="../tugas/link/<?=$tugas_siswa['link'] ?>" target="_blank"><?= $tugas_siswa['link'] ?></a>
                                                         </td>
 
                                                         <td>
@@ -385,9 +375,7 @@ if ($_SESSION['login'] == 0) {
 
             </html>
 <?php
-                                            }
-                                        }
-                                    }
-                                
-                                
+        }
+    }
+}
 ?>
