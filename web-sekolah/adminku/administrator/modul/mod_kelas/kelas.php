@@ -51,10 +51,10 @@ else{
 
 $aksi="modul/mod_kelas/aksi_kelas.php";
 $aksi_siswa = "administrator/modul/mod_siswa/aksi_siswa.php";
-switch($_GET[act]){
+switch($_GET['act']){
   // Tampil kelas
   default:
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
       $tampil = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas ORDER BY id_kelas");
 
       echo " <div class='box box-warning'>
@@ -170,7 +170,7 @@ switch($_GET[act]){
 
                    ";
     }
-    elseif ($_SESSION[leveluser]=='pengajar'){
+    elseif ($_SESSION['leveluser']=='pengajar'){
          echo"
         <section class='panel panel-primary'>
                         <header class='panel-heading'>
@@ -232,7 +232,7 @@ switch($_GET[act]){
                     window.location=(href='?module=home')</script>";
                 }
     }
-    elseif ($_SESSION[leveluser]=='siswa'){
+    elseif ($_SESSION['leveluser']=='siswa'){
         echo"<section class='panel panel-primary'>
                         <header class='panel-heading'>
                             Kelas Kamu
@@ -292,7 +292,7 @@ switch($_GET[act]){
     
     
     case "editkelas":
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
     $tampil = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id = '$_GET[id]'");
     $r = mysqli_fetch_array($tampil);
     $getnip = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM pengajar WHERE id_pengajar = '$r[id_pengajar]'");
@@ -328,7 +328,7 @@ switch($_GET[act]){
           </div></div>
         </form></div></div></div>";
     }
-    elseif ($_SESSION[leveluser]=='pengajar'){
+    elseif ($_SESSION['leveluser']=='pengajar'){
     $tampil = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id = '$_GET[id]'");
     $r = mysqli_fetch_array($tampil);
      echo "<section class='panel panel-primary'>
@@ -397,7 +397,7 @@ switch($_GET[act]){
 case "detailkelas":
     $detail=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas='$_GET[id]'");
    
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
     echo "<div class='box box-warning'>
         <div class='box-header with-border'>
           <div class='col-md-12 col-xs-12'> 

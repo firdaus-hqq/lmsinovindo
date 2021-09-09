@@ -35,13 +35,6 @@ if ($_SESSION['login'] == 0) {
         if ($_SESSION['leveluser'] == 'siswa') {
             echo "<div class='error msg'>Anda tidak diperkenankan mengakses halaman ini.</div>";
         } else {
-
-            $search = @$_GET['search'];
-            if (!empty($search)) $sql .= " WHERE id_file LIKE '%$search%' 
-                                OR id_siswa LIKE '%$search%' 
-                                OR file LIKE '%$search%' 
-                                OR link LIKE '%$search%' 
-                                OR tanggal LIKE '%$search%'";
 ?>
             <!DOCTYPE html>
             <html>
@@ -223,66 +216,45 @@ if ($_SESSION['login'] == 0) {
                         <div class="box box-warning">
                             <div class='box-header with-border'>
                                 <div class="table-responsive">
-                                    <table id='example4' class='table table-bordered table-striped'>
-
-                                            <?php
-                                            $i = 1;
-                                            while ($data_tugas = $listDataTugas->fetch_array()) {
-                                            ?>
-                                                <thead>
+                                    <table id='example1' class='table table-bordered table-striped'>
+                                            <thead>
+                                                <tr>
+                                                    <th>Nama</th>
+                                                    <th>Tanggal</th>
+                                                    <th>Tugas</th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <?php
+                                                $i = 1;
+                                                while ($data_tugas = $listDataTugas->fetch_array()) {
+                                                $sql3 = "SELECT * FROM tugas WHERE id_siswa = '$data_tugas[id_siswa]' AND status='' ORDER BY tanggal DESC";
+                                                $result3 = $mysqli->query($sql3);
+                                                if ($result3->num_rows > 0) {
+                                                    $tugas_siswa = $result3->fetch_array();
+                                                }
+                                                $listTugasSiswa = $mysqli->query($sql3);
+                                                while ($tugas_siswa = $listTugasSiswa->fetch_array()) {
+                                                ?>
                                                     <tr>
-                                                        <th colspan="3"><?= $data_tugas['nama_lengkap']; ?></th>
-                                                    </tr>
-                                                    <tr>
-                                                        <th>Tanggal</th>
-                                                        <th>Tugas</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    <div class="search-container">
-                                                        <form class="search" method="GET" action="tabel2.php">
-                                                            <div class="search-title">
-                                                            </div>
-                                                            <input class="search-in" type="text" name="search" value="<?= @$search ?>">
-                                                            <button class="search-btn" type="submit">Cari</button>
-                                                        </form>
-                                                        <form action="index.php">
-                                                            <div class="reset-container">
-                                                                <button class="reset-btn" type="submit">
-                                                                    <a href="tabel2.php">Reset List</a>
-                                                                </button>
-                                                            </div>
-                                                        </form>
-                                                    </div>
-                                    
-                                                        <?php
-                                                        $sql3 = "SELECT * FROM tugas WHERE id_siswa = '$data_tugas[id_siswa]' AND status=''";
-                                                        $result3 = $mysqli->query($sql3);
-                                                        if ($result3->num_rows > 0) {
-                                                            $tugas_siswa = $result3->fetch_array();
-                                                        }
-                                                        $listTugasSiswa = $mysqli->query($sql3);
-                                                        while ($tugas_siswa = $listTugasSiswa->fetch_array()) {
-                                                        ?>
-                                                            <tr>
-                                                                <td>
-                                                                    <?= $tugas_siswa['tanggal']; ?>
-                                                                </td>
+                                                        <td><?= $data_tugas['nama_lengkap']; ?></td>
+                                                        <td>
+                                                            <?= $tugas_siswa['tanggal']; ?>
+                                                        </td>
 
-                                                                <td>
-                                                                    <a href="../tugas/<?= $tugas_siswa['file'] ?>" target="_blank"><?= $tugas_siswa['file'] ?></a>
-                                                                    <a href="../tugas/link/<?= $tugas_siswa['link'] ?>" target="_blank"><?= $tugas_siswa['link'] ?></a>
-                                                                </td>
+                                                        <td>
+                                                            <a href="../tugas/<?= $tugas_siswa['file'] ?>" target="_blank"><?= $tugas_siswa['file'] ?></a>
+                                                            <a href="../tugas/link/<?=$tugas_siswa['link'] ?>" target="_blank"><?= $tugas_siswa['link'] ?></a>
+                                                        </td>
 
-                                                                <td>
-                                                                    <i class="fa fa-check-circle" style="color:blue;" onclick="confirm('Yakin ingin konfirmasi tugas ini?') ? window.location.href='konfirmasi.php?id_file=<?= $tugas_siswa['id_file'] . '&id_kelas=' . $_GET['id_kelas']  ?>':''"></i>
-                                                                    <i class="fa fa-times-circle" style="color:red;" onclick="confirm('Yakin ingin mengembalikan tugas ini?') ? window.location.href='revisi.php?id_file=<?= $tugas_siswa['id_file'] . '&id_kelas=' . $_GET['id_kelas']  ?>':''"></i>
-                                                                </td>
-                                                            </tr>
-                                                        <?php } ?>
-                                                </tbody>
-                                            <?php } ?>
+                                                        <td>
+                                                            <i class="fa fa-check-circle" style="color:blue;" onclick="confirm('Yakin ingin konfirmasi tugas ini?') ? window.location.href='konfirmasi.php?id_file=<?= $tugas_siswa['id_file'] . '&id_kelas=' . $_GET['id_kelas']  ?>':''"></i>
+                                                            <i class="fa fa-times-circle" style="color:red;" onclick="confirm('Yakin ingin mengembalikan tugas ini?') ? window.location.href='revisi.php?id_file=<?= $tugas_siswa['id_file'] . '&id_kelas=' . $_GET['id_kelas']  ?>':''"></i>
+                                                        </td>
+                                                    </tr>
+                                                <?php }} ?>
+                                            </tbody>
                                     </table>
                                 </div>
                             </div>
@@ -403,9 +375,7 @@ if ($_SESSION['login'] == 0) {
 
             </html>
 <?php
-                                            }
-                                        }
-                                    }
-                                
-                                
+        }
+    }
+}
 ?>
