@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 02 Sep 2021 pada 06.09
+-- Waktu pembuatan: 07 Sep 2021 pada 09.13
 -- Versi server: 10.4.14-MariaDB
 -- Versi PHP: 7.4.10
 
@@ -31,10 +31,17 @@ CREATE TABLE `admin` (
   `id_admin` int(3) NOT NULL,
   `username` varchar(100) NOT NULL DEFAULT 'administrator',
   `password` varchar(100) NOT NULL,
+  `Id_User` int(11) NOT NULL DEFAULT 1,
+  `Id_Usergroup_User` int(11) NOT NULL DEFAULT 1,
+  `foto` varchar(100) DEFAULT NULL,
+  `instagram` varchar(100) NOT NULL,
+  `youtube` varchar(100) NOT NULL,
   `nama_lengkap` varchar(100) NOT NULL,
+  `jabatan` text NOT NULL,
   `level` varchar(50) NOT NULL DEFAULT 'admin',
   `alamat` text NOT NULL,
   `no_telp` varchar(20) NOT NULL,
+  `admin_su` varchar(2) NOT NULL DEFAULT '0',
   `email` varchar(50) NOT NULL,
   `blokir` enum('Y','N') NOT NULL DEFAULT 'N',
   `id_session` varchar(100) NOT NULL
@@ -44,9 +51,9 @@ CREATE TABLE `admin` (
 -- Dumping data untuk tabel `admin`
 --
 
-INSERT INTO `admin` (`id_admin`, `username`, `password`, `nama_lengkap`, `level`, `alamat`, `no_telp`, `email`, `blokir`, `id_session`) VALUES
-(1, 'admin2', 'c84258e9c39059a89ab77d846ddab909', 'Totok Rantoni', 'admin', 'Jln Gatotkaca,Ponorogo', '085228482669', 'totok@ymail.com', 'N', '6ko5nruqvnqmcei05gf81tbbb4'),
-(3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'Admin', 'admin', 'Jeruksing,Siman', '085228482669', 'ervina@gmail.com', 'N', 'g8pemhjdkna9nju2od6aiit2oa');
+INSERT INTO `admin` (`id_admin`, `username`, `password`, `Id_User`, `Id_Usergroup_User`, `foto`, `instagram`, `youtube`, `nama_lengkap`, `jabatan`, `level`, `alamat`, `no_telp`, `admin_su`, `email`, `blokir`, `id_session`) VALUES
+(1, 'admin2', 'c84258e9c39059a89ab77d846ddab909', 1, 1, NULL, '', '', 'Totok Rantoni', '', 'admin', 'Jln Gatotkaca,Ponorogo', '085228482669', '0', 'totok@ymail.com', 'N', '6ko5nruqvnqmcei05gf81tbbb4'),
+(3, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1, 1, NULL, '', '', 'Admin', '', 'admin', 'Jeruksing,Siman', '085228482669', '0', 'ervina@gmail.com', 'N', 'cmckp28cgop8v02ddu7kqqkekq');
 
 -- --------------------------------------------------------
 
@@ -231,6 +238,40 @@ INSERT INTO `galeri_foto` (`id_galerifoto`, `nama_foto`, `gambar`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `jawaban`
+--
+
+CREATE TABLE `jawaban` (
+  `nis` varchar(20) NOT NULL,
+  `nama` varchar(30) NOT NULL,
+  `kelas` varchar(10) NOT NULL,
+  `kodemapel` varchar(20) NOT NULL,
+  `jumlahsoal` int(11) NOT NULL,
+  `kodesoal` varchar(30) CHARACTER SET latin1 COLLATE latin1_general_ci NOT NULL,
+  `aktif` varchar(20) NOT NULL,
+  `waktu` varchar(10) NOT NULL,
+  `jawabansiswa` varchar(100) DEFAULT NULL,
+  `benar` varchar(10) DEFAULT NULL,
+  `salah` varchar(10) DEFAULT NULL,
+  `nilai` varchar(10) DEFAULT NULL,
+  `kuncisoal` varchar(100) DEFAULT NULL,
+  `mulaiujian` varchar(12) NOT NULL,
+  `lamaujian` varchar(12) NOT NULL,
+  `waktuselesai` varchar(12) NOT NULL,
+  `sisawaktu` varchar(8) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `jawaban`
+--
+
+INSERT INTO `jawaban` (`nis`, `nama`, `kelas`, `kodemapel`, `jumlahsoal`, `kodesoal`, `aktif`, `waktu`, `jawabansiswa`, `benar`, `salah`, `nilai`, `kuncisoal`, `mulaiujian`, `lamaujian`, `waktuselesai`, `sisawaktu`) VALUES
+('56789', 'Qi', '11', 'IPA', 2, 'PQR', 'Aktif', '10', NULL, NULL, NULL, NULL, NULL, '20:26:21', '00:10:00', '20:36:21', '660'),
+('12345', 'Us', '12', 'dsvg', 3, 'bkbg', 'Aktif', '60', '', NULL, NULL, NULL, NULL, '13:26:54', '01:00:00', '12:38:54', '-2940');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `jawaburaian`
 --
 
@@ -408,7 +449,6 @@ INSERT INTO `modul` (`id_modul`, `nama_modul`, `link`, `static_content`, `gambar
 (37, 'Manajemen Siswa', '?module=siswa', '', 'gedungku.jpg', 'Y', 'admin', 'Y', 3, 'profil-kami.html'),
 (10, 'Manajemen Modul', '?module=modul', '', '', 'N', 'admin', 'N', 1, ''),
 (31, 'Mata Pelajaran', '?module=matapelajaran', '', '', 'Y', 'pengajar', 'Y', 5, ''),
-(70, 'Manajemen Quiz', '?module=quiz', '', '', 'Y', 'admin', 'Y', 7, ''),
 (41, 'Manajemen Kelas', ' ?module=kelas', '', '', 'N', 'pengajar', 'Y', 4, 'semua-agenda.html');
 
 -- --------------------------------------------------------
@@ -462,6 +502,19 @@ CREATE TABLE `nilaihasil` (
   `statuskoreksi` int(1) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data untuk tabel `nilaihasil`
+--
+
+INSERT INTO `nilaihasil` (`id`, `nis`, `nama`, `kelas`, `kodemapel`, `jumlahsoal`, `kodesoal`, `aktif`, `jawabansiswa`, `benar`, `salah`, `nilai`, `nilaiurai`, `kuncisoal`, `statuskoreksi`) VALUES
+(45, '12345ASU', 'Us', '12', 'Random', 2, 'ASU', '1', 'BA', '09:57:26pm', '25-08-2021', '100', '', 'BA', 0),
+(46, '12345KIRIK', 'Us', '12', 'Random', 5, 'KIRIK', '1', 'ADDBD', '09:26:22am', '26-08-2021', '12', 'NAN', 'CDBBD', 2),
+(47, '12345bahf', 'Us', '12', 'jbkefw', 1, 'bahf', '1', 'X', '11:13:07am', '30-08-2021', '0', '', 'A', 0),
+(48, '1234567COBAIN', 'ABC', '12A', 'IPA', 3, 'COBAIN', '1', 'AEB', '02:31:38pm', '02-09-2021', '0', '', 'BCD', 0),
+(49, '1234567OPS', 'ABC', '12A', 'IPS', 3, 'OPS', '1', 'BCA', '02:38:31pm', '02-09-2021', '100', '', 'BCA', 0),
+(50, '1234567simulasi', 'ABC', '12A', 'PKN', 2, 'simulasi', '1', 'AB', '02:41:33pm', '02-09-2021', '50', '', 'CB', 0),
+(51, '1234567ABCD', 'ABC', '12A', 'PAI', 3, 'ABCD', '1', 'ABA', '03:42:03pm', '02-09-2021', '66.66', '', 'ABD', 0);
+
 -- --------------------------------------------------------
 
 --
@@ -501,12 +554,13 @@ CREATE TABLE `online` (
 --
 
 INSERT INTO `online` (`ip`, `id_siswa`, `tanggal`, `online`) VALUES
-('::1', 12, '2021-09-01', 'Y'),
+('::1', 12, '2021-09-07', 'Y'),
 ('127.0.0.1', 5, '2011-07-14', 'T'),
 ('::1', 9, '2011-12-28', 'T'),
 ('::1', 8, '2021-07-27', 'T'),
 ('::1', 10, '2016-04-14', 'T'),
-('::1', 11, '2016-04-14', 'T');
+('::1', 11, '2016-04-14', 'T'),
+('::1', 20, '2021-09-04', 'Y');
 
 -- --------------------------------------------------------
 
@@ -600,7 +654,7 @@ CREATE TABLE `profil` (
 --
 
 INSERT INTO `profil` (`id`, `n_sekolah`, `sub_n_sekolah`, `kode_sekolah`, `logo`, `logo_ujian`, `kota`, `logo_kota`, `web`, `bg_login`) VALUES
-(1, 'sekolah', 'alamat sekolah', 'sekolah', 'icon.png', 'logoheader.png', 'kota', 'sby.gif', 'https://smpn38sby.sch.id/', 'wall-min.jpg');
+(1, 'sekolah', 'alamat sekolah', 'sekolah', 'icon.png', 'logoheader.png', 'kota', 'sby.gif', 'https://inovindoacademy.com', 'wall-min.jpg');
 
 -- --------------------------------------------------------
 
@@ -697,6 +751,58 @@ CREATE TABLE `registrasi_siswa` (
 --
 
 CREATE TABLE `siswa` (
+  `id_siswa` int(9) NOT NULL,
+  `nis` varchar(50) NOT NULL,
+  `nama_lengkap` varchar(100) NOT NULL,
+  `username_login` varchar(50) NOT NULL,
+  `password_login` varchar(50) NOT NULL,
+  `Id_User` int(11) NOT NULL DEFAULT 1,
+  `Id_Usergroup_User` int(11) NOT NULL DEFAULT 1,
+  `id_kelas` varchar(5) NOT NULL,
+  `jabatan` varchar(200) NOT NULL,
+  `alamat` varchar(150) NOT NULL,
+  `tempat_lahir` varchar(100) NOT NULL,
+  `tgl_lahir` date NOT NULL,
+  `jenis_kelamin` enum('L','P') NOT NULL,
+  `agama` varchar(20) NOT NULL,
+  `nama_ayah` varchar(100) NOT NULL,
+  `nama_ibu` varchar(100) NOT NULL,
+  `th_masuk` varchar(4) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `no_telp` varchar(20) NOT NULL,
+  `foto` varchar(150) NOT NULL,
+  `sesi` int(11) NOT NULL,
+  `ruang` varchar(30) NOT NULL,
+  `rombel` varchar(20) NOT NULL,
+  `statuslogin` varchar(20) NOT NULL DEFAULT '0',
+  `online` varchar(20) DEFAULT NULL,
+  `persentase` int(3) NOT NULL,
+  `blokir` enum('Y','N') NOT NULL,
+  `id_session` varchar(100) NOT NULL,
+  `id_session_soal` varchar(100) NOT NULL,
+  `level` varchar(20) NOT NULL DEFAULT 'siswa'
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `siswa`
+--
+
+INSERT INTO `siswa` (`id_siswa`, `nis`, `nama_lengkap`, `username_login`, `password_login`, `Id_User`, `Id_Usergroup_User`, `id_kelas`, `jabatan`, `alamat`, `tempat_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `nama_ayah`, `nama_ibu`, `th_masuk`, `email`, `no_telp`, `foto`, `sesi`, `ruang`, `rombel`, `statuslogin`, `online`, `persentase`, `blokir`, `id_session`, `id_session_soal`, `level`) VALUES
+(7, '034/034.070', 'Dicky', 'siswa1', '013f0f67779f3b1686c604db150d12ea', 1, 1, '12rpl', 'Ketua Kelas', 'Jedah,Siman', 'Ponorogo', '1996-08-10', 'L', 'Islam', 'Wakadir', 'Watini', '2010', 'pranaandypal@yahoo.com', '090909', '3aa.jpg', 0, '', '', '0', NULL, 0, 'N', 'of8tv146ih5jbik8lh8j74aued', '034/034.070', 'siswa'),
+(5, '90909', 'El faruq harisal aji', 'almazary', '0f0484d5239cbdeee629258b816785d3', 1, 1, '11rpl', 'Ketua Kelas', 'Jl.KHA DAHLAN unit 2 rimbo bujang', 'rimbo bujang', '1990-08-10', 'L', 'Islam', 'wagimin', 'sri ngatini', '2008', 'almazary@gmail.com', '085228482669', 'Untitled-1.jpg', 0, '', '', '0', NULL, 0, 'N', '90909', '90909', 'siswa'),
+(8, '080800', 'yogi', 'yogi', '938e14c074c45c62eb15cc05a6f36d79', 1, 1, '10rpl', 'siswa', 'jl.gajah', 'kisaran', '1989-05-15', 'L', 'Islam', 'emboh', 'emboh', '2009', 'yogizeger@yahoo.com', '0000', '12241286_205349899796583_7077285851609688335_n.jpg', 0, '', '', '0', NULL, 0, 'N', 'hvgb1h0eamjg6opqqmisgdi7e2', '080800', 'siswa'),
+(11, '013/013.070', 'Rio Ayatullah', 'rio', 'd5ed38fdbf28bc4e58be142cf5a17cf5', 1, 1, '12rpl', 'siswa', 'RIo          ', 'Ponorogo', '1997-04-13', 'L', 'islam', 'Kadirun', 'Watini', '2013', 'rio@gmail.com', '089757577372', 'Folder.jpg', 0, '', '', '0', NULL, 0, 'N', '7lib45fg1urf4iq6r0ak61ec95', '013/013.070', 'siswa'),
+(10, '9090909', 'ali', 'ali', '86318e52f5ed4801abe1d13d509443de', 1, 1, '11rpl', 'siswa', 'alamat', 'Ponorogo', '1996-03-10', 'L', 'islam', 'asd', 'asdfgas', '2012', 'admin@admin.com', '6070707', '12278748_210216469309926_7115825229146990081_n.jpg', 0, '', '', '0', NULL, 0, 'N', 'em92ju8p8p3ho957r6bbs4ojs7', '9090909', 'siswa'),
+(12, '1920118147', 'Firdaus Haqiqi', 'rewq', '3a8703f560b3768e0277094c58c686e1', 1, 1, 'smkn4', 'siswa', 'Nebula', 'Antah Beratah', '2021-09-01', 'L', 'Islam', 'John', 'Jane', '2021', 'email@email.com', '+62-812-3456-7890', 'profilku.jpg', 1, 'Ruang-1', 'A', '0', '1', 67, 'N', 'oui94e7la0thht9ho11b1p1lv5', '1920118147', 'siswa'),
+(20, '56789', 'AKU', 'qwert', '3a8703f560b3768e0277094c58c686e1', 1, 1, 'smkn4', 'siswa', 'BDG', 'BDG', '2021-09-01', 'L', 'Islam', 'Ali', 'Ani', '2021', 'email@email.com', '+62-456-7892-7689', '', 0, '', '', '0', NULL, 0, 'N', '5uoc1de4imrc47h3vf039jltm7', '56789', 'siswa');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `siswa1`
+--
+
+CREATE TABLE `siswa1` (
   `id` int(10) NOT NULL,
   `nis` varchar(100) NOT NULL,
   `nama` varchar(200) NOT NULL,
@@ -713,56 +819,13 @@ CREATE TABLE `siswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `siswa`
+-- Dumping data untuk tabel `siswa1`
 --
 
-INSERT INTO `siswa` (`id`, `nis`, `nama`, `kelas`, `pass`, `Id_User`, `Id_Usergroup_User`, `foto`, `sesi`, `ruang`, `rombel`, `statuslogin`, `online`) VALUES
-(2, '12345', 'Us', '12', 'jkl', 1, 1, NULL, 0, 'Ruang-1', 'a', '1', '1'),
-(3, '56789', 'Qi', '11', 'jkl', 1, 1, NULL, 0, 'Ruang-1', 'b', '0', '1');
-
--- --------------------------------------------------------
-
---
--- Struktur dari tabel `siswaasli`
---
-
-CREATE TABLE `siswaasli` (
-  `id_siswa` int(9) NOT NULL,
-  `nis` varchar(50) NOT NULL,
-  `nama_lengkap` varchar(100) NOT NULL,
-  `username_login` varchar(50) NOT NULL,
-  `password_login` varchar(50) NOT NULL,
-  `id_kelas` varchar(5) NOT NULL,
-  `jabatan` varchar(200) NOT NULL,
-  `alamat` varchar(150) NOT NULL,
-  `tempat_lahir` varchar(100) NOT NULL,
-  `tgl_lahir` date NOT NULL,
-  `jenis_kelamin` enum('L','P') NOT NULL,
-  `agama` varchar(20) NOT NULL,
-  `nama_ayah` varchar(100) NOT NULL,
-  `nama_ibu` varchar(100) NOT NULL,
-  `th_masuk` varchar(4) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `no_telp` varchar(20) NOT NULL,
-  `foto` varchar(150) NOT NULL,
-  `persentase` int(3) NOT NULL,
-  `blokir` enum('Y','N') NOT NULL,
-  `id_session` varchar(100) NOT NULL,
-  `id_session_soal` varchar(100) NOT NULL,
-  `level` varchar(20) NOT NULL DEFAULT 'siswa'
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Dumping data untuk tabel `siswaasli`
---
-
-INSERT INTO `siswaasli` (`id_siswa`, `nis`, `nama_lengkap`, `username_login`, `password_login`, `id_kelas`, `jabatan`, `alamat`, `tempat_lahir`, `tgl_lahir`, `jenis_kelamin`, `agama`, `nama_ayah`, `nama_ibu`, `th_masuk`, `email`, `no_telp`, `foto`, `persentase`, `blokir`, `id_session`, `id_session_soal`, `level`) VALUES
-(7, '034/034.070', 'Dicky', 'siswa1', '013f0f67779f3b1686c604db150d12ea', '12rpl', 'Ketua Kelas', 'Jedah,Siman', 'Ponorogo', '1996-08-10', 'L', 'Islam', 'Wakadir', 'Watini', '2010', 'pranaandypal@yahoo.com', '090909', '3aa.jpg', 0, 'N', 'of8tv146ih5jbik8lh8j74aued', '034/034.070', 'siswa'),
-(5, '90909', 'El faruq harisal aji', 'almazary', '0f0484d5239cbdeee629258b816785d3', '11rpl', 'Ketua Kelas', 'Jl.KHA DAHLAN unit 2 rimbo bujang', 'rimbo bujang', '1990-08-10', 'L', 'Islam', 'wagimin', 'sri ngatini', '2008', 'almazary@gmail.com', '085228482669', 'Untitled-1.jpg', 0, 'N', '90909', '90909', 'siswa'),
-(8, '080800', 'yogi', 'yogi', '938e14c074c45c62eb15cc05a6f36d79', '10rpl', 'siswa', 'jl.gajah', 'kisaran', '1989-05-15', 'L', 'Islam', 'emboh', 'emboh', '2009', 'yogizeger@yahoo.com', '0000', '12241286_205349899796583_7077285851609688335_n.jpg', 0, 'N', 'hvgb1h0eamjg6opqqmisgdi7e2', '080800', 'siswa'),
-(11, '013/013.070', 'Rio Ayatullah', 'rio', 'd5ed38fdbf28bc4e58be142cf5a17cf5', '12rpl', 'siswa', 'RIo          ', 'Ponorogo', '1997-04-13', 'L', 'islam', 'Kadirun', 'Watini', '2013', 'rio@gmail.com', '089757577372', 'Folder.jpg', 0, 'N', '7lib45fg1urf4iq6r0ak61ec95', '013/013.070', 'siswa'),
-(10, '9090909', 'ali', 'ali', '86318e52f5ed4801abe1d13d509443de', '11rpl', 'siswa', 'alamat', 'Ponorogo', '1996-03-10', 'L', 'islam', 'asd', 'asdfgas', '2012', 'admin@admin.com', '6070707', '12278748_210216469309926_7115825229146990081_n.jpg', 0, 'N', 'em92ju8p8p3ho957r6bbs4ojs7', '9090909', 'siswa'),
-(12, '1920118147', 'Firdaus Haqiqi', 'rewq', '30705a58b0254b063b4abe03845b9ddc', 'smkn4', 'siswa', 'Galaksi Andromeda', 'Antah Beratah', '2004-01-01', 'L', 'Islam', 'John', 'Jane', '2021', 'email@email.com', '+62-812-3456-7890', 'sky.jpg', 67, 'N', '1920118147', '1920118147', 'siswa');
+INSERT INTO `siswa1` (`id`, `nis`, `nama`, `kelas`, `pass`, `Id_User`, `Id_Usergroup_User`, `foto`, `sesi`, `ruang`, `rombel`, `statuslogin`, `online`) VALUES
+(2, '12345', 'Us', '12', 'jkl', 1, 1, NULL, 0, 'Ruang-1', 'a', '0', '2'),
+(3, '56789', 'Qi', '11', 'jkl', 1, 1, NULL, 0, 'Ruang-1', 'b', '0', '1'),
+(4, '1234567', 'ABC', '12A', 'ghjkl', 1, 1, NULL, 1, 'Ruang-1', '', '0', '2');
 
 -- --------------------------------------------------------
 
@@ -825,9 +888,8 @@ CREATE TABLE `soal` (
 --
 
 INSERT INTO `soal` (`id`, `jenissoal`, `kodemapel`, `kodesoal`, `nomersoal`, `soal`, `gambarsoal`, `pilihan1`, `pilihan2`, `pilihan3`, `pilihan4`, `pilihan5`, `gambar_a`, `gambar_b`, `gambar_c`, `gambar_d`, `gambar_e`, `kunci`, `audio`, `status`) VALUES
-(33, 'Pre-Test', '', 'COBA', 2, 'fugugy', '', 'ygu', 'guyg', 'yguy', 'yugu', 'yigi', '', '', '', '', '', 'A', '', 1),
-(32, 'Pre-Test', '', 'COBA', 1, 'ihifq', '', 'kjhuhih', 'houhioh', 'oiho', 'iohoh', 'oiho', '', '', '', '', '', 'B', '', 1),
-(34, 'Pre-Test', '', 'COBA', 3, 'gjvuyfvuv', '', 'iuguyg', 'yguog', 'ygug', 'ygugi', 'uyguygu', '', '', '', '', '', 'D', '', 1);
+(48, 'Pretest', 'PKN', 'TEST', 2, 'jygui', '', 'ygugi', 'yogiuy', 'iygiu', 'yigiu', '', '', '', '', '', '', 'C', '', 1),
+(47, 'Pretest', 'PKN', 'TEST', 1, 'khgigiu', '', 'iygiu', 'iuguig', 'iygouig', 'iygug', '', '', '', '', '', '', 'A', '', 1);
 
 -- --------------------------------------------------------
 
@@ -911,27 +973,32 @@ CREATE TABLE `tugas` (
   `id_siswa` int(11) NOT NULL,
   `file` varchar(3000) NOT NULL,
   `link` varchar(3000) NOT NULL,
-  `tanggal` datetime NOT NULL
+  `tanggal` datetime NOT NULL,
+  `status` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data untuk tabel `tugas`
 --
 
-INSERT INTO `tugas` (`id_file`, `id_siswa`, `file`, `link`, `tanggal`) VALUES
-(1, 0, '', '<p>jnwfjnwe</p>\r\n', '2021-07-30 13:47:02'),
-(2, 0, '', '<p>,mkewmfwg</p>\r\n', '2021-07-30 13:50:39'),
-(3, 0, '', '<p>mnfnwefwf</p>\r\n', '2021-07-30 13:51:59'),
-(4, 0, '', '<p>m,nv,sdv</p>\r\n', '2021-07-30 13:53:13'),
-(5, 0, '', '<p>.knwlknwelfnew</p>\r\n', '2021-07-30 13:54:25'),
-(6, 0, '', '<p>urrraaaaa</p>\r\n', '2021-07-30 13:56:27'),
-(7, 0, '', '<p>knvkamdvds</p>\r\n', '2021-07-30 14:00:05'),
-(8, 0, '', '<p>,. vds., dv</p>\r\n', '2021-07-30 15:10:00'),
-(9, 0, 'winxp.jpg', '<p>,.mavdklmsldv</p>\r\n', '2021-07-30 15:16:32'),
-(30, 12, 'PikPng.com_profile-icon-png_805068.png', '<p>testing</p>\r\n', '2021-08-20 13:28:33'),
-(32, 12, 'winxp.jpg', '<p>teks</p>\r\n', '2021-08-28 13:30:54'),
-(33, 12, 'winxp.jpg', '<p>fgfgfg</p>\r\n', '2021-08-28 13:32:47'),
-(34, 12, '', '<p>gfskgjsf</p>\r\n', '2021-08-28 16:52:25');
+INSERT INTO `tugas` (`id_file`, `id_siswa`, `file`, `link`, `tanggal`, `status`) VALUES
+(4, 7, 'db_rpl (4).sql', '', '2021-09-03 16:57:26', 'revisi'),
+(5, 7, 'materi.php', '', '2021-09-03 16:57:36', 'revisi'),
+(7, 7, '', '<p>jsuusjsus</p>\r\n', '2021-09-03 17:08:51', 'konfirmasi'),
+(8, 7, 'Surat IZin PKL TES TOEIC.pdf', '<p>llllllll</p>\r\n', '2021-09-03 17:09:16', 'revisi'),
+(9, 7, 'Buku Pedoman PKL Siswa revisi 2 (1).docx', '<p>sdbhfhsdfbhsdhfbf</p>\r\n', '2021-09-04 08:22:11', 'konfirmasi'),
+(10, 7, '', '<p>sdfsdfsdfdsf</p>\r\n', '2021-09-04 08:22:17', 'konfirmasi'),
+(11, 7, 'Daftar Siswa Update No. HP Bantuan Kuota Kemdikbud.pdf', '', '2021-09-04 08:22:47', 'konfirmasi'),
+(12, 7, 'Surat IZin PKL TES TOEIC.pdf', '<p>asdadsdasd</p>\r\n', '2021-09-04 11:12:52', 'konfirmasi'),
+(13, 7, 'print.pdf', '', '2021-09-04 11:13:00', 'konfirmasi'),
+(14, 7, '', '<p>cdaccscsac</p>\r\n', '2021-09-04 11:13:05', 'konfirmasi'),
+(15, 7, 'db_rpl (5).sql', '', '2021-09-04 11:19:25', 'konfirmasi'),
+(16, 7, 'Cinderella.doc', '', '2021-09-04 11:19:35', 'konfirmasi'),
+(18, 0, 'Naufal R(26)Arya Y(05)_XI RPL 3 (3).docx', '', '2021-09-04 11:51:57', ''),
+(19, 15, 'Weekly REPORT TEMPLATE.docx', '', '2021-09-04 11:57:47', 'konfirmasi'),
+(20, 11, 'Buku Pedoman PKL Siswa revisi 2 (1).docx', '', '2021-09-04 11:58:14', 'konfirmasi'),
+(21, 12, 'db_rpl.sql', '<p>tes</p>\r\n', '2021-09-04 13:47:26', ''),
+(22, 20, 'peringkat.sql', '<p>testing</p>\r\n', '2021-09-04 13:52:36', '');
 
 -- --------------------------------------------------------
 
@@ -956,6 +1023,7 @@ CREATE TABLE `t_alumni` (
 CREATE TABLE `ujian` (
   `Urut` int(11) NOT NULL,
   `jenis` varchar(50) COLLATE latin1_general_ci NOT NULL,
+  `mapel` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `kodesoal` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `waktu` varchar(8) COLLATE latin1_general_ci NOT NULL,
   `lamaujian` varchar(12) COLLATE latin1_general_ci NOT NULL,
@@ -963,7 +1031,7 @@ CREATE TABLE `ujian` (
   `aktif` int(11) NOT NULL DEFAULT 0,
   `acak` varchar(2) COLLATE latin1_general_ci NOT NULL,
   `opsi` varchar(10) COLLATE latin1_general_ci NOT NULL,
-  `kelas` varchar(100) COLLATE latin1_general_ci NOT NULL,
+  `kelas` varchar(50) COLLATE latin1_general_ci NOT NULL,
   `nilai` varchar(3) COLLATE latin1_general_ci NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1 COLLATE=latin1_general_ci;
 
@@ -971,8 +1039,10 @@ CREATE TABLE `ujian` (
 -- Dumping data untuk tabel `ujian`
 --
 
-INSERT INTO `ujian` (`Urut`, `jenis`, `kodesoal`, `waktu`, `lamaujian`, `kunci`, `aktif`, `acak`, `opsi`, `kelas`, `nilai`) VALUES
-(11, 'Pre-Test', 'COBA', '30', '00:30:00', '', 1, '1', 'hidden', 'SMKN 4 Bandung', '100');
+INSERT INTO `ujian` (`Urut`, `jenis`, `mapel`, `kodesoal`, `waktu`, `lamaujian`, `kunci`, `aktif`, `acak`, `opsi`, `kelas`, `nilai`) VALUES
+(3, 'PAS', 'IPA', 'ABC', '10', '00:10:00', '', 0, '1', 'hidden', '12', '100'),
+(4, 'PAS', 'IPA', 'ABCDE', '10', '00:10:00', '', 0, '1', 'hidden', '12', '100'),
+(15, 'Pretest', 'PKN', 'TEST', '30', '00:30:00', 'AC', 1, '1', 'hidden', 'smkn4', '100');
 
 -- --------------------------------------------------------
 
@@ -1041,6 +1111,11 @@ CREATE TABLE `v_kategori` (
 -- (Lihat di bawah untuk tampilan aktual)
 --
 CREATE TABLE `v_siswa` (
+`nis` varchar(50)
+,`nama_lengkap` varchar(100)
+,`id_kelas` varchar(5)
+,`alamat` varchar(150)
+,`nama` varchar(100)
 );
 
 -- --------------------------------------------------------
@@ -1125,6 +1200,12 @@ ALTER TABLE `file_materi`
 --
 ALTER TABLE `galeri_foto`
   ADD PRIMARY KEY (`id_galerifoto`);
+
+--
+-- Indeks untuk tabel `jawaban`
+--
+ALTER TABLE `jawaban`
+  ADD PRIMARY KEY (`nis`);
 
 --
 -- Indeks untuk tabel `jawaburaian`
@@ -1235,16 +1316,16 @@ ALTER TABLE `registrasi_siswa`
 -- Indeks untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
+  ADD PRIMARY KEY (`id_siswa`),
+  ADD KEY `id_kelas` (`id_kelas`);
+
+--
+-- Indeks untuk tabel `siswa1`
+--
+ALTER TABLE `siswa1`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`nis`),
   ADD UNIQUE KEY `username_2` (`nis`);
-
---
--- Indeks untuk tabel `siswaasli`
---
-ALTER TABLE `siswaasli`
-  ADD PRIMARY KEY (`id_siswa`),
-  ADD KEY `id_kelas` (`id_kelas`);
 
 --
 -- Indeks untuk tabel `siswa_sudah_mengerjakan`
@@ -1280,8 +1361,7 @@ ALTER TABLE `topik_quiz`
 -- Indeks untuk tabel `tugas`
 --
 ALTER TABLE `tugas`
-  ADD PRIMARY KEY (`id_file`),
-  ADD KEY `id_siswa` (`id_siswa`);
+  ADD PRIMARY KEY (`id_file`);
 
 --
 -- Indeks untuk tabel `ujian`
@@ -1389,7 +1469,7 @@ ALTER TABLE `nilai`
 -- AUTO_INCREMENT untuk tabel `nilaihasil`
 --
 ALTER TABLE `nilaihasil`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
 
 --
 -- AUTO_INCREMENT untuk tabel `nilai_soal_esay`
@@ -1431,13 +1511,13 @@ ALTER TABLE `registrasi_siswa`
 -- AUTO_INCREMENT untuk tabel `siswa`
 --
 ALTER TABLE `siswa`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_siswa` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
--- AUTO_INCREMENT untuk tabel `siswaasli`
+-- AUTO_INCREMENT untuk tabel `siswa1`
 --
-ALTER TABLE `siswaasli`
-  MODIFY `id_siswa` int(9) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+ALTER TABLE `siswa1`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT untuk tabel `siswa_sudah_mengerjakan`
@@ -1449,7 +1529,7 @@ ALTER TABLE `siswa_sudah_mengerjakan`
 -- AUTO_INCREMENT untuk tabel `soal`
 --
 ALTER TABLE `soal`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT untuk tabel `templates`
@@ -1467,13 +1547,13 @@ ALTER TABLE `topik_quiz`
 -- AUTO_INCREMENT untuk tabel `tugas`
 --
 ALTER TABLE `tugas`
-  MODIFY `id_file` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `id_file` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT untuk tabel `ujian`
 --
 ALTER TABLE `ujian`
-  MODIFY `Urut` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `Urut` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`

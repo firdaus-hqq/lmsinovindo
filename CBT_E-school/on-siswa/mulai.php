@@ -5,20 +5,20 @@ include ('../koneksi/koneksi.php');
 include ('conn/fungsi.php');
 
     
-$nis			= $_POST[nis];
-$nama			= $_POST[nama];
-$kelas 			= $_POST[kelas];
-$kodemapel		= $_POST[kodemapel];
-$kodesoal		= $_POST[kodesoal];
-$aktif			= $_POST[aktif];
-$waktu			= $_POST[waktu];
-$jumlahsoal		= $_POST[jumlahsoal];
-$lamaujian      = $_POST[lamaujian];
-$mulaiujian     = $_POST[mulaiujian];
-$waktuselesai   = $_POST[waktuselesai];
-$sisawaktu      = $_POST[sisawaktu]+(60);
+$nis			= $_POST['nis'];
+$nama			= $_POST['nama'];
+$kelas 			= $_POST['kelas'];
+$kodemapel		= $_POST['kodemapel'];
+$kodesoal		= $_POST['kodesoal'];
+$aktif			= $_POST['aktif'];
+$waktu			= $_POST['waktu'];
+$jumlahsoal		= $_POST['jumlahsoal'];
+$lamaujian      = $_POST['lamaujian'];
+$mulaiujian     = $_POST['mulaiujian'];
+$waktuselesai   = $_POST['waktuselesai'];
+$sisawaktu      = $_POST['sisawaktu']+(60);
 
-$ok         = $_POST[ok];
+$ok         = $_POST['ok'];
 
 
          if ($statuslogin =='1') {

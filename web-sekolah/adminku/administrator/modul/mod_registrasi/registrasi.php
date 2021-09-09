@@ -18,10 +18,10 @@ session_start();
 else{
 
 $aksi="modul/mod_registrasi/aksi_registrasi.php";
-switch($_GET[act]){
+switch($_GET['act']){
 // Tampil Mata Pelajaran
   default:
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
          echo "<div class='box box-warning'>
         <div class='box-header with-border'>
           <div class='col-md-12 col-xs-12'> ";
@@ -51,10 +51,10 @@ switch($_GET[act]){
     break;
 
     case "detail":
-        if ($_SESSION[leveluser]=='admin'){
+        if ($_SESSION['leveluser']=='admin'){
             $registrasi = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM registrasi_siswa WHERE id_registrasi = '$_GET[id]'");
             $r=mysqli_fetch_array($registrasi);
-            $tgl_lahir = tgl_indo($r[tgl_lahir]);
+            $tgl_lahir = tgl_indo($r['tgl_lahir']);
             echo "<div class='box box-warning'>
         <div class='box-header with-border'>
           <div class='col-md-12 col-xs-12'> ";
@@ -69,7 +69,7 @@ switch($_GET[act]){
                  <tr><td><b>Tempat Lahir</b></td><td>$r[tempat_lahir]</td><tr>
                  <tr><td><b>Tanggal Lahir</b></td><td>$tgl_lahir</td><tr>
                  <tr><td><b>Jenis Kelamin</b></td>";
-                    if ($r[jenis_kelamin]=='L'){
+                    if ($r['jenis_kelamin']=='L'){
                         echo "<td>Laki - Laki</td></tr>";
                     }else{
                         echo "<td>Perempuan</td></tr>";

@@ -182,7 +182,7 @@ include "tema/tema.php";
 			</div>
 		</div><!-- /.content-wrapper -->
     <script type="text/javascript">
-<!--
+// <!--
     function toggle_visibility(id) {
        var e = document.getElementById(id);
        if(e.style.display == 'none')

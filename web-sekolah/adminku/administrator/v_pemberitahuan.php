@@ -1,15 +1,20 @@
 <?php
-// error_reporting(0);
 $_SESSION['KCFINDER'] = array();
 $_SESSION['KCFINDER']['disabled'] = false;
 $_SESSION['KCFINDER']['uploadURL'] = "images";
 $_SESSION['KCFINDER']['uploadDir'] = "";
-include "../../config/config.php";
+// error_reporting(0);
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 include "timeout.php";
 include "../configurasi/pagination.php";
+include "../../config/config.php";
 
-$sql = "SELECT * FROM kelas";
-$dataSekolah = $mysqli->query($sql) or die($mysqli->error);
+$sql = "SELECT * FROM pemberitahuan ORDER BY tanggal DESC";
+$result = $mysqli->query($sql);
+$nama = $_SESSION['namalengkap'];
 
 if ($_SESSION['login'] == 1) {
     if (!cek_login()) {
@@ -96,7 +101,7 @@ if ($_SESSION['login'] == 0) {
                 <!-- Main Header -->
                 <header class="main-header">
                     <!-- Logo -->
-                    <a href="index2.html" class="logo">
+                    <a href="https://inovindoacademy.com" class="logo">
                         <!-- mini logo for sidebar mini 50x50 pixels -->
                         <span class="logo-mini"><b>I</b>DM</span>
                         <!-- logo for regular state and mobile devices -->
@@ -183,68 +188,7 @@ if ($_SESSION['login'] == 0) {
 
                         <!-- Sidebar Menu -->
                         <ul class="sidebar-menu">
-                            <?php
-                            if ($_SESSION['leveluser'] == 'admin') {
-                                echo "   <li class='header'>Menu Utama</li>
-  <li><a href='media_admin.php?module=home'><i class='fa fa-dashboard'></i> <span>Dashboard</span></a> </li>
-  <li class='treeview'>
-                <a href='#'>
-                    <i class='fa fa-folder'></i>
-                    <span>Data</span><i class='fa fa-angle-left pull-right'></i>
-                </a>
-                <ul class='treeview-menu'>";
-                                $sql = mysqli_query($GLOBALS["___mysqli_ston"], "select * from modul where aktif='Y' order by urutan");
-                                while ($m = mysqli_fetch_array($sql)) {
-                                    echo " 
-                <li><a href='media_admin.php$m[link]'><i class='fa fa-circle-o'></i><span class='title'>$m[nama_modul]</span></a></li> 
-               ";
-                                }
-                                echo "<li><a href='media_admin.php?module=admin&act=pengajar'><i class='fa fa-circle-o'></i><span class='title'>Manajemen Pengajar</span></a></li> 
-  <li><a href='media_admin.php?module=admin'><i class='fa fa-circle-o'></i><span class='title'>Manajeman Administrator</span></a></li> 
-   <li><a href='media_admin.php?module=modul'><i class='fa fa-circle-o'></i><span class='title'>Manajemen Modul</span></a></li> 
-
-
-   </ul>
-  </li>";
-                                echo "<li class='header'>Content Web</li>
-   <li><a href='media_admin.php?module=setting'><i class='fa fa-toggle-on'></i><span>Setting Web</span></a></li>
-   <li class='treeview active'>
-                <a href='#'>
-                    <i class='fa fa-book'></i>
-                    <span>Ujian</span><i class='fa fa-angle-left pull-right'></i>
-                </a>
-                <ul class='treeview-menu'>          
-  <li class='active'><a href='v_bank_soal.php'><i class='fa fa-circle-o'></i>Bank Soal</a></li>   
-  <li><a href='v_test.php'><i class='fa fa-circle-o'></i>Hasil Ujian</a></li>                  
-                </ul>
-            <li class='treeview'>
-                <a href='#'>
-                    <i class='fa fa-trophy'></i>
-                    <span>Prestasi</span><i class='fa fa-angle-left pull-right'></i>
-                </a>
-                <ul class='treeview-menu'>          
-  <li><a href='v_typing_test.php'><i class='fa fa-circle-o'></i>Typing Test</a></li>   
-  <li><a href='v_test.php'><i class='fa fa-circle-o'></i>Pre Test & Post Test</a></li>                  
-                </ul>
-            </li>
-            <li><a href='v_daftar_absen.php'><i class='fa fa-check'></i><span>Absensi</span></a></li>";
-                            } elseif ($_SESSION['leveluser'] == 'pengajar') {
-                                echo " <li class='header'>Menu Utama</li>
-  <li class='active'><a href='media_admin.php?module=home'><i class='fa fa-dashboard'></i> <span>Dashboard</span></a> </li>
-  <li class='treeview'>
-                <a href='#' class='active'>
-                    <i class='fa fa-bullhorn'></i>
-                    <span>Menu Utama</span><i class='fa fa-angle-left pull-right'></i>
-                </a>
-                <ul class='treeview-menu'>";
-                                $sql = mysqli_query($GLOBALS["___mysqli_ston"], "select * from modul where status='pengajar' and aktif='Y' order by urutan");
-                                while ($m = mysqli_fetch_array($sql)) {
-                                    echo "<li><a href='$m[link]'><i class='fa fa-circle-o'></i><span class='title'>$m[nama_modul]</span></a></li>";
-                                }
-                                echo " </ul>
-            </li>";
-                            }
-                            ?>
+                            <?php include "menu_baru.php" ?>
                         </ul><!-- /.sidebar-menu -->
                     </section>
                     <!-- /.sidebar -->
@@ -255,155 +199,63 @@ if ($_SESSION['login'] == 0) {
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
-                            Preview Soal
+                            Pemberitahuan
                         </h1>
                         <ol class="breadcrumb">
                             <li><a href="#"><i class="fa fa-calendar"></i><?php include "../jam/jam.php" ?></a></li>
                             <li class="active"><?php include "../jam/tanggal.php" ?></li>
                         </ol>
                     </section>
-                    <?php
-                    if (!empty($_GET['gagal'])) {
-                        echo "
-                        <div class='col-lg-3 col-md-4 alert alert-danger alert-dismissible fade-in'>
-                            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                            <i class='icon fa fa-close'></i> Gagal !!! silahkan login sebagai admin / editor.
-                        </div>
-                        ";
-                    }
-                    ?>
-                    <?php
-                    if (!empty($_GET['kosong'])) {
-                        echo "
-                        <div class='col-lg-3 col-md-4 alert alert-danger alert-dismissible fade-in'>
-                            <button type='button' class='close' data-dismiss='alert' aria-hidden='true'>&times;</button>
-                            <i class='icon fa fa-close'></i> Gagal !!! bobot nilai belum terisi.
-                        </div>
-                        ";
-                    }
-                    ?>
+
                     <!-- Main content -->
                     <section class="content">
-                        <div class='box box-warning'>
+                        <div class="box box-warning">
                             <div class='box-header with-border'>
-                                <a href="v_bank_soal.php"><button type="button" class="btn btn-warning" data-toggle=""><i class="fa fa-angle-left"></i> Kembali ke Bank Soal</button></a>
-                                <button class="btn btn-default" float:right onclick="printDiv('printableArea')"><i class="fa fa-print"></i> Cetak </button>
-                                <br><br>
-                                <div style="overflow-x:auto;" id="printableArea">
-                                    <?php
-                                    include "dt_preview_soal.php";
-                                    ?>
-                                </div>
+                                <h3>Buat Pengumuman</h3>
+                                <form action="add_pemberitahuan.php" method="post">
+                                    <input type="hidden" value="<?= $nama ?>" name="pembuat">
+                                    <div class="form-group">
+                                        <input type="text" name="isi" class="form-control">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="submit" value="Simpan" class="btn btn-success">Umumkan!</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="box box-warning">
+                            <div class='box-header with-border'>
+                                <table id='example1' class='table table-bordered table-striped'>
+                                    <thead>
+                                        <tr>
+                                            <th>No.</th>
+                                            <th>Tanggal</th>
+                                            <th>Isi</th>
+                                            <th>Pembuat</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $i = 1;
+                                        while ($toa = mysqli_fetch_array($result)) {
+                                        ?>
+                                            <tr>
+                                                <td><?= $i++ ?></td>
+                                                <td><?= $toa['tanggal'] ?></td>
+                                                <td><?= $toa['isi'] ?></td>
+                                                <td><?= $toa['pembuat'] ?></td>
+                                                <td>
+                                                    <a href="edit_pemberitahuan.php?id_pemberitahuan=<?= $toa['id_pemberitahuan']; ?>"><button class="btn btn-info">Edit</button></a>
+                                                    <button class="btn btn-danger" onclick="confirm('Yakin ingin menghapus pemberitahuan ini?') ? window.location.href='delete_pemberitahuan.php?id_pemberitahuan=<?= $toa['id_pemberitahuan'] ?>':''">Hapus</button></a>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </section><!-- /.content -->
-                    <!-- Modal Popup Tambah Soal -->
-                    <div id="ModalAdd" class="modal fade" tabindex="-1" role="dialog">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                    <h4 class="modal-title">Tambah Bank Soal</h4>
-                                </div>
-                                <div class="modal-body">
-                                    <form action="soal_add.php" name="modal_popup" enctype="multipart/form-data" method="post">
-                                        <div class="form-group">
-                                            <label>Jenis Ujian</label>
-                                            <br>
-                                            <form action="" method="post">
-                                                <select class="form-control" name="jenissoal" required>
-                                                    <option value="">Pilih Jenis Ujian</option>
-                                                    <option value="Pre-Test">Pre Test</option>
-                                                    <option value="Post-Test">Post Test</option>
-                                                </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Kelas/Asal Sekolah</label>
-                                            <br>
-                                            <form action="" method="post">
-                                                <select class="form-control" name="kelas" required>
-                                                    <option value="">Pilih Kelas/Asal Sekolah</option>
-                                                    <?php while ($sekolah = @$dataSekolah->fetch_array()) { ?>
-                                                        <option value="<?php echo $sekolah['nama'] ?>">
-                                                            <?php echo $sekolah['nama'] ?>
-                                                        </option>
-                                                    <?php } ?>
-                                                </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Kode Soal</label>
-                                            <div class="input-group">
-                                                <div class="input-group-addon">
-                                                    <i class="fa fa-book"></i>
-                                                </div>
-                                                <input name="kodesoal" type="text" class="form-control" placeholder="kode soal" required />
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Opsi jawaban</label>
-                                            <br>
-                                            <form action="" method="post">
-                                                <select class="form-control" name="opsi" required>
-                                                    <option value="">Pilih</option>
-                                                    <option value="hidden">4 Opsi jawaban</option>
-                                                    <option value="show">5 Opsi jawaban</option>
-                                                </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Tampilan Soal</label>
-                                            <br>
-                                            <form action="" method="post">
-                                                <select class="form-control" name="acak" required>
-                                                    <option value="">Pilih</option>
-                                                    <option value="1">Acak</option>
-                                                    <option value="2">Urut</option>
-                                                </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label>Waktu Ujian</label>
-                                            <div class="input-group col-xs-2">
-                                                <input name="waktu" type="number" class="form-control" required> Menit</input>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button class="btn btn-success" type="submit">
-                                                Add
-                                            </button>
-                                            <button type="reset" class="btn btn-danger" data-dismiss="modal" aria-hidden="true">
-                                                Cancel
-                                            </button>
-                                        </div>
-                                        <h4>
-                                            <font color="#FF0000">Keterangan: *</font>
-                                        </h4>
-                                        <ul>
-                                            <li>JANGAN ada SPASI, BISA gunakan tanda sambung (-)</li>
-                                            <li>Hindari Kode Soal yang Terlalu Panjang </li>
-                                            <li>Contoh nama yang baik: BING-11IPA-UAS1</li>
-                                        </ul>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Modal Popup siswa Edit -->
-                    <div id="ModalEditDosen2" class="modal" tabindex="-1" role="dialog"></div>
-                    <div id="ModalEditDosen" class="modal" tabindex="-1" role="dialog"></div>
-                    <!-- Modal Popup untuk delete-->
-                    <div class="modal" id="modal_delete">
-                        <div class="modal-dialog">
-                            <div class="modal-content" style="margin-top:100px;">
-                                <div class="modal-header">
-                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                    <h4 class="modal-title" style="text-align:center;">yakin menghapus soal ini ?</h4>
-                                </div>
-                                <div class="modal-footer" style="margin:0px; border-top:0px; text-align:center;">
-                                    <a href="#" class="btn btn-danger" id="delete_link"><i class="fa fa-remove"></i> Hapus </a>
-                                    <button type="button" class="btn btn-success" data-dismiss="modal">Batal <i class="fa fa-check"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div><!-- /.content-wrapper -->
 
                 <!-- Main Footer -->
@@ -508,9 +360,7 @@ if ($_SESSION['login'] == 0) {
                     });
                 });
             </script>
-            <?php
-            include "edit_soal_script.php";
-            ?>
+
             </body>
 
             </html>

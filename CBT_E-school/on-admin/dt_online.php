@@ -55,7 +55,7 @@ echo "
 									<td align=center>$z</td>
 									<td>$ar[nis]</td>
 									<td>$ar[nama_lengkap]</td>
-									<td>$ar[kelas]</td>
+									<td>$ar[id_kelas]</td>
 									<td style='background-color:#364247;'><a href='#' style='text-decoration:none;color:white;'><i id='on' class='fa fa-circle' style='color:#90ff00;font-size:10px;'></i> Online</a></td>
 								</tr>
 ";

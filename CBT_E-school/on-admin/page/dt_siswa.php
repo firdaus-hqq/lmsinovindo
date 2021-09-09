@@ -24,7 +24,7 @@
 									<td align=center>$i</td>
 									<td>$ar[nis]</td>
 									<td>$ar[nama_lengkap]</td>
-									<td>$ar[kelas]</td>
+									<td>$ar[id_kelas]</td>
 									<td>$ar[password_login]</td>
 									<td>$ar[sesi]</td>
 									<td>$ar[ruang]</td>

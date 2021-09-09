@@ -110,23 +110,15 @@ a:active  {
       <span style="float:left" toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
       <button>Login</button>
     </form><br>
-    <h6><a href="../index.php" style='font-decoration:none;color:#999999;'>cbt siswa</a></h6>
+    <h6><a href="../index.php" style='font-decoration:none;color:#999999;'><b>IDM</b> | ACADEMY</a></h6>
     <br>
 	    <?php if (!empty($_GET['salah'])) { echo "<h5 id='blink' style='color: red';>Username atau Password salah</h3>"; }
         ?>
   </div>
   <div id="dev" class="form">
-      <img src="../aset/foto/dev.jpg" height="100" width="auto" onError="this.onerror=null;" ><br><br>
     <h2><i class="fa fa-user-secret"></i> Developed by :</h2>
     <form action="vl_admin.php" class="inner-login" method="post">
-      <h5>Betara Gludug Banyu Murti</h5>
-      <br>
-      <a href="tel:+6281230674728" style='font-decoration:none;color:#222;'><i class="fa fa-phone"></i> Call me +6281230674728</a> 
-      <br><br>
-      <a href="https://www.youtube.com/channel/UClyH2xK1K7bojvzNOPO4l5g" style='font-decoration:none;color:#222;'><i class="fa fa-youtube"></i> my Vlog</a>
-      <br><br>
-      <a href="mailto:betaragludugbanyumurti@gmail.com?Subject=Hello%20admin" target="_top" style='font-decoration:none;color:#222;'><i class="fa fa-inbox"></i> E- Mail</a>
-      <br>      
+      <h5>PT. INOVINDO DIGITAL MEDIA X SMKN 4 BANDUNG</h5>  
     </form>
   </div>
   <div class="cta"><a href="<?php echo $ar['web'];?>"><h5><b>&copy;  <?php echo date ('Y') ?></b></h5> <?php echo $ar['n_sekolah'];?></a></div>

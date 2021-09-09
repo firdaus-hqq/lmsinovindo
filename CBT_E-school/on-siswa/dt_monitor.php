@@ -6,7 +6,7 @@ include ('conn/fungsi.php');
             <div class="box-body">
                 
 <?php
-$kelasx=preg_replace('/[^0-9\  ]/', '', $kelas);
+$kelasx=preg_replace('/[^a-zA-Z0-9]/', '', $kelas);
 						$querydosen = mysqli_query ($konek, "SELECT * FROM ujian where aktif=1 and kelas='$kelasx' ");
 						if($querydosen == false){
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));

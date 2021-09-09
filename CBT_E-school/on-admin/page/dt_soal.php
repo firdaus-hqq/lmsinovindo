@@ -75,7 +75,7 @@
 				        {
 					    $tomboledit = "<a href='#'><button type='button' class='btn btn-default btn-xs btn-flat' disabled><i class='fa fa-pencil-square-o'></i> option</button></a>";
 				        }
-						$boboturai=100-$ar[nilai];
+						$boboturai=100-$ar['nilai'];
 							echo "
 								<tr>
 		<td align=center>$i</td>
