@@ -8,9 +8,9 @@
 <header class="main-header">
   <!-- Logo -->
 <div class="logo">
-<span><img src="../aset/foto/elogo.png" width=35px alt="Foto"></span>
-<span class="logo-sm">-
-<b style="color:orange;"> SCHOOL</b> <b style="color:white;"><?php echo date ('Y') ?></b></span>
+<span><img src="../aset/foto/icon.png" width=35px alt="Foto"></span>
+<span class="logo-sm"> |
+<b style="color:white;"> IDMA</b></span>
 </div>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top" role="navigation">
@@ -23,9 +23,6 @@
     </a>
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
-                  <li class="dropdown user user-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-    <i class="fa fa-battery-three-quarters"></i>
     <span class="hidden-xs" style="text-transform:capitalize;"><?php echo $nama;?></span>
           </a>
           <ul id="drop" class="dropdown-menu">

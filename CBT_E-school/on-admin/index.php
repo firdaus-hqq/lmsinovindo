@@ -75,7 +75,6 @@ include "tema/tema.php";
       		<ul class="sidebar-menu" data-widget="tree">
       			<li class="header">MAIN MENU</li>
 				<li class="active"><a href="index.php"><i class="fa fa-tachometer"></i><span> Dashboard</span></a></li>
-				<li><a href="siswa.php"><i class="fa fa-graduation-cap"></i><span> Management Siswa</span></a></li>
 
 				<li class="treeview">
                   <a href="#">
@@ -110,7 +109,7 @@ include "tema/tema.php";
         include	"navbar/content_footer.php";
       ?>
 					<section id="mburidewe" class="content-header">
-					    <h4><i class="fa fa-tachometer"></i> Dashboard</h4>
+					    <h3><i class="fa fa-user-circle"></i> Welcome, Admin<small> | Management Quiz Page</small></h3>
 								        <ol class="breadcrumb">
 								        <li><a href="#"> Home</a></li>
 									    <li><i class="fa fa-home"></i> Dashboard </li>
@@ -138,10 +137,7 @@ include "tema/tema.php";
                                                 <input readonly style="font-weight: bold;letter-spacing: 3px;padding:8px;background:#333;color:white;border:#333 solid 0.5px;text-align: center;" type="text" value="<?php include ('../on-siswa/token.txt'); ?>"/>
         									    <a href="update_token.php"><button type="submit" style="margin-left:-5px;padding:8px;" class="btn btn-flat btn-success btn-sm"><i class="fa fa-refresh fa-spin"></i>&emsp; Update Token</button></a>
                                                 <a href="clear_token.php"><button type="submit" style="margin-left:-5px;padding:8px;" class="btn btn-flat btn-default btn-sm"><i class="fa fa-trash"></i></button></a>
-                                                        <h1><b>V.<?php include ('versi/aktif/versi.txt'); ?></b></h1>
-                                                   <p>CBT E-School | <a href='update.php'><button class="btn btn-flat bg-navy btn-xs"><i class="fa fa-history"></i> check update</button></a> 
-                                                   <a href='patching.php'><button class="btn btn-flat bg-navy btn-xs"><i class="fa fa-history"></i> check patching</button></a>
-                                                   <a href='https://smpn38sby.sch.id/cbt' target="blank"><button class="btn btn-flat bg-orange btn-xs"><i class="fa fa-globe"></i> visit website</button></a></p>
+                                                        
                                        
                                             </div>
                                                 <div class='icon'>
@@ -275,11 +271,7 @@ include "tema/tema.php";
                                         
                                     </div>
                     <div class='col-md-3'>
-                    <div class="box">
-                        <div class="box-header with-border">
-                            <h4 class="box-title" style="font-size:13px;background-color:#d2d6de;color:black;padding:15px;width:220%;margin-left:-40px;margin-right:0px;margin-top:-10px;">&emsp;<i class='fa fa-download' aria-hidden='true'></i>  Download Berkas</h4>
-                        </div>
-                    </div>
+                    
                         <?php 
                         $dir = "upload/";
                         chdir($dir);

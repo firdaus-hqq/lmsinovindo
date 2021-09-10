@@ -54,6 +54,17 @@ include ('koneksi/koneksi.php');
       }
     }
 
+    #cbut {
+      cursor: pointer;
+      background:#60c210;
+      width: 100%;
+      border: 0;
+      padding: 10px 15px;
+      color: #ffffff;
+      -webkit-transition: 0.3s ease;
+      transition: 0.3s ease;
+    }
+
     #but {
       cursor: pointer;
       background: #3d9eee;
@@ -65,8 +76,12 @@ include ('koneksi/koneksi.php');
       transition: 0.3s ease;
     }
 
+    #cbut:hover {
+      background:#569a1f;
+    }
+
     #but:hover {
-      background: #60c210;
+      background: #316786;
     }
 
     .bg::before {
@@ -157,8 +172,9 @@ include ('koneksi/koneksi.php');
     <div class="module form-module">
       <div class="togg1le" style="background-color:white;color:grey;">
       </div>
+      
       <div class="form">
-        <h2 style="text-align: center;"><b>Selamat Datang<b></h2><br>
+        <h2 style="text-align: center; color:black;"><b>Selamat Datang<b></h2><br>
         <h3 style="text-align: center;">Gunakan akun yang sudah diberikan oleh pembimbing</h3>
         <form action="vl_siswa.php" class="inner-login" method="post">
           <div class="input-container">
@@ -176,14 +192,16 @@ include ('koneksi/koneksi.php');
             <input id="password-field" type="text" class="form-control" name="token" placeholder="token">
           </div>
           <button id="but" style="border-radius:20px;"><b>Login</b></button>
+          
         </form><br>
+        <button id="cbut" style="border-radius:20px;"><a href="http://localhost/lmsinovindo-master/web-sekolah/adminku/home"><b style="padding: 10px 90px;">Cancel</b></a></button>
         <br>
         <?php if (!empty($_GET['salah'])) { echo "<h5 id='blink' style='color: red;font-size:10px'>
 					Nomer peserta atau Password tidak ditemukan di database</h5>"; }?>
         <?php if (!empty($_GET['token'])) { echo "<h5 id='blink' style='color: red;font-size:10px'>
 					Token salah</h5>"; }?>
         <br>
-        <font id='blink' style='color: grey;font-size:10px'>INOVINDO | A C A D E M Y <?php echo date("Y");?></font>
+        <font id='blink' style='color: grey;font-size:10px'>INOVINDO | A C A D E M Y </font>
       </div>
       <?php }?>
 
