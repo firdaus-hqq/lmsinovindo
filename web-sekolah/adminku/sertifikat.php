@@ -6,6 +6,7 @@ include "configurasi/library.php";
 include "configurasi/fungsi_indotgl.php";
 include "configurasi/fungsi_combobox.php";
 include "timeout.php";
+
 if ($_SESSION['login'] == 1) {
   if (!cek_login()) {
     $_SESSION['login'] = 0;
@@ -154,7 +155,7 @@ if ($_SESSION['login'] == 0) {
               <li class="header">Menu Learning</li>
 
               <!-- Optionally, you can add icons to the links -->
-              <li class="active"><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
+              <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
 
               <li class="treeview">
                 <a href="#">
@@ -217,7 +218,7 @@ if ($_SESSION['login'] == 0) {
                   </li>
                 </ul>
               </li>
-              <li><a href="sertifikat.php"><i class="fa fa-certificate"></i> <span>Sertifikat</span></a></li>
+              <li class="active"><a href="#"><i class="fa fa-certificate"></i> <span>Sertifikat</span></a></li>
               <li class="header">Account</li>
               <li class="treeview">
                 <a href="#">
@@ -261,7 +262,9 @@ if ($_SESSION['login'] == 0) {
           <!-- Main content -->
           <section class="content">
 
-            <?php include "content.php" ?>
+            <center><h1>TIDAK DITEMUKAN</h1></center>
+            <br>
+            <center><h1><a href="print.php">KLIK UNTUK LIHAT SERTIFIKAT</a></h1></center>
 
           </section><!-- /.content -->
         </div><!-- /.content-wrapper -->
