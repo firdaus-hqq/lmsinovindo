@@ -1352,10 +1352,10 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
         
         <div class='form-group'>
         <div class='col-sm-2'>Username</div>
-        <div class='col-sm-6'><input type=text name='username' size='40' class='form-control' required='required' id='field-1' placeholder='Placeholder'></div>
+        <div class='col-sm-6'><input type=text name='username' size='40' class='form-control' id='field-1' placeholder='Placeholder'></div>
         </div>
         <div class='form-group'><div class='col-sm-2'>Password</div>
-        <div class='col-sm-6'><input type=password name='password' size='40' class='form-control' required='required' id='field-1' placeholder='Placeholder'></div></div>
+        <div class='col-sm-6'><input type=password name='password' size='40' class='form-control' id='field-1' placeholder='Placeholder'></div></div>
         <div class='form-group'><div class='col-sm-2'></div>
         <div class='col-sm-6'>
         *) Apabila Username tidak diubah di kosongkan saja.<br/>
