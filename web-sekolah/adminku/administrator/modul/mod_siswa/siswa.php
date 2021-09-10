@@ -106,6 +106,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
             <th>Jenis Kelamin</th>
             <th>Tanggal Masuk</th>
             <th>Tanggal Keluar</th>
+            <th>Jurusan</th>
             <th>No Telp</th>
            
            </tr>
@@ -127,6 +128,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
              <td>$r[jenis_kelamin]</td>
              <td>$r[tgl_masuk]</td>
              <td>$r[tgl_keluar]</td>
+             <td>$r[jurusan]</td>
              <td>$r[no_telp]</td>
 
 
@@ -330,6 +332,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
             <th>Jenis Kelamin</th>
             <th>Tanggal Masuk</th>
             <th>Tanggal Keluar</th>
+            <th>Jurusan</th>
            <th>Aksi</th>
            </tr>
       </thead>
@@ -344,6 +347,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
              <td>$r[jenis_kelamin]</td>
              <td>$r[tgl_masuk]</td>
              <td>$r[tgl_keluar]</td>
+             <td>$r[jurusan]</td>
              <td><a href='?module=siswa&act=detailsiswa&id=$r[id_siswa]' class='btn btn-info'>Detail Siswa</a></td>
         </tr>";
             $no++;
@@ -406,6 +410,11 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
           echo "<option value=$r[id_kelas]>$r[nama]</option>";
         }
         echo "</select></div></div>
+          <div class='form-group'>
+          <div class='col-sm-2'>
+          <label>Jurusan</label></div> 
+          <div class='col-sm-5'>
+          <input type=text name='jurusan' class='form-control' id='field-1' required='required' placeholder='Jurusan' size=30></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Level </label></div>     <div class='col-sm-5'>
@@ -558,6 +567,11 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
         echo "</select></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
+          <label>Jurusan</label></div> 
+          <div class='col-sm-5'>
+          <input type=text name='jurusan' value='$r[jurusan]' class='form-control' id='field-1' required='required' placeholder='Jurusan' size=30></div></div>
+          <div class='form-group'>
+          <div class='col-sm-2'>
           <label>Jabatan</label></div>      <div class='col-sm-5'>  <input type=text name='jabatan' class='form-control' required='required' id='field-1' placeholder='Placeholder' readonly='' size=50 value='$r[jabatan]'></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
@@ -612,12 +626,12 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Tanggal Masuk</label></div><div class='col-sm-5'>
-          <input type='date' name='tgl_masuk' class='form-control' id='field-1' required='required' placeholder='Tanggal Lahir'></div>";
+          <input type='date' name='tgl_masuk' value='$r[tgl_masuk]' class='form-control' id='field-1' required='required' placeholder='Tanggal Lahir'></div>";
         echo "</div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Tanggal Keluar</label></div><div class='col-sm-5'>
-          <input type='date' name='tgl_keluar' class='form-control' id='field-1' required='required' placeholder='Tanggal Lahir'></div>";
+          <input type='date' name='tgl_keluar' value='$r[tgl_keluar]' class='form-control' id='field-1' required='required' placeholder='Tanggal Lahir'></div>";
         echo "</div>
           <div class='form-group'>
           <div class='col-sm-2'><label>Email</label></div>        <div class='col-sm-5'><input type=text name='email' class='form-control' required='required' id='email' placeholder='Placeholder' size=30 value='$r[email]'></div></div>
@@ -749,13 +763,13 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
   </div>
           <div class='form-group'>
           <div class='col-sm-2'><label>Tanggal Masuk</label></div><div class='col-sm-5'>
-          <input type='date' name='tgl_masuk' class='form-control' id='field-1' required='required' placeholder='Tanggal Lahir'></div>";
-        echo "</div>
+          <input type='date' name='tgl_masuk' value='$r[tgl_masuk]' class='form-control' id='field-1' required='required' placeholder='Tanggal Lahir'></div>";
+          echo "</div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Tanggal Keluar</label></div><div class='col-sm-5'>
-          <input type='date' name='tgl_keluar' class='form-control' id='field-1' required='required' placeholder='Tanggal Lahir'></div>";
-        echo "</div>
+          <input type='date' name='tgl_keluar' value='$r[tgl_keluar]' class='form-control' id='field-1' required='required' placeholder='Tanggal Lahir'></div>";
+          echo "</div>
           <div class='form-group'>
           <div class='col-sm-2'><label>Email</label></div>
   <div class='col-sm-5'>
@@ -795,7 +809,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
                                      <br>
                                       **) Tipe foto harus JPG/JPEG dan ukuran lebar maks: 400 px<br>
                                       ***) Apabila foto tidak diganti, dikosongkan saja</div></div>";
-                                    
+
           echo "<div class='form-group'>
           <div class='col-sm-2'><label>Jabatan</label></div>
   <div class='col-sm-5'>
@@ -811,6 +825,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
         break;
 
 
+
       case "detailsiswa":
         if ($_SESSION['leveluser'] == 'admin') {
           $detail = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa='$_GET[id]'");
@@ -820,161 +835,52 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
           $get_kelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$siswa[id_kelas]'");
           $kelas = mysqli_fetch_array($get_kelas);
 
-          echo "<div class='box-header with-border'>
-          <div class='col-md-12 col-xs-12'> 
-           <div class='col-md-4'>
-              <div class='box box-warning'>
-                <div class='box-body box-profile'>
-                 <center> <img class='profile-user-img img-responsive img-rounded' src='../foto_siswa/medium_$siswa[foto]' alt='User profile picture'></center>
-                  <h3 class='profile-username text-center'>$siswa[nama_lengkap]</h3>
-                  <p class='text-muted text-center'>$siswa[jabatan]</p>
-
-                  <ul class='list-group list-group-unbordered'>
-                    <li class='list-group-item'>
-                      <b>Tempat Lahir</b> <a class='pull-right'>$siswa[tempat_lahir]</a>
-                    </li>
-                    <li class='list-group-item'>
-                      <b>Tanggal Lahir</b> <a class='pull-right'>$tgl_lahir</a>
-                    </li>
-                    <li class='list-group-item'>
-                      <b>Agama</b> <a class='pull-right'>$siswa[agama]</a>
-                    </li>
-                    <li class='list-group-item'>
-                      <b>Email</b> <a href='mailto:$siswa[email]' class='pull-right'>$siswa[email]</a>
-                    </li>
-                    <li class='list-group-item'>
-                      <b>Kelas</b> <a href='?module=kelas&act=detailkelas&id=$siswa[id_kelas]' class='pull-right'>$kelas[nama]</a>
-                    </li>
-                  </ul>
-
-                  
-                </div>
-              </div>
-            </div>"; ?>
-
-          <div class="col-md-8">
-            <div class="box box-warning">
-              <div class="box-header with-border">
-                <h3 class="box-title">Detail</h3>
-              </div><!-- /.box-header -->
-              <!-- form start -->
-              <form class="form-horizontal">
-                <div class="box-body">
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">NIS</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['nis'] ?> readonly=''>
+          echo "<div class=row>
+                <div class=col-md-6 col-xs-2>
+                  <div class=box box-info>
+                    <div class='box-body box-profile'>
+                      <img class='profile-user-img img-responsive img-rounded' src='foto_siswa/medium_$siswa[foto]' alt='User profile picture'>
+                      <h3 class='profile-username text-left'>$siswa[nama_lengkap]</h3>
+                      <p class='text-muted text-left'>$siswa[jabatan]</p>
+                      
+                      <ul class='list-group list-group-unbordered'>
+                        <li class='list-group-item'>
+                          <b>Tempat Lahir</b> <a class='pull-right'>$siswa[tempat_lahir]</a>
+                        </li>
+                        <li class='list-group-item'>
+                          <b>Tgl Lahir</b> <a class='pull-right'>$tgl_lahir</a>
+                        </li>
+                        <li class='list-group-item'>
+                          <b>Agama</b> <a class='pull-right'>$siswa[agama]</a>
+                        </li>
+                        <li class='list-group-item'>
+                          <b>Email</b> <a href='mailto:$siswa[email]' class='pull-right'>$siswa[email]</a>
+                        </li>
+                        <li class='list-group-item'>
+                          <b>Jurusan</b> <a class='pull-right'>$siswa[jurusan]</a>
+                        </li>
+                        <li class='list-group-item'>
+                          <b>Asal Sekolah</b> <a href='?module=kelas&act=detailkelas&id=$siswa[id_kelas]' class='pull-right'>$kelas[nama]</a>
+                        </li>
+                      </ul>
+                      
+                      <div class='box box-info'>
+                        <div class='box-header with-border'>
+                            <h3 class='box-title'>Alamat</h3>
+                        </div>
+                        <div class='box-body'>
+                            <p> <strong><i class='fa fa-map-marker margin-r-5'></i></strong><a class='pull-right'>$siswa[alamat]</a></p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['username_login'] ?> readonly=''>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Jenis Kelamin</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputPassword3" placeholder="Password" value=<?php if ($siswa['jenis_kelamin'] == 'P') {
-                                                                                                                  echo " Perempuan";
-                                                                                                                } else {
-                                                                                                                  echo "Laki-laki";
-                                                                                                                } ?> readonly=''>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Nama Ayah</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['nama_ayah'] ?> readonly=''>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Nama Ibu</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['nama_ibu'] ?> readonly=''>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Masuk</label>
-                    <div class="col-sm-10">
-                      <input type="tgl_masuk" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['tgl_masuk'] ?> readonly=''>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Keluar</label>
-                    <div class="col-sm-10">
-                      <input type="tgl_keluar" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['tgl_keluar'] ?> readonly=''>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">No Telp</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['no_telp'] ?> readonly=''>
-                    </div>
-                  </div>
+                </div>"; ?>
 
-
-
-                </div><!-- /.box-body -->
-
-              </form>
-            </div>
-            <div class='box box-warning'>
-              <div class='box-header with-border'>
-                <h3 class='box-title'>Alamat</h3>
-              </div>
-              <div class='box-body'>
-                <p> <strong><i class='fa fa-map-marker margin-r-5'></i></strong>&nbsp;<?php echo $siswa['alamat'] ?></p>
-              </div>
-            </div>
-          </div>
-          </div>
-          </div>
-        <?php
-        } elseif ($_SESSION['leveluser'] == 'pengajar') {
-          $detail = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa='$_GET[id]'");
-          $siswa = mysqli_fetch_array($detail);
-          $tgl_lahir   = tgl_indo($siswa['tgl_lahir']);
-
-          $get_kelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$siswa[id_kelas]'");
-          $kelas = mysqli_fetch_array($get_kelas);
-
-          echo " <div class='box-header with-border'>
-          <div class='col-md-12 col-xs-12'> 
-           <div class='col-md-3'>
-              <div class='box box-info'>
-                <div class='box-body box-profile'>
-                  <img class='profile-user-img img-responsive img-rounded' src='../foto_siswa/medium_$siswa[foto]' alt='User profile picture'>
-                  <h3 class='profile-username text-center'>$siswa[nama_lengkap]</h3>
-                  <p class='text-muted text-center'>$siswa[jabatan]</p>
-
-                  <ul class='list-group list-group-unbordered'>
-                    <li class='list-group-item'>
-                      <b>Tempat Lahir</b> <a class='pull-right'>$siswa[tempat_lahir]</a>
-                    </li>
-                    <li class='list-group-item'>
-                      <b>Tanggal Lahir</b> <a class='pull-right'>$tgl_lahir</a>
-                    </li>
-                    <li class='list-group-item'>
-                      <b>Agama</b> <a class='pull-right'>$siswa[agama]</a>
-                    </li>
-                    <li class='list-group-item'>
-                      <b>Email</b> <a href='mailto:$siswa[email]' class='pull-right'>$siswa[email]</a>
-                    </li>
-                    <li class='list-group-item'>
-                      <b>Kelas</b> <a href='?module=kelas&act=detailkelas&id=$siswa[id_kelas]' class='pull-right'>$kelas[nama]</a>
-                    </li>
-                  </ul>
-               
-                </div>
-              </div>
-            </div>"; ?>
-          <div class="col-md-9">
+          <div class="col-md-6">
             <div class="box box-info">
               <div class="box-header with-border">
                 <h3 class="box-title">Detail</h3>
-              </div><!-- /.box-header -->
-              <!-- form start -->
+              </div>
               <form class="form-horizontal">
                 <div class="box-body">
                   <div class="form-group">
@@ -1030,40 +936,37 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
                     </div>
                   </div>
 
-
-
-                </div><!-- /.box-body -->
+                </div>
 
               </form>
             </div>
-            <div class='box box-info'>
-              <div class='box-header with-border'>
-                <h3 class='box-title'>Alamat</h3>
-              </div>
-              <div class='box-body'>
-                <p> <strong><i class='fa fa-map-marker margin-r-5'></i></strong>&nbsp;<?php echo $siswa['alamat'] ?></p>
-              </div>
-            </div>
           </div>
           </div>
+          </div><!-- /.box-body -->
+
+          </form>
           </div>
-        <?php
-        } elseif ($_SESSION['leveluser'] == 'siswa') {
+
+          <div class="col-md-30">
+          </div>
+
+
+          case "detailsiswa":
+          if ($_SESSION['leveluser'] == 'admin') {
           $detail = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa='$_GET[id]'");
           $siswa = mysqli_fetch_array($detail);
-          $tgl_lahir   = tgl_indo($siswa['tgl_lahir']);
+          $tgl_lahir = tgl_indo($siswa['tgl_lahir']);
 
           $get_kelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$siswa[id_kelas]'");
           $kelas = mysqli_fetch_array($get_kelas);
 
-          echo " <div class='box-header with-border'>
-          <div class='col-md-12 col-xs-12'> 
-           <div class='col-md-3'>
-              <div class='box box-info'>
+          echo "<div class=row>
+            <div class=col-md-6 col-xs-2>
+              <div class=box box-info>
                 <div class='box-body box-profile'>
                   <img class='profile-user-img img-responsive img-rounded' src='foto_siswa/medium_$siswa[foto]' alt='User profile picture'>
-                  <h3 class='profile-username text-center'>$siswa[nama_lengkap]</h3>
-                  <p class='text-muted text-center'>$siswa[jabatan]</p>
+                  <h3 class='profile-username text-left'>$siswa[nama_lengkap]</h3>
+                  <p class='text-muted text-left'>$siswa[jabatan]</p>
 
                   <ul class='list-group list-group-unbordered'>
                     <li class='list-group-item'>
@@ -1079,14 +982,156 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
                       <b>Email</b> <a href='mailto:$siswa[email]' class='pull-right'>$siswa[email]</a>
                     </li>
                     <li class='list-group-item'>
-                      <b>Kelas</b> <a href='?module=kelas&act=detailkelas&id=$siswa[id_kelas]' class='pull-right'>$kelas[nama]</a>
+                      <b>Jurusan</b> <a class='pull-right'>$siswa[jurusan]</a>
+                    </li>
+                    <li class='list-group-item'>
+                      <b>Asal Sekolah</b> <a href='?module=kelas&act=detailkelas&id=$siswa[id_kelas]' class='pull-right'>$kelas[nama]</a>
                     </li>
                   </ul>
-                  
+
+                  <div class='box box-info'>
+                    <div class='box-header with-border'>
+                      <h3 class='box-title'>Alamat</h3>
+                    </div>
+                    <div class='box-body'>
+                      <p> <strong><i class='fa fa-map-marker margin-r-5'></i></strong><a class='pull-right'>$siswa[alamat]</a></p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>"; ?>
-          <div class="col-md-9">
+
+            <div class="col-md-6">
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Detail</h3>
+                </div>
+                <form class="form-horizontal">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">NIS</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['nis'] ?> readonly=''>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['username_login'] ?> readonly=''>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Jenis Kelamin</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="Password" value=<?php if ($siswa['jenis_kelamin'] == 'P') {
+                                                                                                                    echo " Perempuan";
+                                                                                                                  } else {
+                                                                                                                    echo "Laki-laki";
+                                                                                                                  } ?> readonly=''>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Nama Ayah</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['nama_ayah'] ?> readonly=''>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Nama Ibu</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['nama_ibu'] ?> readonly=''>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Masuk</label>
+                      <div class="col-sm-10">
+                        <input type="tgl_masuk" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['tgl_masuk'] ?> readonly=''>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Keluar</label>
+                      <div class="col-sm-10">
+                        <input type="tgl_keluar" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['tgl_keluar'] ?> readonly=''>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">No Telp</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['no_telp'] ?> readonly=''>
+                      </div>
+                    </div>
+
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+          </div><!-- /.box-body -->
+
+          </form>
+          </div>
+
+          <div class="col-md-30">
+          </div>
+
+          </div><!-- /.box-body -->
+
+          </form>
+          </div>
+
+          <div class="col-md-30">
+          </div>
+
+
+        <?php
+        } elseif ($_SESSION['leveluser'] == 'siswa') {
+          $detail = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa='$_GET[id]'");
+          $siswa = mysqli_fetch_array($detail);
+          $tgl_lahir   = tgl_indo($siswa['tgl_lahir']);
+
+          $get_kelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$siswa[id_kelas]'");
+          $kelas = mysqli_fetch_array($get_kelas);
+
+          echo "<div class='box-header with-border'>
+          <div class='col-md-6 col-xs-2'> 
+              <div class='box box-info'>
+                <div class='box-body box-profile'>
+                  <img class='profile-user-img img-responsive img-rounded' src='foto_siswa/medium_$siswa[foto]' alt='User profile picture'>
+                  <h3 class='profile-username text-left'>$siswa[nama_lengkap]</h3>
+                  <p class='text-muted text-left'>$siswa[jabatan]</p>
+
+                  <ul class='list-group list-group-unbordered'>
+                    <li class='list-group-item'>
+                      <b>Tempat Lahir</b> <a class='pull-right'>$siswa[tempat_lahir]</a>
+                    </li>
+                    <li class='list-group-item'>
+                      <b>Tgl Lahir</b> <a class='pull-right'>$tgl_lahir</a>
+                    </li>
+                    <li class='list-group-item'>
+                      <b>Agama</b> <a class='pull-right'>$siswa[agama]</a>
+                    </li>
+                    <li class='list-group-item'>
+                      <b>Email</b> <a href='mailto:$siswa[email]' class='pull-right'>$siswa[email]</a>
+                    </li>
+                    <li class='list-group-item'>
+                      <b>Jurusan</b> <a class='pull-right'>$siswa[jurusan]</a>
+                    </li>
+                    <li class='list-group-item'>
+                      <b>Asal Sekolah</b> <a href='?module=kelas&act=detailkelas&id=$siswa[id_kelas]' class='pull-right'>$kelas[nama]</a>
+                    </li>
+                  </ul>
+                  
+                  <div class='box box-info'>
+                  <div class='box-header with-border'>
+                    <h3 class='box-title'>Alamat</h3>
+                  </div>
+                  <div class='box-body'>
+                    <p> <strong><i class='fa fa-map-marker margin-r-5'></i></strong><a class='pull-right'>$siswa[alamat]</a></p>
+                  </div>
+                </div>
+          </div>"; ?>
+          <div class="col-md-6">
             <div class="box box-info">
               <div class="box-header with-border">
                 <h3 class="box-title">Detail</h3>
@@ -1147,26 +1192,16 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
                     </div>
                   </div>
 
-
-
                 </div><!-- /.box-body -->
 
               </form>
             </div>
-            <div class='box box-info'>
-              <div class='box-header with-border'>
-                <h3 class='box-title'>Alamat</h3>
-              </div>
-              <div class='box-body'>
-                <p> <strong><i class='fa fa-map-marker margin-r-5'></i></strong>&nbsp;<?php echo $siswa['alamat'] ?></p>
-              </div>
+
+            <div class="col-md-30">
             </div>
-          </div>
-          </div>
-          </div>
 
 
-        <?php
+          <?php
         }
         break;
 
@@ -1180,13 +1215,12 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
           $kelas = mysqli_fetch_array($get_kelas);
 
           echo "<div class='box-header with-border'>
-          <div class='col-md-12 col-xs-12'> 
-           <div class='col-md-4'>
+          <div class='col-md-6 col-xs-2'> 
               <div class='box box-info'>
                 <div class='box-body box-profile'>
                   <img class='profile-user-img img-responsive img-rounded' src='foto_siswa/medium_$siswa[foto]' alt='User profile picture'>
-                  <h3 class='profile-username text-center'>$siswa[nama_lengkap]</h3>
-                  <p class='text-muted text-center'>$siswa[jabatan]</p>
+                  <h3 class='profile-username text-left'>$siswa[nama_lengkap]</h3>
+                  <p class='text-muted text-left'>$siswa[jabatan]</p>
 
                   <ul class='list-group list-group-unbordered'>
                     <li class='list-group-item'>
@@ -1202,101 +1236,97 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
                       <b>Email</b> <a href='mailto:$siswa[email]' class='pull-right'>$siswa[email]</a>
                     </li>
                     <li class='list-group-item'>
-                      <b>Kelas</b> <a href='?module=kelas&act=detailkelas&id=$siswa[id_kelas]' class='pull-right'>$kelas[nama]</a>
+                      <b>Jurusan</b> <a class='pull-right'>$siswa[jurusan]</a>
+                    </li>
+                    <li class='list-group-item'>
+                      <b>Asal Sekolah</b> <a href='?module=kelas&act=detailkelas&id=$siswa[id_kelas]' class='pull-right'>$kelas[nama]</a>
                     </li>
                   </ul>
                   
+                  <div class='box box-info'>
+                  <div class='box-header with-border'>
+                    <h3 class='box-title'>Alamat</h3>
+                  </div>
+                  <div class='box-body'>
+                    <p> <strong><i class='fa fa-map-marker margin-r-5'></i></strong><a class='pull-right'>$siswa[alamat]</a></p>
+                  </div>
                 </div>
-              </div>
-            </div>"; ?>
-          <div class="col-md-8">
-            <div class="box box-info">
-              <div class="box-header with-border">
-                <h3 class="box-title">Detail</h3>
-              </div><!-- /.box-header -->
-              <!-- form start -->
-              <form class="form-horizontal">
-                <div class="box-body">
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">NIS</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['nis'] ?> readonly=''>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['username_login'] ?> readonly=''>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputPassword3" class="col-sm-2 control-label">Jenis Kelamin</label>
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputPassword3" placeholder="Password" value=<?php if ($siswa['jenis_kelamin'] == 'P') {
-                                                                                                                  echo " Perempuan";
-                                                                                                                } else {
-                                                                                                                  echo "Laki-laki";
-                                                                                                                } ?> readonly=''>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Nama Ayah</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['nama_ayah'] ?> readonly=''>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Nama Ibu</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['nama_ibu'] ?> readonly=''>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Masuk</label>
-                    <div class="col-sm-10">
-                      <input type="tgl_masuk" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['tgl_masuk'] ?> readonly=''>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Keluar</label>
-                    <div class="col-sm-10">
-                      <input type="tgl_keluar" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['tgl_keluar'] ?> readonly=''>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <label for="inputEmail3" class="col-sm-2 control-label">No Telp</label>
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['no_telp'] ?> readonly=''>
-                    </div>
-                  </div>
-
-
-
-                </div><!-- /.box-body -->
-
-              </form>
-            </div>
-            <div class='box box-info'>
-              <div class='box-header with-border'>
-                <h3 class='box-title'>Alamat</h3>
-              </div>
+                </div>
               <div class='box-body'>
-                <p> <strong><i class='fa fa-map-marker margin-r-5'></i></strong>&nbsp;<?php echo $siswa['alamat'] ?></p>
-              </div>
-            </div>
-            <div class='box box-info'>
-              <div class='box-header with-border'>
-                <h3 class='box-title'>Edit Profil</h3>
-              </div>
-              <div class='box-body'>
-                <?php echo "
-     <p><input type=button class='btn btn-warning' value='Edit Profil' onclick=\"window.location.href='?module=siswa&act=editsiswa&id=$siswa[id_siswa]';\"></p>"; ?>
-              </div>
-            </div>
+            <p><input type=button class='btn btn-warning' value='Edit Profil' onclick=\"window.location.href='?module=siswa&act=editsiswa&id=$siswa[id_siswa]';\"></p>
           </div>
           </div>
-          </div>
-  <?php
+         
+          </div>"; ?>
+            <div class="col-md-6">
+              <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Detail</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form class="form-horizontal">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">NIS</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['nis'] ?> readonly=''>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Username</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['username_login'] ?> readonly=''>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Jenis Kelamin</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputPassword3" placeholder="Password" value=<?php if ($siswa['jenis_kelamin'] == 'P') {
+                                                                                                                    echo " Perempuan";
+                                                                                                                  } else {
+                                                                                                                    echo "Laki-laki";
+                                                                                                                  } ?> readonly=''>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Nama Ayah</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['nama_ayah'] ?> readonly=''>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Nama Ibu</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['nama_ibu'] ?> readonly=''>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Masuk</label>
+                      <div class="col-sm-10">
+                        <input type="tgl_masuk" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['tgl_masuk'] ?> readonly=''>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Tanggal Keluar</label>
+                      <div class="col-sm-10">
+                        <input type="tgl_keluar" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['tgl_keluar'] ?> readonly=''>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">No Telp</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email" value=<?php echo $siswa['no_telp'] ?> readonly=''>
+                      </div>
+                    </div>
+
+                  </div><!-- /.box-body -->
+
+                </form>
+              </div>
+
+              <div class="col-md-30">
+              </div>
+      <?php
         }
         break;
 
@@ -1336,4 +1366,4 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
         break;
     }
   }
-  ?>
+      ?>

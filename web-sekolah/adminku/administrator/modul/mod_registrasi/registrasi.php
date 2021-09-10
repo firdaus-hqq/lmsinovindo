@@ -79,6 +79,7 @@ switch($_GET['act']){
                  <tr><td><b>Nama Ibu</b></td><td>$r[nama_ibu]</td><tr>
                  <tr><td><b>Tanggal Masuk</b></td><td>$r[tgl_masuk]</td><tr>
                  <tr><td><b>Tanggal Keluar</b></td><td>$r[tgl_keluar]</td><tr>
+                 <tr><td><b>Jurusan</b></td><td>$r[jurusan]</td><tr>
                  <tr><td><b>Email</b></td><td>$r[email]</td><tr>
                  <tr><td><b>Aksi</b></td><td><input type=button class='btn btn-success' value='Terima' onclick=\"window.location.href='$aksi?module=registrasi&act=terima&id=$r[id_registrasi]';\">
                                          <input type=button class='btn btn-primary' value='Kembali' onclick=\"window.location.href='?module=registrasi';\"></td><tr>
