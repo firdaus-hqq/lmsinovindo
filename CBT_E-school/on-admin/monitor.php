@@ -99,6 +99,7 @@ include "tema/tema.php";
 
 					<li class="active"><a href="monitor.php"><i class="fa fa-laptop"></i><span> Monitoring Ujian</span></a></li>						
 					<li><a href="laporan.php"><i class="fa fa-upload"></i><span> Laporan</span></a></li>	
+          <li><a href="logout.php"><i class="fa fa-sign-out"></i><span> Logout</span></a></li>
           </ul>
         </section>
         <!-- /.sidebar -->

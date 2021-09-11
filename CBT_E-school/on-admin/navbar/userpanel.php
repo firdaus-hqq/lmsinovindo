@@ -39,7 +39,7 @@ $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
 			<a href="profil.php" data-toggle="tooltip" data-placement="right" title="Profil"><button id="cog" class="btn btn-default btn-md"><i class="fa fa-user"></i></button></a>
 			<a data-toggle="modal" data-target="#about" data-placement="right" data-toggle="tooltip" title="about aplication"><button id="cog" class="btn btn-default btn-md"><i class="fa fa-info-circle"></i></button></a>
             <a href="theme.php" data-placement="right" data-toggle="tooltip" title="setting"><button id="cog" class="btn btn-default"><i class="fa fa-cog"></i></button></a>
-            <a data-toggle="modal" data-target="#logout" data-placement="left" data-toggle="tooltip" title="log out"><button id="cog" class="btn btn-default btn-md"><i class="fa fa-sign-out"></i></button></a>
+            
             </div>
         </div> 
 <?php }?>
