@@ -9,7 +9,7 @@ include ('conn/fungsi.php');
  <head>
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>IDM | ACADEMY</title>
+    <title>QUIZ | IDMA</title>
 	<!-- Library CSS -->
 	<?php
 		include "bundle/bundle_css.php";
@@ -69,21 +69,12 @@ include "tema/tema.php";
 			  <h5 style="color:white"><?php echo $kelas;?></h5>
 			</div>
 		  </div>
-		  <form action="#" method="get" class="sidebar-form">
-                 <h5 style="color:white"><?php echo $nama;?></h5>
-            </form>
-		  <div class="user-panel">
-            <div class="pull-left image">
-			<a href="profil.php" data-toggle="tooltip" data-placement="right" title="Profil"><button id="cog" class="btn btn-default btn-md"><i class="fa fa-user"></i></button></a>
-			<a data-toggle="modal" data-target="#about" data-placement="right" data-toggle="tooltip" title="about aplication"><button id="cog" class="btn btn-default btn-md"><i class="fa fa-info-circle"></i></button></a>
-            <a href="logout.php" data-placement="right" data-toggle="tooltip" title="log out"><button id="cog" class="btn btn-default btn-md"><i class="fa fa-sign-out"></i></button></a>
-            </div>
-          </div>  
 
           <ul class="sidebar-menu">
                     <li class="active"><a href="index.php"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
                     <li><a href="ujian.php"><i class="fa fa-laptop"></i><span>Ujian</span></a></li>
-					<li><a href="nilai.php"><i class="fa fa-book"></i><span>Daftar Nilai</span></a></li>
+					     <li><a href="nilai.php"><i class="fa fa-book"></i><span>Daftar Nilai</span></a></li>
+                    <li><a href="logout.php"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
           </ul>
         </section>
 
@@ -131,29 +122,7 @@ include "tema/tema.php";
                                              <a href="ujian.php" style="color:white;">
                                                 <div class="panel-footer" style="background-color:#1d4e77;border:0;">
                                                    <span class="pull-left"></span>
-                                                   <span class="pull-right">enter <i class="fa fa-arrow-circle-right"></i></span>
-                                                   <div class="clearfix"></div>
-                                                </div>
-                                             </a>
-                                          </div>
-                                       </div>
-                                    
-                                       <!-- Statistik Siswa -->
-                                       <div class="col-lg-3 col-md-3 col-xs-6">
-                                          <div class="panel panel-success">
-                                             <div class="panel-heading">
-                                                <div class="row">
-                                                   <div class="col-xs-3"><i class="fa fa-user fa-5x"></i></div>
-                                                   <div class="col-xs-9 text-right">
-                                                      <div class="huge"></div>
-                                                      <div>Profil</div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                             <a href="profil.php" style="color:white;">
-                                                <div class="panel-footer" style="background-color:#2b5918;border:0;">
-                                                   <span class="pull-left"></span>
-                                                   <span class="pull-right">enter <i class="fa fa-arrow-circle-right"></i></span>
+                                                   <span class="pull-right">Masuk <i class="fa fa-arrow-circle-right"></i></span>
                                                    <div class="clearfix"></div>
                                                 </div>
                                              </a>
@@ -170,44 +139,20 @@ include "tema/tema.php";
                                                    </div>
                                                    <div class="col-xs-9 text-right">
                                                       <div class="huge"></div>
-                                                      <div>Nilai</div>
+                                                      <div>Daftar Nilai</div>
                                                    </div>
                                                 </div>
                                              </div>
                                              <a href="nilai.php" style="color:white;">
-                                                <div class="panel-footer" style="background-color:#ed4e04;border:0;">
+                                                <div class="panel-footer" style="background-color:#1d4e77;border:0;">
                                                    <span class="pull-left"></span>
-                                                   <span class="pull-right">enter <i class="fa fa-arrow-circle-right"></i></span>
+                                                   <span class="pull-right">Masuk <i class="fa fa-arrow-circle-right"></i></span>
                                                    <div class="clearfix"></div>
                                                 </div>
                                              </a>
                                           </div>
                                        </div>
                                     
-                                       <!-- Statistik Soal -->
-                                       <div class="col-lg-3 col-md-3 col-xs-6">
-                                          <div class="panel panel-danger">
-                                             <div class="panel-heading">
-                                                <div class="row">
-                                                   <div class="col-xs-3">
-                                                      <i class="fa fa-info fa-5x"></i>
-                                                   </div>
-                                                   <div class="col-xs-9 text-right">
-                                                      <div class="huge"></div>
-                                                      <div>Tentang Aplikasi</div>
-                                                   </div>
-                                                </div>
-                                             </div>
-                                             <a href="" data-toggle="modal" data-target="#about" style="color:white;">
-                                                <div class="panel-footer" style="background-color:#af0505;border:0;">
-                                                   <span class="pull-left"></span>
-                                                   <span class="pull-right">enter <i class="fa fa-arrow-circle-right"></i></span>
-                                                   <div class="clearfix"></div>
-                                                </div>
-                                             </a>
-                                          </div>
-                                       </div>
-                                   </div>
 <div class="box-body">                                   <!-- End of card -->
 <ul class="timeline" style="width: 100%; height: 350px; overflow-y: auto;">
 
@@ -222,7 +167,7 @@ include "tema/tema.php";
     <!-- timeline item -->
     <li>
         <!-- timeline icon -->
-        <i class="fa fa-envelope bg-blue"></i>
+        <i class="fa fa-list bg-blue"></i>
         <div class="timeline-item">
             <span class="time"><i class="fa fa-clock-o"></i> 1</span>
 

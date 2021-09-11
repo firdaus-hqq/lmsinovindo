@@ -151,7 +151,6 @@ $cari = $_POST['cari'];
           <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN MENU</li>
                 <li><a href="index.php"><i class="fa fa-tachometer"></i><span> Dashboard</span></a></li>
-				<li><a href="siswa.php"><i class="fa fa-graduation-cap"></i><span> Management Siswa</span></a></li>
 
 				<li class="treeview">
                   <a href="#">
@@ -173,6 +172,7 @@ $cari = $_POST['cari'];
 					<li class="active"><a href="hasiltest.php"><i class="fa fa-area-chart"></i><span> Hasil Test</span></a></li>
 					<li><a href="monitor.php"><i class="fa fa-laptop"></i><span> Monitoring Ujian</span></a></li>
 					<li><a href="laporan.php"><i class="fa fa-upload"></i><span> Laporan</span></a></li>	
+          <li><a href="logout.php"><i class="fa fa-sign-out"></i><span> Logout</span></a></li>
           </ul>
         </section>
         <!-- /.sidebar -->

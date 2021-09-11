@@ -8,8 +8,9 @@
 <header class="main-header">
   <!-- Logo -->
 <div class="logo">
-<span class="logo-sm">
-<b style="color:white;">IDM </b>| ACADEMY</p></span>
+<span><img src="../aset/foto/icon.png" width=35px alt="Foto"></span>
+<span class="logo-sm"> |
+<b style="color:white;"> IDMA</b></span>
 </div>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top" role="navigation">
@@ -22,28 +23,9 @@
     </a>
     <div class="navbar-custom-menu">
       <ul class="nav navbar-nav">
-        <li class="dropdown user user-menu">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <i class="fa fa-battery-three-quarters"></i>
-                <span class="hidden-xs" style="text-transform:capitalize;"><?php echo $nama;?></span>
-          </a>
-                <ul id="drop" class="dropdown-menu">
-                    <!-- User image -->
-                    <li class="user-header">
-                        <img src="../aset/foto/avatar.gif" class="img-circle" alt="Foto">
-                        <!--<h3><p>Akademik</p></h3>-->
-                        <h5 style="color:white;"><b><p style="text-transform:capitalize;">Hi <?php echo $nama;?></p></b>
-                        <p>Welcome</p></h5>
-                    </li>
+
                     <!-- Menu Footer-->
-                    <li class="user-footer">
-					<div class="pull-left">
-                        <a href="update.php" class="btn bg.warning btn-flat" style="background-color:white;color:grey;">Update <i class="fa fa-info-circle"></i></a>
-                        </div>
-                        <div class="pull-right">
-                        <a class="btn bg.warning btn-flat" data-toggle="modal" data-target="#logout" style="background-color:red;color:white;">Log out <i class="fa fa-sign-out"></i></a>
-                        </div>
-                    </li>
+                    
         </li>
       </ul>
     </div>
