@@ -7,8 +7,8 @@ if($query == false){
 die ("Terjadi Kesalahan : ". mysqli_error($konek));
 }
 while($r = mysqli_fetch_array($query)){
-$kelas=$r['kelas'];
-$kelasx=preg_replace('/[^0-9\  ]/', '', $kelas);
+$kelas=$r['id_kelas'];
+$kelasx=preg_replace('/[^a-zA-Z0-9]/', '', $kelas);
 $rombelx=preg_replace('/\d/', '', $kelas );
 ?>
 	

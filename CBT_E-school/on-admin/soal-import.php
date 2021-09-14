@@ -10,7 +10,7 @@ require "excel_reader.php";
 <html>
  <head>
     <meta charset="utf-8">
-    <title>E - School</title>
+    <title>IDM | ACADEMY</title>
 	<!-- Library CSS -->
 	<link href="../js/sweetalert.css" rel="stylesheet" type="text/css"/>
 	<?php

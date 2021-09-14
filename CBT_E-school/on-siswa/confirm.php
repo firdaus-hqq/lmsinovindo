@@ -136,7 +136,7 @@ $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						}
 						while ($r = mysqli_fetch_array ($queryn)){ 
-						$cekkelas=$ur['kelas']-$r['kelas'];
+						$cekkelas=$ur['kelas']-$r['id_kelas'];
 						$cekreset=$r['statuslogin'];
 						if($cekreset == 0)
 						{
@@ -147,7 +147,7 @@ $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
 				             header('location:ujian.php?reset=1');
 				             exit;
 				        }
-						if($cekkelas == 0)
+						if($ur['kelas'] == $r['id_kelas'])
 						{
 						
 						}
@@ -157,7 +157,7 @@ $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
 				             exit;
 				        }
 				?>
-				</tr><tr><td><span class="user"><?php echo $nama; ?><br><?php echo $r['kelas']; ?></span></td></tr>
+				</tr><tr><td><span class="user"><?php echo $nama; ?><br><?php echo $r['id_kelas']; ?></span></td></tr>
 				<tr><td><span class="log"><a href="logout.php">Logout</a><span></span></span></td></tr>
 			</tbody></table>
         </div>
@@ -179,7 +179,7 @@ $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
                 </div>
                 <div id="garis" class="list-group-item">
                     <label class="list-group-item-heading">Nama</label>
-                    <p class="list-group-item-text"><?php echo $nama; ?> | <?php echo "$r[kelas]"; ?></p>
+                    <p class="list-group-item-text"><?php echo $nama; ?> | <?php echo "$r[id_kelas]"; ?></p>
                 </div>
                 <?php }?>
                 <div id="garis" class="list-group-item">

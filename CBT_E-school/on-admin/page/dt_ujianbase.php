@@ -20,7 +20,7 @@
 						}
 						$i=1;
 						while ($vv = mysqli_fetch_array ($querydosen)){
-						$sisa=$vv[sisawaktu]/60;
+						$sisa=$vv['sisawaktu']/60;
 						$sisawaktu = number_format($sisa, 2, '.', '');
 							echo "
 								<tr>

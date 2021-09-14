@@ -13,7 +13,7 @@ include ('koneksi/koneksi.php');
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="aset/fa/css/font-awesome.css">
-  <title>E-School</title>
+  <title>IDM | ACADEMY</title>
   <link rel="shortcut icon" href="aset/foto/<?php echo $ar['logo'];?>">
   <link rel="stylesheet" href="admin/css/reset.min.css">
   <link rel="stylesheet" href="admin/css/style2.css">

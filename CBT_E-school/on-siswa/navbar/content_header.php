@@ -8,9 +8,14 @@
 <header class="main-header">
   <!-- Logo -->
 <div class="logo">
+<<<<<<< HEAD
 <span><img src="../aset/foto/icon.png" width=35px alt="Foto"></span>
 <span class="logo-sm"> |
 <b style="color:white;"> IDMA</b></span>
+=======
+<span class="logo-sm">
+<b style="color:white;">IDM </b>| ACADEMY</span>
+>>>>>>> fabd1b69be76ee7739d6592fbd8bb304e9f5cc54
 </div>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top" role="navigation">

@@ -17,7 +17,7 @@ $("#responsecontainer").load('response.php?randval='+ Math.random());
 });
 </script>
     <meta charset="utf-8">
-    <title>E-School</title>
+    <title>IDM | ACADEMY</title>
 	<link href="../js/sweetalert.css" rel="stylesheet" type="text/css"/>
 	<script src="../aset/plugins/ckeditor/ckeditor.js"></script>
 	<script>

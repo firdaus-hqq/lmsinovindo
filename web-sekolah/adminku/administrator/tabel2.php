@@ -35,6 +35,13 @@ if ($_SESSION['login'] == 0) {
         if ($_SESSION['leveluser'] == 'siswa') {
             echo "<div class='error msg'>Anda tidak diperkenankan mengakses halaman ini.</div>";
         } else {
+
+            $search = @$_GET['search'];
+            if (!empty($search)) $sql .= " WHERE id_file LIKE '%$search%' 
+                                OR id_siswa LIKE '%$search%' 
+                                OR file LIKE '%$search%' 
+                                OR link LIKE '%$search%' 
+                                OR tanggal LIKE '%$search%'";
 ?>
             <!DOCTYPE html>
             <html>
@@ -217,15 +224,9 @@ if ($_SESSION['login'] == 0) {
                             <div class='box-header with-border'>
                                 <div class="table-responsive">
                                     <table id='example1' class='table table-bordered table-striped'>
-                                        <?php
-                                        $i = 1;
-                                        while ($data_tugas = $listDataTugas->fetch_array()) {
-                                        ?>
                                             <thead>
                                                 <tr>
-                                                    <th colspan="3"><?= $data_tugas['nama_lengkap']; ?></th>
-                                                </tr>
-                                                <tr>
+                                                    <th>Nama</th>
                                                     <th>Tanggal</th>
                                                     <th>Tugas</th>
                                                     <th></th>
@@ -233,7 +234,9 @@ if ($_SESSION['login'] == 0) {
                                             </thead>
                                             <tbody>
                                                 <?php
-                                                $sql3 = "SELECT * FROM tugas WHERE id_siswa = '$data_tugas[id_siswa]' AND status=''";
+                                                $i = 1;
+                                                while ($data_tugas = $listDataTugas->fetch_array()) {
+                                                $sql3 = "SELECT * FROM tugas WHERE id_siswa = '$data_tugas[id_siswa]' AND status='' ORDER BY tanggal DESC";
                                                 $result3 = $mysqli->query($sql3);
                                                 if ($result3->num_rows > 0) {
                                                     $tugas_siswa = $result3->fetch_array();
@@ -242,6 +245,10 @@ if ($_SESSION['login'] == 0) {
                                                 while ($tugas_siswa = $listTugasSiswa->fetch_array()) {
                                                 ?>
                                                     <tr>
+                                                        <?php 
+                                                        $jumlah_tugas = mysqli_num_rows($result3);
+                                                        ?>
+                                                        <td rowspan=""><?= $data_tugas['nama_lengkap']; ?></td>
                                                         <td>
                                                             <?= $tugas_siswa['tanggal']; ?>
                                                         </td>
@@ -256,33 +263,32 @@ if ($_SESSION['login'] == 0) {
                                                             <i class="fa fa-times-circle" style="color:red;" onclick="confirm('Yakin ingin mengembalikan tugas ini?') ? window.location.href='revisi.php?id_file=<?= $tugas_siswa['id_file'] . '&id_kelas=' . $_GET['id_kelas']  ?>':''"></i>
                                                         </td>
                                                     </tr>
-                                                <?php } ?>
+                                                <?php }} ?>
                                             </tbody>
-                                        <?php } ?>
                                     </table>
                                 </div>
                             </div>
                         </div>
 
-                    
-                                    <!-- /.table -->
-                                </div>
-                            </div>
-                        </div>
-                    </section><!-- /.content -->
-                </div><!-- /.content-wrapper -->
 
-                <!-- Main Footer -->
-                <footer class="main-footer">
-                    <!-- To the right -->
-                    <div class="pull-right hidden-xs">
-                        Versi 0.0.1
-                    </div>
-                    <!-- Default to the left -->
-                    <strong>Copyright &copy; <?php echo (int)date('Y'); ?> <a href="#">INOVINDO DIGITAL MEDIA</a></strong>
-                </footer>
+                        <!-- /.table -->
+                </div>
+            </div>
+            </div>
+            </section><!-- /.content -->
+            </div><!-- /.content-wrapper -->
 
-                <div class="control-sidebar-bg"></div>
+            <!-- Main Footer -->
+            <footer class="main-footer">
+                <!-- To the right -->
+                <div class="pull-right hidden-xs">
+                    Versi 0.0.1
+                </div>
+                <!-- Default to the left -->
+                <strong>Copyright &copy; <?php echo (int)date('Y'); ?> <a href="#">INOVINDO DIGITAL MEDIA</a></strong>
+            </footer>
+
+            <div class="control-sidebar-bg"></div>
             </div><!-- ./wrapper -->
             <script src="../plugins/jQuery/jquery-1.12.0.min.js"></script>
 
@@ -379,7 +385,9 @@ if ($_SESSION['login'] == 0) {
 
             </html>
 <?php
-        }
-    }
-}
+                                            }
+                                        }
+                                    }
+                                
+                                
 ?>

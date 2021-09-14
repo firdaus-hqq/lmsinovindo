@@ -100,7 +100,7 @@ include ('conn/fungsi.php');
 						<tr>
 								  <td>$i</td>
 								  <td>$ar[nama_lengkap]</td>
-								  <td>$ar[kelas]</td>
+								  <td>$ar[id_kelas]</td>
 								  <td>$ar[kodesoal]</td>
 								  $aktifstatus
 								</tr>
