@@ -3,7 +3,7 @@ session_start();
 include ('conn/cek.php');
 include ('../koneksi/koneksi.php');
 include ('conn/fungsi.php');
-$querydosen = mysqli_query ($konek, "SELECT * FROM jawaban where nis='$username'");
+$querydosen = mysqli_query ($konek, "SELECT * FROM jawaban where nis='$nis'");
 						if($querydosen == false){
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						}

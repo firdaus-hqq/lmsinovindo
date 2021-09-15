@@ -4,7 +4,7 @@ include ('../koneksi/koneksi.php');
 include ('conn/fungsi.php');
 ?>
 <?php
-$querydosen = mysqli_query ($konek, "SELECT kodesoal FROM jawaban WHERE nis='$username'");
+$querydosen = mysqli_query ($konek, "SELECT kodesoal FROM jawaban WHERE nis='$nis'");
 						if($querydosen == false){
 						die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						}
@@ -24,7 +24,7 @@ $qu = mysqli_query ($konek, "SELECT * FROM ujian where kodesoal='$ar[kodesoal]'"
 					    $acak = "RAND ()";
 					    }
 
-$query = mysqli_query ($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kodesoal) WHERE nis='$username' ORDER by status ASC, $acak");
+$query = mysqli_query ($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kodesoal) WHERE nis='$nis' ORDER by status ASC, $acak");
 						if($query == false){
 						die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						$i=1;
@@ -171,7 +171,7 @@ $query = mysqli_query ($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kod
 				        {
 					    $statussoalurai = "hidden";
 				        }
-$query2 = mysqli_query ($konek, "SELECT * FROM jawaburaian WHERE nis='$username' AND nomersoal='$ar[nomersoal]' AND kodesoal='$ks'");
+$query2 = mysqli_query ($konek, "SELECT * FROM jawaburaian WHERE nis='$nis' AND nomersoal='$ar[nomersoal]' AND kodesoal='$ks'");
 $ur = mysqli_fetch_array ($query2);
 						if($ar['status']>1)
 				        {

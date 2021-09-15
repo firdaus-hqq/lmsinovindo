@@ -39,7 +39,7 @@ include ('conn/fungsi.php');
 									<td>$ar[nama_lengkap]</td>
 									<td>$ar[id_kelas]</td>
 									<td align=center>
-                                    <a href='#' style='font-decoration:none;color:#ffffff;' onClick='confirm_delete(\"page/siswa_reset_login.php?id=$ar[id]\")'><button id='reset' type='button' class='btn btn-danger btn-xs'><i class='fa fa-history'></i> RESET </button></a>
+                                    <a href='#' style='font-decoration:none;color:#ffffff;' onClick='confirm_delete(\"page/siswa_reset_login.php?id=12\")'><button id='reset' type='button' class='btn btn-danger btn-xs'><i class='fa fa-history'></i> RESET </button></a>
                                     </td>
 							</tr>";
 						$i++;		

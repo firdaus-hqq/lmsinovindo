@@ -164,7 +164,7 @@ include ('koneksi/koneksi.php');
 </head>
 
 <body class="bg">
-  <div class="pen-title">
+  <div class="pen-title" style="padding: 20px;">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Form Module-->
     <img href="<?php echo $ar['web'];?>" src="aset/foto/<?php echo $ar['logo_ujian'];?>" width=310>
@@ -194,7 +194,7 @@ include ('koneksi/koneksi.php');
           <button id="but" style="border-radius:20px;"><b>Login</b></button>
           
         </form><br>
-        <button id="cbut" style="border-radius:20px;"><a href="http://localhost/lmsinovindo-master/web-sekolah/adminku/home"><b style="padding: 10px 90px;">Cancel</b></a></button>
+        <button id="cbut" style="border-radius:20px;"><a href="../web-sekolah/adminku/home"><b style="padding: 10px 90px;">Cancel</b></a></button>
         <br>
         <?php if (!empty($_GET['salah'])) { echo "<h5 id='blink' style='color: red;font-size:10px'>
 					Nomer peserta atau Password tidak ditemukan di database</h5>"; }?>

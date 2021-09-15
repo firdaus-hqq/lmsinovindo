@@ -153,7 +153,7 @@ function timer() {
 
 <header style="background-color:<?php echo $warna;?> ; ">
     <div class="group">
-        <div class="left" style="background-color:<?php echo $warna;?>"><img src="../aset/foto/<?php echo $xx['logo_ujian'];?>" style=" margin-left:0px;"></div>
+        <div class="left" style="background-color:<?php echo $warna;?>"><img src="../aset/foto/<?php echo $xx['logo_ujian'];?>" style=" margin:0px; max-width:400px; max-height:200px;"></div>
         <?php }?>
     	    <div class="right">
 			    <table width="100%" border="0" cellspacing="5px;" style="margin-top:10px">   

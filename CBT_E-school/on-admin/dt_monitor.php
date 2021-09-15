@@ -91,7 +91,7 @@ include ('conn/fungsi.php');
     									  <div class='progress-bar progress-bar-success progress-bar-striped active' style='width: $persenjawab%;font-size:10px;'></div>
     									</div>
 								  </td>
-					    <td><a href='#' onClick='confirm_delete(\"page/siswa_reset_login.php?id=$ar[id]\")'>
+					    <td><a href='#' onClick='confirm_delete(\"page/siswa_reset_login.php?id=$ar[id_siswa]\")'>
                         <button class='btn btn-flat bg-orange btn-xs'>RESET LOGIN&emsp; <i class='fa fa-undo fa-spin'></i></button>
                         </a></td>
 					    ";
