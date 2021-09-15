@@ -199,13 +199,13 @@ include "tema/tema.php";
             </div>
             <div class="pull-left info">
 			  <a href="#"><i id='on' class='fa fa-circle' style='color:#90ff00;font-size:10px;'></i> Online</a>
-			  <h5 style="color:white"><?php echo $kelas;?></h5>
+			  <h5 style="color:white"><?= $nama ?>-<?php echo $_SESSION['id_kelas'];?></h5>
 			</div>
 		  </div>
 		
           <ul class="sidebar-menu">
-                    <li class="active"><a href="index.php"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
-                    <li><a href="ujian.php"><i class="fa fa-laptop"></i><span>Ujian</span></a></li>
+                    <li><a href="index.php"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
+                    <li class="active"><a href="ujian.php"><i class="fa fa-laptop"></i><span>Ujian</span></a></li>
 					          <li><a href="nilai.php"><i class="fa fa-book"></i><span>Daftar Nilai</span></a></li>
                     <li><a href="logout.php"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
           </ul>
@@ -280,7 +280,7 @@ include "tema/tema.php";
 		</section>		
     </div><!-- /.content-wrapper -->
     <script type="text/javascript">
-<!--
+// <!--
     function toggle_visibility(id) {
        var e = document.getElementById(id);
        if(e.style.display == 'none')

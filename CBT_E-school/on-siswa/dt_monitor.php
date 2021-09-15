@@ -7,13 +7,13 @@ include ('conn/fungsi.php');
                 
 <?php
 $kelasx=preg_replace('/[^a-zA-Z0-9]/', '', $kelas);
-						$querydosen = mysqli_query ($konek, "SELECT * FROM ujian where aktif=1 and kelas='$kelasx' ");
+						$querydosen = mysqli_query ($konek, "SELECT * FROM ujian where aktif=1 AND kelas='".$_SESSION['id_kelas']."'");
 						if($querydosen == false){
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						}
 						$i=1;
 						while ($ar = mysqli_fetch_array ($querydosen)){
-			            $hs = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE nama='$nama' AND kodesoal='$ar[kodesoal]'");
+			            $hs = mysqli_query($konek, "SELECT * FROM nilaihasil WHERE nis='$nis' AND kodesoal='$ar[kodesoal]'");
 						$nm = mysqli_num_rows($hs);
 						if ($nm > 0)
                                 						{
@@ -89,7 +89,7 @@ $kelasx=preg_replace('/[^a-zA-Z0-9]/', '', $kelas);
                   <th style='width: 17%'>Waktu Selesai</th>
                 </tr>
 <?php
-						$queryn = mysqli_query ($konek, "SELECT * FROM nilaihasil WHERE nama='$nama'");
+						$queryn = mysqli_query ($konek, "SELECT * FROM nilaihasil WHERE nama='".$_SESSION['nama_lengkap']."'");
 						if($queryn == false){
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						}

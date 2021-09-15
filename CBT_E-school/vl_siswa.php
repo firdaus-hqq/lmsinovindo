@@ -11,11 +11,13 @@ if  ($token == $inputtoken){
     
 $username = mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $username);
 $password = md5(mysqli_real_escape_string($GLOBALS["___mysqli_ston"], $password));
-$q = mysqli_query($GLOBALS["___mysqli_ston"], "select username_login,password_login,nama_lengkap,statuslogin from siswa where BINARY username_login='$username' and password_login='$password'");
+$q = mysqli_query($GLOBALS["___mysqli_ston"], "select nis,username_login,password_login,nama_lengkap,id_kelas,statuslogin from siswa where BINARY username_login='$username' and password_login='$password'");
 if (mysqli_num_rows($q) == 1) {
-
+$siswa=$q->fetch_array();
 $_SESSION['siswa'] = $username;
-$_SESSION['nama_lengkap'] = $nama;
+$_SESSION['nama_lengkap'] = $siswa['nama_lengkap'];
+$_SESSION['id_kelas'] = $siswa['id_kelas'];
+$_SESSION['nis'] = $siswa['nis'];
 mysqli_query($GLOBALS["___mysqli_ston"], "update siswa set online='1'where username_login='$username'");
 header('location:on-siswa/index.php');
 

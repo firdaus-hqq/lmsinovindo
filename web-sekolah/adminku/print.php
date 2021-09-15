@@ -18,7 +18,7 @@
     $noserti = '299';
     $bulan = 'VIII';
     $tahun = 2029;
-    $jurusan = $data_siswa['nama_lengkap'];
+    $jurusan = $data_siswa['jurusan'];
     
     // imagettftext($image, 150, 0, 1455, 1350, $white, $font, $text);
 

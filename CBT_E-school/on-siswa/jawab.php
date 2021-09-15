@@ -10,7 +10,7 @@ $jumlah         =$_POST['jumlah1'];
 $sisawaktu      =$_POST['sisawaktu'];
 $mulaiujian     = $_POST['mulaiujian'];
 $waktuselesai   = $_POST['waktuselesai'];
-mysqli_query($konek, "update siswa set statuslogin='0'where nis='$username'");
+mysqli_query($konek, "update siswa set statuslogin='0' where nis='$nis'");
 $querydosen = mysqli_query ($konek, "SELECT * FROM ujian WHERE kodesoal='$kods' and mapel='$kom'");
 						if($querydosen == false){
 						die ("Terjadi Kesalahan : ". mysqli_error($konek));
@@ -39,7 +39,7 @@ $querydosen = mysqli_query ($konek, "SELECT * FROM ujian WHERE kodesoal='$kods' 
     
 }
 $score = $nilaipg/$jumlah*$benar;            
-	if ($edit = mysqli_query($konek, "UPDATE jawaban SET jawabansiswa='$answer', kuncisoal='$key', benar='$jam', salah='$tanggal', nilai='$score', sisawaktu='$sisawaktu', mulaiujian='$mulaiujian', waktuselesai='$waktuselesai' WHERE nis='$username'")){
+	if ($edit = mysqli_query($konek, "UPDATE jawaban SET jawabansiswa='$answer', kuncisoal='$key', benar='$jam', salah='$tanggal', nilai='$score', sisawaktu='$sisawaktu', mulaiujian='$mulaiujian', waktuselesai='$waktuselesai' WHERE nis='$nis'")){
 		header("Location:koreksi.php");
 		exit();
 	}

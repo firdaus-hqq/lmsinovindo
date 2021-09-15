@@ -143,6 +143,7 @@ include "tema/tema.php";
       include "navbar/userpanel.php";
       ?>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN MENU</li>
               <li><a href="index.php"><i class="fa fa-tachometer"></i><span> Dashboard</span></a></li>
@@ -173,6 +174,11 @@ include "tema/tema.php";
         <li class="header">MAIN MENU</li>
         <li><a href="index.php"><i class="fa fa-tachometer"></i><span> Dashboard</span></a></li>
         <li><a href="siswa.php"><i class="fa fa-graduation-cap"></i><span> Management Siswa</span></a></li>
+=======
+      <ul class="sidebar-menu" data-widget="tree">
+        <li class="header">MAIN MENU</li>
+        <li><a href="index.php"><i class="fa fa-tachometer"></i><span> Dashboard</span></a></li>
+>>>>>>> 97d5964faaf77d9b67ad385a406a57797f0b2f2a
 
         <li class="treeview active">
           <a href="#">
@@ -188,13 +194,17 @@ include "tema/tema.php";
             <li id="sub"><a href="daftarhadir.php"><i class="fa fa-print"></i><span> Daftar Hadir</span></a></li>
             <li id="sub"><a href="beritaacara.php"><i class="fa fa-print"></i><span> Berita Acara</span></a></li>
             <li id="sub"><a href="up-gbrsoal.php"><i class="fa fa-upload"></i><span> Upload Gbr / Audio Soal</span></a></li>
+<<<<<<< HEAD
 >>>>>>> fabd1b69be76ee7739d6592fbd8bb304e9f5cc54
+=======
+>>>>>>> 97d5964faaf77d9b67ad385a406a57797f0b2f2a
           </ul>
         </li>
 
         <li><a href="hasiltest.php"><i class="fa fa-area-chart"></i><span> Hasil Test</span></a></li>
         <li><a href="monitor.php"><i class="fa fa-laptop"></i><span> Monitoring Ujian</span></a></li>
         <li><a href="laporan.php"><i class="fa fa-upload"></i><span> Laporan</span></a></li>
+        <li><a href="logout.php"><i class="fa fa-sign-out"></i><span> Logout</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->
@@ -275,6 +285,7 @@ include "tema/tema.php";
                     <option value="">Pilih Jenis Ujian</option>
                     <option value="Pretest">Pre Test</option>
                     <option value="Posttest">Post Test</option>
+                    <option value="Posttest">Simulasi</option>
                   </select>
               </div>
 
@@ -293,10 +304,10 @@ include "tema/tema.php";
                 <form action="" method="post">
                   <select class="form-control" name="kelas" required>
                     <option value="">Pilih kelas</option>
-                    <?php 
+                    <?php
                     while ($sekolah = @$dataKelas->fetch_array()) {
                     ?>
-                    <option value="<?= $sekolah['id_kelas'] ?>"><?= $sekolah['nama'] ?></option>
+                      <option value="<?= $sekolah['id_kelas'] ?>"><?= $sekolah['nama'] ?></option>
                     <?php } ?>
                   </select>
               </div>

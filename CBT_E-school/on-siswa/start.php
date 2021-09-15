@@ -3,7 +3,7 @@ session_start();
 include ('conn/cek.php');
 include ('../koneksi/koneksi.php');
 include ('conn/fungsi.php');
-$mulaiujian     = $_POST[mulaiujian];
+$mulaiujian     = $_POST['mulaiujian'];
 
     					date_default_timezone_set('Asia/Jakarta');
 						$saiki=date('H:i:s');

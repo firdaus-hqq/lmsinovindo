@@ -27,7 +27,7 @@ $ok         = $_POST['ok'];
         header('location:confirm.php?sudah=1');
         } else {
         ($add = mysqli_query($konek, "INSERT INTO jawaban (nis, nama, kelas, kodemapel, kodesoal, aktif, waktu, jumlahsoal, lamaujian, mulaiujian, waktuselesai, sisawaktu) VALUES 
-        	('$nis', '$nama', '$kelas', '$kodemapel', '$kodesoal', '$aktif', '$waktu', '$jumlahsoal', '$lamaujian', '$mulaiujian', '$waktuselesai', '$sisawaktu') ON DUPLICATE KEY UPDATE nis='$username', nama='$nama', kelas='$kelas' "));
+        	('$nis', '$nama', '$kelas', '$kodemapel', '$kodesoal', '$aktif', '$waktu', '$jumlahsoal', '$lamaujian', '$mulaiujian', '$waktuselesai', '$sisawaktu') ON DUPLICATE KEY UPDATE nis='$nis', nama='$nama', kelas='$kelas' "));
         		header("Location:konfirm.php");
         		fclose($file);
         		exit();

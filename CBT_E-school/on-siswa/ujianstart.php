@@ -3,7 +3,7 @@ session_start();
 include ('conn/cek.php');
 include ('../koneksi/koneksi.php');
 include ('conn/fungsi.php');
-mysqli_query($konek, "update siswa set statuslogin='1'where nis='$nis'");
+mysqli_query($konek, "update siswa set statuslogin='1' where nis='$nis'");
 $query = mysqli_query ($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kodesoal) WHERE nis='$nis' ORDER by RAND ()");
 						if($query == false){
 						die ("Terjadi Kesalahan : ". mysqli_error($konek));
@@ -163,7 +163,7 @@ function timer() {
 ?>
 <header style="background-color:<?php echo $warna;?> ; ">
     <div class="group">
-        <div class="left" style="background-color:<?php echo $warna;?>"><img src="../aset/foto/<?php echo $xx['logo_ujian'];?>" style=" margin-left:0px;"></div>
+        <div class="left" style="background-color:<?php echo $warna;?>"><img src="../aset/foto/<?php echo $xx['logo_ujian'];?>" style=" margin:0px; max-width:400px; max-height:200px;"></div>
         <?php }?>
     	    <div class="right">
 			    <table width="100%" border="0" cellspacing="5px;" style="margin-top:10px">   
@@ -222,15 +222,15 @@ function timer() {
 <div id="garistom" class="list-group-item top-heading">
 <div class="tombol"> 
  <a id="prev">
- <button id="prev" class='btn btn-primary xxxx'>
+ <button style="border-radius: 20px;" id="prev" class='btn btn-primary xxxx'>
  <span class="hidden-lg hidden-md"><i class="fa fa-chevron-left"></i> PREV</span>
- <span class="hidden-xs hidden-sm"><i class="fa fa-chevron-left"></i> SOAL SEBELUMNYA</span>
+ <span class="hidden-xs hidden-sm"><i class="fa fa-chevron-left"></i> PREV</span>
  </button></a>
  <a id="done"> <button id="done" class='btn btn-success xxxx' data-target='#ModalImport' data-toggle='modal' style="border-radius:0;"> <span class='hidden-lg hidden-md'><i class='fa fa-check'></i> FINISH</span> <span class='hidden-xs hidden-sm'><i class='fa fa-check'></i> MENYELESAIKAN UJIAN</span> </button></a>
  <a id="next">
- <button id="next" class='btn btn-primary xxxx'>
+ <button style="border-radius: 20px;" id="next" class='btn btn-primary xxxx'>
  <span class="hidden-lg hidden-md">NEXT <i class="fa fa-chevron-right"></i></span>
- <span class="hidden-xs hidden-sm">SOAL BERIKUTNYA <i class="fa fa-chevron-right"></i></span>
+ <span class="hidden-xs hidden-sm">NEXT <i class="fa fa-chevron-right"></i></span>
  </button></a>
 </div>
 </div>

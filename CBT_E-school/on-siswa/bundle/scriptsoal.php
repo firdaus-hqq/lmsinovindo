@@ -7,7 +7,7 @@ include ('conn/fungsi.php');
 
 ?>
 <?php
-$query = mysqli_query ($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kodesoal) WHERE nis='$username'");
+$query = mysqli_query ($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kodesoal) WHERE nis='$nis'");
 						if($query == false){
 						die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						$o=1;

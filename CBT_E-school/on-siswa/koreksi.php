@@ -4,16 +4,16 @@ include ('conn/cek.php');
 include ('../koneksi/koneksi.php');
 include ('conn/fungsi.php');
 
-$querydosen = mysqli_query ($konek, "SELECT * FROM jawaban WHERE nis='$username'");
+$querydosen = mysqli_query ($konek, "SELECT * FROM jawaban WHERE nis='$nis'");
 						if($querydosen == false){
 							die ("Terjadi Kesalahan : ". mysqli_error($konek));
 						}
 						while ($ar = mysqli_fetch_array ($querydosen)){
 if ($add = mysqli_query($konek, "INSERT INTO nilaihasil (nis, nama, kelas, kodemapel, kodesoal, aktif, jumlahsoal, jawabansiswa, benar, salah, nilai, kuncisoal) VALUES 
-	('$ar[nis]$ar[kodesoal]', '$ar[nama]', '$ar[kelas]', '$ar[kodemapel]', '$ar[kodesoal]', '1', '$ar[jumlahsoal]', '$ar[jawabansiswa]', '$ar[benar]', '$ar[salah]', '$ar[nilai]', '$ar[kuncisoal]')"))
+	('$ar[nis]', '$ar[nama]', '$ar[kelas]', '$ar[kodemapel]', '$ar[kodesoal]', '1', '$ar[jumlahsoal]', '$ar[jawabansiswa]', '$ar[benar]', '$ar[salah]', '$ar[nilai]', '$ar[kuncisoal]')"))
 	{
-mysqli_query($konek, "update siswa set statuslogin='0'where nis='$username'");
-mysqli_query ($konek, "DELETE FROM jawaban where nis='$username'");
+mysqli_query($konek, "update siswa set statuslogin='0' where nis='$nis'");
+mysqli_query ($konek, "DELETE FROM jawaban where nis='$nis'");
 	}
 }
 $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");

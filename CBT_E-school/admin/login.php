@@ -124,7 +124,7 @@ a:active  {
       <span style="float:left" toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
       <button >Login</button>
     </form><br>
-    <button id="cbut" style="border-radius:20px;"><a href="http://localhost/lmsinovindo-master/web-sekolah/adminku/ADMINISTRATOR/media_admin.php?module=home"><b style="padding: 10px 90px;">Cancel</b></a></button>
+    <button id="cbut" style="border-radius:20px;"><a href="../../web-sekolah/adminku/administrator/media_admin.php?module=home"><b style="padding: 10px 90px;">Cancel</b></a></button>
     <br>
 	    <?php if (!empty($_GET['salah'])) { echo "<h5 id='blink' style='color: red';>Username atau Password salah</h3>"; }
         ?>
