@@ -21,7 +21,7 @@ $total_absen_hari_ini = $result->num_rows;
 
 function canSubmit($waktu)
 {
-  $batas_waktu_menit = 16 * 60; # menunjukkan jam 10:00
+  $batas_waktu_menit = 9 * 60 + 30; # menunjukkan jam 10:00
 
   $waktu_time = strtotime($waktu);
   $waktu_menit = date('H', $waktu_time) * 60 + date('i', $waktu_time);
@@ -195,17 +195,6 @@ if ($_SESSION['login'] == 0) {
               </div>
             </div>
 
-            <!-- search form (Optional) -->
-            <form action="#" method="get" class="sidebar-form">
-              <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                </span>
-              </div>
-            </form>
-            <!-- /.search form -->
-
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
               <li class="header">Menu Learning</li>
@@ -234,17 +223,6 @@ if ($_SESSION['login'] == 0) {
                       <i class='fa fa-circle-o'></i> <span class="title">Materi</span>
                     </a>
                   </li>
-                  <li>
-                    <a href="media.php?module=quiz">
-                      <i class='fa fa-circle-o'></i><span class="title">Ujian</span>
-                    </a>
-
-                  </li>
-                  <li>
-                    <a href="media.php?module=nilai">
-                      <i class='fa fa-circle-o'></i><span class="title">Nilai</span>
-                    </a>
-                  </li>
                 </ul>
               </li>
               <li class="treeview active">
@@ -266,24 +244,9 @@ if ($_SESSION['login'] == 0) {
                 </ul>
               </li>
               <li><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
-              <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-trophy"></i>
-                  <span>Peringkat</span><i class='fa fa-angle-left pull-right'></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li>
-                    <a href="v_peringkat_typing.php">
-                      <i class='fa fa-circle-o'></i><span class="title">Typing Test</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="v_peringkat_prepost.php">
-                      <i class='fa fa-circle-o'></i><span class="title">Pre Test & Post Test</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              <li><a href="../../CBT_E-school/on-siswa/ujian.php"><i class="fa fa-laptop"></i> <span>Ujian</span></a></li>
+              <li><a href="v_peringkat_typing.php"><i class="fa fa-trophy"></i> <span>Peringkat</span></a></li>
+              <li><a href="sertifikat.php"><i class="fa fa-certificate"></i> <span>Sertifikat</span></a></li>
               <li class="header">Account</li>
               <li class="treeview">
                 <a href="#">

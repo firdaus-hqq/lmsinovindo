@@ -12,13 +12,20 @@ if (isset($_SESSION['idsiswa'])) {
     $result = $mysqli->query($sql);
     if ($result->num_rows > 0) {
         $data_absen = $result->fetch_array();
-    } else {
-        exit("ID Tidak ditemukan.");
     }
-} else {
-    exit("ID Tidak ditemukan");
 }
 $listDataAbsen = $mysqli->query($sql);
+
+$query = "SELECT * from siswa WHERE id_siswa = " . $_SESSION['idsiswa'];
+$siswa = mysqli_query($mysqli, $query);
+
+$data_siswa = mysqli_fetch_assoc($siswa);
+
+$awalKerja  = strtotime($data_siswa['tgl_masuk']);
+$akhirKerja = strtotime($data_siswa['tgl_keluar']);
+$jumlahHari = $akhirKerja - $awalKerja;
+
+$jumlah_presensi = round($jumlahHari / (60*60*24));
 
 $hadir = mysqli_query($mysqli, "SELECT * FROM data_absen WHERE kehadiran = 'H' AND id_siswa = " . $id_siswa);
 $jumlah_hadir = mysqli_num_rows($hadir);
@@ -29,7 +36,26 @@ $jumlah_izin = mysqli_num_rows($izin);
 $sakit = mysqli_query($mysqli, "SELECT * FROM data_absen WHERE kehadiran = 'S' AND id_siswa = " . $id_siswa);
 $jumlah_sakit = mysqli_num_rows($sakit);
 
-$jumlah_presensi = $jumlah_hadir + $jumlah_izin + $jumlah_sakit;
+// $jumlah_presensi = $jumlah_hadir + $jumlah_izin + $jumlah_sakit;
+
+$start = new DateTime($data_siswa['tgl_masuk']);
+$end = new DateTime($data_siswa['tgl_keluar']);
+$oneday = new DateInterval("P1D");
+
+$days = array();
+$data = "7.5";
+
+/* Iterate from $start up to $end+1 day, one day in each iteration.
+   We add one day to the $end date, because the DatePeriod only iterates up to,
+   not including, the end date. */
+foreach(new DatePeriod($start, $oneday, $end->add($oneday)) as $day) {
+    $day_num = $day->format("N"); /* 'N' number days 1 (mon) to 7 (sun) */
+    if($day_num < 7) { /* weekday */
+        $days[$day->format("Y-m-d")] = $data;
+    } 
+}
+
+$jumlah_presensi = count($days)-1;
 
 $persentase = number_format($jumlah_hadir / $jumlah_presensi * 100);
 
@@ -194,17 +220,6 @@ if ($_SESSION['login'] == 0) {
                             </div>
                         </div>
 
-                        <!-- search form (Optional) -->
-                        <form action="#" method="get" class="sidebar-form">
-                            <div class="input-group">
-                                <input type="text" name="q" class="form-control" placeholder="Search...">
-                                <span class="input-group-btn">
-                                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                                </span>
-                            </div>
-                        </form>
-                        <!-- /.search form -->
-
                         <!-- Sidebar Menu -->
                         <ul class="sidebar-menu">
                             <li class="header">Menu Learning</li>
@@ -233,17 +248,6 @@ if ($_SESSION['login'] == 0) {
                                             <i class='fa fa-circle-o'></i> <span class="title">Materi</span>
                                         </a>
                                     </li>
-                                    <li>
-                                        <a href="media.php?module=quiz">
-                                            <i class='fa fa-circle-o'></i><span class="title">Ujian</span>
-                                        </a>
-
-                                    </li>
-                                    <li>
-                                        <a href="media.php?module=nilai">
-                                            <i class='fa fa-circle-o'></i><span class="title">Nilai</span>
-                                        </a>
-                                    </li>
                                 </ul>
                             </li>
                             <li class="treeview active">
@@ -265,24 +269,9 @@ if ($_SESSION['login'] == 0) {
                                 </ul>
                             </li>
                             <li><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-trophy"></i>
-                                    <span>Peringkat</span><i class='fa fa-angle-left pull-right'></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li>
-                                        <a href="v_peringkat_typing.php">
-                                            <i class='fa fa-circle-o'></i><span class="title">Typing Test</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="v_peringkat_prepost.php">
-                                            <i class='fa fa-circle-o'></i><span class="title">Pre Test & Post Test</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                            <li><a href="../../CBT_E-school/on-siswa/ujian.php"><i class="fa fa-laptop"></i> <span>Ujian</span></a></li>
+                            <li><a href="v_peringkat_typing.php"><i class="fa fa-trophy"></i> <span>Peringkat</span></a></li>
+                            <li><a href="sertifikat.php"><i class="fa fa-certificate"></i> <span>Sertifikat</span></a></li>
                             <li class="header">Account</li>
                             <li class="treeview">
                                 <a href="#">
