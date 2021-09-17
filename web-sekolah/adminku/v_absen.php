@@ -298,16 +298,16 @@ if ($_SESSION['login'] == 0) {
 
                   <form method="POST" action="absen.php">
                     <div class="form-group">
-                      <input type="radio" name="kehadiran" id="hadir" value="H" <?= @$data_absen['kehadiran'] == 'H' ? 'checked' : '' ?>>
+                      <input type="radio" name="kehadiran" id="hadir" value="H" <?= @$data_absen['kehadiran'] == 'H' ? 'checked' : '' ?> required>
                       <label for="hadir">Hadir</label>
-                      <input type="radio" name="kehadiran" id="izin" value="I" <?= @$data_absen['kehadiran'] == 'I' ? 'checked' : '' ?>>
+                      <input type="radio" name="kehadiran" id="izin" value="I" <?= @$data_absen['kehadiran'] == 'I' ? 'checked' : '' ?> required>
                       <label for="izin">Izin</label>
-                      <input type="radio" name="kehadiran" id="sakit" value="S" <?= @$data_absen['kehadiran'] == 'S' ? 'checked' : '' ?>>
+                      <input type="radio" name="kehadiran" id="sakit" value="S" <?= @$data_absen['kehadiran'] == 'S' ? 'checked' : '' ?> required>
                       <label for="sakit">Sakit</label>
                     </div>
                     <div class="form-group">
                       <h3>Kegiatan hari ini:</h3>
-                      <textarea class="form-control" placeholder="Isi kegiatan anda disini" rows="10" name="kegiatan" value="<?= @$data_absen['kegiatan'] ?>"></textarea>
+                      <textarea class="form-control" placeholder="Isi kegiatan anda disini" rows="10" name="kegiatan" value="<?= @$data_absen['kegiatan'] ?>" required></textarea>
                     </div>
                     <?= $button; ?>
                   </form>

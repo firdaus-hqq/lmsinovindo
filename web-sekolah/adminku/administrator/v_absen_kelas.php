@@ -7,21 +7,13 @@ include "../../config/config.php";
 include "timeout.php";
 include "../configurasi/pagination.php";
 
-$kelas = $_GET['id_kelas'];
-
-// $sql = "SELECT * FROM siswa WHERE id_kelas = '$kelas'";
-// $result = $mysqli->query($sql);
-// if ($result->num_rows > 0) {
-//     $daftar_absen = $result->fetch_array();
-// }
-
-$sql = "SELECT * FROM siswa WHERE id_kelas = '$kelas'";
+$sql = "SELECT * FROM kelas";
 $result = $mysqli->query($sql);
 if ($result->num_rows > 0) {
-    $data_siswa = $result->fetch_array();
+    $data_kelas = $result->fetch_array();
 }
 
-$listDataSiswa = $mysqli->query($sql);
+$listDataKelas = $mysqli->query($sql);
 
 if ($_SESSION['login'] == 1) {
     if (!cek_login()) {
@@ -222,19 +214,17 @@ if ($_SESSION['login'] == 0) {
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Nama Peserta</th>
-                                            <th>Persentase Kehadiran</th>
+                                            <th>Nama Sekolah</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $i = 1;
-                                        while ($data_siswa = $listDataSiswa->fetch_array()) {
+                                        while ($data_kelas = $listDataKelas->fetch_array()) {
                                         ?>
                                             <tr>
-                                                <td><?= $i++ ?></td>
-                                                <td><a href="v_absen_siswa.php?id_siswa=<?= $data_siswa["id_siswa"]; ?>"><?= $data_siswa['nama_lengkap']; ?></a></td>
-                                                <td><?= $data_siswa['persentase']; ?>%</td>
+                                                <td scope="row"><?= $i++ ?></td>
+                                                <td><a href="v_daftar_absen.php?id_kelas=<?= $data_kelas["id_kelas"]; ?>"><?= $data_kelas['nama']; ?></a></td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

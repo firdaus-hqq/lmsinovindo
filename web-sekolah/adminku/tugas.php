@@ -75,11 +75,11 @@ if ($_SESSION['login'] == 0) {
         <header class="main-header">
 
           <!-- Logo -->
-          <a href="index2.html" class="logo">
+          <a href="https://inovindoacademy.com" class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
-            <span class="logo-mini"><b>R</b>PL</span>
+            <span class="logo-mini"><b>I</b>DMA</span>
             <!-- logo for regular state and mobile devices -->
-            <span class="logo-lg"><b>Siswa</b>RPL</span>
+            <span class="logo-lg"><b>IDM |</b> A C A D E M Y</span>
           </a>
 
           <!-- Header Navbar -->

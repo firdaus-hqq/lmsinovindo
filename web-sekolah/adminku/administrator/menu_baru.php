@@ -22,20 +22,11 @@
 
    </ul>
   </li>";
-                    echo "<li><a href='v_daftar_absen.php'><i class='fa fa-check'></i><span>Absensi</span></a></li>
+                    echo "<li><a href='v_absen_kelas.php'><i class='fa fa-check'></i><span>Absensi</span></a></li>
                     <li><a href='v_pemberitahuan.php'><i class='fa fa-bullhorn'></i><span>Pemberitahuan</span></a></li>
    <li><a href='tabel_admin.php'><i class='fa fa-book'></i><span>Tugas</span></a></li>
    <li><a href='../../../CBT_E-school/on-admin/siswa.php'><i class='fa fa-laptop'></i><span>Ujian</span></a></li>
-            <li class='treeview'>
-                <a href='#'>
-                    <i class='fa fa-trophy'></i>
-                    <span>Prestasi</span><i class='fa fa-angle-left pull-right'></i>
-                </a>
-                <ul class='treeview-menu'>          
-  <li><a href='v_typing_test.php'><i class='fa fa-circle-o'></i>Typing Test</a></li>   
-  <li><a href='v_test.php'><i class='fa fa-circle-o'></i>Pre Test & Post Test</a></li>                  
-                </ul>
-            </li>";
+   <li><a href='v_typing_test.php'><i class='fa fa-trophy'></i><span>Peringkat</span></a></li>";
                 } elseif ($_SESSION['leveluser'] == 'pengajar') {
                     echo " <li class='header'>Menu Utama</li>
   <li class='active'><a href='media_admin.php?module=home'><i class='fa fa-dashboard'></i> <span>Dashboard</span></a> </li>

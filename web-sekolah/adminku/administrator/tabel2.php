@@ -255,7 +255,7 @@ if ($_SESSION['login'] == 0) {
 
                                                         <td>
                                                             <a href="../tugas/<?= $tugas_siswa['file'] ?>" target="_blank"><?= $tugas_siswa['file'] ?></a>
-                                                            <a href="<?= $tugas_siswa['link'] ?>" target="_blank"><?= $tugas_siswa['link'] ?></a>
+                                                            <a href="https://<?= $tugas_siswa['link'] ?>" target="_blank"><?= $tugas_siswa['link'] ?></a>
                                                         </td>
 
                                                         <td>
@@ -315,7 +315,7 @@ if ($_SESSION['login'] == 0) {
 
                                                         <td>
                                                             <a href="../tugas/<?= $konfirmasi_siswa['file'] ?>" target="_blank"><?= $konfirmasi_siswa['file'] ?></a>
-                                                            <a href="<?= $konfirmasi_siswa['link'] ?>" target="_blank"><?= $konfirmasi_siswa['link'] ?></a>
+                                                            <a href="https://<?= $konfirmasi_siswa['link'] ?>" target="_blank"><?= $konfirmasi_siswa['link'] ?></a>
                                                         </td>
 
                                                         <td>
