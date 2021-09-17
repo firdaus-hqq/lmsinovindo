@@ -150,7 +150,7 @@ elseif($module=='materi' AND $act=='edit_materi'){
                 }else{
                     $cek = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM file_materi WHERE id_file = '$_POST[id]'");
                     $r = mysqli_fetch_array($cek);
-                    if(!empty($r[nama_file])){
+                    if(!empty($r['nama_file'])){
                     $file = "../../../files_materi/$r[nama_file]";
                     unlink($file);
 
@@ -202,7 +202,7 @@ elseif($module=='materi' AND $act=='edit_materi'){
                 }else{
                     $cek = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM file_materi WHERE id_file = '$_POST[id]'");
                     $r = mysqli_fetch_array($cek);
-                    if(!empty($r[nama_file])){
+                    if(!empty($r['nama_file'])){
                     $file = "../../../files_materi/$r[nama_file]";
                     unlink($file);
 
@@ -248,7 +248,7 @@ elseif($module=='materi' AND $act=='edit_materi'){
 elseif($module=='materi' AND $act=='hapus'){
   $cek = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM file_materi WHERE id_file = '$_GET[id]'");
                     $r = mysqli_fetch_array($cek);
-                    if(!empty($r[nama_file])){
+                    if(!empty($r['nama_file'])){
                     $file = "../../../files_materi/$r[nama_file]";
                     unlink($file);
                     

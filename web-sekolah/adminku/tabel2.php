@@ -38,7 +38,7 @@ $listTugas = $mysqli->query($sql);
                                 <?= $tugas['tanggal'] ?>
                             </td>
                             <td class="mailbox-date"><a target="_blank" href="tugas/<?= $tugas['file'] ?>"><?= $tugas['file'] ?></a></td>
-                            <td class="mailbox-date"><a target="_blank" href="<?= $tugas['file'] ?>"><?= $tugas['link'] ?></a></td>
+                            <td class="mailbox-date"><a target="_blank" href="tugas/link/<?= $tugas['file'] ?>"><?= $tugas['link'] ?></a></td>
                             <td>
                                 <a href="../adminku/edit.php?id_file=<?= $tugas['id_file']; ?>"><button class="btn btn-info">Edit</button></a>
 

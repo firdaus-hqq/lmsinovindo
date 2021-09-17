@@ -17,7 +17,6 @@ if ($result->num_rows > 0) {
     echo ("ID Tidak ditemukan.");
 }
 
-
 $listDataTugas = $mysqli->query($sql);
 
 if ($_SESSION['login'] == 1) {
@@ -222,20 +221,21 @@ if ($_SESSION['login'] == 0) {
                     <section class="content">
                         <div class="box box-warning">
                             <div class='box-header with-border'>
+                                <h2>Tugas Masuk</h2>
                                 <div class="table-responsive">
                                     <table id='example1' class='table table-bordered table-striped'>
-                                            <thead>
-                                                <tr>
-                                                    <th>Nama</th>
-                                                    <th>Tanggal</th>
-                                                    <th>Tugas</th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                <?php
-                                                $i = 1;
-                                                while ($data_tugas = $listDataTugas->fetch_array()) {
+                                        <thead>
+                                            <tr>
+                                                <th>Nama</th>
+                                                <th>Tanggal</th>
+                                                <th>Tugas</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $i = 1;
+                                            while ($data_tugas = $listDataTugas->fetch_array()) {
                                                 $sql3 = "SELECT * FROM tugas WHERE id_siswa = '$data_tugas[id_siswa]' AND status='' ORDER BY tanggal DESC";
                                                 $result3 = $mysqli->query($sql3);
                                                 if ($result3->num_rows > 0) {
@@ -243,9 +243,9 @@ if ($_SESSION['login'] == 0) {
                                                 }
                                                 $listTugasSiswa = $mysqli->query($sql3);
                                                 while ($tugas_siswa = $listTugasSiswa->fetch_array()) {
-                                                ?>
+                                            ?>
                                                     <tr>
-                                                        <?php 
+                                                        <?php
                                                         $jumlah_tugas = mysqli_num_rows($result3);
                                                         ?>
                                                         <td rowspan=""><?= $data_tugas['nama_lengkap']; ?></td>
@@ -255,7 +255,7 @@ if ($_SESSION['login'] == 0) {
 
                                                         <td>
                                                             <a href="../tugas/<?= $tugas_siswa['file'] ?>" target="_blank"><?= $tugas_siswa['file'] ?></a>
-                                                            <a href="<?= $tugas_siswa['link'] ?>" target="_blank"><?= $tugas_siswa['link'] ?></a>
+                                                            <a href="https://<?= $tugas_siswa['link'] ?>" target="_blank"><?= $tugas_siswa['link'] ?></a>
                                                         </td>
 
                                                         <td>
@@ -263,32 +263,87 @@ if ($_SESSION['login'] == 0) {
                                                             <i class="fa fa-times-circle" style="color:red;" onclick="confirm('Yakin ingin mengembalikan tugas ini?') ? window.location.href='revisi.php?id_file=<?= $tugas_siswa['id_file'] . '&id_kelas=' . $_GET['id_kelas']  ?>':''"></i>
                                                         </td>
                                                     </tr>
-                                                <?php }} ?>
-                                            </tbody>
+                                            <?php }
+                                            } ?>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
+                        <div class="box box-warning">
+                            <div class='box-header with-border'>
+                                <h2>Tugas Telah Diterima</h2>
+                                <div class="table-responsive">
+                                    <table id='example1' class='table table-bordered table-striped'>
+                                        <thead>
+                                            <tr>
+                                                <th>Nama</th>
+                                                <th>Tanggal</th>
+                                                <th>Tugas</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $sql2 = "SELECT * FROM siswa WHERE id_kelas = '$id_kelas'";
+                                            $result2 = $mysqli->query($sql2);
+                                            if ($result2->num_rows > 0) {
+                                                $data_konfirmasi = $result2->fetch_array();
+                                            } else {
+                                                echo ("ID Tidak ditemukan.");
+                                            }
+                                            
+                                            $listDataKonfirmasi = $mysqli->query($sql2);
+                                            $i = 1;
+                                            while ($data_konfirmasi = $listDataKonfirmasi->fetch_array()) {
+                                                $sql4 = "SELECT * FROM tugas WHERE id_siswa = '$data_konfirmasi[id_siswa]' AND status='konfirmasi' ORDER BY tanggal DESC";
+                                                $result4 = $mysqli->query($sql4);
+                                                if ($result4->num_rows > 0) {
+                                                    $konfirmasi_siswa = $result4->fetch_array();
+                                                }
+                                                $listTugasSiswa = $mysqli->query($sql4);
+                                                while ($konfirmasi_siswa = $listTugasSiswa->fetch_array()) {
+                                            ?>
+                                                    <tr>
+                                                        <?php
+                                                        $jumlah_tugas2 = mysqli_num_rows($result4);
+                                                        ?>
+                                                        <td rowspan=""><?= $data_konfirmasi['nama_lengkap']; ?></td>
+                                                        <td>
+                                                            <?= $konfirmasi_siswa['tanggal']; ?>
+                                                        </td>
 
+                                                        <td>
+                                                            <a href="../tugas/<?= $konfirmasi_siswa['file'] ?>" target="_blank"><?= $konfirmasi_siswa['file'] ?></a>
+                                                            <a href="https://<?= $konfirmasi_siswa['link'] ?>" target="_blank"><?= $konfirmasi_siswa['link'] ?></a>
+                                                        </td>
 
-                        <!-- /.table -->
-                </div>
-            </div>
-            </div>
-            </section><!-- /.content -->
-            </div><!-- /.content-wrapper -->
+                                                        <td>
+                                                            <i class="fa fa-check-circle" style="color:blue;" onclick="confirm('Yakin ingin konfirmasi tugas ini?') ? window.location.href='konfirmasi.php?id_file=<?= $tugas_siswa['id_file'] . '&id_kelas=' . $_GET['id_kelas']  ?>':''"></i>
+                                                            <i class="fa fa-times-circle" style="color:red;" onclick="confirm('Yakin ingin mengembalikan tugas ini?') ? window.location.href='revisi.php?id_file=<?= $tugas_siswa['id_file'] . '&id_kelas=' . $_GET['id_kelas']  ?>':''"></i>
+                                                        </td>
+                                                    </tr>
+                                            <?php }
+                                            } ?>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section><!-- /.content -->
+                </div><!-- /.content-wrapper -->
 
-            <!-- Main Footer -->
-            <footer class="main-footer">
-                <!-- To the right -->
-                <div class="pull-right hidden-xs">
-                    Versi 0.0.1
-                </div>
-                <!-- Default to the left -->
-                <strong>Copyright &copy; <?php echo (int)date('Y'); ?> <a href="#">INOVINDO DIGITAL MEDIA</a></strong>
-            </footer>
+                <!-- Main Footer -->
+                <footer class="main-footer">
+                    <!-- To the right -->
+                    <div class="pull-right hidden-xs">
+                        Versi 0.0.1
+                    </div>
+                    <!-- Default to the left -->
+                    <strong>Copyright &copy; <?php echo (int)date('Y'); ?> <a href="#">INOVINDO DIGITAL MEDIA</a></strong>
+                </footer>
 
-            <div class="control-sidebar-bg"></div>
+                <div class="control-sidebar-bg"></div>
             </div><!-- ./wrapper -->
             <script src="../plugins/jQuery/jquery-1.12.0.min.js"></script>
 
@@ -385,9 +440,9 @@ if ($_SESSION['login'] == 0) {
 
             </html>
 <?php
-                                            }
-                                        }
-                                    }
-                                
-                                
+        }
+    }
+}
+
+
 ?>

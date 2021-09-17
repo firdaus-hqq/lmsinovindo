@@ -50,7 +50,7 @@ $listRevisi = $mysqli->query($sql3);
                                 <?= $tugas['tanggal'] ?>
                             </td>
                             <td class="mailbox-date"><a target="_blank" href="tugas/<?= $tugas['file'] ?>"><?= $tugas['file'] ?></a></td>
-                            <td class="mailbox-date"><a target="_blank" href="<?= $tugas['file'] ?>"><?= $tugas['link'] ?></a></td>
+                            <td class="mailbox-date"><a target="_blank" href="https://<?= $tugas['link'] ?>"><?= $tugas['link'] ?></a></td>
                             <td>
                                 <a href="../adminku/edit.php?id_file=<?= $tugas['id_file']; ?>"><i class="fa fa-edit"></i></a>
 
@@ -91,7 +91,7 @@ $listRevisi = $mysqli->query($sql3);
                                 <?= $tugas['tanggal'] ?>
                             </td>
                             <td class="mailbox-date"><a target="_blank" href="tugas/<?= $tugas['file'] ?>"><?= $tugas['file'] ?></a></td>
-                            <td class="mailbox-date"><a target="_blank" href="<?= $tugas['file'] ?>"><?= $tugas['link'] ?></a></td>
+                            <td class="mailbox-date"><a target="_blank" href="https://<?= $tugas['link'] ?>"><?= $tugas['link'] ?></a></td>
                             <td>
                                 <i class="fa fa-times-circle" style = "color:red;" onclick="confirm('Yakin ingin menghapus tugas ini?') ? window.location.href='delete.php?id_file=<?= $tugas['id_file'] ?>':''"></i></a>
                             </td>
@@ -130,9 +130,9 @@ $listRevisi = $mysqli->query($sql3);
                                 <?= $tugas['tanggal'] ?>
                             </td>
                             <td class="mailbox-date"><a target="_blank" href="tugas/<?= $tugas['file'] ?>"><?= $tugas['file'] ?></a></td>
-                            <td class="mailbox-date"><a target="_blank" href="<?= $tugas['file'] ?>"><?= $tugas['link'] ?></a></td>
+                            <td class="mailbox-date"><a target="_blank" href="https://<?= $tugas['link'] ?>"><?= $tugas['link'] ?></a></td>
                             <td>
-                                <a href="../adminku/edit.php?id_file=<?= $tugas['id_file']; ?>"><i class="fa fa-edit"></i></a>
+                                <a href="edit_revisi.php?id_file=<?= $tugas['id_file']; ?>"><i class="fa fa-edit"></i></a>
 
                                 <i class="fa fa-times-circle" style = "color:red;" onclick="confirm('Yakin ingin menghapus tugas ini?') ? window.location.href='delete.php?id_file=<?= $tugas['id_file'] ?>':''"></i></a>
                             </td>
