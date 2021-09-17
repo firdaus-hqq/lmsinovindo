@@ -9,15 +9,7 @@ include ('conn/fungsi.php');
  <head>
     <meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<<<<<<< HEAD
-<<<<<<< HEAD
     <title>QUIZ | IDMA</title>
-=======
-    <title>IDM | ACADEMY</title>
->>>>>>> fabd1b69be76ee7739d6592fbd8bb304e9f5cc54
-=======
-    <title>QUIZ | IDMA</title>
->>>>>>> 97d5964faaf77d9b67ad385a406a57797f0b2f2a
 	<!-- Library CSS -->
 	<?php
 		include "bundle/bundle_css.php";

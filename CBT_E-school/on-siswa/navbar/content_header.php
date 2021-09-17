@@ -8,20 +8,9 @@
 <header class="main-header">
   <!-- Logo -->
 <div class="logo">
-<<<<<<< HEAD
-<<<<<<< HEAD
 <span><img src="../aset/foto/icon.png" width=35px alt="Foto"></span>
 <span class="logo-sm"> |
 <b style="color:white;"> IDMA</b></span>
-=======
-<span class="logo-sm">
-<b style="color:white;">IDM </b>| ACADEMY</span>
->>>>>>> fabd1b69be76ee7739d6592fbd8bb304e9f5cc54
-=======
-<span><img src="../aset/foto/icon.png" width=35px alt="Foto"></span>
-<span class="logo-sm"> |
-<b style="color:white;"> IDMA</b></span>
->>>>>>> 97d5964faaf77d9b67ad385a406a57797f0b2f2a
 </div>
   <!-- Header Navbar: style can be found in header.less -->
   <nav class="navbar navbar-static-top" role="navigation">
@@ -97,7 +86,6 @@
 								<hr>";
 							echo "
 							     $baru 
-
 								";
 						$i++;		
 						}
