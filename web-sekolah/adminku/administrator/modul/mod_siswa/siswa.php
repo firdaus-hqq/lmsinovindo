@@ -1200,7 +1200,7 @@ if (empty($_SESSION['username']) and empty($_SESSION['passuser']) and empty($_SE
 
       case "detailaccount":
         if ($_SESSION['leveluser'] == 'siswa') {
-          $detail = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa='$_GET[id]'");
+          $detail = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa WHERE id_siswa='".$_SESSION['idsiswa']."'");
           $siswa = mysqli_fetch_array($detail);
           echo "<section class='panel panel-primary'>
                         <header class='panel-heading'>

@@ -102,25 +102,25 @@ switch($_GET['act']){
           <div class='form-group'>
           <div class='col-sm-2'><label>Username</label></div>     
           <div class='col-sm-5'> 
-           <input type=text name='username' class='form-control' id='field-1' required='required' placeholder='Placeholder'></div></div>  
+           <input type=text name='username' class='form-control' id='field-1' required='required' placeholder='Username'></div></div>  
           <div class='form-group'>
           <div class='col-sm-2'><label>Password</label></div>    
           <div class='col-sm-5'> 
-           <input type=text name='password' class='form-control' id='field-1' required='required' placeholder='Placeholder'></div></div>
+           <input type=text name='password' class='form-control' id='field-1' required='required' placeholder='Password'></div></div>
            <div class='form-group'>
           <div class='col-sm-2'>
           <label>Nama</label></div> <div class='col-sm-5'> 
-         <input type=text name='nama_lengkap' size=30 class='form-control' id='nama' required='required' placeholder='Placeholder'></div></div>
+         <input type=text name='nama_lengkap' size=30 class='form-control' id='nama' required='required' placeholder='Nama Lengkap'></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>Alamat</label></div>        
           <div class='col-sm-5'>
-          <input type=text name='alamat' size=70 class='form-control' id='field-1' required='required' placeholder='Placeholder'></div></div>
+          <input type=text name='alamat' size=70 class='form-control' id='field-1' required='required' placeholder='Alamat'></div></div>
           <div class='form-group'>
           <div class='col-sm-2'>
           <label>E-mail</label></div>     
             <div class='col-sm-5'>
-            <input type=text name='email' size=30 class='form-control' id='email' required='required' placeholder='Placeholder'></div></div>
+            <input type=text name='email' size=30 class='form-control' id='email' required='required' placeholder='Email'></div></div>
              ";?>
       <div class="form-group">
                   <div class='col-sm-2'> <label>No HP</label></div>

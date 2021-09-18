@@ -155,30 +155,7 @@ if ($_SESSION['login'] == 0) {
 
               <!-- Optionally, you can add icons to the links -->
               <li class="active"><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
-
-              <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-bars"></i>
-                  <span>Menu Utama</span><i class='fa fa-angle-left pull-right'></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li>
-                    <a href="media.php?module=kelas">
-                      <i class='fa fa-circle-o'></i><span class="title">Kelas Kamu</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="media.php?module=matapelajaran">
-                      <i class='fa fa-circle-o'></i> <span class="title">Mata Pelajaran</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="media.php?module=materi">
-                      <i class='fa fa-circle-o'></i> <span class="title">Materi</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              <li><a href="media.php?module=kelas"><i class="fa fa-home"></i> <span>Sekolah Kamu</span></a></li>
               <li class="treeview">
                 <a href="#">
                   <i class="fa fa-check"></i>

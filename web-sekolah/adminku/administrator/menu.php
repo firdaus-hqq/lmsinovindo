@@ -25,7 +25,8 @@
     <li><a href='v_pemberitahuan.php'><i class='fa fa-bullhorn'></i><span>Pemberitahuan</span></a></li>
    <li><a href='tabel_admin.php'><i class='fa fa-book'></i><span>Tugas</span></a></li>
    <li><a href='../../../CBT_E-school/on-admin/siswa.php'><i class='fa fa-laptop'></i><span>Ujian</span></a></li>
-   <li><a href='v_typing_test.php'><i class='fa fa-trophy'></i><span>Peringkat</span></a></li>";
+   <li><a href='v_typing_test.php'><i class='fa fa-trophy'></i><span>Peringkat</span></a></li>
+   <li><a href='tentang.php'><i class='fa fa-info'></i><span>Tentang Perusahaan</span></a></li>";
                 } elseif ($_SESSION['leveluser'] == 'pengajar') {
                     echo " <li class='header'>Menu Utama</li>
   <li class='active'><a href='?module=home'><i class='fa fa-dashboard'></i> <span>Dashboard</span></a> </li>

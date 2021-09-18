@@ -3,17 +3,18 @@ $_SESSION['KCFINDER'] = array();
 $_SESSION['KCFINDER']['disabled'] = false;
 $_SESSION['KCFINDER']['uploadURL'] = "images";
 $_SESSION['KCFINDER']['uploadDir'] = "";
-include "../../config/config.php";
+// error_reporting(0);
+if (!isset($_SESSION)) {
+    session_start();
+}
+
 include "timeout.php";
 include "../configurasi/pagination.php";
+include "../../config/config.php";
 
-$sql = "SELECT * FROM kelas";
+$sql = "SELECT * FROM tentang ORDER BY tanggal DESC";
 $result = $mysqli->query($sql);
-if ($result->num_rows > 0) {
-    $daftar_absen = $result->fetch_array();
-} else {
-    exit("ID Tidak ditemukan.");
-}
+$nama = $_SESSION['namalengkap'];
 
 if ($_SESSION['login'] == 1) {
     if (!cek_login()) {
@@ -100,7 +101,7 @@ if ($_SESSION['login'] == 0) {
                 <!-- Main Header -->
                 <header class="main-header">
                     <!-- Logo -->
-                    <a href="index2.html" class="logo">
+                    <a href="https://inovindoacademy.com" class="logo">
                         <!-- mini logo for sidebar mini 50x50 pixels -->
                         <span class="logo-mini"><b>I</b>DM</span>
                         <!-- logo for regular state and mobile devices -->
@@ -198,7 +199,7 @@ if ($_SESSION['login'] == 0) {
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
-                            Data Tugas
+                            Tentang Perusahaan
                         </h1>
                         <ol class="breadcrumb">
                             <li><a href="#"><i class="fa fa-calendar"></i><?php include "../jam/jam.php" ?></a></li>
@@ -208,23 +209,51 @@ if ($_SESSION['login'] == 0) {
 
                     <!-- Main content -->
                     <section class="content">
+                        <div class="container-fluid">
+                            <form method="POST" action='add_tentang.php' enctype="multipart/form-data" class="form-horizontal form-groups-bordered">
+                                <input type="hidden" value="<?= $nama ?>" name="pembuat">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Upload File / Gambar </label>
+                                    <input type="file" name="fileTugas" class="form-control" autocomplete="off" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Upload disini" onchange="loadfile(event)">
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Dokumen : </label><br>
+                                    <?= $tugas['file'] ?? 'Tidak ada dokumen'; ?>
+                                </div>
+
+                                <input type="hidden" name="fileLama" value="<?= $tugas['file'] ?? ''; ?>">
+                                <div class="form-group">
+                                    <input class="btn btn-success" type="submit" name="simpan" value="Submit">
+                                </div>
+                            </form>
+                        </div>
                         <div class="box box-warning">
                             <div class='box-header with-border'>
                                 <table id='example1' class='table table-bordered table-striped'>
                                     <thead>
                                         <tr>
                                             <th>No.</th>
-                                            <th>Nama Sekolah</th>
+                                            <th>Tanggal</th>
+                                            <th>Dokumen</th>
+                                            <th>Pembuat</th>
+                                            <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $i = 1;
-                                        while ($daftarKelas = mysqli_fetch_array($result)) {
+                                        while ($toa = mysqli_fetch_array($result)) {
                                         ?>
                                             <tr>
                                                 <td><?= $i++ ?></td>
-                                                <td><a href="tabel2.php?id_kelas=<?= $daftarKelas["id_kelas"]; ?>"><?= $daftarKelas['nama']; ?></a></td>
+                                                <td><?= $toa['tanggal'] ?></td>
+                                                <td><a href="../tentang/<?= $toa['file'] ?>" target="_blank"><?= $toa['file'] ?></a></td>
+                                                <td><?= $toa['pembuat'] ?></td>
+                                                <td>
+                                                    <a href="edit_tentang.php?id_tentang=<?= $toa['id_tentang']; ?>"><button class="btn btn-info">Edit</button></a>
+                                                    <button class="btn btn-danger" onclick="confirm('Yakin ingin menghapus pemberitahuan ini?') ? window.location.href='delete_tentang.php?id_tentang=<?= $toa['id_tentang'] ?>':''">Hapus</button></a>
+                                                </td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

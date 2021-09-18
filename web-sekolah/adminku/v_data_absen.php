@@ -25,7 +25,7 @@ $awalKerja  = strtotime($data_siswa['tgl_masuk']);
 $akhirKerja = strtotime($data_siswa['tgl_keluar']);
 $jumlahHari = $akhirKerja - $awalKerja;
 
-$jumlah_presensi = round($jumlahHari / (60*60*24));
+$jumlah_presensi = round($jumlahHari / (60 * 60 * 24));
 
 $hadir = mysqli_query($mysqli, "SELECT * FROM data_absen WHERE kehadiran = 'H' AND id_siswa = " . $id_siswa);
 $jumlah_hadir = mysqli_num_rows($hadir);
@@ -48,14 +48,14 @@ $data = "7.5";
 /* Iterate from $start up to $end+1 day, one day in each iteration.
    We add one day to the $end date, because the DatePeriod only iterates up to,
    not including, the end date. */
-foreach(new DatePeriod($start, $oneday, $end->add($oneday)) as $day) {
+foreach (new DatePeriod($start, $oneday, $end->add($oneday)) as $day) {
     $day_num = $day->format("N"); /* 'N' number days 1 (mon) to 7 (sun) */
-    if($day_num < 7) { /* weekday */
+    if ($day_num < 7) { /* weekday */
         $days[$day->format("Y-m-d")] = $data;
-    } 
+    }
 }
 
-$jumlah_presensi = count($days)-1;
+$jumlah_presensi = count($days) - 1;
 
 $persentase = number_format($jumlah_hadir / $jumlah_presensi * 100);
 
@@ -226,30 +226,7 @@ if ($_SESSION['login'] == 0) {
 
                             <!-- Optionally, you can add icons to the links -->
                             <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
-
-                            <li class="treeview">
-                                <a href="#">
-                                    <i class="fa fa-bars"></i>
-                                    <span>Menu Utama</span><i class='fa fa-angle-left pull-right'></i>
-                                </a>
-                                <ul class="treeview-menu">
-                                    <li>
-                                        <a href="media.php?module=kelas">
-                                            <i class='fa fa-circle-o'></i><span class="title">Kelas Kamu</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="media.php?module=matapelajaran">
-                                            <i class='fa fa-circle-o'></i> <span class="title">Mata Pelajaran</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="media.php?module=materi">
-                                            <i class='fa fa-circle-o'></i> <span class="title">Materi</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </li>
+                            <li><a href="media.php?module=kelas"><i class="fa fa-home"></i> <span>Sekolah Kamu</span></a></li>
                             <li class="treeview active">
                                 <a href="#">
                                     <i class="fa fa-check"></i>

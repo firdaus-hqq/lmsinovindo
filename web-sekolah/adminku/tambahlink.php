@@ -29,8 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $file = $fileTugas['name'];
     }
 
-    $sql = "INSERT INTO tugas (id_siswa, file, link, tanggal) 
-            VALUES ('$id_siswa', '$file', '$link', '$tanggal')";
+    $sql = "INSERT INTO tugas (id_siswa, file, link, tanggal, status) 
+            VALUES ('$id_siswa', '$file', '$link', '$tanggal', 'terkirim')";
 
     $mysqli->query($sql) or die($mysqli->error);
 
