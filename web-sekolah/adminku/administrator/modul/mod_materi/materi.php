@@ -28,7 +28,7 @@ document.location = delUrl;
    // membuat option matapelajaran untuk masing-masing kelas
    $query2 = "SELECT * FROM mata_pelajaran WHERE id_kelas = '$idkelas'";
    $hasil2 = mysqli_query($GLOBALS["___mysqli_ston"], $query2);
-   $content = "document.getElementById('pelajaran').innerHTML = \"<select name='".id_matapelajaran."' class='form-control'>";
+   $content = "document.getElementById('pelajaran').innerHTML = \"<select name='".['id_matapelajaran']."' class='form-control'>";
    while ($data2 = mysqli_fetch_array($hasil2))
    {
        $content .= "<option value='".$data2['id_matapelajaran']."'>".$data2['nama']."</option>";
@@ -61,7 +61,7 @@ document.location = delUrl;
    // membuat option matapelajaran untuk masing-masing kelas
    $query2 = "SELECT * FROM mata_pelajaran WHERE  id_kelas = '$idkelas' AND id_pengajar ='$_SESSION[idpengajar]' ";
    $hasil2 = mysqli_query($GLOBALS["___mysqli_ston"], $query2);
-   $content = "document.getElementById('pelajaran_pengajar').innerHTML = \"<select name='".id_matapelajaran."' class='form-control'>";
+   $content = "document.getElementById('pelajaran_pengajar').innerHTML = \"<select name='".['id_matapelajaran']."' class='form-control'>";
    while ($data2 = mysqli_fetch_array($hasil2))
    {
        $content .= "<option value='".$data2['id_matapelajaran']."'>".$data2['nama']."</option>";
@@ -89,7 +89,6 @@ function fsize($file){
 ?>
 
 <?php
-session_start();
  if (empty($_SESSION['username']) AND empty($_SESSION['passuser']) AND empty($_SESSION['leveluser'])){
  
   echo "<div class='alert alert-info'>Untuk mengakses Modul anda harus login.</div>";
@@ -99,10 +98,10 @@ else{
 
 
 $aksi="modul/mod_materi/aksi_materi.php";
-switch($_GET[act]){
+switch($_GET['act']){
   // Tampil kelas
   default:
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
                 
         $tampil_materi = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM file_materi ORDER BY id_kelas");
         $cek_materi = mysqli_num_rows($tampil_materi);
@@ -116,10 +115,10 @@ switch($_GET[act]){
 
 ";
         echo "<br><br><table class='table table-bordered table-striped table-condensed cf'><thead>
-          <tr><th>No</th><th>Judul</th><th>Kelas</th><th>Nama File</th><th>Tgl Posting</th><th>Pembuat</th><th>Hits</th><th>Aksi</th></tr></thead>";
+          <tr><th>No</th><th>Judul</th><th>Asal Sekolah</th><th>Nama File</th><th>Tgl Posting</th><th>Pembuat</th><th>Hits</th><th>Aksi</th></tr></thead>";
        $no=1;
     while ($r=mysqli_fetch_array($tampil_materi)){
-      $tgl_posting   = tgl_indo($r[tgl_posting]);
+      $tgl_posting   = tgl_indo($r['tgl_posting']);
        echo "<tr><td>$no</td>
              <td>$r[judul]</td>";
              $kelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$r[id_kelas]'");
@@ -167,8 +166,8 @@ switch($_GET[act]){
                     <!-- Start form -->
                    <form class='form-horizontal' name='form_materi' role='for' style='width:80%'' method='post' action='$aksi?module=materi&act=input_materi'>
                       <div class='form-group'>
-                        <label class='control-label col-sm-2' for='IP'>Judul</label>
-                        <div class='col-sm-10'>
+                        <label class='control-label col-sm-3' for='IP'>Judul</label>
+                        <div class='col-sm-15'>
                         <div class='input-group'>
                           <div class='input-group-addon'>
                             <i class='fa fa-laptop'></i>
@@ -179,8 +178,8 @@ switch($_GET[act]){
                       </div>
 
                       <div class='form-group'>
-                        <label class='control-label col-sm-2' for='IP'>Kelas </label>
-                        <div class='col-sm-10'>
+                        <label class='control-label col-sm-3' for='IP'>Asal Sekolah </label>
+                        <div class='col-sm-15'>
                         <div class='input-group'>
                           <div class='input-group-addon'>
                             <i class='fa fa-laptop'></i>
@@ -190,15 +189,15 @@ switch($_GET[act]){
                                           <option value=''>-pilih-</option>";                                          
                                           $cari_kelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas ORDER BY nama");
                                           while ($k=mysqli_fetch_array($cari_kelas)){
-                                          echo"<option value='".$k[id_kelas]."'>".$k[nama]."</option>";
+                                          echo"<option value='".$k['id_kelas']."'>".$k['nama']."</option>";
                                           }                                          
                                           echo"</select>                        
                         </div>
                         </div>
                       </div>
                       <div class='form-group'>
-                        <label class='control-label col-sm-2' for='IP'>File</label>
-                        <div class='col-sm-10'>
+                        <label class='control-label col-sm-3' for='IP'>File</label>
+                        <div class='col-sm-15'>
                         <div class='input-group'>
                          
 <span class='btn btn-success fileinput-button'>
@@ -214,7 +213,7 @@ switch($_GET[act]){
                      
                   <div class='modal-footer'>
                     <button type='button' class='btn btn-danger pull-left' data-dismiss='modal'>Close</button>
-                    <button type='submit' class='btn btn-primary'>Save changes</button>
+                    <button type='submit' class='btn btn-primary pull-right'>Save changes</button>
                     </form>
                   </div>
                 </div><!-- /.modal-content -->
@@ -232,7 +231,7 @@ switch($_GET[act]){
     }
     }
    
- elseif ($_SESSION[leveluser]=='pengajar'){        
+ elseif ($_SESSION['leveluser']=='pengajar'){        
 
     $cek_materi = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM file_materi WHERE pembuat = '$_SESSION[idpengajar]'");
     
@@ -258,7 +257,7 @@ switch($_GET[act]){
 
     $no=1;
     while ($r=mysqli_fetch_array($cek_materi)){
-      $tgl_posting   = tgl_indo($r[tgl_posting]);
+      $tgl_posting   = tgl_indo($r['tgl_posting']);
        echo "<tr><td>$no</td>
              <td>$r[judul]</td>";
              $kelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$r[id_kelas]'");
@@ -308,7 +307,7 @@ switch($_GET[act]){
                                           while($row=mysqli_fetch_array($pilih)){
                                           $cari_kelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$row[id_kelas]'");
                                           while ($k=mysqli_fetch_array($cari_kelas)){
-                                          echo"<option value='".$k[id_kelas]."'>".$k[nama]."</option>";
+                                          echo"<option value='".$k['id_kelas']."'>".$k['nama']."</option>";
                                           }
                                           }
                                           echo"</select></div></div>
@@ -376,7 +375,7 @@ switch($_GET[act]){
 
 
 case "daftarmateri":
-    if ($_SESSION[leveluser] == 'siswa'){
+    if ($_SESSION['leveluser'] == 'siswa'){
         
         
         $mapel = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM mata_pelajaran WHERE id_matapelajaran = '$_GET[id]'");
@@ -401,8 +400,8 @@ case "daftarmateri":
         $no=$posisi+1;
         while ($r=mysqli_fetch_array($materi)){
         echo "<tr><td rowspan='5'>$no</td>";
-             if (!empty($r[nama_file])){
-             $pecah = explode(".", $r[nama_file]);
+             if (!empty($r['nama_file'])){
+             $pecah = explode(".", $r['nama_file']);
              $ekstensi = $pecah[1];
              if ($ekstensi == 'zip'){
                  echo "<td rowspan='5'><div class='wdgt-row'><img src='images/zip.png'></div></td>";
@@ -431,7 +430,7 @@ case "daftarmateri":
              echo "<td>Judul</td><td> $r[judul]</td></tr>
              <tr><td>Nama File</td><td> $r[nama_file]</td></tr>
              <tr><td>Ukuran</td>";
-                            if (!empty($r[nama_file])){
+                            if (!empty($r['nama_file'])){
                             $file = "files_materi/$r[nama_file]";                            
                             echo "<td> ". fsize($file)."</td></tr>";
                             }else{
@@ -458,7 +457,7 @@ case "daftarmateri":
 
 
 case "editmateri":
-    if ($_SESSION[leveluser]=='admin'){
+    if ($_SESSION['leveluser']=='admin'){
     $edit=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM file_materi WHERE id_file = '$_GET[id]'");
     $m=mysqli_fetch_array($edit);
     $isikelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$m[id_kelas]'");
@@ -478,13 +477,13 @@ case "editmateri":
           <input type=text name='judul' class='form-control' id='field-1' required='required' placeholder='Placeholder' value='$m[judul]'></div></div>
      <div class='form-group'>
           <div class='col-sm-2'>
-          <label>Kelas</label></div>               <div class='col-sm-2'>
+          <label>Asal Sekolah</label></div>               <div class='col-sm-2'>
           <select name='id_kelas' onChange='showpel()' class='form-control'>
-                                          <option value='".$k[id_kelas]."' selected>".$k[nama]."</option>";
+                                          <option value='".$k['id_kelas']."' selected>".$k['nama']."</option>";
                                           $pilih="SELECT * FROM kelas ORDER BY nama";
                                           $query=mysqli_query($GLOBALS["___mysqli_ston"], $pilih);
                                           while($row=mysqli_fetch_array($query)){
-                                          echo"<option value='".$row[id_kelas]."'>".$row[nama]."</option>";
+                                          echo"<option value='".$row['id_kelas']."'>".$row['nama']."</option>";
                                           }
                                           echo"</select></div></div>
      
@@ -536,20 +535,20 @@ case "editmateri":
                    <div class='col-sm-5'>
 <input type=text name='judul' class='form-control' id='field-1' required='required' placeholder='Placeholder' value='$m[judul]' ></div></div>
     <div class='form-group'>
-          <div class='col-sm-2'><label>Kelas</label></div>              <div class='col-sm-2'>
+          <div class='col-sm-2'><label>Asal Sekolah</label></div>              <div class='col-sm-2'>
            <select name='id_kelas' onChange='showpel_pengajar()' class='form-control'>
-                                          <option value='".$k[id_kelas]."' selected>".$k[nama]."</option>";
+                                          <option value='".$k['id_kelas']."' selected>".$k['nama']."</option>";
                                           $pilih="SELECT * FROM kelas WHERE id_pengajar = '$_SESSION[idpengajar]'";
                                           $query=mysqli_query($GLOBALS["___mysqli_ston"], $pilih);
                                           while($row=mysqli_fetch_array($query)){
-                                          echo"<option value='".$row[id_kelas]."'>".$row[nama]."</option>";
+                                          echo"<option value='".$row['id_kelas']."'>".$row['nama']."</option>";
                                           }
                                           echo"</select></div></div>
     <div class='form-group'>
           <div class='col-sm-2'><label>Pelajaran</label></div>        
             <div class='col-sm-2'>
            <select id='pelajaran_pengajar' name='id_matapelajaran' class='form-control'>
-                                          <option value='".$p[id_matapelajaran]."' selected>".$p[nama]."</option>
+                                          <option value='".$p['id_matapelajaran']."' selected>".$p['nama']."</option>
                                           </select></div></div>
 
     <div class='form-group'>

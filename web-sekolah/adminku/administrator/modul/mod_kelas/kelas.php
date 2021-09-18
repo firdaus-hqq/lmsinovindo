@@ -42,7 +42,7 @@ document.location = delUrl;
 </script>
 
 <?php
-session_start();
+
  if (empty($_SESSION['username']) AND empty($_SESSION['passuser']) AND empty($_SESSION['leveluser'])){
   echo "<link href=../css/style.css rel=stylesheet type=text/css>";
   echo "<div class='error msg'>Untuk mengakses Modul anda harus login.</div>";
@@ -107,8 +107,8 @@ switch($_GET['act']){
                     <!-- Start form -->
                    <form class='form-horizontal' role='for' style='width:80%'' method='post' action='$aksi?module=kelas&act=input_kelas'>
                       <div class='form-group'>
-                        <label class='control-label col-sm-2' for='IP'>ID Kelas</label>
-                        <div class='col-sm-10'>
+                        <label class='control-label col-sm-4' for='IP'>ID Kelas</label>
+                        <div class='col-sm-15'>
                         <div class='input-group'>
                           <div class='input-group-addon'>
                             <i class='fa fa-laptop'></i>
@@ -121,8 +121,8 @@ switch($_GET['act']){
                       </div>
 
                       <div class='form-group'>
-                        <label class='control-label col-sm-2' for='IP'>Asal Sekolah</label>
-                        <div class='col-sm-10'>
+                        <label class='control-label col-sm-4' for='IP'>Asal Sekolah</label>
+                        <div class='col-sm-15'>
                         <div class='input-group'>
                           <div class='input-group-addon'>
                             <i class='fa fa-laptop'></i>
@@ -135,8 +135,8 @@ switch($_GET['act']){
                       </div>
                        
                       <div class='form-group'>
-                        <label class='control-label col-sm-2' for='IP'>Ketua Kelompok</label>
-                        <div class='col-sm-10'>
+                        <label class='control-label col-sm-4' for='IP'>Ketua Kelompok</label>
+                        <div class='col-sm-15'>
                         <div class='input-group'>
                           <div class='input-group-addon'>
                             <i class='fa fa-laptop'></i>
@@ -302,19 +302,19 @@ switch($_GET['act']){
     
     echo "<div class='box box-warning'>
         <div class='box-header with-border'>
-          <div class='col-md-12 col-xs-12'> <form method=POST action='$aksi?module=kelas&act=update_kelas' class='form-horizontal form-groups-bordered'>
+          <div class='col-md-6  col-xs-7'> <form method=POST action='$aksi?module=kelas&act=update_kelas' class='form-horizontal form-groups-bordered'>
           <input type=hidden name=id value='$r[id]'>
          
           <div class ='form-group'>
-         <div class='col-sm-2'>
+         <div class='col-sm-3'>
          <label>Id Sekolah</label></div>       <div class='col-sm-5'><input type=text name='id_kelas' value='$r[id_kelas]' class='form-control' id='field-1' required='required' placeholder='Placeholder'> </div></div>
         <div class ='form-group'>
-         <div class='col-sm-2'><label>Asal Sekolah</label></div> <div class='col-sm-5'> <input type=text name='nama' value='$r[nama]' class='form-control' id='field-1' required='required' placeholder='Placeholder'></div></div>
+         <div class='col-sm-3'><label>Asal Sekolah</label></div> <div class='col-sm-5'> <input type=text name='nama' value='$r[nama]' class='form-control' id='field-1' required='required' placeholder='Placeholder'></div></div>
             <div class ='form-group'>
          
             <div class ='form-group'>
-         <div class='col-sm-2'>
-         <label>Ketua Kelompok</label></div>    <div class='col-sm-2'><select name='id_siswa' class='form-control'>
+         <div class='col-sm-3'>
+         <label>Ketua Kelompok</label></div> <div class='col-sm-5'> <select name='id_siswa' class='form-control'>
                                       <option value='$niss[id_siswa]' selected>$niss[nama_lengkap]</option>";
                                       $tampil_siswa=mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM siswa ORDER BY nama_lengkap");
                                       while($s=mysqli_fetch_array($tampil_siswa)){
@@ -322,7 +322,7 @@ switch($_GET['act']){
                                       }echo "</select></div></div>
           
             <div class ='form-group'>
-         <div class='col-sm-2'></div><div class='col-sm-5'>
+         <div class='col-sm-3'></div><div class='col-sm-5'>
           <input class='btn btn-success' type=submit value=Update>
           <input class='btn btn-primary' type=button value=Batal onclick=self.history.back()>
           </div></div>
@@ -400,7 +400,7 @@ case "detailkelas":
     if ($_SESSION['leveluser']=='admin'){
     echo "<div class='box box-warning'>
         <div class='box-header with-border'>
-          <div class='col-md-12 col-xs-12'> 
+          <div class='col-md-6 col-xs-6'> 
       ";
     echo "<br><table class='table table-bordered table-striped table-condensed cf'><thead>
           <tr><th>Id Sekolah</th><th>Kelas</th><th>Wali Kelas</th><th>Ketua Kelompok</th><th>Aksi</th></tr></thead>";
