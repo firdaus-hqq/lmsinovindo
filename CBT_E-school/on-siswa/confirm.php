@@ -33,7 +33,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
 	if ($aktif == '1') {
 		$tombol = "Tidak Aktif";
 	} else {
-		$tombol = '<br><button id="konfir" type="submit" class="btn btn-success"><b>MASUK</b></button>
+		$tombol = '<br><button style="border-radius: 10px;" id="konfir" type="submit" class="btn btn-success"><b>MASUK</b></button>
                         </div>';
 	}
 }
