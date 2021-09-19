@@ -140,7 +140,7 @@ $query = mysqli_query ($konek, "SELECT * FROM soal CROSS JOIN jawaban USING (kod
 				        {
 					    $sampun = "<button id='done' type='button' class='btn btn-success' data-target='#ModalImport' data-toggle='modal'>
 					                <span class='hidden-lg hidden-md'><i class='fa fa-check'></i> FINISH</span>
-                                    <span class='hidden-xs hidden-sm'><i class='fa fa-check'></i> Kumpulkan Ujian</span>
+                                    <span class='hidden-xs hidden-sm'><i class='fa fa-check'></i> MENYELESAIKAN UJIAN</span>
 					               </button>";
 				        }
 				        else
@@ -270,7 +270,7 @@ $ur = mysqli_fetch_array ($query2);
                     <br><br>
                    <label id="ragu" class="btn btn-warning"><input type="checkbox" id="test<?php echo $i; ?>" value="supress">
                     <span class='hidden-lg hidden-md'><b>RAGU</b></span>  
-                    <span class='hidden-sm hidden-xs'><b>&emsp;&emsp;&emsp;&emsp;Tandai Soal&emsp;&emsp;&emsp;&emsp;</b></span>  
+                    <span class='hidden-sm hidden-xs'><b>&emsp;&emsp;&emsp;&emsp;RAGU - RAGU&emsp;&emsp;&emsp;&emsp;</b></span>  
                     </label>
 					</span>
 

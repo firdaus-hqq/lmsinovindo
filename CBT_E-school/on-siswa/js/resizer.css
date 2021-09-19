@@ -96,7 +96,6 @@ text-decoration: none;
     color: white;
     font-size: 22;
     width: 55px;
-    border-radius: 30px;
 }
 #ket {
     border-radius:0;
@@ -126,7 +125,7 @@ text-decoration: none;
 #prev {
     border-radius:0;
     z-index: 0;
-    background-color: #2e6499;
+    background-color: #6d6d6d;
     border:0;
     
 }
@@ -134,7 +133,6 @@ text-decoration: none;
     border-radius:0;
     background-color: #69c44a;
     border:0;
-    border-radius: 10px;
 }
 #next {
     border-radius:0;
