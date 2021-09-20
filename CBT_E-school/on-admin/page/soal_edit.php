@@ -72,7 +72,7 @@ while ($ar = mysqli_fetch_array($query)) {
 								$dataKelas = $konek->query($sqlkelas) or die($konek->error);
 								while ($sekolah = @$dataKelas->fetch_array()) {
 								?>
-									<option value="<?= $sekolah['id_kelas'] ?>" <?php echo @$sekolah['id_kelas'] == $sekolah['id_kelas'] ? 'selected' : '' ?>><?= $sekolah['nama'] ?></option>
+									<option value="<?= $sekolah['id_kelas'] ?>" <?php echo @$sekolah['id_kelas'] == $ar['kelas'] ? 'selected' : '' ?>><?= $sekolah['nama'] ?></option>
 								<?php } ?>
 							</select>
 							<div class="input-group-addon">
