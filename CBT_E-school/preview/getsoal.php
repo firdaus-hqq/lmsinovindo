@@ -134,10 +134,6 @@ $query = mysqli_query ($konek, "SELECT * FROM soal WHERE kodemapel='$mapel' and 
 						$i++;
 						if($i==$rows)
 				        {
-					    $sampun = "<button id='done' type='button' class='btn btn-success' data-target='#ModalImport' data-toggle='modal'>
-					                <span class='hidden-lg hidden-md'><i class='fa fa-check'></i> FINISH</span>
-                                    <span class='hidden-xs hidden-sm'><i class='fa fa-check'></i> MENYELESAIKAN UJIAN</span>
-					               </button>";
 				        }
 				        else
 				        {
@@ -188,7 +184,7 @@ if($ar['status']>1)
             
                 <button id="keto" type="button" class="no btn-primary"><b>NOMER SOAL</b></button>
                 <!-------no soal------>
-                <button id="nomer" type="button" class="soal btn-default"><b><?php echo "$i"; ?></b></button></br></br>
+                <button style="border-radius: 30px;" id="nomer" type="button" class="soal btn-default"><b><?php echo "$i"; ?></b></button></br></br>
                     <span class="resizable-content">
                     <p><b><?php echo "$ar[soal]"; ?></b></p>
                     <br><br>
@@ -248,9 +244,8 @@ if($ar['status']>1)
                         </div>
                     </label>
                     <br><br>
-                    <label id="ragu" class="btn btn-warning"><input type="checkbox" id="test<?php echo $i; ?>" value="supress">
-                    <span class='hidden-lg hidden-md'><b>RAGU</b></span>  
-                    <span class='hidden-sm hidden-xs'><b>&emsp;&emsp;&emsp;&emsp;RAGU - RAGU&emsp;&emsp;&emsp;&emsp;</b></span>  
+                    
+                     
                     </label>
 					</span>
 

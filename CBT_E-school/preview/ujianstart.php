@@ -97,6 +97,44 @@ $qq = mysqli_query ($konek, "SELECT * FROM profil where id='1'");
   #opsiuraishow {
        display:block;
   }
+
+  .right {
+    float: right;
+    width: 15%;
+    background-color: #333333;
+    height: 101px;
+    color: #FFFFFF;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: normal;
+    border-radius: 20px 0px 0px 20px;
+  }
+
+  #pagin li a {
+    width: 55px;
+    height: 55px;
+    text-decoration: none;
+    color: #515151;
+    margin: 8 10px;
+    font-size: 15px;
+    vertical-align: baseline;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 20px;
+}
+
+label.custom-radio-button input[type="radio"] ~ .helping-el {
+    border: 1px solid #a5a5a5;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: -23px;
+    padding: 13px;
+    position: relative;
+    top: 10px;
+    right: 1px;
+    cursor: pointer;
+}
+
     </style>
     <link rel="stylesheet" href="../aset/fa/css/font-awesome.css">
 	<link rel="stylesheet" href="../aset/bootstrap/css/bootstrap.min.css">
@@ -137,7 +175,7 @@ function timer() {
 						}
 						while ($oo = mysqli_fetch_array ($querydosen)){
 						    $warna =$oo['warna'];
-						    $warna = str_replace("blue", "#2e6499", $warna);
+						    $warna = str_replace("blue", "#3d9eee", $warna);
                             $warna = str_replace("red", "#dd4b39", $warna);
                             $warna = str_replace("yellow", "#f39c12", $warna);
                             $warna = str_replace("green", "#00a65a", $warna);
@@ -168,8 +206,8 @@ function timer() {
                 <!-------no soal------>
                 <body onload=init() onunload=keluar()>
                 <div class="btn-group" role="group" aria-label="Basic example">
-                <button id="btni" type="button" class="btn btn-danger"><b>SISA WAKTU</b> <i class="fa fa-clock-o fa-spin"></i></button>
-                <button type="button" class="btn btn-default" id="divwaktu"></button>
+                <button style="border-radius: 20px 0px 0px 20px;" id="btni" type="button" class="btn btn-danger"><b>SISA WAKTU</b> <i class="fa fa-clock-o fa-spin"></i></button>
+                <button style="border-radius: 0px 20px 20px 0px;" type="button" class="btn btn-default" id="divwaktu"></button>
                 </div>
                 </body>
         </div>
@@ -195,14 +233,14 @@ function timer() {
 <div id="garistom" class="list-group-item top-heading">
 <div class="tombol"> 
  <a id="prev">
- <button id="prev" class='btn btn-primary xxxx' style='float: left;'>
+ <button style="border-radius: 10px; background-color:#2e6499" id="prev" class='btn btn-primary xxxx' style='float: left;'>
  <span class="hidden-lg hidden-md"><i class="fa fa-chevron-left"></i> PREV</span>
- <span class="hidden-xs hidden-sm"><i class="fa fa-chevron-left"></i> SOAL SEBELUMNYA</span>
+ <span class="hidden-xs hidden-sm"><i class="fa fa-chevron-left"></i> PREV</span>
  </button></a>
  <a id="next">
- <button id="next" class='btn btn-primary xxxx' style='float: right;'>
+ <button style="border-radius: 10px;" id="next" class='btn btn-primary xxxx' style='float: right;'>
  <span class="hidden-lg hidden-md">NEXT <i class="fa fa-chevron-right"></i></span>
- <span class="hidden-xs hidden-sm">SOAL BERIKUTNYA <i class="fa fa-chevron-right"></i></span>
+ <span class="hidden-xs hidden-sm">NEXT <i class="fa fa-chevron-right"></i></span>
  </button></a>
 </div>
 </div>
@@ -253,7 +291,7 @@ include "footer.php";
   <div id="slidebtn" class="slideBtn">
     <div class="btn-group btn-group-md">
         
-  <button id="hm" type="button" class="btnnav btn"><i class="fa fa-chevron-left"></i> <b>SOAL</b></button>
+  <button style="border-radius: 30px; background-color:#60c210" id="hm" type="button" class="btnnav btn"><i class="fa fa-chevron-left"></i> <b>SOAL</b></button>
     </div>
   </div>  
   <div id='pagin' class="pagination"></div>

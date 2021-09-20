@@ -96,6 +96,7 @@ text-decoration: none;
     color: white;
     font-size: 22;
     width: 55px;
+    border-radius: 30px;
 }
 #ket {
     border-radius:0;
