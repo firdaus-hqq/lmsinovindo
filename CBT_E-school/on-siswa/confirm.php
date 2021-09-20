@@ -67,13 +67,14 @@ while ($xx = mysqli_fetch_array($qq)) {
 
 			.right {
 				float: right;
-				width: 30%;
+				width: 15%;
 				background-color: #333333;
 				height: 101px;
 				color: #FFFFFF;
 				font-size: 13px;
 				font-style: normal;
 				font-weight: normal;
+				border-radius: 20px 0px 0px 20px ;
 			}
 
 			.user {
@@ -159,6 +160,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 				border: 0;
 				position: absolute;
 				right: 10;
+				border-radius: 10px;
 			}
 
 			#garis {
@@ -192,7 +194,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 		}
 		while ($oo = mysqli_fetch_array($querydosen)) {
 			$warna = $oo['warna'];
-			$warna = str_replace("blue", "#2e6499", $warna);
+			$warna = str_replace("blue", "#3d9eee", $warna);
 			$warna = str_replace("red", "#dd4b39", $warna);
 			$warna = str_replace("yellow", "#f39c12", $warna);
 			$warna = str_replace("green", "#00a65a", $warna);
@@ -200,7 +202,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 		?>
 			<header style="background-color:<?php echo $warna; ?> ; ">
 				<div class="group">
-					<div class="left" style="background-color:<?php echo $warna; ?>"><img src="../aset/foto/<?php echo $xx['logo_ujian']; ?>" style=" margin-left:0px;"></div>
+					<div class="left" style="background-color:<?php echo $warna; ?>"><img src="../aset/foto/logoheader.png" style=" height:10%; margin-left:0px;"></div>
 				<?php } ?>
 				<div class="right">
 					<table width="100%" border="0" cellspacing="5px;" style="margin-top:10px">

@@ -268,9 +268,9 @@ $ur = mysqli_fetch_array ($query2);
                         </div>
                     </label>
                     <br><br>
-                   <label id="ragu" class="btn btn-warning"><input type="checkbox" id="test<?php echo $i; ?>" value="supress">
+                   <label  style="border-radius: 10px;" id="ragu" class="btn btn-warning"><input type="checkbox" id="test<?php echo $i; ?>" value="supress">
                     <span class='hidden-lg hidden-md'><b>RAGU</b></span>  
-                    <span class='hidden-sm hidden-xs'><b>&emsp;&emsp;&emsp;&emsp;RAGU - RAGU&emsp;&emsp;&emsp;&emsp;</b></span>  
+                    <span class='hidden-sm hidden-xs'><b>&emsp;&emsp;&emsp;&emsp;TANDAI SOAL&emsp;&emsp;&emsp;&emsp;</b></span>  
                     </label>
 					</span>
 

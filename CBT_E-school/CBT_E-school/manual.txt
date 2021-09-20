@@ -1,0 +1,11 @@
+cukup:
+:Terinstall Aplikasi Web Server(Apache,Nginx) yang didukung PHP dan MySQL (menggunakan XAMPP 5.6.33-0-VC11)
+:Boleh oprek selama tidak mengubah footer
+
+cara:
+;extract "CBT_E-school.zip" ke folder host (htdocs,www,atau lainnya)
+;jalankan melalui browser (http://localhost/CBT_E-school)
+;import database smpnsby1_38school.sql di phpmyadmin 
+;untuk masuk dashboard admin masukan alamat URL :(http://localhost/CBT_E-school/admin)
+;user default : admin pass: admin123345
+:demi keamanan diharap merubah password default
