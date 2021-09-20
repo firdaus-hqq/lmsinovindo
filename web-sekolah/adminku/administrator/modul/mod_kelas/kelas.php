@@ -51,7 +51,7 @@ else{
 
 $aksi="modul/mod_kelas/aksi_kelas.php";
 $aksi_siswa = "administrator/modul/mod_siswa/aksi_siswa.php";
-switch($_GET['act']){
+switch('$_GET[act]'){
   // Tampil kelas
   default:
     if ($_SESSION['leveluser']=='admin'){
@@ -189,7 +189,7 @@ switch($_GET['act']){
          if (!empty($ketemu)){
                 echo "<br/>
                 <br/><table class='table table-bordered table-striped table-condensed cf'><thead>
-                <tr><th>No</th><th>Kelas</th><th>Wali Kelas</th><th>Ketua Kelompok</th><th>Aksi</th></tr></thead>";
+                <tr><th>No</th><th>Asal Sekolah</th><th>Ketua Kelompok</th><th>Aksi</th></tr></thead>";
 
                 $no=1;
                 while ($r=mysqli_fetch_array($tampil_kelas)){
@@ -252,7 +252,7 @@ switch($_GET['act']){
         $kelas = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT * FROM kelas WHERE id_kelas = '$data_siswa[id_kelas]'");
 
         echo "<table class='table table-bordered table-striped table-condensed cf'>
-          <thead class='cf'><tr><th>No</th><th>Kelas</th><th>Wali Kelas</th><th>Ketua Kelompok</th><th>Aksi</th></tr></thead><tbody>";
+          <thead class='cf'><tr><th>No</th><th>Asal Sekolah</th><th>Ketua Kelompok</th><th>Aksi</th></tr></thead><tbody>";
         $no=1;
         while ($r=mysqli_fetch_array($kelas)){
        echo "<tr>
@@ -262,7 +262,7 @@ switch($_GET['act']){
                     $ada_pengajar = mysqli_num_rows($pengajar);
                     if(!empty($ada_pengajar)){
                     while($p=mysqli_fetch_array($pengajar)){
-                            echo "<td><a href=?module=admin&act=detailpengajar&id=$r[id_pengajar] title='Detail Wali Kelas' class='btn btn-danger'>$p[nama_lengkap]</a></td>";
+                           
                     }
                     }else{
                             echo "<td></td>";
@@ -403,7 +403,7 @@ case "detailkelas":
           <div class='col-md-6 col-xs-6'> 
       ";
     echo "<br><table class='table table-bordered table-striped table-condensed cf'><thead>
-          <tr><th>Id Sekolah</th><th>Kelas</th><th>Wali Kelas</th><th>Ketua Kelompok</th><th>Aksi</th></tr></thead>";
+          <tr><th>Id Sekolah</th><th>Asal Sekolah</th><th>Ketua Kelompok</th><th>Aksi</th></tr></thead>";
 
     while ($r=mysqli_fetch_array($detail)){
        echo "<tr>
@@ -448,7 +448,7 @@ case "detailkelas":
       
           <div class='panel-body'>";
     echo "<table class='table table-bordered table-striped table-condensed cf'><thead>
-          <tr><th>No</th><th>Kelas</th><th>Wali Kelas</th><th>Ketua Kelompok</th><th>Aksi</th></tr></thead>";
+          <tr><th>No</th><th>Asal Sekolah</th><th>Ketua Kelompok</th><th>Aksi</th></tr></thead>";
     $no = 1;
     while ($r=mysqli_fetch_array($detail)){
        echo "<tr>

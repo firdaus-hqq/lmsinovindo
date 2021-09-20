@@ -198,7 +198,7 @@ if ($_SESSION['login'] == 0) {
                     <!-- Content Header (Page header) -->
                     <section class="content-header">
                         <h1>
-                            Data Absensi
+                            Data Tugas
                         </h1>
                         <ol class="breadcrumb">
                             <li><a href="#"><i class="fa fa-calendar"></i><?php include "../jam/jam.php" ?></a></li>

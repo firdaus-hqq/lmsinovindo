@@ -75,32 +75,16 @@ include "tema/tema.php";
         include "navbar/userpanel.php";  
       ?> 
           <ul class="sidebar-menu" data-widget="tree">
-            <li class="header">MAIN MENU</li>
-              <li><a href="index.php"><i class="fa fa-tachometer"></i><span> Dashboard</span></a></li>
-				<li><a href="siswa.php"><i class="fa fa-graduation-cap"></i><span> Management Siswa</span></a></li>
+      			<li class="header">MAIN MENU</li>
+				<li class=""><a href="index.php"><i class="fa fa-tachometer"></i><span> Dashboard</span></a></li>
 
-				<li class="treeview">
-                  <a href="#">
-                    <i class="fa fa-book"></i>
-                    <span> Management Ujian</span>
-                      <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                  </a>
-                  <ul class="treeview-menu">
-                            <li><a href="soal.php"><i class="fa fa-book"></i> Bank Soal</a></li>
-    						<li><a href="kartuujian.php"><i class="fa fa-print"></i><span> Kartu Peserta</span></a></li>
-    						<li><a href="daftarhadir.php"><i class="fa fa-print"></i><span> Daftar Hadir</span></a></li>
-    						<li><a href="beritaacara.php"><i class="fa fa-print"></i><span> Berita Acara</span></a></li>
-    						<li><a href="up-gbrsoal.php"><i class="fa fa-upload"></i><span> Upload Gbr / Audio Soal</span></a></li>
-                  </ul>
-                </li>
+				<li class=""><a href="soal.php"><i class="fa fa-book"></i><span>Bank Soal</span></a></li>
                 
-			    	<li><a href="hasiltest.php"><i class="fa fa-area-chart"></i><span> Hasil Test</span></a></li>
-
-					<li class="active"><a href="monitor.php"><i class="fa fa-laptop"></i><span> Monitoring Ujian</span></a></li>						
-					<li><a href="laporan.php"><i class="fa fa-upload"></i><span> Laporan</span></a></li>	
-          </ul>
+			    <li><a href="hasiltest.php"><i class="fa fa-area-chart"></i><span> Hasil Test</span></a></li>
+				<li class="active"><a href="monitor.php"><i class="fa fa-laptop"></i><span> Monitoring Ujian</span></a></li>
+        <li><a href="theme.php"><i class="fa fa-gear"></i><span>Pengaturan</span></a></li>           
+        <li><a href="logout.php"><i class="fa fa-sign-out"></i><span> Logout</span></a></li>
+            </ul>
         </section>
         <!-- /.sidebar -->
       </aside>

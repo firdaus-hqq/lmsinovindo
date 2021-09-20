@@ -7,13 +7,21 @@ include "../../config/config.php";
 include "timeout.php";
 include "../configurasi/pagination.php";
 
-$sql = "SELECT * FROM siswa";
+$kelas = $_GET['id_kelas'];
+
+// $sql = "SELECT * FROM siswa WHERE id_kelas = '$kelas'";
+// $result = $mysqli->query($sql);
+// if ($result->num_rows > 0) {
+//     $daftar_absen = $result->fetch_array();
+// }
+
+$sql = "SELECT * FROM siswa WHERE id_kelas = '$kelas'";
 $result = $mysqli->query($sql);
 if ($result->num_rows > 0) {
-    $daftar_absen = $result->fetch_array();
-} else {
-    exit("ID Tidak ditemukan.");
+    $data_siswa = $result->fetch_array();
 }
+
+$listDataSiswa = $mysqli->query($sql);
 
 if ($_SESSION['login'] == 1) {
     if (!cek_login()) {
@@ -221,12 +229,12 @@ if ($_SESSION['login'] == 0) {
                                     <tbody>
                                         <?php
                                         $i = 1;
-                                        while ($daftarSiswa = mysqli_fetch_array($result)) {
+                                        while ($data_siswa = $listDataSiswa->fetch_array()) {
                                         ?>
                                             <tr>
                                                 <td><?= $i++ ?></td>
-                                                <td><a href="v_absen_siswa.php?id_siswa=<?= $daftarSiswa["id_siswa"]; ?>"><?= $daftarSiswa['nama_lengkap']; ?></a></td>
-                                                <td><?= $daftarSiswa['persentase']; ?>%</td>
+                                                <td><a href="v_absen_siswa.php?id_siswa=<?= $data_siswa["id_siswa"]; ?>"><?= $data_siswa['nama_lengkap']; ?></a></td>
+                                                <td><?= $data_siswa['persentase']; ?>%</td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>

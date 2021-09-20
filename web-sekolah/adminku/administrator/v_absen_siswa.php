@@ -13,8 +13,6 @@ $sql = "SELECT * FROM data_absen WHERE id_siswa = " . $id_siswa;
 $result = $mysqli->query($sql);
 if ($result->num_rows > 0) {
     $data_absen = $result->fetch_array();
-} else {
-    exit("ID Tidak ditemukan.");
 }
 
 $listDataAbsen = $mysqli->query($sql);
@@ -28,7 +26,18 @@ $jumlah_izin = mysqli_num_rows($izin);
 $sakit = mysqli_query($mysqli, "SELECT * FROM data_absen WHERE kehadiran = 'S' AND id_siswa = " . $id_siswa);
 $jumlah_sakit = mysqli_num_rows($sakit);
 
-$jumlah_presensi = $jumlah_hadir + $jumlah_izin + $jumlah_sakit;
+// $jumlah_presensi = $jumlah_hadir + $jumlah_izin + $jumlah_sakit;
+
+$query = "SELECT * from siswa WHERE id_siswa = " . $id_siswa;
+$siswa = mysqli_query($mysqli, $query);
+
+$data_siswa = mysqli_fetch_assoc($siswa);
+
+$awalKerja  = strtotime($data_siswa['tgl_masuk']);
+$akhirKerja = strtotime($data_siswa['tgl_keluar']);
+$jumlahHari = $akhirKerja - $awalKerja;
+
+$jumlah_presensi = round($jumlahHari / (60*60*24));
 
 $persentase = number_format($jumlah_hadir / $jumlah_presensi * 100);
 

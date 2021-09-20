@@ -156,30 +156,7 @@ if ($_SESSION['login'] == 0) {
 
               <!-- Optionally, you can add icons to the links -->
               <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
-
-              <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-bars"></i>
-                  <span>Menu Utama</span><i class='fa fa-angle-left pull-right'></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li>
-                    <a href="media.php?module=kelas">
-                      <i class='fa fa-circle-o'></i><span class="title">Kelas Kamu</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="media.php?module=matapelajaran">
-                      <i class='fa fa-circle-o'></i> <span class="title">Mata Pelajaran</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="media.php?module=materi">
-                      <i class='fa fa-circle-o'></i> <span class="title">Materi</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              <li><a href="media.php?module=kelas"><i class="fa fa-home"></i> <span>Sekolah Kamu</span></a></li>
               <li class="treeview">
                 <a href="#">
                   <i class="fa fa-check"></i>
@@ -200,25 +177,8 @@ if ($_SESSION['login'] == 0) {
               </li>
               <li><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
               <li><a href="../../CBT_E-school/on-siswa/ujian.php"><i class="fa fa-laptop"></i> <span>Ujian</span></a></li>
-              <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-trophy"></i>
-                  <span>Peringkat</span><i class='fa fa-angle-left pull-right'></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li>
-                    <a href="v_peringkat_typing.php">
-                      <i class='fa fa-circle-o'></i><span class="title">Typing Test</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="v_peringkat_prepost.php">
-                      <i class='fa fa-circle-o'></i><span class="title">Pre Test & Post Test</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
-              <li class="active"><a href="#"><i class="fa fa-certificate"></i> <span>Sertifikat</span></a></li>
+              <li><a href="v_peringkat_typing.php"><i class="fa fa-trophy"></i> <span>Peringkat</span></a></li>
+              <li class="active"><a href="sertifikat.php"><i class="fa fa-certificate"></i> <span>Sertifikat</span></a></li>
               <li class="header">Account</li>
               <li class="treeview">
                 <a href="#">
@@ -262,9 +222,21 @@ if ($_SESSION['login'] == 0) {
           <!-- Main content -->
           <section class="content">
 
-            <center><h1>TIDAK DITEMUKAN</h1></center>
-            <br>
-            <center><h1><a href="print.php">KLIK UNTUK LIHAT SERTIFIKAT</a></h1></center>
+            <center>
+              <?php
+              $query = "SELECT * from siswa WHERE id_siswa = " . $_SESSION['idsiswa'];
+              $siswa = mysqli_query($mysqli, $query);
+
+              $data_siswa = mysqli_fetch_assoc($siswa);
+              if (date('YYYY-MM-DD') != $data_siswa['tgl_keluar']) {
+              ?>
+                <h1>TIDAK DITEMUKAN</h1>
+              <?php }
+              if (date('YYYY-MM-DD') == $data_siswa['tgl_keluar']) {
+              ?>
+                <h1><a href="print.php" target="_blank">KLIK UNTUK LIHAT SERTIFIKAT</a></h1>
+              <?php } ?>
+            </center>
 
           </section><!-- /.content -->
         </div><!-- /.content-wrapper -->

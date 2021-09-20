@@ -4,7 +4,7 @@ include ('../../koneksi/koneksi.php');
 
 $id	= $_GET["id"];
 
-	if ($edit = mysqli_query($konek, "UPDATE siswa SET statuslogin='0' WHERE id='$id'")){
+	if ($edit = mysqli_query($konek, "UPDATE siswa SET statuslogin='0' WHERE id_siswa='$id'")){
 		header("Location:../monitor.php");
 		exit();
 	}

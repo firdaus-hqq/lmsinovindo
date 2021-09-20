@@ -38,6 +38,21 @@ img {
             height:100%;
             width:100%;
         }
+        #cbut {
+      cursor: pointer;
+      background:#60c210;
+      width: 100%;
+      border: 0;
+      padding: 10px 15px;
+      color: #ffffff;
+      -webkit-transition: 0.3s ease;
+      transition: 0.3s ease;
+        }
+
+      #but:hover {
+      background: #316786;
+    }
+
 a:link    {
   /* Applies to all unvisited links */
      text-decoration:  none;
@@ -107,9 +122,9 @@ a:active  {
       <input type="text" class="form-control" name="username" autocomplete="off" placeholder="Username" required>
       <input id="password-field" type="password" class="form-control" name="password" placeholder="Password" required>
       <span style="float:left" toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
-      <button>Login</button>
+      <button >Login</button>
     </form><br>
-    
+    <button id="cbut" style="border-radius:20px;"><a href="../../web-sekolah/adminku/administrator/media_admin.php?module=home"><b style="padding: 10px 90px;">Cancel</b></a></button>
     <br>
 	    <?php if (!empty($_GET['salah'])) { echo "<h5 id='blink' style='color: red';>Username atau Password salah</h3>"; }
         ?>

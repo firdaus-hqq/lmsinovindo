@@ -21,7 +21,7 @@ $total_absen_hari_ini = $result->num_rows;
 
 function canSubmit($waktu)
 {
-  $batas_waktu_menit = 16 * 60; # menunjukkan jam 10:00
+  $batas_waktu_menit = 9 * 60 + 30; # menunjukkan jam 10:00
 
   $waktu_time = strtotime($waktu);
   $waktu_menit = date('H', $waktu_time) * 60 + date('i', $waktu_time);
@@ -195,58 +195,13 @@ if ($_SESSION['login'] == 0) {
               </div>
             </div>
 
-            <!-- search form (Optional) -->
-            <form action="#" method="get" class="sidebar-form">
-              <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                  <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                </span>
-              </div>
-            </form>
-            <!-- /.search form -->
-
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu">
               <li class="header">Menu Learning</li>
 
               <!-- Optionally, you can add icons to the links -->
               <li><a href="home"><i class="fa fa-dashboard"></i> <span>Beranda</span></a></li>
-
-              <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-bars"></i>
-                  <span>Menu Utama</span><i class='fa fa-angle-left pull-right'></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li>
-                    <a href="media.php?module=kelas">
-                      <i class='fa fa-circle-o'></i><span class="title">Kelas Kamu</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="media.php?module=matapelajaran">
-                      <i class='fa fa-circle-o'></i> <span class="title">Mata Pelajaran</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="media.php?module=materi">
-                      <i class='fa fa-circle-o'></i> <span class="title">Materi</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="media.php?module=quiz">
-                      <i class='fa fa-circle-o'></i><span class="title">Ujian</span>
-                    </a>
-
-                  </li>
-                  <li>
-                    <a href="media.php?module=nilai">
-                      <i class='fa fa-circle-o'></i><span class="title">Nilai</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              <li><a href="media.php?module=kelas"><i class="fa fa-home"></i> <span>Sekolah Kamu</span></a></li>
               <li class="treeview active">
                 <a href="#">
                   <i class="fa fa-check"></i>
@@ -266,24 +221,9 @@ if ($_SESSION['login'] == 0) {
                 </ul>
               </li>
               <li><a href="tugas.php"><i class="fa fa-book"></i> <span>Tugas</span></a></li>
-              <li class="treeview">
-                <a href="#">
-                  <i class="fa fa-trophy"></i>
-                  <span>Peringkat</span><i class='fa fa-angle-left pull-right'></i>
-                </a>
-                <ul class="treeview-menu">
-                  <li>
-                    <a href="v_peringkat_typing.php">
-                      <i class='fa fa-circle-o'></i><span class="title">Typing Test</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="v_peringkat_prepost.php">
-                      <i class='fa fa-circle-o'></i><span class="title">Pre Test & Post Test</span>
-                    </a>
-                  </li>
-                </ul>
-              </li>
+              <li><a href="../../CBT_E-school/on-siswa/ujian.php"><i class="fa fa-laptop"></i> <span>Ujian</span></a></li>
+              <li><a href="v_peringkat_typing.php"><i class="fa fa-trophy"></i> <span>Peringkat</span></a></li>
+              <li><a href="sertifikat.php"><i class="fa fa-certificate"></i> <span>Sertifikat</span></a></li>
               <li class="header">Account</li>
               <li class="treeview">
                 <a href="#">
@@ -335,16 +275,16 @@ if ($_SESSION['login'] == 0) {
 
                   <form method="POST" action="absen.php">
                     <div class="form-group">
-                      <input type="radio" name="kehadiran" id="hadir" value="H" <?= @$data_absen['kehadiran'] == 'H' ? 'checked' : '' ?>>
+                      <input type="radio" name="kehadiran" id="hadir" value="H" <?= @$data_absen['kehadiran'] == 'H' ? 'checked' : '' ?> required>
                       <label for="hadir">Hadir</label>
-                      <input type="radio" name="kehadiran" id="izin" value="I" <?= @$data_absen['kehadiran'] == 'I' ? 'checked' : '' ?>>
+                      <input type="radio" name="kehadiran" id="izin" value="I" <?= @$data_absen['kehadiran'] == 'I' ? 'checked' : '' ?> required>
                       <label for="izin">Izin</label>
-                      <input type="radio" name="kehadiran" id="sakit" value="S" <?= @$data_absen['kehadiran'] == 'S' ? 'checked' : '' ?>>
+                      <input type="radio" name="kehadiran" id="sakit" value="S" <?= @$data_absen['kehadiran'] == 'S' ? 'checked' : '' ?> required>
                       <label for="sakit">Sakit</label>
                     </div>
                     <div class="form-group">
                       <h3>Kegiatan hari ini:</h3>
-                      <textarea class="form-control" placeholder="Isi kegiatan anda disini" rows="10" name="kegiatan" value="<?= @$data_absen['kegiatan'] ?>"></textarea>
+                      <textarea class="form-control" placeholder="Isi kegiatan anda disini" rows="10" name="kegiatan" value="<?= @$data_absen['kegiatan'] ?>" required></textarea>
                     </div>
                     <?= $button; ?>
                   </form>

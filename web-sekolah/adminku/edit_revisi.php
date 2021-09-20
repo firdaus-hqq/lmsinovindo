@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "UPDATE tugas SET
                 link = '$link',
                 file = '$file',
-                status = ''
+                status = 'terkirim'
             WHERE id_file = $id_file;
             ";
 

@@ -75,28 +75,13 @@ include "tema/tema.php";
       		<ul class="sidebar-menu" data-widget="tree">
       			<li class="header">MAIN MENU</li>
 				<li class="active"><a href="index.php"><i class="fa fa-tachometer"></i><span> Dashboard</span></a></li>
-				<li><a href="siswa.php"><i class="fa fa-graduation-cap"></i><span> Management Siswa</span></a></li>
 
-				<li class="treeview">
-                  <a href="#">
-                    <i class="fa fa-book"></i>
-                    <span> Management Ujian</span>
-                        <span class="pull-right-container">
-                            <i class="fa fa-angle-left pull-right"></i>
-                        </span>
-                  </a>
-                  <ul class="treeview-menu">
-                            <li><a href="soal.php"><i class="fa fa-book"></i> Bank Soal</a></li>
-    						<li><a href="kartuujian.php"><i class="fa fa-print"></i><span> Kartu Peserta</span></a></li>
-    						<li><a href="daftarhadir.php"><i class="fa fa-print"></i><span> Daftar Hadir</span></a></li>
-    						<li><a href="beritaacara.php"><i class="fa fa-print"></i><span> Berita Acara</span></a></li>
-    						<li><a href="up-gbrsoal.php"><i class="fa fa-upload"></i><span> Upload Gbr / Audio Soal</span></a></li>
-                  </ul>
-                </li>
+				<li class=""><a href="soal.php"><i class="fa fa-book"></i><span>Bank Soal</span></a></li>
                 
 			    <li><a href="hasiltest.php"><i class="fa fa-area-chart"></i><span> Hasil Test</span></a></li>
-				<li><a href="monitor.php"><i class="fa fa-laptop"></i><span> Monitoring Ujian</span></a></li>						
-				<li><a href="laporan.php"><i class="fa fa-upload"></i><span> Laporan</span></a></li>	
+				<li><a href="monitor.php"><i class="fa fa-laptop"></i><span> Monitoring Ujian</span></a></li>
+        <li><a href="theme.php"><i class="fa fa-gear"></i><span>Pengaturan</span></a></li>           
+        <li><a href="logout.php"><i class="fa fa-sign-out"></i><span> Logout</span></a></li>
             </ul>
 				
 				
@@ -110,7 +95,7 @@ include "tema/tema.php";
         include	"navbar/content_footer.php";
       ?>
 					<section id="mburidewe" class="content-header">
-					    <h4><i class="fa fa-tachometer"></i> Dashboard</h4>
+					    <h3><i class="fa fa-user-circle"></i> Welcome, Admin<small> | Management Quiz Page</small></h3>
 								        <ol class="breadcrumb">
 								        <li><a href="#"> Home</a></li>
 									    <li><i class="fa fa-home"></i> Dashboard </li>
@@ -138,10 +123,7 @@ include "tema/tema.php";
                                                 <input readonly style="font-weight: bold;letter-spacing: 3px;padding:8px;background:#333;color:white;border:#333 solid 0.5px;text-align: center;" type="text" value="<?php include ('../on-siswa/token.txt'); ?>"/>
         									    <a href="update_token.php"><button type="submit" style="margin-left:-5px;padding:8px;" class="btn btn-flat btn-success btn-sm"><i class="fa fa-refresh fa-spin"></i>&emsp; Update Token</button></a>
                                                 <a href="clear_token.php"><button type="submit" style="margin-left:-5px;padding:8px;" class="btn btn-flat btn-default btn-sm"><i class="fa fa-trash"></i></button></a>
-                                                        <h1><b>V.<?php include ('versi/aktif/versi.txt'); ?></b></h1>
-                                                   <p>CBT E-School | <a href='update.php'><button class="btn btn-flat bg-navy btn-xs"><i class="fa fa-history"></i> check update</button></a> 
-                                                   <a href='patching.php'><button class="btn btn-flat bg-navy btn-xs"><i class="fa fa-history"></i> check patching</button></a>
-                                                   <a href='https://smpn38sby.sch.id/cbt' target="blank"><button class="btn btn-flat bg-orange btn-xs"><i class="fa fa-globe"></i> visit website</button></a></p>
+                                                        
                                        
                                             </div>
                                                 <div class='icon'>
@@ -177,38 +159,6 @@ include "tema/tema.php";
                                                 </div>
                                                 <a href='monitor.php' class='small-box-footer'>
                                                   Monitoring ujian <i class='fa fa-arrow-circle-right'></i>
-                                                </a>
-                                          </div>
-                                        </div>
-                                       
-                                       
-									   
-                                       <!-- Statistik Siswa -->
-                                       <div class='col-lg-3 col-md-6 col-xs-6'>
-                                          <!-- small box -->
-                                          <div id="ngarep" class='small-box bg-red'>
-                                            <div class='inner'>
-                                                         <?php
-                                						$result = mysqli_query($konek, "SELECT * FROM siswa WHERE online='1'");
-                                						$num_rows = mysqli_num_rows($result);
-                                						if ($num_rows > 0)
-                                						{
-                                						$online=mysqli_num_rows($result);
-                                						}
-                                						else
-                                						{
-                                						$online="0";    
-                                						}
-                                						?>
-                                                        <h1><b><?php echo $online; ?></b></h1>
-                                                        <?php  ?>
-                                                   <p>Online</p>
-                                            </div>
-                                                <div class='icon'>
-                                                  <i class='fa fa-users'></i>
-                                                </div>
-                                                <a href='#' data-target="#Modalonline" data-toggle="modal" class='small-box-footer'>
-                                                  Who's online <i class='fa fa-arrow-circle-right'></i>
                                                 </a>
                                           </div>
                                         </div>
@@ -275,11 +225,7 @@ include "tema/tema.php";
                                         
                                     </div>
                     <div class='col-md-3'>
-                    <div class="box">
-                        <div class="box-header with-border">
-                            <h4 class="box-title" style="font-size:13px;background-color:#d2d6de;color:black;padding:15px;width:220%;margin-left:-40px;margin-right:0px;margin-top:-10px;">&emsp;<i class='fa fa-download' aria-hidden='true'></i>  Download Berkas</h4>
-                        </div>
-                    </div>
+                    
                         <?php 
                         $dir = "upload/";
                         chdir($dir);
@@ -307,7 +253,7 @@ include "tema/tema.php";
                         	}
                         echo "
                                         <div class='row'>
-                                            <h6><a href='".upload."/".$data."' target='new_tab'><i class='fa fa-file-zip-o' aria-hidden='true'></i> ".$data."</a>
+                                            <h6><a href='".['upload']."/".$data."' target='new_tab'><i class='fa fa-file-zip-o' aria-hidden='true'></i> ".$data."</a>
                                           </div>
                         ";
                         echo "</tr>";

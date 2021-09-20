@@ -94,7 +94,6 @@ $dataKelas = $konek->query($sqlkelas) or die($konek->error);
       border-color: grey;
       -moz-box-shadow: inset 0 0 10px #000000;
       -webkit-box-shadow: inset 0 0 10px #000000;
-      box-shadow:
     }
 
     #clot3d2 {
@@ -143,31 +142,16 @@ include "tema/tema.php";
       include "navbar/userpanel.php";
       ?>
       <ul class="sidebar-menu" data-widget="tree">
-        <li class="header">MAIN MENU</li>
-        <li><a href="index.php"><i class="fa fa-tachometer"></i><span> Dashboard</span></a></li>
-        <li><a href="siswa.php"><i class="fa fa-graduation-cap"></i><span> Management Siswa</span></a></li>
+      			<li class="header">MAIN MENU</li>
+				<li class=""><a href="index.php"><i class="fa fa-tachometer"></i><span> Dashboard</span></a></li>
 
-        <li class="treeview active">
-          <a href="#">
-            <i class="fa fa-book"></i>
-            <span> Management Ujian</span>
-            <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li class="active"><a href="soal.php"><i class="fa fa-book"></i> Bank Soal</a></li>
-            <li id="sub"><a href="kartuujian.php"><i class="fa fa-print"></i><span> Kartu Peserta</span></a></li>
-            <li id="sub"><a href="daftarhadir.php"><i class="fa fa-print"></i><span> Daftar Hadir</span></a></li>
-            <li id="sub"><a href="beritaacara.php"><i class="fa fa-print"></i><span> Berita Acara</span></a></li>
-            <li id="sub"><a href="up-gbrsoal.php"><i class="fa fa-upload"></i><span> Upload Gbr / Audio Soal</span></a></li>
-          </ul>
-        </li>
-
-        <li><a href="hasiltest.php"><i class="fa fa-area-chart"></i><span> Hasil Test</span></a></li>
-        <li><a href="monitor.php"><i class="fa fa-laptop"></i><span> Monitoring Ujian</span></a></li>
-        <li><a href="laporan.php"><i class="fa fa-upload"></i><span> Laporan</span></a></li>
-      </ul>
+				<li class="active"><a href="soal.php"><i class="fa fa-book"></i><span>Bank Soal</span></a></li>
+                
+			    <li><a href="hasiltest.php"><i class="fa fa-area-chart"></i><span> Hasil Test</span></a></li>
+				<li><a href="monitor.php"><i class="fa fa-laptop"></i><span> Monitoring Ujian</span></a></li>
+        <li><a href="theme.php"><i class="fa fa-gear"></i><span>Pengaturan</span></a></li>           
+        <li><a href="logout.php"><i class="fa fa-sign-out"></i><span> Logout</span></a></li>
+            </ul>
     </section>
     <!-- /.sidebar -->
   </aside>
@@ -247,16 +231,17 @@ include "tema/tema.php";
                     <option value="">Pilih Jenis Ujian</option>
                     <option value="Pretest">Pre Test</option>
                     <option value="Posttest">Post Test</option>
+                    <option value="Posttest">Simulasi</option>
                   </select>
               </div>
 
               <div class="form-group">
-                <label>Mapel</label>
+                <label>Keahlian</label>
                 <div class="input-group">
                   <div class="input-group-addon">
                     <i class="fa fa-book"></i>
                   </div>
-                  <input name="kodemapel" type="text" class="form-control" placeholder="MAPEL" required />
+                  <input name="kodemapel" type="text" class="form-control" placeholder="Keahlian" required />
                 </div>
               </div>
               <div class="form-group">
@@ -265,10 +250,10 @@ include "tema/tema.php";
                 <form action="" method="post">
                   <select class="form-control" name="kelas" required>
                     <option value="">Pilih kelas</option>
-                    <?php 
+                    <?php
                     while ($sekolah = @$dataKelas->fetch_array()) {
                     ?>
-                    <option value="<?= $sekolah['id_kelas'] ?>"><?= $sekolah['nama'] ?></option>
+                      <option value="<?= $sekolah['id_kelas'] ?>"><?= $sekolah['nama'] ?></option>
                     <?php } ?>
                   </select>
               </div>

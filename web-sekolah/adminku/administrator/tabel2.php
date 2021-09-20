@@ -236,7 +236,7 @@ if ($_SESSION['login'] == 0) {
                                             <?php
                                             $i = 1;
                                             while ($data_tugas = $listDataTugas->fetch_array()) {
-                                                $sql3 = "SELECT * FROM tugas WHERE id_siswa = '$data_tugas[id_siswa]' AND status='' ORDER BY tanggal DESC";
+                                                $sql3 = "SELECT * FROM tugas WHERE id_siswa = '$data_tugas[id_siswa]' AND status='terkirim' ORDER BY tanggal DESC";
                                                 $result3 = $mysqli->query($sql3);
                                                 if ($result3->num_rows > 0) {
                                                     $tugas_siswa = $result3->fetch_array();

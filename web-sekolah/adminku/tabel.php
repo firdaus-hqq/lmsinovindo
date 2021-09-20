@@ -1,7 +1,7 @@
 <?php
 if (isset($_SESSION['idsiswa'])) {
     $id_siswa = $_SESSION['idsiswa'];
-    $sql = "SELECT * FROM tugas WHERE id_siswa = '$id_siswa' AND status='' order by id_file desc";
+    $sql = "SELECT * FROM tugas WHERE id_siswa = '$id_siswa' AND status='terkirim' order by id_file desc";
     $result = $mysqli->query($sql);
     if ($result->num_rows > 0) {
         $tugas = $result->fetch_array();
@@ -132,7 +132,7 @@ $listRevisi = $mysqli->query($sql3);
                             <td class="mailbox-date"><a target="_blank" href="tugas/<?= $tugas['file'] ?>"><?= $tugas['file'] ?></a></td>
                             <td class="mailbox-date"><a target="_blank" href="https://<?= $tugas['link'] ?>"><?= $tugas['link'] ?></a></td>
                             <td>
-                                <a href="edit_revisi.php?id_file=<?= $tugas['id_file']; ?>"><i class="fa fa-edit"></i></a>
+                                <a href="edit.php?id_file=<?= $tugas['id_file']; ?>"><i class="fa fa-edit"></i></a>
 
                                 <i class="fa fa-times-circle" style = "color:red;" onclick="confirm('Yakin ingin menghapus tugas ini?') ? window.location.href='delete.php?id_file=<?= $tugas['id_file'] ?>':''"></i></a>
                             </td>

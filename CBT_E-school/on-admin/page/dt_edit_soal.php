@@ -11,8 +11,6 @@ $ur = mysqli_fetch_array ($query2);
 	</script>
 <div class="btn-group" role="group" aria-label="Basic example">
 <button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd" data-toggle="modal"><i class="fa fa-plus"></i> Soal PG</button>
-<button id="clot" type="button" class="btn btn-success" data-target="#ModalAdd2" data-toggle="modal"><i class="fa fa-plus"></i> Soal Uraian</button>
-<a href="soal-import.php"><button id="clot2" type="button" class="btn btn-warning"><i class="fa fa-upload"></i> Import Butir Soal</button></a>
 <a class='open_modal1' style='font-decoration:none;color:#222;' hidden><button id="clot" type='button' class='btn btn-danger' ><i class='fa fa-picture-o'></i> Database | Upload gambar soal</button></a>
 </div>
 <br><br>
@@ -455,15 +453,15 @@ $ur = mysqli_fetch_array ($query2);
 		</div>
 		<thead>
 					<tr>
-						<th>No Soal</th>
-						<th>Soal</th>
-						<th>Pilihan A</th>
-						<th>Pilihan B</th>
-						<th>Pilihan C</th>
-						<th>Pilihan D</th>
+						<th width="5%">No Soal</th>
+						<th width="10%">Soal</th>
+						<th width="10%">Pilihan A</th>
+						<th width="10%">Pilihan B</th>
+						<th width="10%">Pilihan C</th>
+						<th width="10%">Pilihan D</th>
 						<th id="formgroupop<?php echo $ur['opsi']; ?>">Pilihan E</th>
-						<th>Kunci Jawaban</th>						
-						<th>Action</th>
+						<th width="5%">Kunci Jawaban</th>						
+						<th width="10%">Action</th>
 					</tr>
 				</thead>
                 <tbody>
@@ -581,16 +579,16 @@ $ur = mysqli_fetch_array ($query2);
 				        }
 							echo "
 								<tr>
-									<td align=center>$ar[nomersoal]</td>
-									<td align=left>$isi
+									<td width='5%' align=center>$ar[nomersoal]</td>
+									<td width='10%' align=center>$isi
 									<br>$gambarsoal<br>$audio</td>
-									<td align=center>$pilihan_a$gambar_a</td>
-									<td align=center>$pilihan_b$gambar_b</td>
-                                    <td align=center>$pilihan_c$gambar_c</td>
-									<td align=center>$pilihan_d$gambar_d</td>
-									<td id='formgroupop$ur[opsi]' align=center>$pilihan_e$gambar_e</td>
-                                    <td align=center>$ar[kunci]</td>
-									<td align=center>
+									<td width='10%' align=center>$pilihan_a$gambar_a</td>
+									<td width='10%' align=center>$pilihan_b$gambar_b</td>
+                                    <td width='10%' align=center>$pilihan_c$gambar_c</td>
+									<td width='10%' align=center>$pilihan_d$gambar_d</td>
+									<td width='10%' id='formgroupop$ur[opsi]' align=center>$pilihan_e$gambar_e</td>
+                                    <td width='5%'align=center>$ar[kunci]</td>
+									<td width='10%' align=center>
 									<a class='open_modal' style='font-decoration:none;color:#222;' id='$ar[id]'><button type='button' class='btn btn-success'><i class='fa fa-pencil-square-o'></i></button></a>
 									<a href='page/delete-butirsoal.php?id=$ar[id]'><button class='btn btn-danger'><i class='fa fa-trash-o'></i></button></a>
 									</td>

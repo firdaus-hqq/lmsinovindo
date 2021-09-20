@@ -3,6 +3,9 @@
 $sql = "SELECT * FROM pemberitahuan ORDER BY tanggal DESC LIMIT 5";
 $result = $mysqli->query($sql);
 
+$sql2 = "SELECT * FROM tentang ORDER BY tanggal DESC";
+$result2 = $mysqli->query($sql2);
+
 if ($_GET['module'] == 'home') {
   if ($_SESSION['leveluser'] == 'siswa') {
 ?>
@@ -15,28 +18,6 @@ if ($_GET['module'] == 'home') {
 
     </div>
     <div class="row">
-      <div class="col-lg-3 col-xs-6">
-
-
-        <!-- small box -->
-        <div class="small-box bg-aqua">
-          <div class="inner">
-            <?php
-            $tam = mysqli_query($GLOBALS["___mysqli_ston"], "SELECT COUNT(id_file) AS JUMLAH FROM file_materi");
-            $r = mysqli_fetch_array($tam);
-            $tot = $r['JUMLAH']; { ?>
-              <h3><?php echo $tot; ?></h3>
-              <p>Tentang Perusahaan</p>
-
-            <?php
-            } ?>
-          </div>
-          <div class="icon">
-            <i class="ion ion-ios-book"></i>
-          </div>
-          <a href="media.php?module=materi" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-        </div>
-      </div><!-- ./col -->
       <div class="col-lg-3 col-xs-6">
 
 
@@ -69,6 +50,22 @@ if ($_GET['module'] == 'home') {
             <i class="ion ion-ios-list"></i>
           </div>
           <a href="tugas.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+      </div><!-- ./col -->
+      <div class="col-lg-3 col-xs-6">
+
+
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+          <div class="inner">
+
+            <h3>Ujian</h3>
+            <p>Page Ujian</p>
+          </div>
+          <div class="icon">
+            <i class="fa fa-laptop"></i>
+          </div>
+          <a href="../../CBT_E-school/on-siswa/ujian.php" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
         </div>
       </div><!-- ./col -->
       <div class="col-lg-3 col-xs-6">
@@ -120,23 +117,19 @@ if ($_GET['module'] == 'home') {
 
         <div class="box box-danger">
           <div class="box-header with-border">
-            <h3 class="box-title">Tujuan E-Learning</h3>
+            <h3 class="box-title">TENTANG PERUSAHAAN</h3>
             <div class="box-tools pull-right">
               <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
             </div><!-- /.box-tools -->
           </div><!-- /.box-header -->
           <div style="display: block;" class="box-body">
-            <ul>
-              <p>E-Learning adalah suatu cara untuk mengatasi solusi
-                Ketika para siswa sedang prakerin,dan di kondisi lain.</p>
-            </ul>
-            <ul>
-              <p>Dapat memperoleh informasi secara tepat dan cepat..</p>
-            </ul>
-            <ul>
-              <p>Meminalisir waktu dan efisiensi dalam pengajaran</b>
-            </ul>
-
+            <?php
+            while ($tentang = mysqli_fetch_array($result2)) {
+            ?>
+              <ul>
+                <p><a href="tentang/<?= $tentang['file'] ?>" target="_blank"><?= $tentang['file'] ?></a></p>
+              </ul>
+            <?php } ?>
           </div><!-- /.box-body -->
 
         </div><!-- /.box -->

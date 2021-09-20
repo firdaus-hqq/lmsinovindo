@@ -101,24 +101,15 @@ include "tema/tema.php";
             </div>
             <div class="pull-left info">
 			  <a href="#"><i id='on' class='fa fa-circle' style='color:#90ff00;font-size:10px;'></i> Online</a>
-			  <h5 style="color:white"><?php echo $kelas;?></h5>
+			  <h5 style="color:white"><?= $nama ?> - <?php echo $kelas;?></h5>
 			</div>
 		  </div>
-		  <form action="#" method="get" class="sidebar-form">
-                 <h5 style="color:white"><?php echo $nama;?></h5>
-            </form>
-		  <div class="user-panel">
-            <div class="pull-left image">
-			<a href="profil.php" data-toggle="tooltip" data-placement="right" title="Profil"><button id="cog" class="btn btn-default btn-md"><i class="fa fa-user"></i></button></a>
-			<a data-toggle="modal" data-target="#about" data-placement="right" data-toggle="tooltip" title="about aplication"><button id="cog" class="btn btn-default btn-md"><i class="fa fa-info-circle"></i></button></a>
-            <a href="logout.php" data-placement="right" data-toggle="tooltip" title="log out"><button id="cog" class="btn btn-default btn-md"><i class="fa fa-sign-out"></i></button></a>
-            </div>
-          </div>  
+		   
           <ul class="sidebar-menu">
-
-					<li><a href="index.php"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
-					<li><a href="ujian.php"><i class="fa fa-laptop"></i><span>Ujian</span></a></li>
-			        <li class="active"><a href="nilai.php"><i class="fa fa-book"></i><span>Daftar Nilai</span></a></li>
+                    <li><a href="index.php"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
+                    <li><a href="ujian.php"><i class="fa fa-laptop"></i><span>Ujian</span></a></li>
+					          <li class="active"><a href="nilai.php"><i class="fa fa-book"></i><span>Daftar Nilai</span></a></li>
+                    <li><a href="logout.php"><i class="fa fa-sign-out"></i><span>Logout</span></a></li>
           </ul>
         </section>
         <!-- /.sidebar -->
