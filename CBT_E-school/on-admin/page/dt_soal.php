@@ -1,17 +1,15 @@
 				<thead>
 					<tr>
 						<th width="3%">No</th>
-						<th width="20%">Mapel</th>
+						<th width="20%">Keahlian</th>
 						<th width="3%">Jumlah Soal PG</th>
-						<th width="3%">Jumlah Soal Uraian</th>
 						<th width="5%">waktu</th>
 						<th width="5%">opsi jwb</th>
 						<th width="5%">tampil soal</th>
-						<th width="5%">kelas</th>
+						<th width="5%">Asal Sekolah</th>
 						<th width="5%">bobot nilai PG</th>
-						<th width="5%">bobot nilai uraian</th>
 						<th width="30%">Editor Soal</th>
-						<th width="40%">Status Soal</th>
+						<th width="45%">Status Soal</th>
 						<th width="15%">Action</th>
 					</tr>
 				</thead>
@@ -82,13 +80,11 @@
 		<td align=left>$ar[jenissoal]<br>$ar[kodemapel]<br>
 		$ar[kodesoal]</td>
 		<td align=center>$num_rows</td>
-		<td align=center>$num_rows2</td>
 		<td align=center>$ar[waktu]'</td>
 		<td align=center>$opsi</td>
 		<td align=center>$acak</td>
 		<td align=center>$ar[kelas]</td>
 		<td align=center>$ar[nilai]</td>
-		<td align=center>$boboturai</td>
 		<td align=center>
 		
         <a href='preview-soal.php?matpel=$ar[kodemapel]&kode=$ar[kodesoal]&jenis=$ar[jenissoal]'><button id='clot' type='button' class='btn bg-navy btn-xs'><i class='fa fa-print'></i></button></a>

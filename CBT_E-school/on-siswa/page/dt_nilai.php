@@ -1,15 +1,12 @@
 				<thead>
 					<tr>
 						<th width="3%">No</th>
-						<th width="20%">Mapel</th>
+						<th width="10%">Keahlian</th>
 						<th width="5%">Jumlah Soal PG</th>
 						<th width="5%">Jawaban Benar</th>
 						<th width="5%">Jawaban Salah</th>
 						<th width="5%">Nilai PG</th>
-						<th width="5%">Nilai Uraian</th>
 						<th width="5%">Total Nilai</th>
-						<th width="10%">analisa</th>
-						<th width="30%">Jawaban Siswa</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -65,13 +62,8 @@ $nil= $scoreasli+$r['nilaiurai'];
 									<td><h6 style='font-size:12px;'>$jumlah</h6></td>
 									<td><h6 style='font-size:12px;'>$benar</h6></td>
 									<td><h6 style='font-size:12px;'>$salah</h6></td>
-									<td><h6 style='font-size:12px;'>$scoreasli</h6></td>
-									<td><h6 style='font-size:12px;'>$r[nilaiurai]</h6></td>
+									<td><h6 style='font-size:12px;'>$scoreasli</h6></td>	
 									<td><button id='co' class='btn btn-success' style='font-size:11px;width:50px;'><b>$nil</b></button></td>
-									<td>
-									<a class='open_modal' style='font-decoration:none;color:#222;' id='$r[id]'><button  type='button' class='btn btn-flat btn-success btn-sm' style='font-size:10px;width:50px;'><i class='fa fa-pencil-square-o'></i></button></a>
-									</td>
-									<td><h6 style='font-size:10px;'>$r[jawabansiswa]</h6></td>
 									";
 						$i++;		
 						}}
