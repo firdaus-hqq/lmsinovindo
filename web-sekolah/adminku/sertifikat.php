@@ -222,19 +222,18 @@ if ($_SESSION['login'] == 0) {
           <!-- Main content -->
           <section class="content">
 
-            <center>
+          <center>
               <?php
               $query = "SELECT * from siswa WHERE id_siswa = " . $_SESSION['idsiswa'];
               $siswa = mysqli_query($mysqli, $query);
 
               $data_siswa = mysqli_fetch_assoc($siswa);
-              if (date('YYYY-MM-DD') != $data_siswa['tgl_keluar']) {
-              ?>
-                <h1>TIDAK DITEMUKAN</h1>
-              <?php }
-              if (date('YYYY-MM-DD') == $data_siswa['tgl_keluar']) {
+              if (date('Y-m-d') >= $data_siswa['tgl_keluar']) {
               ?>
                 <h1><a href="print.php" target="_blank">KLIK UNTUK LIHAT SERTIFIKAT</a></h1>
+              <?php } else {
+              ?>
+                <h1>TIDAK DITEMUKAN</h1>
               <?php } ?>
             </center>
 
