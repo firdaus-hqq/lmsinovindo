@@ -232,7 +232,7 @@ function timer() {
         					<h4 class="modal-title">Logout Confirm</h4>
         					</div>
         					<div class="modal-body">
-        					<center>Kamu belum menyelesaikan soal ujian ini. Yakin ingin keluar ??</center>		
+        					<center>Kamu belum menyelesaikan soal ujian ini. Yakin ingin keluar ?</center>		
         					</div>
         					<div class="modal-footer" style="margin:0px; border-top:0px; text-align:center;">
         					<a href="logout.php" class="btn btn-danger">keluar</a>
