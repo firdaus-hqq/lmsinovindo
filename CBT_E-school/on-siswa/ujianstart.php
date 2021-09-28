@@ -161,6 +161,17 @@ label.custom-radio-button input[type="radio"] ~ .helping-el {
     border-radius: 15px;
 }
 
+#ragu {
+    border: solid 0;
+    border-radius: 0;
+    position: sticky;
+    left: 40%;
+    right: 40%;
+    margin-bottom: -50px;
+    width: 23%;
+    text-align: center;
+}
+
 	</style>
     <script>
 var count = '<?php echo $sisa; ?>';
@@ -207,7 +218,7 @@ function timer() {
 ?>
 <header style="background-color:<?php echo $warna;?> ; ">
     <div class="group">
-        <div class="left" style="background-color:<?php echo $warna;?>"><img src="../aset/foto/<?php echo $xx['logo_ujian'];?>" style=" margin:0px; max-width:400px; max-height:200px;"></div>
+        <div class="left" style="background-color:<?php echo $warna;?>"><img src="../aset/foto/<?php echo $xx['logo_ujian'];?>" style=" margin:0px; max-width:350px; max-height:200px;"></div>
         <?php }?>
     	    
     </div>
@@ -317,7 +328,7 @@ include "footer.php";
 <div id="sidenav" class="sidenav">
   <div id="slidebtn" class="slideBtn">
     <div class="btn-group btn-group-md">
-  <button style="border-radius: 20px; background-color:#60c210;" id="hm" type="button" class="btnnav btn"><i class="fa fa-chevron-left"></i> <b>SOAL</b></button>
+  <button style="border-radius: 20px; background-color:#60c210; top:47px;" id="hm" type="button" class="btnnav btn"><i class="fa fa-chevron-left"></i> <b>SOAL</b></button>
     </div>
   </div>  
   <div id='pagin' class="pagination"></div>
