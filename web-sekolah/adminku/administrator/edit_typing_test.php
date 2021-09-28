@@ -25,6 +25,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $sql = "SELECT * FROM kelas";
 $dataSekolah = $mysqli->query($sql) or die($mysqli->error);
 
+$sql2 = "SELECT * FROM siswa";
+$dataSiswa = $mysqli->query($sql2) or die($mysqli->error);
+
 if (empty($id_peringkat)) header('location: v_typing_test.php');
 
 $sql = "SELECT * FROM peringkat WHERE id_peringkat = '$id_peringkat'";

@@ -208,8 +208,15 @@ if ($_SESSION['login'] == 0) {
                                 <form action="<?= $action ?>" method="POST" class='form-horizontal form-groups-bordered'>
                                     <div class='col-md-12 col-xs-12'>
                                         <div class='form-group'>
-                                            <label>Nama Peserta</label>
-                                            <input type='text' name='nama_lengkap' value="<?= @$peringkat['nama_lengkap'] ?>" class='form-control' id='field-1' required='required' placeholder='Isi nama peserta' />
+                                            <label>Nama</label>
+                                            <select name='nama_lengkap' class='form-control'>
+                                                <option value="">[ Pilih Nama Peserta ]</option>
+                                                <?php while ($siswa = @$dataSiswa->fetch_array()) { ?>
+                                                    <option value="<?php echo $siswa['nama_lengkap'] ?>" <?php echo @$peringkat['nama_lengkap'] == $siswa['nama_lengkap'] ? 'selected' : '' ?> >
+                                                        <?php echo $siswa['nama_lengkap'] ?>
+                                                    </option>
+                                                <?php } ?>
+                                            </select>
                                         </div>
                                         <div class='form-group'>
                                             <label>Asal Sekolah</label>

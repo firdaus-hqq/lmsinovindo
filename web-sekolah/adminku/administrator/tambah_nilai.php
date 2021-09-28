@@ -18,4 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 $sql = "SELECT * FROM kelas";
 $dataSekolah = $mysqli->query($sql) or die($mysqli->error);
 
+$sql2 = "SELECT * FROM siswa WHERE nama_lengkap NOT IN (SELECT nama_lengkap FROM peringkat)";
+$dataSiswa = $mysqli->query($sql2) or die($mysqli->error);
+
 include 'v_tambah_nilai.php';
