@@ -209,13 +209,7 @@ function timer() {
     <div class="group">
         <div class="left" style="background-color:<?php echo $warna;?>"><img src="../aset/foto/<?php echo $xx['logo_ujian'];?>" style=" margin:0px; max-width:400px; max-height:200px;"></div>
         <?php }?>
-    	    <div class="right">
-			    <table width="100%" border="0" cellspacing="5px;" style="margin-top:10px">   
-				<tbody><tr><td rowspan="3" width="100px" align="center"><img src="mesin/avatar.gif" style=" margin-left:0px; margin-top:5px" class="foto"></td>
-				</tr><tr><td><span class="user"><?php echo $nama; ?><br><?php echo $kelas; ?></span></td></tr>
-				<tr><td><span class="log"><a href="#"><?php echo $code; ?> |  <?php echo $codesoal; ?></a><span></span></span></td></tr>
-			    </table>
-            </div>
+    	    
     </div>
 </header>
                 <!-- Modal logout -->

@@ -128,15 +128,15 @@ while ($ar = mysqli_fetch_array($querydosen)) {
                     /* jika screen maks. 780 right turun */
                     /*    .left, */
                     .left {
-                        width: auto;
-                        height: 91px;
-                    }
+					    width: auto;
+					    height: 20px;
+				}
 
-                    .right {
-                        float: none;
-                        width: auto;
+				    .right {
+					    float: right;
+					    width: 50%;
                         margin-top: 0px;
-                        height: 60px;
+                        height: 74px;
                         color: #FFFFFF;
                     }
 
@@ -160,7 +160,7 @@ while ($ar = mysqli_fetch_array($querydosen)) {
                 }
 
                 .col-md-6 {
-                    margin-top: 100px;
+                    margin-top: 65px;
                 }
 
                 #progres {

@@ -213,14 +213,14 @@ while ($xx = mysqli_fetch_array($qq)) {
           /*    .left, */
           .left {
             width: auto;
-            height: 91px;
+            height: 20px;
           }
 
           .right {
-            float: none;
-            width: auto;
+            float: right;
+            width: 50%;
             margin-top: 0px;
-            height: 60px;
+            height: 74px;
             color: #FFFFFF;
           }
 

@@ -120,7 +120,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 				.right {
 					float: none;
 					width: auto;
-					margin-top: 0px;
+					margin-top: -10px;
 					height: 91px;
 					color: #FFFFFF;
 					display: block;
@@ -137,14 +137,14 @@ while ($xx = mysqli_fetch_array($qq)) {
 				/*    .left, */
 				.left {
 					width: auto;
-					height: 91px;
+					height: 20px;
 				}
 
 				.right {
-					float: none;
-					width: auto;
+					float: right;
+					width: 50%;
 					margin-top: 0px;
-					height: 60px;
+					height: 74px;
 					color: #FFFFFF;
 				}
 
@@ -168,7 +168,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 			}
 
 			.col-md-6 {
-				margin-top: 100px;
+				margin-top: 65px;
 			}
 
 			.footer {
@@ -208,7 +208,7 @@ while ($xx = mysqli_fetch_array($qq)) {
 					<table width="100%" border="0" cellspacing="5px;" style="margin-top:10px">
 						<tbody>
 							<tr>
-								<td rowspan="3" width="100px" align="center"><img src="mesin/avatar.gif" style=" margin-left:0px; margin-top:5px" class="foto"></td>
+								<td rowspan="3" width="100px" align="center"><img src="mesin/avatar.gif" style=" margin-left:0px; margin-top:0px" class="foto"></td>
 								<?php $queryn = mysqli_query($konek, "SELECT * FROM siswa WHERE username_login='".$_SESSION['siswa']."'");
 								if ($queryn == false) {
 									die("Terjadi Kesalahan : " . mysqli_error($konek));
